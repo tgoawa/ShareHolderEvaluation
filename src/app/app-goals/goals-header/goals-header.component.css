@@ -1,0 +1,15 @@
+.transparent-bg {
+  background-color: transparent;
+}
+
+.mat-toolbar {
+  padding: 0 !important;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.bottom-border {
+  border-bottom: 1px solid #4da5cf;
+}
