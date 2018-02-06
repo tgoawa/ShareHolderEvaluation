@@ -1,0 +1,17 @@
+<mat-card>
+  <section>
+    <h3>Goals</h3>
+    <button mat-button color="accent">Add Goal</button>
+  </section>
+  <mat-list>
+    <mat-list-item *ngFor="let goal of goals">
+      <h4 mat-line>
+        <button mat-button color="primary">{{goal.name}}</button>
+      </h4>
+      <mat-form-field>
+        <input matInput type="number" placeholder="Weight" value="25" class="text-right">
+        <span matSuffix>%</span>
+      </mat-form-field>
+    </mat-list-item>
+  </mat-list>
+</mat-card>
