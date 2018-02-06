@@ -18,4 +18,10 @@ export class MainCardComponent implements OnInit {
   ngOnInit() {
   }
 
+  calculateTotalWeight(weight: number) {
+    let calculatedWeight;
+    calculatedWeight = calculatedWeight + weight;
+    return calculatedWeight;
+  }
+
 }
