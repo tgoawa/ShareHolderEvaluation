@@ -1,0 +1,18 @@
+<mat-card>
+  <h3>{{sectionTitle}}</h3>
+  <h4>Weight:</h4>
+  <p>{{totalWeight}}</p>
+  <br>
+  <a mat-button [routerLink]="route">View {{sectionTitle}}</a>
+  <mat-list>
+    <mat-list-item *ngFor="let goal of goals">
+      <h4 mat-line>
+        <a [routerLink]="['route/goal.id']" mat-button color="primary">{{goal.name}}</a>
+      </h4>
+      <mat-form-field class="list-input-width">
+        <input matInput type="number" placeholder="Weight" value="10" class="text-right">
+        <span matSuffix>%</span>
+      </mat-form-field>
+    </mat-list-item>
+  </mat-list>
+</mat-card>
