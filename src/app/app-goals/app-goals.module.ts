@@ -9,6 +9,7 @@ import { AppGoalsComponent } from './app-goals.component';
 import { GoalsHeaderComponent } from './goals-header/goals-header.component';
 import { GoalsMainComponent } from './goals-main/goals-main.component';
 import { MainCardComponent } from './goals-main/main-card/main-card.component';
+import { GoalsCompetencyComponent } from './goals-competency/goals-competency.component';
 
 @NgModule({
   imports: [
@@ -22,6 +23,6 @@ import { MainCardComponent } from './goals-main/main-card/main-card.component';
     MatListModule,
     MatToolbarModule
   ],
-  declarations: [AppGoalsComponent, GoalsHeaderComponent, GoalsMainComponent, MainCardComponent]
+  declarations: [AppGoalsComponent, GoalsHeaderComponent, GoalsMainComponent, MainCardComponent, GoalsCompetencyComponent]
 })
 export class AppGoalsModule { }

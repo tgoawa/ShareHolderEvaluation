@@ -1,5 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { ChangeDetectionStrategy } from '@angular/core/src/change_detection/constants';
+import { ChangeDetectionStrategy, Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-main-card',
