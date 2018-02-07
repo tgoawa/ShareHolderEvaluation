@@ -1,7 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
-import { MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule, MatListModule, MatToolbarModule } from '@angular/material';
+import {
+  MatButtonModule,
+  MatCardModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatListModule,
+  MatToolbarModule,
+} from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { AppGoalsRoutingModule } from './app-goals-routing.module';
@@ -20,13 +28,24 @@ import { GoalsLeadershipComponent } from './goals-leadership/goals-leadership.co
     CommonModule,
     AppGoalsRoutingModule,
     FlexLayoutModule,
+    FormsModule,
     MatButtonModule,
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
     MatListModule,
-    MatToolbarModule
+    MatToolbarModule,
   ],
-  declarations: [AppGoalsComponent, GoalsHeaderComponent, GoalsMainComponent, MainCardComponent, GoalsCompetencyComponent, GoalsWigComponent, GoalsEconomicComponent, GoalListCardComponent, GoalsLeadershipComponent]
+  declarations: [
+    AppGoalsComponent,
+    GoalsHeaderComponent,
+    GoalsMainComponent,
+    MainCardComponent,
+    GoalsCompetencyComponent,
+    GoalsWigComponent,
+    GoalsEconomicComponent,
+    GoalListCardComponent,
+    GoalsLeadershipComponent,
+  ],
 })
-export class AppGoalsModule { }
+export class AppGoalsModule {}

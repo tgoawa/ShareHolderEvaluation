@@ -1,16 +1,18 @@
 <mat-card>
-  <h3>{{sectionTitle}}</h3>
-  <h4>Weight:</h4>
-  <p>{{totalWeight}}</p>
-  <br>
-  <a mat-button [routerLink]="route">View {{sectionTitle}}</a>
+  <section class="text-center">
+    <h3>{{data.Name}} Goals</h3>
+    <h4>Weight:</h4>
+    <p>{{totalWeight}}%</p>
+    <br>
+    <a mat-button [routerLink]="route + routeName" color="primary">View {{data.Name}}</a>
+  </section>
   <mat-list>
-    <mat-list-item *ngFor="let goal of goals">
+    <mat-list-item *ngFor="let goal of data.Goals">
       <h4 mat-line>
-        <a [routerLink]="['route/goal.id']" mat-button color="primary">{{goal.name}}</a>
+        <a [routerLink]="route + routeName + '/' + goal.Id" mat-button color="primary">{{goal.Name}}</a>
       </h4>
       <mat-form-field class="list-input-width">
-        <input matInput type="number" placeholder="Weight" value="10" class="text-right">
+        <input matInput type="number" placeholder="Weight" [(ngModel)]="goal.Weight" class="text-right" (ngModelChange)="updateTotalWeight()">
         <span matSuffix>%</span>
       </mat-form-field>
     </mat-list-item>

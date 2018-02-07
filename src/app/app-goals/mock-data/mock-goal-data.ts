@@ -1,21 +1,21 @@
 export const landingPageData = [
   {
-    name: 'Competency',
-    goals: [
+    Name: 'Competency',
+    Goals: [
       {
-        name: 'Test Goal 1',
-        id: 1,
-        weight: 10
+        Name: 'Test Goal 1',
+        Id: 1,
+        Weight: 10
       },
       {
-        name: 'Test Goal 2',
-        id: 2,
-        weight: 10
+        Name: 'Test Goal 2',
+        Id: 2,
+        Weight: 10
       },
       {
-        name: 'Test Goal 3',
-        id: 3,
-        weight: 10
+        Name: 'Test Goal 3',
+        Id: 3,
+        Weight: 10
       }
     ]
   }

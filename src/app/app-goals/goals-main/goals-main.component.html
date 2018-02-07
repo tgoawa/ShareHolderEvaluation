@@ -3,4 +3,10 @@
     <h1>Shareholder Growth and Development</h1>
     <h2>Total Goal Weight: {{totalWeight}}</h2>
   </section>
+  <section>
+    text goes here
+  </section>
+  <section fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="10px">
+    <app-main-card *ngFor="let goal of goals" [data]="goal" [route]="'/goals/'"></app-main-card>
+  </section>
 </div>
