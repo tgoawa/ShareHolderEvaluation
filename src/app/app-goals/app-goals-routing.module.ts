@@ -12,9 +12,9 @@ const routes: Routes = [
   component: AppGoalsComponent,
   children: [
     {path: 'main', component: GoalsMainComponent},
-    {path: 'competency', component: GoalsCompetencyComponent},
-    {path: 'wig', component: GoalsWigComponent},
-    {path: 'leadership', component: GoalsLeadershipComponent}
+    {path: 'competency/:id', component: GoalsCompetencyComponent},
+    {path: 'wig/:id', component: GoalsWigComponent},
+    {path: 'leadership/:id', component: GoalsLeadershipComponent}
   ]
 }
 ];
