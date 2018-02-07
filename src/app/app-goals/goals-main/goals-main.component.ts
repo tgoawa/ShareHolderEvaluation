@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./goals-main.component.css']
 })
 export class GoalsMainComponent implements OnInit {
-
+  totalWeight: number;
   constructor() { }
 
   ngOnInit() {
