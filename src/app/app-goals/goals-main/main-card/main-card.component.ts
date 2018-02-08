@@ -39,6 +39,7 @@ export class MainCardComponent implements OnInit, AfterViewInit {
 
   updateTotalWeight() {
     this.totalWeight = this.calculateTotalWeight();
+    this.sendWeightData();
   }
 
   sendWeightData() {
