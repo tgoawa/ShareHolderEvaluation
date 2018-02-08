@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit, Input } from '@angular/core';
-import { Goals } from './model/goals';
+import { Goals } from '../model/goals';
 
 @Component({
   selector: 'app-main-card',

@@ -1,6 +1,7 @@
 export const landingPageData = [
   {
     Name: 'Competency',
+    GoalTypeId: 1,
     Goals: [
       {
         Name: 'Test Goal 1',
