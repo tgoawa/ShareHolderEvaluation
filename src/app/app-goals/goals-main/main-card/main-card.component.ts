@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component, OnInit, Input } from '@angular/core';
-import { Goals } from '../model/goals';
+import { ChangeDetectionStrategy, Component, OnInit, AfterViewInit, Input, Output, EventEmitter } from '@angular/core';
+import { Goals, GoalWeightData } from '../model/goals';
 
 @Component({
   selector: 'app-main-card',
@@ -7,9 +7,11 @@ import { Goals } from '../model/goals';
   styleUrls: ['./main-card.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class MainCardComponent implements OnInit {
+export class MainCardComponent implements OnInit, AfterViewInit {
   @Input() data: Goals;
   @Input() route: string;
+  @Output() goalWeightData: EventEmitter<GoalWeightData> = new EventEmitter<GoalWeightData>();
+  outputData: GoalWeightData;
   totalWeight: number;
   routeName: string;
 
@@ -18,6 +20,10 @@ export class MainCardComponent implements OnInit {
   ngOnInit() {
     this.routeName = this.data.Name.toLocaleLowerCase();
     this.totalWeight = this.calculateTotalWeight();
+  }
+
+  ngAfterViewInit() {
+    this.sendWeightData();
   }
 
   calculateTotalWeight() {
@@ -33,6 +39,11 @@ export class MainCardComponent implements OnInit {
 
   updateTotalWeight() {
     this.totalWeight = this.calculateTotalWeight();
+  }
+
+  sendWeightData() {
+    this.outputData = new GoalWeightData(this.data.GoalTypeId, this.totalWeight);
+    this.goalWeightData.emit(this.outputData);
   }
 
 }

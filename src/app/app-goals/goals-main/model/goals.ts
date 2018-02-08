@@ -10,7 +10,12 @@ export interface Goal {
   Weight: number;
 }
 
-export interface GoalWeightData {
+export class GoalWeightData {
   Id: number;
   Weight: number;
+
+  constructor(id: number, weight: number) {
+    this.Id = id;
+    this.Weight = weight;
+  }
 }
