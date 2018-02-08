@@ -22,6 +22,7 @@ import { GoalsWigComponent } from './goals-wig/goals-wig.component';
 import { GoalsEconomicComponent } from './goals-economic/goals-economic.component';
 import { GoalListCardComponent } from './shared/goal-list-card/goal-list-card.component';
 import { GoalsLeadershipComponent } from './goals-leadership/goals-leadership.component';
+import { GoalFormCardComponent } from './shared/goal-form-card/goal-form-card.component';
 
 @NgModule({
   imports: [
@@ -46,6 +47,7 @@ import { GoalsLeadershipComponent } from './goals-leadership/goals-leadership.co
     GoalsEconomicComponent,
     GoalListCardComponent,
     GoalsLeadershipComponent,
+    GoalFormCardComponent,
   ],
 })
 export class AppGoalsModule {}
