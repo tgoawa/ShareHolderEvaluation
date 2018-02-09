@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import {
   MatButtonModule,
@@ -44,6 +44,7 @@ import { ActionItemsComponent } from './shared/goal-form-card/action-items/actio
     MatListModule,
     MatSelectModule,
     MatToolbarModule,
+    ReactiveFormsModule
   ],
   declarations: [
     AppGoalsComponent,
