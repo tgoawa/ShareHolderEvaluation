@@ -8,6 +8,7 @@ import {
   MatFormFieldModule,
   MatInputModule,
   MatListModule,
+  MatSelectModule,
   MatToolbarModule,
 } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -35,6 +36,7 @@ import { GoalFormCardComponent } from './shared/goal-form-card/goal-form-card.co
     MatFormFieldModule,
     MatInputModule,
     MatListModule,
+    MatSelectModule,
     MatToolbarModule,
   ],
   declarations: [

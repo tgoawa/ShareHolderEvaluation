@@ -11,6 +11,7 @@ export class MainCardComponent implements OnInit, AfterViewInit {
   @Input() data: Goals;
   @Input() route: string;
   @Output() goalWeightData: EventEmitter<GoalWeightData> = new EventEmitter<GoalWeightData>();
+  weightValues: number[] = [5, 10, 15, 20, 25, 30, 35, 40];
   outputData: GoalWeightData;
   totalWeight: number;
   routeName: string;
