@@ -1,35 +1,37 @@
 <mat-card>
-  <section>
-    <h3>Goal Details</h3>
-    <p>
-      <mat-form-field class="half-width">
-        <input matInput type="text" placeholder="Goal Name">
-      </mat-form-field>
-      <mat-form-field class="list-input-width">
-        <mat-select class="text-right" placeholder="Weight" name="weight">
-        <mat-option *ngFor="let weight of weightValues" [value]="weight">{{weight}}</mat-option>
-      </mat-select>
-      <span matSuffix>%</span>
+  <form [formGroup]="goalForm">
+    <section>
+      <h3>Goal Details</h3>
+      <p>
+        <mat-form-field class="half-width">
+          <input matInput type="text" placeholder="Goal Name">
         </mat-form-field>
-    </p>
-    <p>
-      <mat-form-field class="half-width">
-        <textarea matInput placeholder="Goal Description" matTextareaAutosize matAutosizeMinRows="1" matAutosizeMaxRows="5"></textarea>
-      </mat-form-field>
-    </p>
-  </section>
-  <section>
-    <app-actions-list></app-actions-list>
-  </section>
-  <section>
-    <h3>Notes:</h3>
-    <p>
-      <mat-form-field class="half-width">
-        <textarea matInput placeholder="Notes" matTextareaAutosize matAutosizeMinRows="1" matAutosizeMaxRows="5"></textarea>
-      </mat-form-field>
-    </p>
-  </section>
-  <section>
-    <button mat-raised-button color="accent">Save Goal</button>
-  </section>
+        <mat-form-field class="list-input-width">
+          <mat-select class="text-right" placeholder="Weight" name="weight">
+            <mat-option *ngFor="let weight of weightValues" [value]="weight">{{weight}}</mat-option>
+          </mat-select>
+          <span matSuffix>%</span>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field class="half-width">
+          <textarea matInput placeholder="Goal Description" matTextareaAutosize matAutosizeMinRows="1" matAutosizeMaxRows="5"></textarea>
+        </mat-form-field>
+      </p>
+    </section>
+    <section>
+      <app-actions-list [parentForm]="goalForm"></app-actions-list>
+    </section>
+    <section>
+      <h3>Notes:</h3>
+      <p>
+        <mat-form-field class="half-width">
+          <textarea matInput placeholder="Notes" matTextareaAutosize matAutosizeMinRows="1" matAutosizeMaxRows="5"></textarea>
+        </mat-form-field>
+      </p>
+    </section>
+    <section>
+      <button mat-raised-button color="accent">Save Goal</button>
+    </section>
+  </form>
 </mat-card>
