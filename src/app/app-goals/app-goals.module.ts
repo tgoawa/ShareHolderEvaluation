@@ -26,6 +26,8 @@ import { GoalsEconomicComponent } from './goals-economic/goals-economic.componen
 import { GoalListCardComponent } from './shared/goal-list-card/goal-list-card.component';
 import { GoalsLeadershipComponent } from './goals-leadership/goals-leadership.component';
 import { GoalFormCardComponent } from './shared/goal-form-card/goal-form-card.component';
+import { ActionsListComponent } from './shared/goal-form-card/actions-list/actions-list.component';
+import { ActionItemsComponent } from './shared/goal-form-card/action-items/action-items.component';
 
 @NgModule({
   imports: [
@@ -54,6 +56,8 @@ import { GoalFormCardComponent } from './shared/goal-form-card/goal-form-card.co
     GoalListCardComponent,
     GoalsLeadershipComponent,
     GoalFormCardComponent,
+    ActionsListComponent,
+    ActionItemsComponent,
   ],
 })
 export class AppGoalsModule {}
