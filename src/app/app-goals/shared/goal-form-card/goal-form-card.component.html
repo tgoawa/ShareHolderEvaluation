@@ -1,3 +1,50 @@
-<p>
-  goal-form-card works!
-</p>
+<mat-card>
+  <section>
+    <h3>Goal Details</h3>
+    <p>
+      <mat-form-field class="half-width">
+        <input matInput type="text" placeholder="Goal Name">
+      </mat-form-field>
+      <mat-form-field class="list-input-width">
+        <mat-select class="text-right" placeholder="Weight" name="weight">
+        <mat-option *ngFor="let weight of weightValues" [value]="weight">{{weight}}</mat-option>
+      </mat-select>
+      <span matSuffix>%</span>
+        </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field class="half-width">
+        <textarea matInput placeholder="Goal Description" matTextareaAutosize matAutosizeMinRows="1" matAutosizeMaxRows="5"></textarea>
+      </mat-form-field>
+    </p>
+  </section>
+  <section>
+    <section fxLayout="row" fxLayoutAlign="start center">
+        <h3 class="no-bottom-margin">Actions/Measures:</h3>
+        <button mat-icon-button color="accent"><mat-icon>add_box</mat-icon></button>
+    </section>
+    <p>
+      <mat-form-field class="half-width">
+        <textarea matInput placeholder="Action" matTextareaAutosize matAutosizeMinRows="1" matAutosizeMaxRows="5"></textarea>
+      </mat-form-field>
+      <mat-checkbox>Complete</mat-checkbox>
+    </p>
+    <p>
+      <mat-form-field class="half-width">
+        <textarea matInput placeholder="Action" matTextareaAutosize matAutosizeMinRows="1" matAutosizeMaxRows="5"></textarea>
+      </mat-form-field>
+      <mat-checkbox>Complete</mat-checkbox>
+    </p>
+  </section>
+  <section>
+    <h3>Notes:</h3>
+    <p>
+      <mat-form-field class="half-width">
+        <textarea matInput placeholder="Notes" matTextareaAutosize matAutosizeMinRows="1" matAutosizeMaxRows="5"></textarea>
+      </mat-form-field>
+    </p>
+  </section>
+  <section>
+    <button mat-raised-button color="accent">Save Goal</button>
+  </section>
+</mat-card>
