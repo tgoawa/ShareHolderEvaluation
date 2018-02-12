@@ -28,6 +28,8 @@ import { GoalsLeadershipComponent } from './goals-leadership/goals-leadership.co
 import { GoalFormCardComponent } from './shared/goal-form-card/goal-form-card.component';
 import { ActionsListComponent } from './shared/goal-form-card/actions-list/actions-list.component';
 import { ActionItemsComponent } from './shared/goal-form-card/action-items/action-items.component';
+import { CompetencyDropdownsComponent } from './shared/competency-dropdowns/competency-dropdowns.component';
+import { WigDropdownsComponent } from './shared/wig-dropdowns/wig-dropdowns.component';
 
 @NgModule({
   imports: [
@@ -59,6 +61,8 @@ import { ActionItemsComponent } from './shared/goal-form-card/action-items/actio
     GoalFormCardComponent,
     ActionsListComponent,
     ActionItemsComponent,
+    CompetencyDropdownsComponent,
+    WigDropdownsComponent,
   ],
 })
 export class AppGoalsModule {}
