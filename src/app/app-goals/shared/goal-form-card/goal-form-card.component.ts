@@ -9,10 +9,12 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 export class GoalFormCardComponent implements OnInit {
   @Input() goal: any;
   weightValues: number[] = [5, 10, 15, 20, 25, 30, 35, 40];
+  goalForm: FormGroup;
 
   constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
+    this.goalForm = this.toFormGroup(data);
   }
 
   private toFormGroup(data): FormGroup {
