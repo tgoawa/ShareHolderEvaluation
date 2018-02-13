@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
 import { landingPageData } from '../mock-data/mock-goal-data';
-import { Goals, GoalWeightData } from './model/goals';
+import { Goals } from './model/goals';
+import { GoalWeightData } from './model/weight';
 
 @Component({
   selector: 'app-goals-main',

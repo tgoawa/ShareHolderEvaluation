@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit, AfterViewInit, Input, Output, EventEmitter } from '@angular/core';
-import { Goals, GoalWeightData } from '../model/goals';
+import { Goals } from '../model/goals';
+import { GoalWeightData } from '../model/weight';
 
 @Component({
   selector: 'app-main-card',
