@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, ChangeDetectorRef } from '@angular/core';
 import { FormGroup, FormArray } from '@angular/forms';
+import { Action } from '../../../models/action';
 
 @Component({
   selector: 'app-actions-list',
@@ -8,7 +9,7 @@ import { FormGroup, FormArray } from '@angular/forms';
 })
 export class ActionsListComponent implements OnInit {
   @Input() parentForm: FormGroup;
-  @Input() Actions = [];
+  @Input() Actions: Action[];
   @Input() goalId: number;
   constructor(private cd: ChangeDetectorRef) { }
 
@@ -22,6 +23,7 @@ export class ActionsListComponent implements OnInit {
       GoalId: this.goalId,
       Action: '',
       IsCompleted: false,
+      IsDirty: false
     };
     this.Actions.push(action);
     this.cd.detectChanges();

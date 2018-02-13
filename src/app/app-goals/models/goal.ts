@@ -1,3 +1,5 @@
+import { Action } from './action';
+
 export class Goal {
   GoalId: number;
   GoalType: number;
@@ -10,5 +12,6 @@ export class Goal {
   GoalName: string;
   GoalDescription: string;
   Weight: number;
+  Action: Action[];
   Notes: string;
 }
