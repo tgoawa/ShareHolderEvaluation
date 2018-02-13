@@ -4,26 +4,26 @@
       <h3>Goal Details</h3>
       <p>
         <mat-form-field>
-          <mat-select placeholder="Industry Team" name="industryTeam">
+          <mat-select placeholder="Industry Team" name="industryTeam" formControlName="IndustryTeamId">
             <mat-option>placeholder value</mat-option>
           </mat-select>
         </mat-form-field>
         <mat-form-field>
-          <mat-select placeholder="Service Line" name="serviceLine">
+          <mat-select placeholder="Service Line" name="serviceLine" formControlName="ServiceLineId">
             <mat-option>placeholder value</mat-option>
           </mat-select>
         </mat-form-field>
       </p>
       <p>
-        <app-competency-dropdowns [parentForm]="goalForm"></app-competency-dropdowns>
-        <!-- <app-wig-dropdowns [parentForm]="goalForm"></app-wig-dropdowns> -->
+        <app-competency-dropdowns [parentForm]="goalForm" *ngIf="goal.GoalType === 1"></app-competency-dropdowns>
+        <app-wig-dropdowns [parentForm]="goalForm" *ngIf="goal.GoalType === 2"></app-wig-dropdowns>
       </p>
       <p>
         <mat-form-field class="half-width">
-          <input matInput type="text" placeholder="Goal Name">
+          <input matInput type="text" placeholder="Goal Name" formControlName="GoalName">
         </mat-form-field>
         <mat-form-field class="list-input-width">
-          <mat-select class="text-right" placeholder="Weight" name="weight">
+          <mat-select class="text-right" placeholder="Weight" name="weight" formControlName="Weight">
             <mat-option *ngFor="let weight of weightValues" [value]="weight">{{weight}}</mat-option>
           </mat-select>
           <span matSuffix>%</span>
@@ -31,7 +31,7 @@
       </p>
       <p>
         <mat-form-field class="half-width">
-          <textarea matInput placeholder="Goal Description" matTextareaAutosize matAutosizeMinRows="1" matAutosizeMaxRows="5"></textarea>
+          <textarea matInput placeholder="Goal Description" matTextareaAutosize matAutosizeMinRows="1" matAutosizeMaxRows="5" formControlName="GoalDescription"></textarea>
         </mat-form-field>
       </p>
     </section>
@@ -42,7 +42,7 @@
       <h3>Notes:</h3>
       <p>
         <mat-form-field class="half-width">
-          <textarea matInput placeholder="Notes" matTextareaAutosize matAutosizeMinRows="1" matAutosizeMaxRows="5"></textarea>
+          <textarea matInput placeholder="Notes" matTextareaAutosize matAutosizeMinRows="1" matAutosizeMaxRows="5" formControlName="Notes"></textarea>
         </mat-form-field>
       </p>
     </section>

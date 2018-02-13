@@ -15,11 +15,23 @@ export class GoalFormCardComponent implements OnInit {
   constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
-    // this.goalForm = this.toFormGroup(data);
+    this.goalForm = this.toFormGroup(this.goal);
   }
 
-  private toFormGroup(data): FormGroup {
+  private toFormGroup(data: Goal): FormGroup {
     const formGroup = this.fb.group({
+      GoalId: data.GoalId,
+      GoalTypeId: data.GoalType,
+      TeamMemberId: data.TeamMemberId,
+      CompetencyId: data.CompetencyId,
+      CompetencyType: data.CompetencyType,
+      WIGId: data.WIGId,
+      IndustryTeamId: data.IndustryTeamId,
+      ServiceLineId: data.ServiceLineId,
+      GoalName: data.GoalName,
+      GoalDescription: data.GoalDescription,
+      Weight: data.Weight,
+      Notes: data.Notes
     });
 
     return formGroup;

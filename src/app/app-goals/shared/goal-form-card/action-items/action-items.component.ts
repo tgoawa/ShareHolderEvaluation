@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { FormBuilder, Validators, FormGroup, FormArray } from '@angular/forms';
+import { Action } from '../../../models/action';
 
 
 @Component({
@@ -8,19 +9,20 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
   styleUrls: ['./action-items.component.css']
 })
 export class ActionItemsComponent implements OnInit {
-  @Input() actionItems;
-  @Input() actionItem;
+  @Input() actionItems: FormArray;
+  @Input() actionItem: Action;
 
   actionItemForm: FormGroup;
 
   constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
+    this.actionItemForm = this.toFormGroup(this.actionItem);
   }
 
   private toFormGroup(data: Action) {
     const formGroup = this.fb.group({
-      ActionId: data.Actionid,
+      ActionId: data.ActionId,
       GoalId: data.GoalId,
       Action: [data.Action, Validators.required],
       IsCompleted: data.IsCompleted

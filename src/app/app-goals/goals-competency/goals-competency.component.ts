@@ -12,12 +12,13 @@ export class GoalsCompetencyComponent implements OnInit {
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.setGoal();
   }
 
   private setGoal() {
     this.route.params.subscribe(params => {
       if (params['id'] === 0) {
-        this.goal = new Goal();
+        this.goal = new Goal(1, 1936);
       } else {
         this.goal = this.getGoal(params['id']);
       }
