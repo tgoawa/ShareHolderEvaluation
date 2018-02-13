@@ -17,7 +17,7 @@ export class GoalsCompetencyComponent implements OnInit {
 
   private setGoal() {
     this.route.params.subscribe(params => {
-      if (params['id'] === 0) {
+      if (params['id'] === '0') {
         this.goal = new Goal(1, 1936);
       } else {
         this.goal = this.getGoal(params['id']);

@@ -1,6 +1,6 @@
-<p>
+<div [formGroup]="actionItemForm">
   <mat-form-field class="half-width">
     <textarea matInput placeholder="Action" matTextareaAutosize matAutosizeMinRows="1" matAutosizeMaxRows="5" formControlName="Action"></textarea>
   </mat-form-field>
   <mat-checkbox formControlName="IsCompleted">Complete</mat-checkbox>
-</p>
+</div>

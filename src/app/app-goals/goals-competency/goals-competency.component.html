@@ -8,6 +8,6 @@
   </section>
   <section fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="20px">
     <app-goal-list-card fxFlex="30"></app-goal-list-card>
-    <app-goal-form-card fxFlex="70" [goal]="goal"></app-goal-form-card>
+    <app-goal-form-card fxFlex="70" *ngIf="goal" [goal]="goal"></app-goal-form-card>
   </section>
 </div>

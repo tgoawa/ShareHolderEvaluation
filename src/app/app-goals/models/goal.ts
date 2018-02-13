@@ -12,7 +12,7 @@ export class Goal {
   GoalName: string;
   GoalDescription: string;
   Weight: number;
-  Action: Action[];
+  Actions: Action[];
   Notes: string;
 
   constructor(goalTypeId: number, teamMemberId: number) {
@@ -28,5 +28,6 @@ export class Goal {
     this.GoalDescription = '';
     this.Weight = 5;
     this.Notes = '';
+    this.Actions = [new Action(this.GoalId)];
   }
 }
