@@ -14,4 +14,19 @@ export class Goal {
   Weight: number;
   Action: Action[];
   Notes: string;
+
+  constructor(goalTypeId: number, teamMemberId: number) {
+    this.GoalId = 0;
+    this.GoalType = goalTypeId;
+    this.TeamMemberId = teamMemberId;
+    this.CompetencyId = null;
+    this.CompetencyType = null;
+    this.WIGId = null;
+    this.IndustryTeamId = null;
+    this.ServiceLineId = null;
+    this.GoalName = '';
+    this.GoalDescription = '';
+    this.Weight = 5;
+    this.Notes = '';
+  }
 }
