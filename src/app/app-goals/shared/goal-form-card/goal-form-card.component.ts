@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Goal } from '../../models/goal';
 
 @Component({
   selector: 'app-goal-form-card',
@@ -7,7 +8,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./goal-form-card.component.css']
 })
 export class GoalFormCardComponent implements OnInit {
-  @Input() goal: any;
+  @Input() goal: Goal;
   weightValues: number[] = [5, 10, 15, 20, 25, 30, 35, 40];
   goalForm: FormGroup;
 

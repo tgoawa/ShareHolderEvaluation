@@ -3,6 +3,18 @@
     <section>
       <h3>Goal Details</h3>
       <p>
+        <mat-form-field>
+          <mat-select placeholder="Industry Team" name="industryTeam">
+            <mat-option>placeholder value</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-select placeholder="Service Line" name="serviceLine">
+            <mat-option>placeholder value</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </p>
+      <p>
         <app-competency-dropdowns [parentForm]="goalForm"></app-competency-dropdowns>
         <app-wig-dropdowns [parentForm]="goalForm"></app-wig-dropdowns>
       </p>
