@@ -9,7 +9,6 @@ import { Action } from '../../../models/action';
   styleUrls: ['./action-items.component.css']
 })
 export class ActionItemsComponent implements OnInit {
-  @Input() actionItems: FormArray;
   @Input() actionItem: Action;
 
   actionItemForm: FormGroup;

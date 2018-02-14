@@ -4,6 +4,6 @@
       <button mat-icon-button color="accent" (click)="addAction()"><mat-icon>add_box</mat-icon></button>
   </section>
   <section formArrayName="Actions">
-    <app-action-items *ngFor="let action of Actions; let i = index" [actionItems]="parentForm.controls.Actions" [actionItem]="action"></app-action-items>
+    <app-action-items *ngFor="let action of Actions; let i = index" [actionItem]="action"></app-action-items>
   </section>
 </div>
