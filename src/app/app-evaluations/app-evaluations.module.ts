@@ -10,6 +10,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { AppEvaluationsRoutingModule } from './app-evaluations-routing.module';
 import { AppEvaluationsComponent } from './app-evaluations.component';
 import { EvaluationsHeaderComponent } from './evaluations-header/evaluations-header.component';
+import { EvaluationsMainComponent } from './evaluations-main/evaluations-main.component';
 
 @NgModule({
   imports: [
@@ -19,6 +20,6 @@ import { EvaluationsHeaderComponent } from './evaluations-header/evaluations-hea
     MatButtonModule,
     MatToolbarModule,
   ],
-  declarations: [AppEvaluationsComponent, EvaluationsHeaderComponent]
+  declarations: [AppEvaluationsComponent, EvaluationsHeaderComponent, EvaluationsMainComponent]
 })
 export class AppEvaluationsModule { }
