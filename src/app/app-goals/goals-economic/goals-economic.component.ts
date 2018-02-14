@@ -20,6 +20,7 @@ export class GoalsEconomicComponent implements OnInit {
   constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
+    this.economicGoal = this.toFormGroup(new EconomicGoal());
   }
 
   private toFormGroup(data: EconomicGoal): FormGroup {

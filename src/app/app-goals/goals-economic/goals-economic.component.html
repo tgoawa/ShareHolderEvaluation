@@ -12,92 +12,97 @@
       ut rhoncus neque diam eu quam.</p>
   </section>
   <mat-card>
-    <section>
-      <mat-form-field class="goal-input-width">
-        <input matInput type="number" placeholder="Goal Weight" value="50" class="text-right">
-        <span matSuffix>%</span>
-      </mat-form-field>
-    </section>
-    <section fxLayout="row" fxLayoutGap="20px" class="text-right">
-      <h3 fxFlex="15">Description</h3>
-      <h3 fxFlex="10">Current Year Goal</h3>
-      <h3 fxFlex="10">Previous Year Actual</h3>
-      <h3 fxFlex="10">Previous Year Goal</h3>
-    </section>
-    <section fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px" class="text-right">
-      <h4 fxFlex="15">Tiers 1-3</h4>
-      <mat-form-field fxFlex="10">
-        <input matInput type="text" placeholder="Goal Amount" class="text-right" [textMask]="{mask: mask}">
-      </mat-form-field>
-      <span fxFlex="10">$200,000</span>
-      <span fxFlex="10">$180,000</span>
-    </section>
-    <section fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px" class="text-right">
-      <h4 fxFlex="15">Tiers 4-5</h4>
-      <mat-form-field fxFlex="10">
-        <input matInput type="number" placeholder="Goal Amount" class="text-right" [textMask]="{mask: mask}">
-      </mat-form-field>
-      <span fxFlex="10">$200,000</span>
-      <span fxFlex="10">$180,000</span>
-    </section>
-    <section fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px" class="text-right">
-      <h4 fxFlex="15">Tier 6</h4>
-      <mat-form-field fxFlex="10">
-        <input matInput type="number" placeholder="Goal Amount" class="text-right" [textMask]="{mask: mask}">
-      </mat-form-field>
-      <span fxFlex="10">$200,000</span>
-      <span fxFlex="10">$180,000</span>
-    </section>
-    <section fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px" class="text-right">
-      <h4 fxFlex="15">New Business From New Clients</h4>
-      <mat-form-field fxFlex="10">
-        <input matInput type="number" placeholder="Goal Amount" class="text-right" [textMask]="{mask: mask}">
-      </mat-form-field>
-      <span fxFlex="10">$200,000</span>
-      <span fxFlex="10">$180,000</span>
-    </section>
-    <section fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px" class="text-right">
-      <h4 fxFlex="15">New Business From Existing Clients</h4>
-      <mat-form-field fxFlex="10">
-        <input matInput type="number" placeholder="Goal Amount" class="text-right" [textMask]="{mask: mask}">
-      </mat-form-field>
-      <span fxFlex="10">$200,000</span>
-      <span fxFlex="10">$180,000</span>
-    </section>
-    <section fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px" class="text-right">
-      <h4 fxFlex="15">Referrals To Specialty Units</h4>
-      <mat-form-field fxFlex="10">
-        <input matInput type="number" placeholder="Goal Amount" class="text-right" [textMask]="{mask: mask}">
-      </mat-form-field>
-      <span fxFlex="10">$200,000</span>
-      <span fxFlex="10">$180,000</span>
-    </section>
-    <section fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px" class="text-right">
-      <h4 fxFlex="15">Charge Hours</h4>
-      <mat-form-field fxFlex="10">
-        <input matInput type="number" placeholder="Goal Amount" class="text-right" [textMask]="{mask: mask}">
-      </mat-form-field>
-      <span fxFlex="10">$200,000</span>
-      <span fxFlex="10">$180,000</span>
-    </section>
-    <section fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px" class="text-right">
-      <h4 fxFlex="15">Realization</h4>
-      <mat-form-field fxFlex="10">
-        <input matInput type="number" placeholder="Goal Amount" class="text-right" [textMask]="{mask: mask}">
-      </mat-form-field>
-      <span fxFlex="10">$200,000</span>
-      <span fxFlex="10">$180,000</span>
-    </section>
-    <section fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px" class="text-right">
-      <h4 fxFlex="15">Days in WIP and AR</h4>
-      <mat-form-field fxFlex="10">
-        <input matInput type="number" placeholder="Goal Amount" class="text-right" [textMask]="{mask: mask}">
-      </mat-form-field>
-      <span fxFlex="10">$200,000</span>
-      <span fxFlex="10">$180,000</span>
-    </section>
-    <section fxLayout="row">
-      <button mat-raised-button color="accent">Save Personal Goals</button>
-    </section>
+    <mat-card-title>
+      Personal
+    </mat-card-title>
+    <form [formGroup]="economicGoal">
+      <section>
+        <mat-form-field>
+          <input matInput type="number" placeholder="Goal Weight" value="50" class="text-right" formControlName="Weight">
+          <span matSuffix>%</span>
+        </mat-form-field>
+      </section>
+      <section fxLayout="row" fxLayoutGap="20px" class="text-right">
+        <h3 fxFlex="15">Description</h3>
+        <h3 fxFlex="10">Current Year Goal</h3>
+        <h3 fxFlex="10">Previous Year Actual</h3>
+        <h3 fxFlex="10">Previous Year Goal</h3>
+      </section>
+      <section fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px" class="text-right">
+        <h4 fxFlex="15">Tiers 1-3</h4>
+        <mat-form-field fxFlex="10">
+          <input matInput type="text" placeholder="Goal Amount" class="text-right" [textMask]="{mask: mask}" formControlName="BillingsTiers1_3">
+        </mat-form-field>
+        <span fxFlex="10">$200,000</span>
+        <span fxFlex="10">$180,000</span>
+      </section>
+      <section fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px" class="text-right">
+        <h4 fxFlex="15">Tiers 4-5</h4>
+        <mat-form-field fxFlex="10">
+          <input matInput type="number" placeholder="Goal Amount" class="text-right" [textMask]="{mask: mask}" formControlName="BillingsTiers4_5">
+        </mat-form-field>
+        <span fxFlex="10">$200,000</span>
+        <span fxFlex="10">$180,000</span>
+      </section>
+      <section fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px" class="text-right">
+        <h4 fxFlex="15">Tier 6</h4>
+        <mat-form-field fxFlex="10">
+          <input matInput type="number" placeholder="Goal Amount" class="text-right" [textMask]="{mask: mask}" formControlName="BillingsTier6">
+        </mat-form-field>
+        <span fxFlex="10">$200,000</span>
+        <span fxFlex="10">$180,000</span>
+      </section>
+      <section fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px" class="text-right">
+        <h4 fxFlex="15">New Business From New Clients</h4>
+        <mat-form-field fxFlex="10">
+          <input matInput type="number" placeholder="Goal Amount" class="text-right" [textMask]="{mask: mask}" formControlName="BusinessNewClients">
+        </mat-form-field>
+        <span fxFlex="10">$200,000</span>
+        <span fxFlex="10">$180,000</span>
+      </section>
+      <section fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px" class="text-right">
+        <h4 fxFlex="15">New Business From Existing Clients</h4>
+        <mat-form-field fxFlex="10">
+          <input matInput type="number" placeholder="Goal Amount" class="text-right" [textMask]="{mask: mask}" formControlName="BusinessExistingClients">
+        </mat-form-field>
+        <span fxFlex="10">$200,000</span>
+        <span fxFlex="10">$180,000</span>
+      </section>
+      <section fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px" class="text-right">
+        <h4 fxFlex="15">Referrals To Specialty Units</h4>
+        <mat-form-field fxFlex="10">
+          <input matInput type="number" placeholder="Goal Amount" class="text-right" [textMask]="{mask: mask}" formControlName="ReferralsSpecialityUnits">
+        </mat-form-field>
+        <span fxFlex="10">$200,000</span>
+        <span fxFlex="10">$180,000</span>
+      </section>
+      <section fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px" class="text-right">
+        <h4 fxFlex="15">Charge Hours</h4>
+        <mat-form-field fxFlex="10">
+          <input matInput type="number" placeholder="Goal Amount" class="text-right" [textMask]="{mask: mask}" formControlName="ChargeHours">
+        </mat-form-field>
+        <span fxFlex="10">$200,000</span>
+        <span fxFlex="10">$180,000</span>
+      </section>
+      <section fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px" class="text-right">
+        <h4 fxFlex="15">Realization</h4>
+        <mat-form-field fxFlex="10">
+          <input matInput type="number" placeholder="Goal Amount" class="text-right" [textMask]="{mask: mask}" formControlName="Realization">
+        </mat-form-field>
+        <span fxFlex="10">$200,000</span>
+        <span fxFlex="10">$180,000</span>
+      </section>
+      <section fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px" class="text-right">
+        <h4 fxFlex="15">Days in WIP and AR</h4>
+        <mat-form-field fxFlex="10">
+          <input matInput type="number" placeholder="Goal Amount" class="text-right" [textMask]="{mask: mask}" formControlName="DaysinWIP_AR">
+        </mat-form-field>
+        <span fxFlex="10">$200,000</span>
+        <span fxFlex="10">$180,000</span>
+      </section>
+      <section fxLayout="row">
+        <button mat-raised-button color="accent">Save Personal Goals</button>
+      </section>
+    </form>
   </mat-card>
 </div>
