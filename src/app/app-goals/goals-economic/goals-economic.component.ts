@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { EconomicGoal } from '../models/economic-goal';
 
 import createNumberMask from 'text-mask-addons/dist/createNumberMask';
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 const numberMask = createNumberMask({
   prefix: '$'
@@ -13,9 +15,18 @@ const numberMask = createNumberMask({
 })
 export class GoalsEconomicComponent implements OnInit {
   mask = numberMask;
-  constructor() { }
+
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
+  }
+
+  private toFormGroup(data: EconomicGoal): FormGroup {
+    const formGroup = this.fb.group({
+
+    });
+
+    return formGroup;
   }
 
 }
