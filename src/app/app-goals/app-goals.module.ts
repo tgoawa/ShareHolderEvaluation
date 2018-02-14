@@ -12,6 +12,7 @@ import {
   MatListModule,
   MatSelectModule,
   MatToolbarModule,
+  MatDatepickerModule,
 } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
@@ -33,6 +34,7 @@ import { ActionItemsComponent } from './shared/goal-form-card/action-items/actio
 import { CompetencyDropdownsComponent } from './shared/competency-dropdowns/competency-dropdowns.component';
 import { WigDropdownsComponent } from './shared/wig-dropdowns/wig-dropdowns.component';
 import { GoalsBaseComponent } from './shared/goals-base/goals-base.component';
+import { GoalsReviewComponent } from './goals-review/goals-review.component';
 
 @NgModule({
   imports: [
@@ -43,6 +45,7 @@ import { GoalsBaseComponent } from './shared/goals-base/goals-base.component';
     MatButtonModule,
     MatCardModule,
     MatCheckboxModule,
+    MatDatepickerModule,
     MatFormFieldModule,
     MatIconModule,
     MatInputModule,
@@ -68,6 +71,7 @@ import { GoalsBaseComponent } from './shared/goals-base/goals-base.component';
     CompetencyDropdownsComponent,
     WigDropdownsComponent,
     GoalsBaseComponent,
+    GoalsReviewComponent,
   ],
 })
 export class AppGoalsModule {}

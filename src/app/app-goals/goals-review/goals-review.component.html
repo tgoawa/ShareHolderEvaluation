@@ -1,0 +1,40 @@
+<div fxLayout="column" fxLayoutAlign="space-between stretch" class="mat-typography">
+    <section>
+      <h1>Review Meeting</h1>
+    </section>
+    <section fxLayout="column" fxLayoutAlign="start stretch">
+      <mat-form-field class="input-width">
+        <mat-select placeholder="Reviewer">
+          <mat-option [value]="1">
+            Option 1
+          </mat-option>
+          <mat-option [value]="2">
+            Option 2
+          </mat-option>
+          <mat-option [value]="3">
+            Option 3
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="input-width">
+        <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field class="textarea-width">
+        <textarea matInput placeholder="Competency Goals Notes"></textarea>
+      </mat-form-field>
+      <mat-form-field class="textarea-width">
+        <textarea matInput placeholder="WIG Goals Notes"></textarea>
+      </mat-form-field>
+      <mat-form-field class="textarea-width">
+        <textarea matInput placeholder="Economic Goals Notes"></textarea>
+      </mat-form-field>
+      <mat-form-field class="textarea-width">
+        <textarea matInput placeholder="General Notes"></textarea>
+      </mat-form-field>
+    </section>
+    <section>
+      <button mat-raised-button color="accent">Save Notes</button>
+    </section>
+  </div>
