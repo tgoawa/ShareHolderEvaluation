@@ -15,6 +15,8 @@ import {
 } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
+import { TextMaskModule } from 'angular2-text-mask';
+
 import { AppGoalsRoutingModule } from './app-goals-routing.module';
 import { AppGoalsComponent } from './app-goals.component';
 import { GoalsHeaderComponent } from './goals-header/goals-header.component';
@@ -47,7 +49,8 @@ import { GoalsBaseComponent } from './shared/goals-base/goals-base.component';
     MatListModule,
     MatSelectModule,
     MatToolbarModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    TextMaskModule
   ],
   declarations: [
     AppGoalsComponent,
