@@ -1,10 +1,6 @@
 <div fxLayout="column" fxLayoutAlign="space-between stretch" class="mat-typography">
   <section fxLayout="column" fxLayoutAlign="space-between start">
     <h1>Economic Contribution Goals</h1>
-    <mat-form-field class="goal-input-width">
-      <input matInput type="number" placeholder="Goal Weight" value="50" class="text-right">
-      <span matSuffix>%</span>
-    </mat-form-field>
   </section>
   <section fxLayout="row" fxLayoutAlign="start start">
     <p fxFlex="66">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque semper tellus purus, ac accumsan nisi accumsan
@@ -15,7 +11,13 @@
       Aenean et libero luctus enim iaculis blandit. Donec commodo, erat vitae vestibulum consequat, nisi nisi mattis metus,
       ut rhoncus neque diam eu quam.</p>
   </section>
-  <section>
+  <mat-card>
+    <section>
+      <mat-form-field class="goal-input-width">
+        <input matInput type="number" placeholder="Goal Weight" value="50" class="text-right">
+        <span matSuffix>%</span>
+      </mat-form-field>
+    </section>
     <section fxLayout="row" fxLayoutGap="20px" class="text-right">
       <h3 fxFlex="15">Description</h3>
       <h3 fxFlex="10">Current Year Goal</h3>
@@ -97,5 +99,5 @@
     <section fxLayout="row">
       <button mat-raised-button color="accent">Save Personal Goals</button>
     </section>
-  </section>
+  </mat-card>
 </div>
