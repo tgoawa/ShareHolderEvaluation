@@ -1,3 +1,13 @@
-<p>
-  goals-leadership works!
-</p>
+<div fxLayout="column" fxLayoutAlign="space-between stretch" class="mat-typography">
+  <section>
+    <h1>Leadership Goals</h1>
+    <h2>Total Goal Weight: 100%</h2>
+  </section>
+  <section fxLayout="row" fxLayoutAlign="start start">
+    <p fxFlex="66">Text goes here.</p>
+  </section>
+  <section fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="20px">
+    <app-goal-list-card fxFlex="30"></app-goal-list-card>
+    <app-goal-form-card fxFlex="70" *ngIf="goal" [goal]="goal"></app-goal-form-card>
+  </section>
+</div>
