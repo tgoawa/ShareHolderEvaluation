@@ -6,13 +6,14 @@ import {
   MatButtonModule,
   MatCardModule,
   MatCheckboxModule,
+  MatDatepickerModule,
   MatFormFieldModule,
   MatIconModule,
   MatInputModule,
   MatListModule,
+  MatNativeDateModule,
   MatSelectModule,
   MatToolbarModule,
-  MatDatepickerModule,
 } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
@@ -50,6 +51,7 @@ import { GoalsReviewComponent } from './goals-review/goals-review.component';
     MatIconModule,
     MatInputModule,
     MatListModule,
+    MatNativeDateModule,
     MatSelectModule,
     MatToolbarModule,
     ReactiveFormsModule,

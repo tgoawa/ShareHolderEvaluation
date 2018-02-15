@@ -6,6 +6,7 @@ import { GoalsCompetencyComponent } from './goals-competency/goals-competency.co
 import { GoalsWigComponent } from './goals-wig/goals-wig.component';
 import { GoalsLeadershipComponent } from './goals-leadership/goals-leadership.component';
 import { GoalsEconomicComponent } from './goals-economic/goals-economic.component';
+import { GoalsReviewComponent } from './goals-review/goals-review.component';
 
 const routes: Routes = [
 {
@@ -16,7 +17,8 @@ const routes: Routes = [
     {path: 'competency/:id', component: GoalsCompetencyComponent},
     {path: 'wig/:id', component: GoalsWigComponent},
     {path: 'leadership/:id', component: GoalsLeadershipComponent},
-    {path: 'economic-goals', component: GoalsEconomicComponent}
+    {path: 'economic-goals', component: GoalsEconomicComponent},
+    {path: 'review-meeting', component: GoalsReviewComponent}
   ]
 }
 ];
