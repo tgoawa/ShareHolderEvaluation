@@ -12,8 +12,8 @@
         <a [routerLink]="route + routeName + '/' + evaluation.Id" mat-button color="primary">{{evaluation.Name}}</a>
       </h4>
       <mat-form-field class="list-input-width">
-        <mat-select class="text-right" placeholder="Score" [(ngModel)]="evaluation.Score" name="score" (ngModelChange)="updateTotalWeight()">
-          <mat-option *ngFor="let score of scoreValues" [value]="score">{{score}}</mat-option>
+        <mat-select class="text-right" placeholder="Score" [(ngModel)]="evaluation.Score" name="score" (ngModelChange)="updateTotalScore()">
+          <!-- <mat-option *ngFor="let score of scoreValues" [value]="score">{{score}}</mat-option> -->
         </mat-select>
         <span matSuffix>%</span>
       </mat-form-field>

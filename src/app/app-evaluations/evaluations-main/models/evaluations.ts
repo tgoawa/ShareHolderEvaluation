@@ -1,7 +1,7 @@
 export interface Evaluations {
   Name: string;
-  Goals: Evaluation[];
-  GoalTypeId: number;
+  Evaluations: Evaluation[];
+  EvaluationTypeId: number;
 }
 
 export interface Evaluation {
