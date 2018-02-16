@@ -18,6 +18,7 @@ import { EvaluationsHeaderComponent } from './evaluations-header/evaluations-hea
 import { EvaluationsMainComponent } from './evaluations-main/evaluations-main.component';
 import { MainCardComponent } from './evaluations-main/main-card/main-card.component';
 import { EvaluationCardComponent } from './shared/evaluation-card/evaluation-card.component';
+import { EvaluationsCompetencyComponent } from './evaluations-competency/evaluations-competency.component';
 
 @NgModule({
   imports: [
@@ -32,6 +33,6 @@ import { EvaluationCardComponent } from './shared/evaluation-card/evaluation-car
     MatSelectModule,
     MatToolbarModule,
   ],
-  declarations: [AppEvaluationsComponent, EvaluationsHeaderComponent, EvaluationsMainComponent, MainCardComponent, EvaluationCardComponent]
+  declarations: [AppEvaluationsComponent, EvaluationsHeaderComponent, EvaluationsMainComponent, MainCardComponent, EvaluationCardComponent, EvaluationsCompetencyComponent]
 })
 export class AppEvaluationsModule { }
