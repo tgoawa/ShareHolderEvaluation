@@ -5,6 +5,7 @@ import { EvaluationsMainComponent } from './evaluations-main/evaluations-main.co
 import { EvaluationsCompetencyComponent } from './evaluations-competency/evaluations-competency.component';
 import { EvaluationsWigComponent } from './evaluations-wig/evaluations-wig.component';
 import { EvaluationsLeadershipComponent } from './evaluations-leadership/evaluations-leadership.component';
+import { EvaluationsEconomicComponent } from './evaluations-economic/evaluations-economic.component';
 
 const routes: Routes = [
   {
@@ -14,7 +15,8 @@ const routes: Routes = [
       {path: 'main', component: EvaluationsMainComponent},
       {path: 'competency', component: EvaluationsCompetencyComponent},
       {path: 'wig', component: EvaluationsWigComponent},
-      {path: 'leadership', component: EvaluationsLeadershipComponent}
+      {path: 'leadership', component: EvaluationsLeadershipComponent},
+      {path: 'economic', component: EvaluationsEconomicComponent}
     ]
   }
 ];
