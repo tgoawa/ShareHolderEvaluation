@@ -1,9 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpModule } from '@angular/http';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 
-import { MatButtonModule, MatCardModule, MatFormFieldModule, MatToolbarModule } from '@angular/material';
+import { MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule, MatToolbarModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -18,11 +19,13 @@ import { LoginService } from './login/service/login.service';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    HttpModule,
     AppRoutingModule,
     FlexLayoutModule,
     MatButtonModule,
     MatCardModule,
     MatFormFieldModule,
+    MatInputModule,
     MatToolbarModule,
     ReactiveFormsModule
   ],
