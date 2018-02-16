@@ -1,8 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 
-import { MatButtonModule, MatToolbarModule } from '@angular/material';
+import { MatButtonModule, MatCardModule, MatFormFieldModule, MatToolbarModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -10,6 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AppHomeComponent } from './app-home/app-home.component';
 import { LoginComponent } from './login/login.component';
+import { LoginService } from './login/service/login.service';
 
 @NgModule({
   declarations: [AppComponent, AppHomeComponent, LoginComponent],
@@ -19,9 +21,12 @@ import { LoginComponent } from './login/login.component';
     AppRoutingModule,
     FlexLayoutModule,
     MatButtonModule,
-    MatToolbarModule
+    MatCardModule,
+    MatFormFieldModule,
+    MatToolbarModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [LoginService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
