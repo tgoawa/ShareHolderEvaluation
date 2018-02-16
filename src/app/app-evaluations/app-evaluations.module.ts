@@ -20,6 +20,7 @@ import { MainCardComponent } from './evaluations-main/main-card/main-card.compon
 import { EvaluationCardComponent } from './shared/evaluation-card/evaluation-card.component';
 import { EvaluationsCompetencyComponent } from './evaluations-competency/evaluations-competency.component';
 import { EvaluationsWigComponent } from './evaluations-wig/evaluations-wig.component';
+import { EvaluationsLeadershipComponent } from './evaluations-leadership/evaluations-leadership.component';
 
 @NgModule({
   imports: [
@@ -34,6 +35,6 @@ import { EvaluationsWigComponent } from './evaluations-wig/evaluations-wig.compo
     MatSelectModule,
     MatToolbarModule,
   ],
-  declarations: [AppEvaluationsComponent, EvaluationsHeaderComponent, EvaluationsMainComponent, MainCardComponent, EvaluationCardComponent, EvaluationsCompetencyComponent, EvaluationsWigComponent]
+  declarations: [AppEvaluationsComponent, EvaluationsHeaderComponent, EvaluationsMainComponent, MainCardComponent, EvaluationCardComponent, EvaluationsCompetencyComponent, EvaluationsWigComponent, EvaluationsLeadershipComponent]
 })
 export class AppEvaluationsModule { }
