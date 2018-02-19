@@ -20,14 +20,14 @@ export class GoalFormCardComponent implements OnInit {
 
   private toFormGroup(data: Goal): FormGroup {
     const formGroup = this.fb.group({
-      GoalId: data.GoalId,
-      GoalTypeId: data.GoalType,
-      TeamMemberId: data.TeamMemberId,
-      CompetencyId: data.CompetencyId,
-      CompetencyType: data.CompetencyType,
-      WIGId: data.WIGId,
-      IndustryTeamId: data.IndustryTeamId,
-      ServiceLineId: data.ServiceLineId,
+      GoalId: data.GoalID,
+      GoalTypeId: data.GoalTypeID,
+      TeamMemberId: data.TeamMemberID,
+      CompetencyId: data.CompetencyID,
+      CompetencyType: data.CompetencyTypeID,
+      WIGId: data.WIGID,
+      IndustryTeamId: data.IndustryTeamID,
+      ServiceLineId: data.ServiceLineID,
       GoalName: data.GoalName,
       GoalDescription: data.GoalDescription,
       Weight: data.Weight,

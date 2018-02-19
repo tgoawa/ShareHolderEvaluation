@@ -19,8 +19,8 @@ export class ActionsListComponent implements OnInit {
 
   addAction() {
     const action = {
-      ActionId: 0,
-      GoalId: this.goalId,
+      ActionID: 0,
+      GoalID: this.goalId,
       Action: '',
       IsCompleted: false,
       IsDirty: false

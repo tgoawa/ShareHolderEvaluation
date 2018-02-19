@@ -1,14 +1,14 @@
 import { Action } from './action';
 
 export class Goal {
-  GoalId: number;
-  GoalType: number;
-  TeamMemberId: number;
-  CompetencyId: number;
-  CompetencyType: number;
-  WIGId: number;
-  IndustryTeamId: number;
-  ServiceLineId: number;
+  GoalID: number;
+  GoalTypeID: number;
+  TeamMemberID: number;
+  CompetencyID: number;
+  CompetencyTypeID: number;
+  WIGID: number;
+  IndustryTeamID: number;
+  ServiceLineID: number;
   GoalName: string;
   GoalDescription: string;
   Weight: number;
@@ -16,18 +16,18 @@ export class Goal {
   Notes: string;
 
   constructor(goalTypeId: number, teamMemberId: number) {
-    this.GoalId = 0;
-    this.GoalType = goalTypeId;
-    this.TeamMemberId = teamMemberId;
-    this.CompetencyId = null;
-    this.CompetencyType = null;
-    this.WIGId = null;
-    this.IndustryTeamId = null;
-    this.ServiceLineId = null;
+    this.GoalID = 0;
+    this.GoalTypeID = goalTypeId;
+    this.TeamMemberID = teamMemberId;
+    this.CompetencyID = null;
+    this.CompetencyTypeID = null;
+    this.WIGID = null;
+    this.IndustryTeamID = null;
+    this.ServiceLineID = null;
     this.GoalName = '';
     this.GoalDescription = '';
     this.Weight = 5;
     this.Notes = '';
-    this.Actions = [new Action(this.GoalId)];
+    this.Actions = [new Action(this.GoalID)];
   }
 }
