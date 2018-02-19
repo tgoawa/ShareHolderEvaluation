@@ -1,0 +1,32 @@
+<section fxLayout="row" fxLayoutGap="20px">
+  <mat-form-field fxFlex="15">
+    <input matInput placeholder="SH Goal" disabled [value]=goalName>
+  </mat-form-field>
+  <mat-form-field fxFlex="40">
+    <textarea matInput placeholder="Comments" matTextareaAutosize matAutosizeMinRows="1" matAutosizeMaxRows="5"></textarea>
+  </mat-form-field>
+  <mat-form-field fxFlex="5">
+    <input matInput placeholder="Weight" disabled [value]=goalWeight>
+  </mat-form-field>
+  <mat-form-field fxFlex="15">
+    <mat-select placeholder="Self">
+      <mat-option *ngFor="let rating of ratings" [value]="rating.value">
+        {{ rating.viewValue }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field fxFlex="15">
+    <mat-select placeholder="Manager">
+      <mat-option *ngFor="let rating of ratings" [value]="rating.value">
+        {{ rating.viewValue }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field fxFlex="15">
+    <mat-select placeholder="Group">
+      <mat-option *ngFor="let rating of ratings" [value]="rating.value">
+        {{ rating.viewValue }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</section>
