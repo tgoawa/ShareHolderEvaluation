@@ -9,10 +9,12 @@ import { ReviewModel } from './model/review';
 })
 export class GoalsReviewComponent implements OnInit {
   reviewForm: FormGroup;
+  data = new ReviewModel();
 
   constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
+    this.reviewForm = this.toFormGroup(this.data);
   }
 
   private toFormGroup(data: ReviewModel): FormGroup {
