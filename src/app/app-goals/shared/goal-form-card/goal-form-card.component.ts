@@ -11,6 +11,12 @@ export class GoalFormCardComponent implements OnInit {
   @Input() goal: Goal;
   weightValues: number[] = [5, 10, 15, 20, 25, 30, 35, 40];
   goalForm: FormGroup;
+  serviceLine = [
+    {id: 1, value: 'Assurance'},
+    {id: 2, value: 'Accounting'},
+    {id: 3, value: 'Advisory'},
+    {id: 4, value: 'Tax'},
+  ];
 
   constructor(private fb: FormBuilder) { }
 

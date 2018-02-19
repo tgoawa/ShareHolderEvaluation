@@ -10,13 +10,13 @@
         </mat-form-field>
         <mat-form-field>
           <mat-select placeholder="Service Line" name="serviceLine" formControlName="ServiceLineId">
-            <mat-option>placeholder value</mat-option>
+            <mat-option *ngFor="let service of serviceLine">{{service.value}}</mat-option>
           </mat-select>
         </mat-form-field>
       </p>
       <p>
-        <app-competency-dropdowns [parentForm]="goalForm" *ngIf="goal.GoalType === 1"></app-competency-dropdowns>
-        <app-wig-dropdowns [parentForm]="goalForm" *ngIf="goal.GoalType === 2"></app-wig-dropdowns>
+        <app-competency-dropdowns [parentForm]="goalForm" *ngIf="goal.GoalTypeID === 1"></app-competency-dropdowns>
+        <app-wig-dropdowns [parentForm]="goalForm" *ngIf="goal.GoalTypeID === 2"></app-wig-dropdowns>
       </p>
       <p>
         <mat-form-field class="half-width">
@@ -36,7 +36,7 @@
       </p>
     </section>
     <section>
-      <app-actions-list [goalId]="goal.GoalId" [parentForm]="goalForm" [Actions]="goal.Actions"></app-actions-list>
+      <app-actions-list [goalId]="goal.GoalID" [parentForm]="goalForm" [Actions]="goal.Actions"></app-actions-list>
     </section>
     <section>
       <h3>Notes:</h3>

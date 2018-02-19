@@ -34,7 +34,6 @@ import { ActionsListComponent } from './shared/goal-form-card/actions-list/actio
 import { ActionItemsComponent } from './shared/goal-form-card/action-items/action-items.component';
 import { CompetencyDropdownsComponent } from './shared/competency-dropdowns/competency-dropdowns.component';
 import { WigDropdownsComponent } from './shared/wig-dropdowns/wig-dropdowns.component';
-import { GoalsBaseComponent } from './shared/goals-base/goals-base.component';
 import { GoalsReviewComponent } from './goals-review/goals-review.component';
 
 @NgModule({
@@ -72,7 +71,6 @@ import { GoalsReviewComponent } from './goals-review/goals-review.component';
     ActionItemsComponent,
     CompetencyDropdownsComponent,
     WigDropdownsComponent,
-    GoalsBaseComponent,
     GoalsReviewComponent,
   ],
 })
