@@ -9,7 +9,14 @@
     <h2>Welcome John Smith!</h2>
   </section>
   <section>
-    <a mat-raised-button color="primary" routerLink="/goals/main">Growth And Development</a>
+    <mat-form-field>
+      <mat-select placeholder="Goal Year">
+        <mat-option *ngFor="let year of evalYears" [value]="year">{{year}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </section>
+  <section>
+    <a mat-raised-button color="primary" routerLink="/goals/main">Goals</a>
     <a mat-raised-button color="primary" routerLink="/evaluations/main">Evaluation</a>
   </section>
 </div>
