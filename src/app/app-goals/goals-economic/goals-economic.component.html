@@ -17,8 +17,10 @@
     </mat-card-title>
     <form [formGroup]="economicGoal">
       <section>
-        <mat-form-field>
-          <input matInput type="number" placeholder="Goal Weight" value="50" class="text-right" formControlName="Weight">
+        <mat-form-field class="list-input-width">
+          <mat-select class="text-right" placeholder="Weight" name="weight" formControlName="Weight">
+            <mat-option *ngFor="let weight of weightValues" [value]="weight">{{weight}}</mat-option>
+          </mat-select>
           <span matSuffix>%</span>
         </mat-form-field>
       </section>

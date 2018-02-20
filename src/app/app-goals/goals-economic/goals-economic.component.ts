@@ -15,6 +15,7 @@ const numberMask = createNumberMask({
 })
 export class GoalsEconomicComponent implements OnInit {
   mask = numberMask;
+  weightValues: number[] = [5, 10, 15, 20, 25, 30, 35, 40];
   economicGoal: FormGroup;
 
   constructor(private fb: FormBuilder) { }
