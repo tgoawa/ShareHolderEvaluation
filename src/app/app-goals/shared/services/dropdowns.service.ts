@@ -17,6 +17,11 @@ export interface CompetencyType {
   GoalCompetencyTypeId: number;
 }
 
+export interface WIG {
+  GoalWIGId: number;
+  WIGTitle: string;
+}
+
 @Injectable()
 export class DropdownsService {
 

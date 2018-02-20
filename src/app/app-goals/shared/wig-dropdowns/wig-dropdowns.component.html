@@ -1,7 +1,7 @@
 <section>
   <mat-form-field>
     <mat-select placeholder="WIG for current goal" name="wig">
-      <mat-option>placeholder value</mat-option>
+      <mat-option *ngFor="let WIG of WIGS" [value]="WIG.GoalWIGId">{{WIG.WIGTitle}}</mat-option>
     </mat-select>
   </mat-form-field>
 </section>
