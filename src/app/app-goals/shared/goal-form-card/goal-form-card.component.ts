@@ -12,10 +12,14 @@ export class GoalFormCardComponent implements OnInit {
   weightValues: number[] = [5, 10, 15, 20, 25, 30, 35, 40];
   goalForm: FormGroup;
   serviceLine = [
+    {id: 0, value: 'None'},
     {id: 1, value: 'Assurance'},
-    {id: 2, value: 'Accounting'},
-    {id: 3, value: 'Advisory'},
-    {id: 4, value: 'Tax'},
+  ];
+
+  industryTeams = [
+    {id: 0, value: 'None'},
+    {Id: 1, value: 'Government'},
+    {id: 2, value: 'Construction'}
   ];
 
   constructor(private fb: FormBuilder) { }
