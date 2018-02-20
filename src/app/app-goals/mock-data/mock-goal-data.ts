@@ -6,17 +6,17 @@ export const landingPageData = [
       {
         Name: 'Test Goal 1',
         Id: 1,
-        Weight: 10
+        Weight: 5
       },
       {
         Name: 'Test Goal 2',
         Id: 2,
-        Weight: 10
+        Weight: 5
       },
       {
         Name: 'Test Goal 3',
         Id: 3,
-        Weight: 10
+        Weight: 5
       }
     ]
   },
@@ -27,16 +27,48 @@ export const landingPageData = [
       {
         Name: 'Test Goal 1',
         Id: 1,
-        Weight: 10
+        Weight: 5
       },
       {
         Name: 'Test Goal 2',
         Id: 2,
-        Weight: 10
+        Weight: 5
       },
       {
         Name: 'Test Goal 3',
         Id: 3,
+        Weight: 5
+      }
+    ]
+  },
+  {
+    Name: 'Leadership',
+    GoalTypeId: 3,
+    Goals: [
+      {
+        Name: 'Test Goal 1',
+        Id: 1,
+        Weight: 5
+      },
+      {
+        Name: 'Test Goal 2',
+        Id: 2,
+        Weight: 5
+      },
+      {
+        Name: 'Test Goal 3',
+        Id: 3,
+        Weight: 5
+      }
+    ]
+  },
+  {
+    Name: 'Economic',
+    GoalTypeId: 4,
+    Goals: [
+      {
+        Name: 'Test Goal 1',
+        Id: 1,
         Weight: 10
       }
     ]

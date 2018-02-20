@@ -6,7 +6,7 @@
   <section>
     text goes here
   </section>
-  <section fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="10px">
-    <app-main-card *ngFor="let goal of goals" [data]="goal" [route]="'/goals/'" (goalWeightData)="assignWeightTotal($event)"></app-main-card>
+  <section fxLayout="row" fxLayoutAlign="space-between start">
+    <app-main-card *ngFor="let goal of goals" [data]="goal" [route]="'/goals/'" (goalWeightData)="assignWeightTotal($event)" fxFlex="24"></app-main-card>
   </section>
 </div>
