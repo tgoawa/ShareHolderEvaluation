@@ -22,7 +22,7 @@ export class GoalsReviewComponent implements OnInit {
       ReviewId: data.ReviewId,
       TeamMemberId: data.TeamMemberId,
       ReviewerId: data.ReviewerId,
-      ReviewDate: data.ReviewDate,
+      ReviewDate: [{value: data.ReviewDate, disabled: true}],
       CompetencyNotes: data.CompetencyNotes,
       WIGNotes: data.WIGNotes,
       LeadershipNotes: data.LeadershipNotes,
