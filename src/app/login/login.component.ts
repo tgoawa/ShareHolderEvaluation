@@ -26,8 +26,9 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(formValue: User) {
-    const encUser = this.encryptUser();
-    this.checkUser(encUser);
+    // const encUser = this.encryptUser();
+    // this.checkUser(encUser);
+    this.router.navigate(['/home']);
   }
 
   private checkUser(user: User) {
@@ -63,10 +64,19 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  // private toFormGroup() {
+  //   const formGroup = this.fb.group({
+  //     username: [null, [Validators.required, Validators.minLength(4)]],
+  //     password: [null, [Validators.required, Validators.minLength(8)]]
+  //   });
+
+  //   return formGroup;
+  // }
+
   private toFormGroup() {
     const formGroup = this.fb.group({
-      username: [null, [Validators.required, Validators.minLength(4)]],
-      password: [null, [Validators.required, Validators.minLength(8)]]
+      username: [null],
+      password: [null]
     });
 
     return formGroup;
