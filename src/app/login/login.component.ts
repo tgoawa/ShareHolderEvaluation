@@ -75,7 +75,7 @@ export class LoginComponent implements OnInit {
 
   private toFormGroup() {
     const formGroup = this.fb.group({
-      username: [null],
+      username: ['jsmith'],
       password: [null]
     });
 
