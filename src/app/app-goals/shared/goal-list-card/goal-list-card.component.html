@@ -6,10 +6,12 @@
   <mat-list>
     <mat-list-item *ngFor="let goal of goals">
       <h4 mat-line>
-        <button mat-button color="primary">{{goal.name}}</button>
+        <button mat-button color="primary">{{goal.Name}}</button>
       </h4>
-      <mat-form-field>
-        <input matInput type="number" placeholder="Weight" value="25" class="text-right">
+      <mat-form-field class="list-input-width">
+        <mat-select class="text-right" placeholder="Weight" name="weight" [(value)]="goal.Weight">
+          <mat-option *ngFor="let weight of weightValues" [value]="weight">{{weight}}</mat-option>
+        </mat-select>
         <span matSuffix>%</span>
       </mat-form-field>
     </mat-list-item>

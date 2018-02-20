@@ -37,6 +37,7 @@ import { CompetencyDropdownsComponent } from './shared/competency-dropdowns/comp
 import { WigDropdownsComponent } from './shared/wig-dropdowns/wig-dropdowns.component';
 import { GoalsReviewComponent } from './goals-review/goals-review.component';
 import { DropdownsService } from './shared/services/dropdowns.service';
+import { GoalsService } from './shared/services/goals.service';
 
 @NgModule({
   imports: [
@@ -77,7 +78,8 @@ import { DropdownsService } from './shared/services/dropdowns.service';
     GoalsReviewComponent,
   ],
   providers: [
-    DropdownsService
+    DropdownsService,
+    GoalsService
   ]
 })
 export class AppGoalsModule {}
