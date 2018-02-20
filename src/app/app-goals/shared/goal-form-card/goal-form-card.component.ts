@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectorRef } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Goal } from '../../models/goal';
 
@@ -30,15 +30,15 @@ export class GoalFormCardComponent implements OnInit {
 
   private toFormGroup(data: Goal): FormGroup {
     const formGroup = this.fb.group({
-      GoalId: data.GoalID,
-      GoalTypeId: data.GoalTypeID,
-      TeamMemberId: data.TeamMemberID,
-      CompetencyId: data.CompetencyID,
-      CompetencyType: data.CompetencyTypeID,
-      WIGId: data.WIGID,
-      IndustryTeamId: data.IndustryTeamID,
-      ServiceLineId: data.ServiceLineID,
-      GoalName: data.GoalName,
+      GoalId: data.GoalId,
+      GoalTypeId: data.GoalTypeId,
+      TeamMemberId: data.TeamMemberId,
+      CompetencyId: data.GoalCompetencyId,
+      CompetencyType: data.GoalCompetencyTypeId,
+      WIGId: data.GoalWIGId,
+      IndustryTeamId: data.IndustryTeamId,
+      ServiceLineId: data.ServiceLineId,
+      Name: data.Name,
       GoalDescription: data.GoalDescription,
       Weight: data.Weight,
       Notes: data.Notes
@@ -47,4 +47,7 @@ export class GoalFormCardComponent implements OnInit {
     return formGroup;
   }
 
+  onSubmit(formValue: Goal) {
+    console.log(formValue);
+  }
 }

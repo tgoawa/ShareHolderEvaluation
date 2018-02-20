@@ -1,5 +1,5 @@
 <mat-card>
-  <form [formGroup]="goalForm">
+  <form [formGroup]="goalForm" (ngSubmit)="onSubmit(goalForm.value)">
     <section>
       <h3>Goal Details</h3>
       <p>
@@ -15,12 +15,12 @@
         </mat-form-field>
       </p>
       <p>
-        <app-competency-dropdowns [parentForm]="goalForm" *ngIf="goal.GoalTypeID === 1"></app-competency-dropdowns>
-        <app-wig-dropdowns [parentForm]="goalForm" *ngIf="goal.GoalTypeID === 2"></app-wig-dropdowns>
+        <app-competency-dropdowns [parentForm]="goalForm" *ngIf="goal.GoalTypeId === 3"></app-competency-dropdowns>
+        <app-wig-dropdowns [parentForm]="goalForm" *ngIf="goal.GoalTypeId === 2"></app-wig-dropdowns>
       </p>
       <p>
         <mat-form-field class="half-width">
-          <input matInput type="text" placeholder="Goal Name" formControlName="GoalName">
+          <input matInput type="text" placeholder="Goal Name" formControlName="Name">
         </mat-form-field>
         <mat-form-field class="list-input-width">
           <mat-select class="text-right" placeholder="Weight" name="weight" formControlName="Weight">
@@ -36,7 +36,7 @@
       </p>
     </section>
     <section>
-      <app-actions-list [goalId]="goal.GoalID" [parentForm]="goalForm" [Actions]="goal.Actions"></app-actions-list>
+      <app-actions-list [goalId]="goal.GoalId" [parentForm]="goalForm" [Actions]="goal.Actions"></app-actions-list>
     </section>
     <section>
       <h3>Notes:</h3>

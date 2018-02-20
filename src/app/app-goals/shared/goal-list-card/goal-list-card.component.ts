@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Goal } from '../../goals-main/model/goals';
 
 @Component({
@@ -8,11 +8,16 @@ import { Goal } from '../../goals-main/model/goals';
 })
 export class GoalListCardComponent implements OnInit {
   @Input() goals: Goal[];
+  @Output() goal: EventEmitter<Goal> = new EventEmitter<Goal>();
   weightValues: number[] = [0, 5, 10, 15, 20, 25, 30, 35, 40];
   constructor() { }
 
   ngOnInit() {
 
+  }
+
+  selectGoal(goal: Goal) {
+    this.goal.emit(goal);
   }
 
 }

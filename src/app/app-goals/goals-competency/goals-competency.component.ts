@@ -15,7 +15,7 @@ export class GoalsCompetencyComponent implements OnInit {
 
   ngOnInit() {
     this.getGoals(1936);
-    this.setGoal(1, 1936);
+    this.setGoal(3, 1936);
   }
 
   private setGoal(goalTypeId: number, teamMemberId: number) {
@@ -26,6 +26,10 @@ export class GoalsCompetencyComponent implements OnInit {
         // this.getGoal(params['id']);
       }
     });
+  }
+
+  setExistingGoal(goal: Goal) {
+    this.goal = goal;
   }
 
   private getGoals(id: number) {
