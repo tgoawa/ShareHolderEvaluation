@@ -1,12 +1,12 @@
 <section>
-  <mat-form-field>
+  <mat-form-field class="input-width">
     <mat-select placeholder="Competency for current goal" name="competency">
-      <mat-option>placeholder value</mat-option>
+      <mat-option *ngFor="let competency of competencies" [value]="competency.GoalCompetencyId">{{competency.Competency}}</mat-option>
     </mat-select>
   </mat-form-field>
-  <mat-form-field>
+  <mat-form-field class="input-width">
     <mat-select placeholder="Goal Type" name="type">
-      <mat-option>placeholder value</mat-option>
+      <mat-option *ngFor="let competencyType of competencyTypes" [value]="competencyType.GoalCompetencyTypeId">{{competencyType.CompetencyType}}</mat-option>
     </mat-select>
   </mat-form-field>
 </section>

@@ -35,6 +35,7 @@ import { ActionItemsComponent } from './shared/goal-form-card/action-items/actio
 import { CompetencyDropdownsComponent } from './shared/competency-dropdowns/competency-dropdowns.component';
 import { WigDropdownsComponent } from './shared/wig-dropdowns/wig-dropdowns.component';
 import { GoalsReviewComponent } from './goals-review/goals-review.component';
+import { DropdownsService } from './shared/services/dropdowns.service';
 
 @NgModule({
   imports: [
@@ -73,5 +74,8 @@ import { GoalsReviewComponent } from './goals-review/goals-review.component';
     WigDropdownsComponent,
     GoalsReviewComponent,
   ],
+  providers: [
+    DropdownsService
+  ]
 })
 export class AppGoalsModule {}

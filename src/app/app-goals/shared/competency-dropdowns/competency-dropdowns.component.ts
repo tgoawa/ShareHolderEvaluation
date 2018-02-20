@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { DropdownsService, Competency, CompetencyType } from '../services/dropdowns.service';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-competency-dropdowns',
@@ -7,9 +9,32 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class CompetencyDropdownsComponent implements OnInit {
   @Input() parentForm;
-  constructor() { }
+  competencies: Competency[];
+  competencyTypes: CompetencyType[];
+
+  constructor(private dropService: DropdownsService) { }
 
   ngOnInit() {
+    this.getCompetencies();
+    this.getCompetencyTypes();
+  }
+
+  getCompetencies() {
+    this.dropService.getCompetencies()
+    .subscribe(data => {
+      this.competencies = data;
+    }, error => {
+      console.log('Error binding data to view');
+    });
+  }
+
+  getCompetencyTypes() {
+    this.dropService.getCompetencyTypes()
+    .subscribe(data => {
+      this.competencyTypes = data;
+    }, error => {
+      console.log('Error binding data to view');
+    });
   }
 
 }
