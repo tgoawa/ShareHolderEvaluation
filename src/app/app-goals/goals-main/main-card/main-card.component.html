@@ -1,15 +1,15 @@
 <mat-card>
   <section class="text-center">
-    <h3>{{data.Name}} Goals</h3>
+    <h3>{{data.GoalType}} Goals</h3>
     <h4>Weight:</h4>
     <p>{{totalWeight}}%</p>
     <br>
-    <a mat-button [routerLink]="route + routeName + '/' + 0" color="primary">View {{data.Name}} Goals</a>
+    <a mat-button [routerLink]="route + routeName + '/' + 0" color="primary">View {{data.GoalType}} Goals</a>
   </section>
   <mat-list>
     <mat-list-item *ngFor="let goal of data.Goals">
       <h4 mat-line>
-        <a [routerLink]="route + routeName + '/' + goal.Id" mat-button color="primary">{{goal.Name}}</a>
+        <a [routerLink]="route + routeName + '/' + goal.GoalId" mat-button color="primary">{{goal.GoalName}}</a>
       </h4>
       <mat-form-field class="list-input-width">
         <mat-select class="text-right" placeholder="Weight" [(ngModel)]="goal.Weight" name="weight" (ngModelChange)="updateTotalWeight()">

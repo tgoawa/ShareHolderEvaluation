@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { landingPageData } from '../mock-data/mock-goal-data';
 import { Goals } from './model/goals';
 import { GoalWeightData } from './model/weight';
+import { GoalsService } from '../shared/services/goals.service';
+import { DashboardModel } from './model/dashboard.model';
 
 @Component({
   selector: 'app-goals-main',
@@ -11,19 +13,25 @@ import { GoalWeightData } from './model/weight';
 })
 export class GoalsMainComponent implements OnInit {
   totalWeight: number;
-  goals: Goals[];
+  goals: DashboardModel[];
   goalWeightData: GoalWeightData;
   weightDataDictionary: GoalWeightData[];
-  constructor() { }
+
+  constructor(private goalService: GoalsService) { }
 
   ngOnInit() {
-    this.goals = landingPageData;
-    this.weightDataDictionary = this.createWeightDataDictionary();
     this.totalWeight = 0;
+    this.getGoals(1936);
   }
 
-  getGoals() {
-    return landingPageData;
+  getGoals(teamMemberId: number) {
+    this.goalService.getGoals(teamMemberId)
+    .subscribe(data => {
+      this.goals = data;
+      this.weightDataDictionary = this.createWeightDataDictionary();
+    }, error => {
+      console.log('Could not bind goal data to view');
+    });
   }
 
   createWeightDataDictionary() {

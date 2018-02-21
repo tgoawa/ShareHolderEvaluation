@@ -18,7 +18,7 @@ export class GoalsCompetencyComponent implements OnInit {
 
   ngOnInit() {
     this.getGoals(1936);
-    this.setGoal(3, 1936);
+    this.setGoal(7, 1936);
   }
 
   private setGoal(goalTypeId: number, teamMemberId: number) {
@@ -37,7 +37,7 @@ export class GoalsCompetencyComponent implements OnInit {
   }
 
   private getGoals(id: number) {
-    this.goalsService.getGoals(id)
+    this.goalsService.getCompetencyGoals(id)
     .subscribe(data => {
       this.goals = data;
       this.totalWeight = this.calculateTotalWeight(this.goals);

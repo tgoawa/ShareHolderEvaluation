@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit, AfterViewInit, Input, Output, EventEmitter } from '@angular/core';
-import { Goals } from '../model/goals';
 import { GoalWeightData } from '../model/weight';
+import { DashboardGoal, DashboardModel } from '../model/dashboard.model';
 
 @Component({
   selector: 'app-main-card',
@@ -9,7 +9,7 @@ import { GoalWeightData } from '../model/weight';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MainCardComponent implements OnInit, AfterViewInit {
-  @Input() data: Goals;
+  @Input() data: DashboardModel;
   @Input() route: string;
   @Output() goalWeightData: EventEmitter<GoalWeightData> = new EventEmitter<GoalWeightData>();
   weightValues: number[] = [5, 10, 15, 20, 25, 30, 35, 40];
@@ -20,7 +20,7 @@ export class MainCardComponent implements OnInit, AfterViewInit {
   constructor() { }
 
   ngOnInit() {
-    this.routeName = this.data.Name.toLocaleLowerCase();
+    this.routeName = this.data.GoalType.toLocaleLowerCase();
     this.totalWeight = this.calculateTotalWeight();
   }
 
