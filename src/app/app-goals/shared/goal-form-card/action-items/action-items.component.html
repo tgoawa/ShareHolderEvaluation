@@ -1,6 +1,7 @@
 <div [formGroup]="actionItemForm">
   <mat-form-field class="half-width">
-    <textarea matInput placeholder="Action" matTextareaAutosize matAutosizeMinRows="1" matAutosizeMaxRows="5" formControlName="Action"></textarea>
+    <textarea matInput placeholder="Action" matTextareaAutosize matAutosizeMinRows="1" matAutosizeMaxRows="5" formControlName="Action"
+      (keyup)="onValueChange()"></textarea>
   </mat-form-field>
-  <mat-checkbox formControlName="IsCompleted">Complete</mat-checkbox>
+  <mat-checkbox formControlName="IsCompleted" (change)="onValueChange()">Complete</mat-checkbox>
 </div>

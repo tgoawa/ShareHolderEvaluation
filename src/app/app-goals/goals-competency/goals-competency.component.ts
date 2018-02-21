@@ -3,6 +3,8 @@ import { Goal } from '../models/goal';
 import { ActivatedRoute } from '@angular/router';
 import { GoalsService } from '../shared/services/goals.service';
 
+import * as _ from 'lodash';
+
 @Component({
   selector: 'app-goals-competency',
   templateUrl: './goals-competency.component.html',
@@ -29,7 +31,8 @@ export class GoalsCompetencyComponent implements OnInit {
   }
 
   setExistingGoal(goal: Goal) {
-    this.goal = goal;
+    this.goal = undefined;
+    this.goal = _.cloneDeep(goal);
   }
 
   private getGoals(id: number) {
