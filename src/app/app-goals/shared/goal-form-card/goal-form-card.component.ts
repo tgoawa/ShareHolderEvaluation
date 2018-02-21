@@ -2,6 +2,11 @@ import { Component, OnInit, Input, ChangeDetectorRef } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Goal } from '../../models/goal';
 
+export interface IndustryTeam {
+  id: number;
+  value: string;
+}
+
 @Component({
   selector: 'app-goal-form-card',
   templateUrl: './goal-form-card.component.html',
@@ -16,9 +21,9 @@ export class GoalFormCardComponent implements OnInit {
     {id: 1, value: 'Assurance'},
   ];
 
-  industryTeams = [
+  industryTeams: IndustryTeam[] = [
     {id: 0, value: 'None'},
-    {Id: 1, value: 'Government'},
+    {id: 1, value: 'Government'},
     {id: 2, value: 'Construction'}
   ];
 
@@ -48,6 +53,7 @@ export class GoalFormCardComponent implements OnInit {
   }
 
   onSubmit(formValue: Goal) {
+    console.log(this.goal);
     console.log(formValue);
   }
 }

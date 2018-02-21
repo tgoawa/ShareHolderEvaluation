@@ -13,6 +13,7 @@ import {
   MatListModule,
   MatMenuModule,
   MatNativeDateModule,
+  MatProgressSpinnerModule,
   MatSelectModule,
   MatToolbarModule,
 } from '@angular/material';
@@ -55,6 +56,7 @@ import { GoalsService } from './shared/services/goals.service';
     MatListModule,
     MatMenuModule,
     MatNativeDateModule,
+    MatProgressSpinnerModule,
     MatSelectModule,
     MatToolbarModule,
     ReactiveFormsModule,
