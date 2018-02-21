@@ -5,3 +5,7 @@
 .no-bottom-margin {
   margin-bottom: 0;
 }
+
+.active {
+  background-color: aqua;
+}

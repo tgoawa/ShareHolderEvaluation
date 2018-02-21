@@ -6,7 +6,7 @@
   <mat-list>
     <mat-list-item *ngFor="let goal of goals">
       <h4 mat-line>
-        <button mat-button color="primary" (click)="selectGoal(goal)">{{goal.Name}}</button>
+        <button mat-button color="primary" (click)="selectGoal(goal)" [ngClass]="{'active': isActive}">{{goal.Name}}</button>
       </h4>
       <mat-form-field class="list-input-width">
         <mat-select class="text-right" placeholder="Weight" name="weight" [(value)]="goal.Weight">
