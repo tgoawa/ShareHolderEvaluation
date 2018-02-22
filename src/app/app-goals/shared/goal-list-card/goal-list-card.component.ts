@@ -9,7 +9,6 @@ import { Goal } from '../../goals-main/model/goals';
 export class GoalListCardComponent implements OnInit {
   @Input() goals: Goal[];
   @Output() goal: EventEmitter<Goal> = new EventEmitter<Goal>();
-  isActive = false;
   weightValues: number[] = [0, 5, 10, 15, 20, 25, 30, 35, 40];
   constructor() { }
 
@@ -18,7 +17,6 @@ export class GoalListCardComponent implements OnInit {
   }
 
   selectGoal(goal: Goal) {
-    this.isActive = true;
     this.goal.emit(goal);
   }
 

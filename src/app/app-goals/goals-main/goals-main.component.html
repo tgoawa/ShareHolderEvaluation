@@ -7,7 +7,13 @@
   <section>
     text goes here
   </section>
-  <section fxLayout="row" fxLayoutAlign="space-between start">
-    <app-main-card *ngFor="let goal of goals" [data]="goal" [route]="'/goals/'" (goalWeightData)="assignWeightTotal($event)" fxFlex="24"></app-main-card>
+  <section fxLayout="row" fxLayoutAlign="space-between start" *ngIf="goals; else loading">
+    <app-main-card *ngFor="let goal of goals" [data]="goal" [route]="'/goals/'" (goalWeightData)="assignWeightTotal($event)"
+      fxFlex="24"></app-main-card>
   </section>
+  <ng-template #loading>
+    <div fxLayout="column" fxLayoutAlign="center center">
+      <mat-spinner></mat-spinner>
+    </div>
+  </ng-template>
 </div>
