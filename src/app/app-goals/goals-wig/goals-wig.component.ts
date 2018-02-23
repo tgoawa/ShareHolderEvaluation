@@ -13,6 +13,7 @@ import * as _ from 'lodash';
 export class GoalsWigComponent implements OnInit {
   goals: Goal[];
   goal: Goal;
+  goalTypeId = 4;
   totalWeight: number;
   constructor(
     private route: ActivatedRoute,
@@ -21,20 +22,9 @@ export class GoalsWigComponent implements OnInit {
 
   ngOnInit() {
     this.getGoals(1936);
-    this.setGoal(2, 1936);
   }
 
-  private setGoal(goalTypeId: number, teamMemberId: number) {
-    this.route.params.subscribe(params => {
-      if (params['id'] === '0') {
-        this.goal = new Goal(goalTypeId, teamMemberId);
-      } else {
-        // this.getGoal(params['id']);
-      }
-    });
-  }
-
-  setExistingGoal(goal: Goal) {
+  onSetExistingGoal(goal: Goal) {
     this.goal = undefined;
     this.goal = _.cloneDeep(goal);
   }
@@ -52,10 +42,30 @@ export class GoalsWigComponent implements OnInit {
       data => {
         this.goals = data;
         this.totalWeight = this.calculateTotalWeight(this.goals);
+        this.setGoal(this.goals, id);
       },
       error => {
         console.log('Could not retrieve list of goals');
       }
     );
+  }
+
+  private setGoal(goals: Goal[], teamMemberId: number) {
+    this.route.params.subscribe(params => {
+      if (params['id'] === '0') {
+        this.goal = new Goal(this.goalTypeId, teamMemberId);
+      } else {
+        this.setGoalFromRoute(goals, params['id']);
+      }
+    });
+  }
+
+  private setGoalFromRoute(goals: Goal[], goalId: number) {
+    for (let x = 0; x < goals.length; x++) {
+      if (+goalId === goals[x].GoalId) {
+        this.onSetExistingGoal(goals[x]);
+        break;
+      }
+    }
   }
 }
