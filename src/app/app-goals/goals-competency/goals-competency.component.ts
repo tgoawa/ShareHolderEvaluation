@@ -8,13 +8,16 @@ import * as _ from 'lodash';
 @Component({
   selector: 'app-goals-competency',
   templateUrl: './goals-competency.component.html',
-  styleUrls: ['./goals-competency.component.css']
+  styleUrls: ['./goals-competency.component.css'],
 })
 export class GoalsCompetencyComponent implements OnInit {
   goals: Goal[];
   goal: Goal;
   totalWeight: number;
-  constructor(private route: ActivatedRoute, private goalsService: GoalsService) { }
+  constructor(
+    private route: ActivatedRoute,
+    private goalsService: GoalsService
+  ) {}
 
   ngOnInit() {
     this.getGoals(1936);
@@ -37,13 +40,15 @@ export class GoalsCompetencyComponent implements OnInit {
   }
 
   private getGoals(id: number) {
-    this.goalsService.getCompetencyGoals(id)
-    .subscribe(data => {
-      this.goals = data;
-      this.totalWeight = this.calculateTotalWeight(this.goals);
-    }, error => {
-      console.log('Could not retrieve list of goals');
-    });
+    this.goalsService.getCompetencyGoals(id).subscribe(
+      data => {
+        this.goals = data;
+        this.totalWeight = this.calculateTotalWeight(this.goals);
+      },
+      error => {
+        console.log('Could not retrieve list of goals');
+      }
+    );
   }
 
   calculateTotalWeight(goals: Goal[]): number {
