@@ -7,8 +7,8 @@
   <section>
     text goes here
   </section>
-  <section fxLayout="row" fxLayoutAlign="space-between start" *ngIf="goals; else loading">
-    <app-main-card *ngFor="let goal of goals" [data]="goal" [route]="'/goals/'" (goalWeightData)="assignWeightTotal($event)"
+  <section fxLayout="row" fxLayoutAlign="space-between start" *ngIf="dashboardModels; else loading">
+    <app-main-card *ngFor="let dashboardModel of dashboardModels" [data]="dashboardModel" [route]="'/goals/'" (goalWeightData)="assignWeightTotal($event)"
       fxFlex="24"></app-main-card>
   </section>
   <ng-template #loading>

@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit, AfterViewInit, Input, Output, EventEmitter } from '@angular/core';
-import { GoalWeightData } from '../model/weight';
+import { GoalTypeWeightData, GoalWeightModel } from '../model/weight';
 import { DashboardGoal, DashboardModel } from '../model/dashboard.model';
+import { GoalsService } from '../../shared/services/goals.service';
 
 @Component({
   selector: 'app-main-card',
@@ -11,13 +12,13 @@ import { DashboardGoal, DashboardModel } from '../model/dashboard.model';
 export class MainCardComponent implements OnInit, AfterViewInit {
   @Input() data: DashboardModel;
   @Input() route: string;
-  @Output() goalWeightData: EventEmitter<GoalWeightData> = new EventEmitter<GoalWeightData>();
+  @Output() goalWeightData: EventEmitter<GoalTypeWeightData> = new EventEmitter<GoalTypeWeightData>();
   weightValues: number[] = [5, 10, 15, 20, 25, 30, 35, 40];
-  outputData: GoalWeightData;
+  outputData: GoalTypeWeightData;
   totalWeight: number;
   routeName: string;
 
-  constructor() { }
+  constructor(private goalService: GoalsService) { }
 
   ngOnInit() {
     this.routeName = this.data.GoalType.toLocaleLowerCase();
@@ -39,13 +40,26 @@ export class MainCardComponent implements OnInit, AfterViewInit {
     return value;
   }
 
-  updateTotalWeight() {
-    this.totalWeight = this.calculateTotalWeight();
-    this.sendWeightData();
+  updateGoalWeight(goalWeightData: GoalWeightModel) {
+    this.goalService.updateGoalWeight(goalWeightData)
+    .subscribe(data => {
+      if (data) {
+        this.totalWeight = this.calculateTotalWeight();
+        this.sendWeightData();
+      }
+    }, error => {
+      console.log('Error updating the weight data');
+    });
+  }
+
+  updateTotalWeight(dashboardGoal: DashboardGoal) {
+    const updateData: GoalWeightModel = new GoalWeightModel(dashboardGoal.GoalId, dashboardGoal.Weight);
+    console.log(updateData);
+    this.updateGoalWeight(updateData);
   }
 
   sendWeightData() {
-    this.outputData = new GoalWeightData(this.data.GoalTypeId, this.totalWeight);
+    this.outputData = new GoalTypeWeightData(this.data.GoalTypeId, this.totalWeight);
     this.goalWeightData.emit(this.outputData);
   }
 

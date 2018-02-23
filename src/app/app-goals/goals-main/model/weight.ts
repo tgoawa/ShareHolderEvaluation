@@ -1,9 +1,19 @@
-export class GoalWeightData {
-  Id: number;
-  Weight: number;
+export class GoalTypeWeightData {
+  GoalTypeId: number;
+  GoalWeight: number;
 
   constructor(id: number, weight: number) {
-    this.Id = id;
-    this.Weight = weight;
+    this.GoalTypeId = id;
+    this.GoalWeight = weight;
+  }
+}
+
+export class GoalWeightModel {
+  GoalId: number;
+  GoalWeight: number;
+
+  constructor(id: number, weight: number) {
+    this.GoalId = id;
+    this.GoalWeight = weight;
   }
 }

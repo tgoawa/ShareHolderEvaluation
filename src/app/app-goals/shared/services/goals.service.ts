@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable';
 
 import 'rxjs/add/operator/map';
 import { environment } from '../../../../environments/environment';
-import { GoalWeightData } from '../../goals-main/model/weight';
+import { GoalTypeWeightData, GoalWeightModel } from '../../goals-main/model/weight';
 const api = environment.envApi;
 
 @Injectable()
@@ -21,7 +21,7 @@ export class GoalsService {
     .map(response => response.json(), error => console.log(error));
   }
 
-  updateGoalWeight(goalWeightObj: GoalWeightData) {
+  updateGoalWeight(goalWeightObj: GoalWeightModel) {
     return this.http.put(api + 'ShareholderService/UpdateGoalWeights/', goalWeightObj)
     .map(response => response.json(), error => console.log(error));
   }
