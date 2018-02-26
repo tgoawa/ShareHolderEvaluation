@@ -17,7 +17,7 @@ export class GoalsWigComponent implements OnInit {
   goal: GoalData;
   goalTypeId = 4;
   totalWeight: number;
-  weightDataDictionary: Goal[];
+  goalListData: Goal[] = [];
   constructor(
     private route: ActivatedRoute,
     private goalsService: GoalsService
@@ -32,40 +32,30 @@ export class GoalsWigComponent implements OnInit {
     this.goal = _.cloneDeep(goal);
   }
 
-  assignWeightTotal(goalWeightModel: GoalWeightModel) {
-    for (let x = 0; x < this.weightDataDictionary.length; x++) {
-      if (goalWeightModel.GoalId === this.weightDataDictionary[x].Id) {
-        this.weightDataDictionary[x].Weight = goalWeightModel.GoalWeight;
+  // assignWeightTotal(goalWeightModel: GoalWeightModel) {
+  //   for (let x = 0; x < this.weightDataDictionary.length; x++) {
+  //     if (goalWeightModel.GoalId === this.weightDataDictionary[x].Id) {
+  //       this.weightDataDictionary[x].Weight = goalWeightModel.GoalWeight;
+  //     }
+  //   }
+  //   this.totalWeight = this.calculateTotalWeight(this.weightDataDictionary);
+  // }
+
+  updateGoalListData(goalListItem: Goal) {
+    for (let x = 0; x < this.goalListData.length; x++) {
+      if (goalListItem.Id === this.goalListData[x].Id) {
+        this.goalListData[x].Weight = goalListItem.Weight;
+      } else {
+        this.goalListData.push(goalListItem);
       }
     }
-    this.totalWeight = this.calculateTotalWeight(this.weightDataDictionary);
-  }
-
-  calculateTotalWeight(goals: Goal[]): number {
-    let calculatedWeight = 0;
-    for (let x = 0; x < goals.length; x++) {
-      calculatedWeight = calculatedWeight + goals[x].Weight;
-    }
-    return calculatedWeight;
-  }
-
-  createWeightDataDictionary(goals: GoalData[]) {
-    const dataDictionary = [];
-    for (let x = 0; x < goals.length; x++) {
-      const goalWeightData = new Goal();
-      goalWeightData.Id = goals[x].GoalId;
-      goalWeightData.Weight = goals[x].Weight;
-      dataDictionary.push(goalWeightData);
-    }
-    return dataDictionary;
   }
 
   private getGoals(id: number) {
     this.goalsService.getWIGGoals(id).subscribe(
       data => {
         this.goals = data;
-        this.weightDataDictionary = this.createWeightDataDictionary(this.goals);
-        this.totalWeight = this.calculateTotalWeight(this.weightDataDictionary);
+        this.setGoalListData(this.goals);
         this.setGoal(this.goals, id);
       },
       error => {
@@ -90,6 +80,15 @@ export class GoalsWigComponent implements OnInit {
         this.onSetExistingGoal(goals[x]);
         break;
       }
+    }
+  }
+
+  private setGoalListData(goals: GoalData[]) {
+    for (let x = 0; x < goals.length; x++) {
+      const goalListItem = new Goal();
+      goalListItem.Id = goals[x].GoalId;
+      goalListItem.Weight = goals[x].Weight;
+      this.goalListData.push(goalListItem);
     }
   }
 }

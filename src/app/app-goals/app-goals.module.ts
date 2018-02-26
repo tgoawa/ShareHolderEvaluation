@@ -40,6 +40,7 @@ import { WigDropdownsComponent } from './shared/wig-dropdowns/wig-dropdowns.comp
 import { GoalsReviewComponent } from './goals-review/goals-review.component';
 import { DropdownsService } from './shared/services/dropdowns.service';
 import { GoalsService } from './shared/services/goals.service';
+import { GoalTotalWeightComponent } from './shared/goal-total-weight/goal-total-weight.component';
 
 @NgModule({
   imports: [
@@ -79,7 +80,8 @@ import { GoalsService } from './shared/services/goals.service';
     ActionItemsComponent,
     CompetencyDropdownsComponent,
     WigDropdownsComponent,
-    GoalsReviewComponent
+    GoalsReviewComponent,
+    GoalTotalWeightComponent
   ],
   providers: [
     DropdownsService,
