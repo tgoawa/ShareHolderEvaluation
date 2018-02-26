@@ -5,6 +5,7 @@ import { GoalsService } from '../shared/services/goals.service';
 
 import * as _ from 'lodash';
 import { Goal } from '../goals-main/model/goals';
+import { GoalWeightModel } from '../goals-main/model/weight';
 
 @Component({
   selector: 'app-goals-wig',
@@ -31,7 +32,16 @@ export class GoalsWigComponent implements OnInit {
     this.goal = _.cloneDeep(goal);
   }
 
-  calculateTotalWeight(goals: GoalData[]): number {
+  assignWeightTotal(goalWeightModel: GoalWeightModel) {
+    for (let x = 0; x < this.weightDataDictionary.length; x++) {
+      if (goalWeightModel.GoalId === this.weightDataDictionary[x].Id) {
+        this.weightDataDictionary[x].Weight = goalWeightModel.GoalWeight;
+      }
+    }
+    this.totalWeight = this.calculateTotalWeight(this.weightDataDictionary);
+  }
+
+  calculateTotalWeight(goals: Goal[]): number {
     let calculatedWeight = 0;
     for (let x = 0; x < goals.length; x++) {
       calculatedWeight = calculatedWeight + goals[x].Weight;
@@ -55,7 +65,7 @@ export class GoalsWigComponent implements OnInit {
       data => {
         this.goals = data;
         this.weightDataDictionary = this.createWeightDataDictionary(this.goals);
-        this.totalWeight = this.calculateTotalWeight(this.goals);
+        this.totalWeight = this.calculateTotalWeight(this.weightDataDictionary);
         this.setGoal(this.goals, id);
       },
       error => {
