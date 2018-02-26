@@ -1,6 +1,6 @@
 import { Action } from './action';
 
-export class Goal {
+export class GoalData {
   GoalId: number;
   GoalTypeId: number;
   TeamMemberId: number;

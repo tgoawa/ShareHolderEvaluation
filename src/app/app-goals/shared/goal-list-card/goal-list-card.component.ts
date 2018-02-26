@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Goal } from '../../models/goal';
+import { GoalData } from '../../models/goal';
 import { GoalWeightModel } from '../../goals-main/model/weight';
 import { GoalsService } from '../services/goals.service';
 
@@ -9,8 +9,9 @@ import { GoalsService } from '../services/goals.service';
   styleUrls: ['./goal-list-card.component.css']
 })
 export class GoalListCardComponent implements OnInit {
-  @Input() goals: Goal[];
-  @Output() goal: EventEmitter<Goal> = new EventEmitter<Goal>();
+  @Input() goals: GoalData[];
+  @Output() goal: EventEmitter<GoalData> = new EventEmitter<GoalData>();
+  @Output() goalWeightModel: EventEmitter<GoalWeightModel> = new EventEmitter<GoalWeightModel>();
   weightValues: number[] = [0, 5, 10, 15, 20, 25, 30, 35, 40];
 
   constructor(private goalService: GoalsService) { }
@@ -19,20 +20,25 @@ export class GoalListCardComponent implements OnInit {
 
   }
 
-  selectGoal(goal: Goal) {
-    this.goal.emit(goal);
-  }
-
-  onWeightChange(goal: Goal) {
+  onWeightChange(goal: GoalData) {
     const goalWeightModel = new GoalWeightModel(goal.GoalId, goal.Weight);
     this.goalService.updateGoalWeight(goalWeightModel)
     .subscribe(data => {
       if (data) {
+        this.weightChange(goalWeightModel);
         console.log('Goal Weight Updated');
       }
     }, error => {
       console.log('Error updating weight data');
     });
+  }
+
+  selectGoal(goal: GoalData) {
+    this.goal.emit(goal);
+  }
+
+  weightChange(changedGoalWeight: GoalWeightModel) {
+    this.goalWeightModel.emit(changedGoalWeight);
   }
 
 }

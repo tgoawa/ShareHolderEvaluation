@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Goal } from '../models/goal';
+import { GoalData } from '../models/goal';
 import { ActivatedRoute } from '@angular/router';
 import { GoalsService } from '../shared/services/goals.service';
 
@@ -11,8 +11,8 @@ import * as _ from 'lodash';
   styleUrls: ['./goals-competency.component.css'],
 })
 export class GoalsCompetencyComponent implements OnInit {
-  goals: Goal[];
-  goal: Goal;
+  goals: GoalData[];
+  goal: GoalData;
   totalWeight: number;
   constructor(
     private route: ActivatedRoute,
@@ -27,14 +27,14 @@ export class GoalsCompetencyComponent implements OnInit {
   private setGoal(goalTypeId: number, teamMemberId: number) {
     this.route.params.subscribe(params => {
       if (params['id'] === '0') {
-        this.goal = new Goal(goalTypeId, teamMemberId);
+        this.goal = new GoalData(goalTypeId, teamMemberId);
       } else {
         // this.getGoal(params['id']);
       }
     });
   }
 
-  setExistingGoal(goal: Goal) {
+  setExistingGoal(goal: GoalData) {
     this.goal = undefined;
     this.goal = _.cloneDeep(goal);
   }
@@ -51,7 +51,7 @@ export class GoalsCompetencyComponent implements OnInit {
     );
   }
 
-  calculateTotalWeight(goals: Goal[]): number {
+  calculateTotalWeight(goals: GoalData[]): number {
     let calculatedWeight = 0;
     for (let x = 0; x < goals.length; x++) {
       calculatedWeight = calculatedWeight + goals[x].Weight;

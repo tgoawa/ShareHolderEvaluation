@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, OnChanges, ChangeDetectionStrategy } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Goal } from '../../models/goal';
+import { GoalData } from '../../models/goal';
 
 export interface IndustryTeam {
   id: number;
@@ -14,7 +14,7 @@ export interface IndustryTeam {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class GoalFormCardComponent implements OnInit, OnChanges {
-  @Input() goal: Goal;
+  @Input() goal: GoalData;
   weightValues: number[] = [5, 10, 15, 20, 25, 30, 35, 40];
   goalForm: FormGroup;
   serviceLine = [
@@ -37,7 +37,7 @@ export class GoalFormCardComponent implements OnInit, OnChanges {
     this.goalForm = this.toFormGroup(this.goal);
   }
 
-  private toFormGroup(data: Goal): FormGroup {
+  private toFormGroup(data: GoalData): FormGroup {
     const formGroup = this.fb.group({
       GoalId: data.GoalId,
       GoalTypeId: data.GoalTypeId,
@@ -56,7 +56,7 @@ export class GoalFormCardComponent implements OnInit, OnChanges {
     return formGroup;
   }
 
-  onSubmit(formValue: Goal) {
+  onSubmit(formValue: GoalData) {
     console.log(formValue);
   }
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Goal } from '../models/goal';
+import { GoalData } from '../models/goal';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -8,7 +8,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./goals-leadership.component.css']
 })
 export class GoalsLeadershipComponent implements OnInit {
-  goal: Goal;
+  goal: GoalData;
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
@@ -18,14 +18,14 @@ export class GoalsLeadershipComponent implements OnInit {
   private setGoal(goalTypeId: number, teamMemberId: number) {
     this.route.params.subscribe(params => {
       if (params['id'] === '0') {
-        this.goal = new Goal(goalTypeId, teamMemberId);
+        this.goal = new GoalData(goalTypeId, teamMemberId);
       } else {
         this.goal = this.getGoal(params['id']);
       }
     });
   }
 
-  private getGoal(id: number): Goal {
+  private getGoal(id: number): GoalData {
     // logic to get goal based on id passed through route
     return;
   }

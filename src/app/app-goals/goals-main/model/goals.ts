@@ -4,7 +4,7 @@ export interface Goals {
   GoalTypeId: number;
 }
 
-export interface Goal {
+export class Goal {
   Name: string;
   Id: number;
   Weight: number;
