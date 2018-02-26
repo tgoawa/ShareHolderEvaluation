@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Goal } from '../../goals-main/model/goals';
+import { GoalsService } from '../services/goals.service';
 
 @Component({
   selector: 'app-goal-list-item',
@@ -11,7 +12,8 @@ export class GoalListItemComponent implements OnInit {
   @Output() goalToView: EventEmitter<Goal> = new EventEmitter<Goal>();
   isActive = false;
   weightValues: number[] = [0, 5, 10, 15, 20, 25, 30, 35, 40];
-  constructor() { }
+
+  constructor(private goalService: GoalsService) { }
 
   ngOnInit() {
   }
