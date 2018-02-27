@@ -8,8 +8,6 @@ import { Component } from '@angular/core';
 })
 export class GoalsWigComponent extends GoalBaseComponent {
   goalTypeId = 4;
-  year = 2017;
-  teamMemberId = 1936;
   // goals: GoalData[];
   // goal: GoalData;
   // goalTypeId = 4;

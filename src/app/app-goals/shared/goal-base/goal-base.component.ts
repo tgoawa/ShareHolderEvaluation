@@ -25,6 +25,8 @@ export class GoalBaseComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.teamMemberId = 1936;
+    this.year = 2017;
     this.getGoals(this.teamMemberId, this.goalTypeId, this.year);
   }
 
