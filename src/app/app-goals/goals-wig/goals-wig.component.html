@@ -7,7 +7,7 @@
     <p fxFlex="66">Text goes here.</p>
   </section>
   <section fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="20px" *ngIf="goals; else loading">
-      <app-goal-list-card fxFlex="30" *ngIf="goals" [goals]="goals" (goal)="onSetExistingGoal($event)"></app-goal-list-card>
+      <app-goal-list-card fxFlex="30" *ngIf="goals" [goals]="goals" (goal)="onSetExistingGoal($event)" (goalWeightModel)="onWeightChange($event)"></app-goal-list-card>
       <app-goal-form-card fxFlex="70" [goal]="goal"></app-goal-form-card>
     </section>
     <ng-template #loading>

@@ -24,7 +24,7 @@ export class GoalsMainComponent implements OnInit {
   }
 
   getGoals(teamMemberId: number) {
-    this.goalService.getGoals(teamMemberId)
+    this.goalService.getDashboardGoals(teamMemberId)
     .subscribe(data => {
       this.dashboardModels = data;
       this.weightDataDictionary = this.createWeightDataDictionary();

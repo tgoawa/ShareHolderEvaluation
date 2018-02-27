@@ -15,15 +15,16 @@ export class GoalsWigComponent implements OnInit {
   goals: GoalData[];
   goal: GoalData;
   goalTypeId = 4;
+  year = 2017;
   totalWeight: number;
-  goalWeightData: GoalWeightModel[] = [];
+  goalWeightData: GoalWeightModel[];
   constructor(
     private route: ActivatedRoute,
     private goalsService: GoalsService
   ) {}
 
   ngOnInit() {
-    this.getGoals(1936);
+    this.getGoals(1936, this.goalTypeId, this.year);
   }
 
   onSetExistingGoal(goal: GoalData) {
@@ -31,7 +32,7 @@ export class GoalsWigComponent implements OnInit {
     this.goal = _.cloneDeep(goal);
   }
 
-  createWeightDataDictionary(goalData: GoalData[]): GoalWeightModel[] {
+  createGoalWeightData(goalData: GoalData[]): GoalWeightModel[] {
     const dataDictionary: GoalWeightModel[] = [];
     for (let x = 0; x < goalData.length; x++) {
       const goalWeightModel = new GoalWeightModel(goalData[x].GoalId, goalData[x].Weight);
@@ -40,11 +41,23 @@ export class GoalsWigComponent implements OnInit {
     return dataDictionary;
   }
 
-  private getGoals(id: number) {
-    this.goalsService.getWIGGoals(id).subscribe(
+  onWeightChange(goalWeightModel: GoalWeightModel) {
+    const updatedDataDictionary: GoalWeightModel[] = [];
+    for (let x = 0; x < this.goalWeightData.length; x ++) {
+      if (goalWeightModel.GoalId === this.goalWeightData[x].GoalId) {
+        updatedDataDictionary.push(goalWeightModel);
+      } else {
+        updatedDataDictionary.push(this.goalWeightData[x]);
+      }
+    }
+    this.goalWeightData = updatedDataDictionary;
+  }
+
+  private getGoals(id: number, goalTypeId: number, year: number) {
+    this.goalsService.getGoals(id, goalTypeId, year).subscribe(
       data => {
         this.goals = data;
-        this.goalWeightData = this.createWeightDataDictionary(this.goals);
+        this.goalWeightData = this.createGoalWeightData(this.goals);
         this.setGoal(this.goals, id);
       },
       error => {

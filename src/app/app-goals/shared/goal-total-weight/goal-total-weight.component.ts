@@ -1,28 +1,25 @@
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { Component, Input, OnChanges, ChangeDetectionStrategy } from '@angular/core';
 import { GoalWeightModel } from '../../goals-main/model/weight';
 
 @Component({
   selector: 'app-goal-total-weight',
   templateUrl: './goal-total-weight.component.html',
-  styleUrls: ['./goal-total-weight.component.css']
+  styleUrls: ['./goal-total-weight.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class GoalTotalWeightComponent implements OnInit, OnChanges {
+export class GoalTotalWeightComponent implements OnChanges {
   @Input() goalWeightModel: GoalWeightModel[];
   totalWeight: number;
   constructor() { }
-
-  ngOnInit() {
-    this.totalWeight = this.calculateTotalWeight(this.goalWeightModel);
-  }
 
   ngOnChanges() {
     this.totalWeight = this.calculateTotalWeight(this.goalWeightModel);
   }
 
-  calculateTotalWeight(goals: GoalWeightModel[]): number {
+  calculateTotalWeight(goalWeightModel: GoalWeightModel[]): number {
     let calculatedWeight = 0;
-    for (let x = 0; x < goals.length; x++) {
-      calculatedWeight = calculatedWeight + goals[x].GoalWeight;
+    for (let x = 0; x < goalWeightModel.length; x++) {
+      calculatedWeight = calculatedWeight + goalWeightModel[x].GoalWeight;
     }
     return calculatedWeight;
   }
