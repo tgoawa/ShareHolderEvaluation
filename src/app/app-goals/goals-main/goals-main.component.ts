@@ -15,16 +15,17 @@ export class GoalsMainComponent implements OnInit {
   totalWeight: number;
   dashboardModels: DashboardModel[];
   weightDataDictionary: GoalTypeWeightData[];
+  year = 2017;
 
   constructor(private goalService: GoalsService) { }
 
   ngOnInit() {
     this.totalWeight = 0;
-    this.getGoals(1936);
+    this.getGoals(1936, this.year);
   }
 
-  getGoals(teamMemberId: number) {
-    this.goalService.getDashboardGoals(teamMemberId)
+  getGoals(teamMemberId: number, year: number) {
+    this.goalService.getDashboardGoals(teamMemberId, year)
     .subscribe(data => {
       this.dashboardModels = data;
       this.weightDataDictionary = this.createWeightDataDictionary();
