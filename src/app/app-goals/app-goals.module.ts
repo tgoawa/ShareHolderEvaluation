@@ -41,6 +41,7 @@ import { GoalsReviewComponent } from './goals-review/goals-review.component';
 import { DropdownsService } from './shared/services/dropdowns.service';
 import { GoalsService } from './shared/services/goals.service';
 import { GoalTotalWeightComponent } from './shared/goal-total-weight/goal-total-weight.component';
+import { GoalBaseComponent } from './shared/goal-base/goal-base.component';
 
 @NgModule({
   imports: [
@@ -81,7 +82,8 @@ import { GoalTotalWeightComponent } from './shared/goal-total-weight/goal-total-
     CompetencyDropdownsComponent,
     WigDropdownsComponent,
     GoalsReviewComponent,
-    GoalTotalWeightComponent
+    GoalTotalWeightComponent,
+    GoalBaseComponent
   ],
   providers: [
     DropdownsService,
