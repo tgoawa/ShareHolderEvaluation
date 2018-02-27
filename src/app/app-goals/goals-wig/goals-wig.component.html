@@ -1,7 +1,7 @@
 <div fxLayout="column" fxLayoutAlign="space-between stretch" class="mat-typography">
   <section>
     <h1>WIG Goals</h1>
-    <h2>Total Goal Weight: {{totalWeight}}%</h2>
+    <app-goal-total-weight *ngIf="goals" [goalData]="goals"></app-goal-total-weight>
   </section>
   <section fxLayout="row" fxLayoutAlign="start start">
     <p fxFlex="66">Text goes here.</p>
@@ -16,4 +16,3 @@
       </div>
     </ng-template>
 </div>
-
