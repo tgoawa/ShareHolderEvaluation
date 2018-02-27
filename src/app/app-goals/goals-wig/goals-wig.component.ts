@@ -16,6 +16,7 @@ export class GoalsWigComponent implements OnInit {
   goal: GoalData;
   goalTypeId = 4;
   year = 2017;
+  teamMemberId: number;
   totalWeight: number;
   goalWeightData: GoalWeightModel[];
   constructor(
@@ -24,7 +25,8 @@ export class GoalsWigComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.getGoals(1936, this.goalTypeId, this.year);
+    this.teamMemberId = 1936;
+    this.getGoals(this.teamMemberId, this.goalTypeId, this.year);
   }
 
   onSetExistingGoal(goal: GoalData) {
