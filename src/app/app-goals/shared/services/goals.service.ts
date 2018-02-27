@@ -27,8 +27,8 @@ export class GoalsService {
       .map(response => response.json(), error => console.log(error));
   }
 
-  getDashboardGoals(teamMemberId: number) {
-    return this.http.get(api + 'ShareholderService/GetDashboardModel/' + teamMemberId)
+  getDashboardGoals(teamMemberId: number, year: number) {
+    return this.http.get(api + 'ShareholderService/GetDashboardModel/' + teamMemberId + '/' + year)
     .map(response => response.json(), error => console.log(error));
   }
 
