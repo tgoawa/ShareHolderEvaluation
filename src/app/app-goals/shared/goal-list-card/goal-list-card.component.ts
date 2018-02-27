@@ -11,7 +11,7 @@ import { GoalsService } from '../services/goals.service';
 export class GoalListCardComponent implements OnInit {
   @Input() goals: GoalData[];
   @Output() goal: EventEmitter<GoalData> = new EventEmitter<GoalData>();
-  @Output() goalWeightModel: EventEmitter<GoalWeightModel> = new EventEmitter<GoalWeightModel>();
+  @Output() goalWeightModel: EventEmitter<GoalData> = new EventEmitter<GoalData>();
   weightValues: number[] = [0, 5, 10, 15, 20, 25, 30, 35, 40];
 
   constructor(private goalService: GoalsService) { }
@@ -25,7 +25,7 @@ export class GoalListCardComponent implements OnInit {
     this.goalService.updateGoalWeight(goalWeightModel)
     .subscribe(data => {
       if (data) {
-        this.weightChange(goalWeightModel);
+        this.weightChange(goal);
         console.log('Goal Weight Updated');
       }
     }, error => {
@@ -37,8 +37,8 @@ export class GoalListCardComponent implements OnInit {
     this.goal.emit(goal);
   }
 
-  weightChange(changedGoalWeight: GoalWeightModel) {
-    this.goalWeightModel.emit(changedGoalWeight);
+  weightChange(goalData: GoalData) {
+    this.goalWeightModel.emit(goalData);
   }
 
 }

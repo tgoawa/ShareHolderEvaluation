@@ -1,5 +1,4 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
-import { GoalData } from '../../models/goal';
 import { GoalWeightModel } from '../../goals-main/model/weight';
 
 @Component({
@@ -8,19 +7,16 @@ import { GoalWeightModel } from '../../goals-main/model/weight';
   styleUrls: ['./goal-total-weight.component.css']
 })
 export class GoalTotalWeightComponent implements OnInit, OnChanges {
-  @Input() goalData: GoalData[];
+  @Input() goalWeightModel: GoalWeightModel[];
   totalWeight: number;
-  weightDataDictionary: GoalWeightModel[];
   constructor() { }
 
   ngOnInit() {
-    this.weightDataDictionary = this.createWeightDataDictionary(this.goalData);
-    this.totalWeight = this.calculateTotalWeight(this.weightDataDictionary);
+    this.totalWeight = this.calculateTotalWeight(this.goalWeightModel);
   }
 
   ngOnChanges() {
-    this.weightDataDictionary = this.createWeightDataDictionary(this.goalData);
-    this.totalWeight = this.calculateTotalWeight(this.weightDataDictionary);
+    this.totalWeight = this.calculateTotalWeight(this.goalWeightModel);
   }
 
   calculateTotalWeight(goals: GoalWeightModel[]): number {
@@ -29,15 +25,6 @@ export class GoalTotalWeightComponent implements OnInit, OnChanges {
       calculatedWeight = calculatedWeight + goals[x].GoalWeight;
     }
     return calculatedWeight;
-  }
-
-  createWeightDataDictionary(goalData: GoalData[]) {
-    const dataDictionary = [];
-    for (let x = 0; x < goalData.length; x++) {
-      const goalWeightModel = new GoalWeightModel(goalData[x].GoalId, goalData[x].Weight);
-      dataDictionary.push(goalWeightModel);
-    }
-    return dataDictionary;
   }
 
 }
