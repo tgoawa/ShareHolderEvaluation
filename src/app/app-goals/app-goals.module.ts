@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import {
@@ -90,6 +90,7 @@ import { NoteItemsComponent } from './shared/goal-form-card/note-items/note-item
     NoteItemsComponent
   ],
   providers: [
+    { provide: LocationStrategy, useClass: HashLocationStrategy },
     DropdownsService,
     GoalsService
   ]
