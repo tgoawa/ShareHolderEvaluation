@@ -1,13 +1,18 @@
 <div fxLayout="column" fxLayoutAlign="space-between stretch" class="mat-typography">
   <section>
     <h1>Leadership Goals</h1>
-    <h2>Total Goal Weight: 0%</h2>
+    <app-goal-total-weight *ngIf="goals" [goalWeightModel]="goalWeightData"></app-goal-total-weight>
   </section>
   <section fxLayout="row" fxLayoutAlign="start start">
     <p fxFlex="66">Text goes here.</p>
   </section>
-  <section fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="20px">
-    <app-goal-list-card fxFlex="30"></app-goal-list-card>
-    <app-goal-form-card fxFlex="70" *ngIf="goal" [goal]="goal"></app-goal-form-card>
+  <section fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="20px" *ngIf="goals; else loading">
+    <app-goal-list-card fxFlex="30" *ngIf="goals" [goals]="goals" (goal)="onSetExistingGoal($event)" (goalWeightModel)="onWeightChange($event)"></app-goal-list-card>
+    <app-goal-form-card fxFlex="70" *ngIf="goal" [goal]="goal" [dropDownData]="dropdownLists"></app-goal-form-card>
   </section>
+  <ng-template #loading>
+    <div fxLayout="column" fxLayoutAlign="center center">
+      <mat-spinner></mat-spinner>
+    </div>
+  </ng-template>
 </div>
