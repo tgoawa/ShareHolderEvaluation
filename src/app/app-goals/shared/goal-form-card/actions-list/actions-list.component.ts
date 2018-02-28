@@ -27,7 +27,8 @@ export class ActionsListComponent implements OnInit, OnChanges {
       GoalID: this.goalId,
       Action: '',
       IsCompleted: false,
-      IsDirty: false
+      IsDirty: false,
+      DisplayDateDue: null
     };
     this.Actions.push(action);
     this.cd.detectChanges();

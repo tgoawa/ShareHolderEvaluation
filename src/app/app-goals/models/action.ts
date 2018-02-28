@@ -4,6 +4,7 @@ export class Action {
   Action: string;
   IsCompleted: boolean;
   IsDirty: boolean;
+  DisplayDateDue: string;
 
   constructor(goalId: number) {
     this.ActionID = 0;

@@ -52,7 +52,9 @@ export class GoalFormCardComponent implements OnInit, OnChanges {
       ServiceLineId: data.ServiceLineId,
       Name: data.Name,
       GoalDescription: data.GoalDescription,
-      Weight: data.Weight
+      Weight: data.Weight,
+      GoalYear: data.GoalYear,
+      DisplayDateCompleted: data.DisplayDateCompleted
     });
 
     return formGroup;

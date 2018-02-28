@@ -32,7 +32,7 @@ export class NotesListComponent implements OnInit, OnChanges {
 
   setNote() {
     let note = new Note(this.goalId);
-    if (this.Notes.length > 1) {
+    if (this.Notes.length > 0) {
       note = this.Notes[0];
       return note;
     } else {

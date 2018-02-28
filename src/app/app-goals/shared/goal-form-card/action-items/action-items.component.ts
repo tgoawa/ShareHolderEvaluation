@@ -30,7 +30,8 @@ export class ActionItemsComponent implements OnInit, OnChanges {
       GoalId: data.GoalID,
       Action: [data.Action, Validators.required],
       IsDirty: [data.IsDirty],
-      IsCompleted: data.IsCompleted
+      IsCompleted: data.IsCompleted,
+      DisplayDateDue: data.DisplayDateDue
     });
 
     return formGroup;

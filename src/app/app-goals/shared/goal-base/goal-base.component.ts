@@ -30,7 +30,7 @@ export class GoalBaseComponent implements OnInit {
 
   ngOnInit() {
     this.teamMemberId = 1936;
-    this.year = 2017;
+    this.year = 2018;
     this.getDropdownLists();
     this.getGoals(this.teamMemberId, this.goalTypeId, this.year);
   }
@@ -110,7 +110,7 @@ export class GoalBaseComponent implements OnInit {
   private setGoal(goals: GoalData[], teamMemberId: number) {
     this.route.params.subscribe(params => {
       if (params['id'] === '0') {
-        this.goal = new GoalData(this.goalTypeId, teamMemberId);
+        this.goal = new GoalData(this.goalTypeId, teamMemberId, this.year);
       } else {
         this.setGoalFromRoute(goals, params['id']);
       }

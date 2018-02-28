@@ -13,10 +13,12 @@ export class GoalData {
   Name: string;
   GoalDescription: string;
   Weight: number;
+  GoalYear: number;
+  DisplayDateCompleted: string;
   Actions: Action[];
   Notes: Note[];
 
-  constructor(goalTypeId: number, teamMemberId: number) {
+  constructor(goalTypeId: number, teamMemberId: number, goalYear: number) {
     this.GoalId = 0;
     this.GoalTypeId = goalTypeId;
     this.TeamMemberId = teamMemberId;
@@ -28,6 +30,7 @@ export class GoalData {
     this.Name = '';
     this.GoalDescription = '';
     this.Weight = 5;
+    this.GoalYear = goalYear;
     this.Notes = [new Note(this.GoalId)];
     this.Actions = [new Action(this.GoalId)];
   }

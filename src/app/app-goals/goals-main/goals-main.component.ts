@@ -15,7 +15,7 @@ export class GoalsMainComponent implements OnInit {
   totalWeight: number;
   dashboardModels: DashboardModel[];
   weightDataDictionary: GoalTypeWeightData[];
-  year = 2017;
+  year = 2018;
 
   constructor(private goalService: GoalsService) { }
 
