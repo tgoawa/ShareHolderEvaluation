@@ -2,6 +2,7 @@ import { Component, OnInit, Input, OnChanges, ChangeDetectionStrategy } from '@a
 import { FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
 import { GoalData } from '../../models/goal';
 import { Dropdowns } from '../../models/dropdowns';
+import { GoalsService } from '../services/goals.service';
 
 export interface IndustryTeam {
   id: number;
@@ -30,7 +31,7 @@ export class GoalFormCardComponent implements OnInit, OnChanges {
     {id: 2, value: 'Construction'}
   ];
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private goalsService: GoalsService) { }
 
   ngOnInit() {
   }
@@ -58,6 +59,29 @@ export class GoalFormCardComponent implements OnInit, OnChanges {
   }
 
   onSubmit(formValue: GoalData) {
+    if (formValue.GoalId !== 0) {
+      this.updateGoal(formValue);
+    } else {
+      this.saveGoal(formValue);
+    }
     console.log(formValue);
+  }
+
+  private saveGoal(formValue: GoalData) {
+    this.goalsService.saveGoal(formValue)
+    .subscribe(data => {
+
+    }, error => {
+      console.log('There was an error saving this goal');
+    });
+  }
+
+  private updateGoal(formValue: GoalData) {
+    this.goalsService.updateGoal(formValue)
+    .subscribe(data => {
+
+    }, error => {
+      console.log('There was an error updating this goal');
+    });
   }
 }
