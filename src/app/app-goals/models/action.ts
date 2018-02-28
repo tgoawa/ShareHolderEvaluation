@@ -1,14 +1,14 @@
 export class Action {
-  ActionID: number;
-  GoalID: number;
+  ActionId: number;
+  GoalId: number;
   Action: string;
   IsCompleted: boolean;
   IsDirty: boolean;
   DisplayDateDue: string;
 
   constructor(goalId: number) {
-    this.ActionID = 0;
-    this.GoalID = goalId;
+    this.ActionId = 0;
+    this.GoalId = goalId;
     this.Action = '';
     this.IsCompleted = false;
     this.IsDirty = false;

@@ -26,8 +26,8 @@ export class NoteItemsComponent implements OnInit, OnChanges{
 
   private toFormGroup(data: Note) {
     const formGroup = this.fb.group({
-      NoteId: data.NoteID,
-      GoalId: data.GoalID,
+      NoteId: data.NoteId,
+      GoalId: data.GoalId,
       Note: data.Note,
       IsDirty: data.IsDirty,
     });

@@ -43,7 +43,7 @@ export class GoalsService {
   }
 
   updateGoal(goal: GoalData) {
-    return this.http.put(api + 'GoalService/UpdateGoal/', goal)
+    return this.http.post(api + 'GoalService/UpdateGoal/', goal)
     .map(response => response.json(), error => console.log(error));
   }
 }
