@@ -1,4 +1,11 @@
-import { Component, OnInit, OnChanges, Input, ChangeDetectorRef, ChangeDetectionStrategy } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  OnChanges,
+  Input,
+  ChangeDetectorRef,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { FormGroup, FormArray } from '@angular/forms';
 import { Note } from '../../../models/note';
 
@@ -6,7 +13,7 @@ import { Note } from '../../../models/note';
   selector: 'app-notes-list',
   templateUrl: './notes-list.component.html',
   styleUrls: ['./notes-list.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NotesListComponent implements OnInit, OnChanges {
   @Input() parentForm: FormGroup;
@@ -14,10 +21,9 @@ export class NotesListComponent implements OnInit, OnChanges {
   @Input() goalId: number;
 
   note: Note;
-  constructor(private cd: ChangeDetectorRef) { }
+  constructor(private cd: ChangeDetectorRef) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   ngOnChanges() {
     this.parentForm.addControl('Notes', new FormArray([]));
@@ -26,8 +32,11 @@ export class NotesListComponent implements OnInit, OnChanges {
 
   setNote() {
     let note = new Note(this.goalId);
-    note = this.Notes[0];
-    return note;
+    if (this.Notes.length > 1) {
+      note = this.Notes[0];
+      return note;
+    } else {
+      return note;
+    }
   }
-
 }

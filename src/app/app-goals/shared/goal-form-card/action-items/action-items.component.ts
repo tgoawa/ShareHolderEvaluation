@@ -2,7 +2,6 @@ import { Component, OnInit, OnChanges, Input, ChangeDetectionStrategy } from '@a
 import { FormBuilder, Validators, FormGroup, FormArray } from '@angular/forms';
 import { Action } from '../../../models/action';
 
-
 @Component({
   selector: 'app-action-items',
   templateUrl: './action-items.component.html',
