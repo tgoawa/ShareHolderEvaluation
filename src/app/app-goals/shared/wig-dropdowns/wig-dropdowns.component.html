@@ -1,7 +1,7 @@
-<section>
+<div [formGroup]="parentForm">
   <mat-form-field>
-    <mat-select placeholder="WIG for current goal" name="wig">
+    <mat-select placeholder="WIG for current goal" name="wig" formControlName="GoalWIGId">
       <mat-option *ngFor="let WIG of WIGS" [value]="WIG.GoalWIGId">{{WIG.WIGTitle}}</mat-option>
     </mat-select>
   </mat-form-field>
-</section>
+</div>
