@@ -39,12 +39,7 @@
       <app-actions-list [goalId]="goal.GoalId" [parentForm]="goalForm" [Actions]="goal.Actions"></app-actions-list>
     </section>
     <section>
-      <h3>Notes:</h3>
-      <p>
-        <mat-form-field class="half-width">
-          <textarea matInput placeholder="Notes" matTextareaAutosize matAutosizeMinRows="1" matAutosizeMaxRows="5" formControlName="Notes"></textarea>
-        </mat-form-field>
-      </p>
+      <app-notes-list [goalId]="goal.GoalId" [parentForm]="goalForm" [Notes]="goal.Notes"></app-notes-list>
     </section>
     <section>
       <button mat-raised-button color="accent">Save Goal</button>

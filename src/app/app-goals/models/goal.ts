@@ -1,4 +1,5 @@
 import { Action } from './action';
+import { Note } from './note';
 
 export class GoalData {
   GoalId: number;
@@ -13,7 +14,7 @@ export class GoalData {
   GoalDescription: string;
   Weight: number;
   Actions: Action[];
-  Notes: string;
+  Notes: Note[];
 
   constructor(goalTypeId: number, teamMemberId: number) {
     this.GoalId = 0;
@@ -27,7 +28,7 @@ export class GoalData {
     this.Name = '';
     this.GoalDescription = '';
     this.Weight = 5;
-    this.Notes = '';
+    this.Notes = [new Note(this.GoalId)];
     this.Actions = [new Action(this.GoalId)];
   }
 }

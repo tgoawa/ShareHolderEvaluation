@@ -42,6 +42,8 @@ import { DropdownsService } from './shared/services/dropdowns.service';
 import { GoalsService } from './shared/services/goals.service';
 import { GoalTotalWeightComponent } from './shared/goal-total-weight/goal-total-weight.component';
 import { GoalBaseComponent } from './shared/goal-base/goal-base.component';
+import { NotesListComponent } from './shared/goal-form-card/notes-list/notes-list.component';
+import { NoteItemsComponent } from './shared/goal-form-card/note-items/note-items.component';
 
 @NgModule({
   imports: [
@@ -83,7 +85,9 @@ import { GoalBaseComponent } from './shared/goal-base/goal-base.component';
     WigDropdownsComponent,
     GoalsReviewComponent,
     GoalTotalWeightComponent,
-    GoalBaseComponent
+    GoalBaseComponent,
+    NotesListComponent,
+    NoteItemsComponent
   ],
   providers: [
     DropdownsService,

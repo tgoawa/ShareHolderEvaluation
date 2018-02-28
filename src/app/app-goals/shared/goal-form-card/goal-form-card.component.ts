@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, OnChanges, ChangeDetectionStrategy } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
 import { GoalData } from '../../models/goal';
 
 export interface IndustryTeam {
@@ -10,7 +10,8 @@ export interface IndustryTeam {
 @Component({
   selector: 'app-goal-form-card',
   templateUrl: './goal-form-card.component.html',
-  styleUrls: ['./goal-form-card.component.css']
+  styleUrls: ['./goal-form-card.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class GoalFormCardComponent implements OnInit, OnChanges {
   @Input() goal: GoalData;
@@ -48,8 +49,7 @@ export class GoalFormCardComponent implements OnInit, OnChanges {
       ServiceLineId: data.ServiceLineId,
       Name: data.Name,
       GoalDescription: data.GoalDescription,
-      Weight: data.Weight,
-      Notes: data.Notes
+      Weight: data.Weight
     });
 
     return formGroup;

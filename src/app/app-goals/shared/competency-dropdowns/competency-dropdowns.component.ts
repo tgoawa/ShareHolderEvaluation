@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { DropdownsService, Competency, CompetencyType } from '../services/dropdowns.service';
-import { Observable } from 'rxjs/Observable';
 import { FormGroup } from '@angular/forms';
 
 @Component({

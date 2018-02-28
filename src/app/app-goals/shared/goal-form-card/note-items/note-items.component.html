@@ -1,0 +1,6 @@
+<div [formGroup]="noteItemForm">
+    <mat-form-field class="half-width">
+      <textarea matInput placeholder="Notes" matTextareaAutosize matAutosizeMinRows="1" matAutosizeMaxRows="5" formControlName="Note"
+        (keyup)="onValueChange()"></textarea>
+    </mat-form-field>
+  </div>
