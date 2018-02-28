@@ -1,12 +1,12 @@
-<section>
+<div [formGroup]="parentForm">
   <mat-form-field class="input-width">
-    <mat-select placeholder="Competency for current goal" name="competency">
+    <mat-select placeholder="Competency for current goal" name="competency" formControlName="CompetencyId">
       <mat-option *ngFor="let competency of competencies" [value]="competency.GoalCompetencyId">{{competency.Competency}}</mat-option>
     </mat-select>
   </mat-form-field>
   <mat-form-field class="input-width">
-    <mat-select placeholder="Goal Type" name="type">
+    <mat-select placeholder="Goal Type" name="type" formControlName="CompetencyType">
       <mat-option *ngFor="let competencyType of competencyTypes" [value]="competencyType.GoalCompetencyTypeId">{{competencyType.CompetencyType}}</mat-option>
     </mat-select>
   </mat-form-field>
-</section>
+</div>

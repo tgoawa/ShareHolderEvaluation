@@ -10,8 +10,7 @@ export interface IndustryTeam {
 @Component({
   selector: 'app-goal-form-card',
   templateUrl: './goal-form-card.component.html',
-  styleUrls: ['./goal-form-card.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrls: ['./goal-form-card.component.css']
 })
 export class GoalFormCardComponent implements OnInit, OnChanges {
   @Input() goal: GoalData;

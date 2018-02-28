@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { DropdownsService, Competency, CompetencyType } from '../services/dropdowns.service';
 import { Observable } from 'rxjs/Observable';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-competency-dropdowns',
@@ -8,7 +9,7 @@ import { Observable } from 'rxjs/Observable';
   styleUrls: ['./competency-dropdowns.component.css']
 })
 export class CompetencyDropdownsComponent implements OnInit {
-  @Input() parentForm;
+  @Input() parentForm: FormGroup;
   competencies: Competency[];
   competencyTypes: CompetencyType[];
 
