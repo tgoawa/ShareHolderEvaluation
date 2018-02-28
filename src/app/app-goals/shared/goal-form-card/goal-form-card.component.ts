@@ -70,18 +70,18 @@ export class GoalFormCardComponent implements OnInit, OnChanges {
   private saveGoal(formValue: GoalData) {
     this.goalsService.saveGoal(formValue)
     .subscribe(data => {
-
+      console.log(data);
     }, error => {
-      console.log('There was an error saving this goal');
+      console.log(error);
     });
   }
 
   private updateGoal(formValue: GoalData) {
     this.goalsService.updateGoal(formValue)
     .subscribe(data => {
-
+      console.log(data);
     }, error => {
-      console.log('There was an error updating this goal');
+      console.log(error);
     });
   }
 }
