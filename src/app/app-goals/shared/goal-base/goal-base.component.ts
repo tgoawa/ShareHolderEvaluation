@@ -5,6 +5,8 @@ import { ActivatedRoute } from '@angular/router';
 import { GoalsService } from '../services/goals.service';
 
 import * as _ from 'lodash';
+import { DropdownsService } from '../services/dropdowns.service';
+import { Dropdowns } from '../../models/dropdowns';
 
 @Component({
   selector: 'app-goal-base',
@@ -12,6 +14,7 @@ import * as _ from 'lodash';
   styleUrls: ['./goal-base.component.css']
 })
 export class GoalBaseComponent implements OnInit {
+  dropdownLists = new Dropdowns();
   goals: GoalData[];
   goal: GoalData;
   goalTypeId: number;
@@ -21,12 +24,14 @@ export class GoalBaseComponent implements OnInit {
   goalWeightData: GoalWeightModel[];
   constructor(
     private route: ActivatedRoute,
-    private goalsService: GoalsService
+    private goalsService: GoalsService,
+    private dropService: DropdownsService
   ) {}
 
   ngOnInit() {
     this.teamMemberId = 1936;
     this.year = 2017;
+    this.getDropdownLists();
     this.getGoals(this.teamMemberId, this.goalTypeId, this.year);
   }
 
@@ -56,6 +61,30 @@ export class GoalBaseComponent implements OnInit {
     this.goalWeightData = updatedDataDictionary;
   }
 
+  private getCompetencies() {
+    this.dropService.getCompetencies()
+    .subscribe(data => {
+      this.dropdownLists.Competencies = data;
+    }, error => {
+      console.log('Error binding data to view');
+    });
+  }
+
+  private getCompetencyTypes() {
+    this.dropService.getCompetencyTypes()
+    .subscribe(data => {
+      this.dropdownLists.CompetencyTypes = data;
+    }, error => {
+      console.log('Error binding data to view');
+    });
+  }
+
+  private getDropdownLists() {
+    this.getCompetencies();
+    this.getCompetencyTypes();
+    this.getWigs();
+  }
+
   private getGoals(id: number, goalTypeId: number, year: number) {
     this.goalsService.getGoals(id, goalTypeId, year).subscribe(
       data => {
@@ -67,6 +96,15 @@ export class GoalBaseComponent implements OnInit {
         console.log('Could not retrieve list of goals');
       }
     );
+  }
+
+  private getWigs() {
+    this.dropService.getWIGs()
+    .subscribe(data => {
+      this.dropdownLists.WIG = data;
+    }, error => {
+      console.log('Could not bind wig dropdown to view');
+    });
   }
 
   private setGoal(goals: GoalData[], teamMemberId: number) {

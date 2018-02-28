@@ -8,21 +8,10 @@ import { DropdownsService, WIG } from '../services/dropdowns.service';
 })
 export class WigDropdownsComponent implements OnInit {
   @Input() parentForm;
-  WIGS: WIG[];
+  @Input() WIGS: WIG[];
 
   constructor(private dropService: DropdownsService) { }
 
   ngOnInit() {
-    this.getWigs();
   }
-
-  getWigs() {
-    this.dropService.getWIGs()
-    .subscribe(data => {
-      this.WIGS = data;
-    }, error => {
-      console.log('Could not bind wig dropdown to view');
-    });
-  }
-
 }

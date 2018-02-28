@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, OnChanges, ChangeDetectionStrategy } from '@angular/core';
 import { FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
 import { GoalData } from '../../models/goal';
+import { Dropdowns } from '../../models/dropdowns';
 
 export interface IndustryTeam {
   id: number;
@@ -14,6 +15,7 @@ export interface IndustryTeam {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class GoalFormCardComponent implements OnInit, OnChanges {
+  @Input() dropDownData: Dropdowns;
   @Input() goal: GoalData;
   weightValues: number[] = [5, 10, 15, 20, 25, 30, 35, 40];
   goalForm: FormGroup;
