@@ -18,6 +18,7 @@ export class GoalBaseComponent implements OnInit {
   goals: GoalData[];
   goal: GoalData;
   goalTypeId: number;
+  isFormDirty: boolean;
   year: number;
   teamMemberId: number;
   totalWeight: number;
@@ -41,7 +42,11 @@ export class GoalBaseComponent implements OnInit {
   }
 
   onAddGoal() {
-    this.goal = new GoalData(this.goalTypeId, this.teamMemberId, this.year);
+    if (this.isFormDirty) {
+      console.log('Form is dirty');
+    } else {
+      this.goal = new GoalData(this.goalTypeId, this.teamMemberId, this.year);
+    }
   }
 
   onWeightChange(goalWeightModel: GoalWeightModel) {
@@ -56,10 +61,17 @@ export class GoalBaseComponent implements OnInit {
     this.goalWeightData = updatedDataDictionary;
   }
 
+  setFormIsDirty(value: boolean) {
+    this.isFormDirty = value;
+  }
+
   private createGoalWeightData(goalData: GoalData[]): GoalWeightModel[] {
     const dataDictionary: GoalWeightModel[] = [];
     for (let x = 0; x < goalData.length; x++) {
-      const goalWeightModel = new GoalWeightModel(goalData[x].GoalId, goalData[x].Weight);
+      const goalWeightModel = new GoalWeightModel(
+        goalData[x].GoalId,
+        goalData[x].Weight
+      );
       dataDictionary.push(goalWeightModel);
     }
     return dataDictionary;

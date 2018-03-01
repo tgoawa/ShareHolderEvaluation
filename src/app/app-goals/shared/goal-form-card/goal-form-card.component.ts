@@ -1,10 +1,4 @@
-import {
-  Component,
-  OnInit,
-  Input,
-  OnChanges,
-  ChangeDetectionStrategy,
-} from '@angular/core';
+import { Component, OnInit, Input, OnChanges, DoCheck, ChangeDetectionStrategy, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
 import { GoalData } from '../../models/goal';
 import { Dropdowns } from '../../models/dropdowns';
@@ -21,9 +15,10 @@ export interface IndustryTeam {
   styleUrls: ['./goal-form-card.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class GoalFormCardComponent implements OnInit, OnChanges {
+export class GoalFormCardComponent implements DoCheck, OnInit, OnChanges {
   @Input() dropDownData: Dropdowns;
   @Input() goal: GoalData;
+  @Output() isFormDirty: EventEmitter<boolean> = new EventEmitter<boolean>();
   weightValues: number[] = [5, 10, 15, 20, 25, 30, 35, 40];
   goalForm: FormGroup;
   serviceLine = [{ id: 0, value: 'None' }, { id: 1, value: 'Assurance' }];
@@ -40,6 +35,13 @@ export class GoalFormCardComponent implements OnInit, OnChanges {
 
   ngOnChanges() {
     this.goalForm = this.toFormGroup(this.goal);
+  }
+
+  ngDoCheck() {
+    if (!this.goalForm.pristine) {
+      console.log('Goal form is dirty!');
+      this.isFormDirty.emit(true);
+    }
   }
 
   private toFormGroup(data: GoalData): FormGroup {
