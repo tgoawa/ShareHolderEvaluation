@@ -42,7 +42,7 @@
       <app-notes-list [goalId]="goal.GoalId" [parentForm]="goalForm" [Notes]="goal.Notes"></app-notes-list>
     </section>
     <section>
-      <button mat-raised-button color="accent">Save Goal</button>
+      <button mat-raised-button color="accent"><span *ngIf="goal.GoalId > 0; else saveText">Update</span><ng-template #saveText><span>Save</span></ng-template> Goal</button>
     </section>
   </form>
 </mat-card>
