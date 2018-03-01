@@ -53,6 +53,16 @@ export class GoalBaseComponent implements OnInit {
     }
   }
 
+  onSaveGoal(savedGoal: GoalData) {
+    console.log('Goal Saved!');
+    // this.goals.push(savedGoal);
+    this.getGoals(this.teamMemberId, this.goalTypeId, this.year);
+  }
+
+  onUpdateGoal(updatedGoal: GoalData) {
+    this.getGoals(this.teamMemberId, this.goalTypeId, this.year);
+  }
+
   onWeightChange(goalWeightModel: GoalWeightModel) {
     const updatedDataDictionary: GoalWeightModel[] = [];
     for (let x = 0; x < this.goalWeightData.length; x++) {

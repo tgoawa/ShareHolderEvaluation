@@ -19,6 +19,8 @@ export class GoalFormCardComponent implements DoCheck, OnInit, OnChanges {
   @Input() dropDownData: Dropdowns;
   @Input() goal: GoalData;
   @Output() isFormDirty: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() savedGoal: EventEmitter<GoalData> = new EventEmitter<GoalData>();
+  @Output() updatedGoal: EventEmitter<GoalData> = new EventEmitter<GoalData>();
   weightValues: number[] = [5, 10, 15, 20, 25, 30, 35, 40];
   goalForm: FormGroup;
   serviceLine = [{ id: 0, value: 'None' }, { id: 1, value: 'Assurance' }];
@@ -76,6 +78,7 @@ export class GoalFormCardComponent implements DoCheck, OnInit, OnChanges {
     this.goalsService.saveGoal(formValue).subscribe(
       data => {
         console.log(data);
+        this.savedGoal.emit(data);
       },
       error => {
         console.log(error);
@@ -87,6 +90,7 @@ export class GoalFormCardComponent implements DoCheck, OnInit, OnChanges {
     this.goalsService.updateGoal(formValue).subscribe(
       data => {
         console.log(data);
+        this.updatedGoal.emit(data);
       },
       error => {
         console.log(error);
