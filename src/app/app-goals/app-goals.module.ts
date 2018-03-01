@@ -1,5 +1,9 @@
 import { NgModule } from '@angular/core';
-import { CommonModule, LocationStrategy, HashLocationStrategy } from '@angular/common';
+import {
+  CommonModule,
+  LocationStrategy,
+  HashLocationStrategy,
+} from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import {
@@ -8,6 +12,7 @@ import {
   MatCardModule,
   MatCheckboxModule,
   MatDatepickerModule,
+  MatDialogModule,
   MatFormFieldModule,
   MatIconModule,
   MatInputModule,
@@ -44,6 +49,7 @@ import { GoalTotalWeightComponent } from './shared/goal-total-weight/goal-total-
 import { GoalBaseComponent } from './shared/goal-base/goal-base.component';
 import { NotesListComponent } from './shared/goal-form-card/notes-list/notes-list.component';
 import { NoteItemsComponent } from './shared/goal-form-card/note-items/note-items.component';
+import { ConfirmationDialogComponent } from './shared/confirmation-dialog/confirmation-dialog.component';
 
 @NgModule({
   imports: [
@@ -56,6 +62,7 @@ import { NoteItemsComponent } from './shared/goal-form-card/note-items/note-item
     MatCardModule,
     MatCheckboxModule,
     MatDatepickerModule,
+    MatDialogModule,
     MatFormFieldModule,
     MatIconModule,
     MatInputModule,
@@ -66,7 +73,7 @@ import { NoteItemsComponent } from './shared/goal-form-card/note-items/note-item
     MatSelectModule,
     MatToolbarModule,
     ReactiveFormsModule,
-    TextMaskModule
+    TextMaskModule,
   ],
   declarations: [
     AppGoalsComponent,
@@ -87,12 +94,14 @@ import { NoteItemsComponent } from './shared/goal-form-card/note-items/note-item
     GoalTotalWeightComponent,
     GoalBaseComponent,
     NotesListComponent,
-    NoteItemsComponent
+    NoteItemsComponent,
+    ConfirmationDialogComponent
   ],
+  entryComponents: [ConfirmationDialogComponent],
   providers: [
     { provide: LocationStrategy, useClass: HashLocationStrategy },
     DropdownsService,
-    GoalsService
-  ]
+    GoalsService,
+  ],
 })
 export class AppGoalsModule {}

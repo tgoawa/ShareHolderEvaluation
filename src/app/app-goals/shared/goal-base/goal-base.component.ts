@@ -3,6 +3,8 @@ import { GoalData } from '../../models/goal';
 import { GoalWeightModel } from '../../goals-main/model/weight';
 import { ActivatedRoute } from '@angular/router';
 import { GoalsService } from '../services/goals.service';
+import { MatDialog, MatDialogRef } from '@angular/material';
+import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
 
 import * as _ from 'lodash';
 import { DropdownsService } from '../services/dropdowns.service';
@@ -14,6 +16,7 @@ import { Dropdowns } from '../../models/dropdowns';
   styleUrls: ['./goal-base.component.css'],
 })
 export class GoalBaseComponent implements OnInit {
+  confirmationDialogRef: MatDialogRef<ConfirmationDialogComponent>;
   dropdownLists = new Dropdowns();
   goals: GoalData[];
   goal: GoalData;
@@ -26,7 +29,8 @@ export class GoalBaseComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private goalsService: GoalsService,
-    private dropService: DropdownsService
+    private dropService: DropdownsService,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit() {
@@ -44,6 +48,7 @@ export class GoalBaseComponent implements OnInit {
   onAddGoal() {
     if (this.isFormDirty) {
       console.log('Form is dirty');
+      this.openConfirmationDialog();
     } else {
       this.goal = new GoalData(this.goalTypeId, this.teamMemberId, this.year);
     }
@@ -135,6 +140,17 @@ export class GoalBaseComponent implements OnInit {
         this.goal = new GoalData(this.goalTypeId, teamMemberId, this.year);
       } else {
         this.setGoalFromRoute(goals, params['id']);
+      }
+    });
+  }
+
+  private openConfirmationDialog() {
+    this.confirmationDialogRef = this.dialog.open(ConfirmationDialogComponent);
+
+    this.confirmationDialogRef.afterClosed().subscribe(ignoreChanges => {
+      if (ignoreChanges) {
+        this.goal = new GoalData(this.goalTypeId, this.teamMemberId, this.year);
+        this.isFormDirty = false;
       }
     });
   }
