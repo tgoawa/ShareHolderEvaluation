@@ -6,6 +6,7 @@ import 'rxjs/add/operator/map';
 import { environment } from '../../../../environments/environment';
 import { GoalTypeWeightData, GoalWeightModel } from '../../goals-main/model/weight';
 import { GoalData } from '../../models/goal';
+import { EconomicGoal } from '../../models/economic-goal';
 const api = environment.envApi;
 
 @Injectable()
@@ -29,6 +30,11 @@ export class GoalsService {
 
   getDashboardGoals(teamMemberId: number, year: number) {
     return this.http.get(api + 'ShareholderService/GetDashboardModel/' + teamMemberId + '/' + year)
+    .map(response => response.json(), error => console.log(error));
+  }
+
+  updateEconomicGoal(econGoal: EconomicGoal) {
+    return this.http.put(api + 'GoalService/UpdateEconomicGoals/', econGoal)
     .map(response => response.json(), error => console.log(error));
   }
 
