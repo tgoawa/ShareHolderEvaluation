@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./app-home.component.css']
 })
 export class AppHomeComponent implements OnInit {
-  evalYears: number[] = [2017, 2018];
+  evalYears: number[] = [2018, 2017];
   constructor() { }
 
   ngOnInit() {
