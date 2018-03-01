@@ -1,4 +1,4 @@
-<div fxLayout="column" fxLayoutAlign="space-around stretch" class="mat-typography">
+<!-- <div fxLayout="column" fxLayoutAlign="space-around stretch" class="mat-typography">
     <section class="text-center">
       <h1>Shareholder Evaluations</h1>
       <h2>Total Evaluation Score: {{totalScore}}</h2>
@@ -8,4 +8,115 @@
     </section>
     <section fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="10px">
     </section>
-  </div>
+  </div> -->
+  <div fxLayout="column" fxLayoutAlign="space-around stretch" class="mat-typography">
+      <section>
+        <h1 class="text-center">Evaluation</h1>
+        <h2 class="text-center">Total Evaluation Score: </h2>
+      </section>
+      <section fxLayout="row" fxLayoutAlign="space-between start" fxLayoutGap="10px">
+        <div fxFlex="24">
+          <mat-card class="text-center">
+            <h3>Competency Goal Evaluations</h3>
+            <h4>Score</h4>
+            <p class="large-font">40</p>
+            <br>
+            <a mat-button color="primary" routerLink="/competency/competency-goals">View Competency Goals</a>
+            <mat-list class="text-left">
+              <mat-list-item>
+                <h4 mat-line fxFlex="80"><button mat-button color="primary">Test Competency Goal number 1</button></h4>
+                <mat-form-field fxFlex="20">
+                  <input matInput type="number" placeholder="Score" value="10" class="text-right">
+                </mat-form-field>
+              </mat-list-item>
+              <mat-list-item>
+                <h4 mat-line><button mat-button color="primary">Test Competency Goal number 2</button></h4>
+                <mat-form-field fxFlex="20">
+                  <input matInput type="number" placeholder="Score" value="15" class="text-right">
+
+                </mat-form-field>
+              </mat-list-item>
+              <mat-list-item>
+                <h4 mat-line fxFlex="80"><button mat-button color="primary">Test Competency Goal number 3</button></h4>
+                <mat-form-field fxFlex="20">
+                  <input matInput type="number" placeholder="Score" value="15" class="text-right">
+
+                </mat-form-field>
+              </mat-list-item>
+            </mat-list>
+          </mat-card>
+        </div>
+        <div fxFlex="24" class="text-center">
+          <mat-card>
+            <h3>WIG Goal Evaluations</h3>
+            <h4>Score</h4>
+            <p class="large-font">30</p>
+            <br>
+            <a mat-button color="primary" routerLink="/wig/wig-goals">View WIG Goals</a>
+            <mat-list class="text-left">
+              <mat-list-item>
+                <h4 mat-line fxFlex="80"><button mat-button color="primary">Test WIG Goal number 1</button></h4>
+                <mat-form-field fxFlex="20">
+                  <input matInput type="number" placeholder="Score" value="10" class="text-right">
+
+                </mat-form-field>
+              </mat-list-item>
+              <mat-list-item>
+                <h4 mat-line fxFlex="80"><button mat-button color="primary">Test WIG Goal number 2</button></h4>
+                <mat-form-field fxFlex="20">
+                  <input matInput type="number" placeholder="Score" value="10" class="text-right">
+                </mat-form-field>
+              </mat-list-item>
+              <mat-list-item>
+                <h4 mat-line fxFlex="80"><button mat-button color="primary">Test WIG Goal number 3</button></h4>
+                <mat-form-field fxFlex="20">
+                  <input matInput type="number" placeholder="Score" value="10" class="text-right">
+
+                </mat-form-field>
+              </mat-list-item>
+            </mat-list>
+          </mat-card>
+        </div>
+        <div fxFlex="24" class="text-center">
+            <mat-card>
+              <h3>Leadership Goal Evaluations</h3>
+              <h4>Score</h4>
+              <p class="large-font">30</p>
+              <br>
+              <a mat-button color="primary" routerLink="/wig/wig-goals">View WIG Goals</a>
+              <mat-list class="text-left">
+                <mat-list-item>
+                  <h4 mat-line fxFlex="80"><button mat-button color="primary">Test WIG Goal number 1</button></h4>
+                  <mat-form-field fxFlex="20">
+                    <input matInput type="number" placeholder="Score" value="10" class="text-right">
+
+                  </mat-form-field>
+                </mat-list-item>
+                <mat-list-item>
+                  <h4 mat-line fxFlex="80"><button mat-button color="primary">Test WIG Goal number 2</button></h4>
+                  <mat-form-field fxFlex="20">
+                    <input matInput type="number" placeholder="Score" value="10" class="text-right">
+                  </mat-form-field>
+                </mat-list-item>
+                <mat-list-item>
+                  <h4 mat-line fxFlex="80"><button mat-button color="primary">Test WIG Goal number 3</button></h4>
+                  <mat-form-field fxFlex="20">
+                    <input matInput type="number" placeholder="Score" value="10" class="text-right">
+
+                  </mat-form-field>
+                </mat-list-item>
+              </mat-list>
+            </mat-card>
+          </div>
+        <div fxFlex="24" class="text-center">
+          <mat-card>
+            <h3>Economic Goal Evaluation</h3>
+            <h4>Score</h4>
+            <p class="large-font">30</p>
+            <br>
+            <a mat-button color="primary" routerLink="/economic/economic-goals">View Economic Goals</a>
+          </mat-card>
+        </div>
+      </section>
+    </div>
+

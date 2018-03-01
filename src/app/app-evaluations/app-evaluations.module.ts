@@ -6,6 +6,7 @@ import {
   MatButtonModule,
   MatCardModule,
   MatFormFieldModule,
+  MatInputModule,
   MatListModule,
   MatSelectModule,
   MatToolbarModule,
@@ -33,10 +34,22 @@ import { EvaluationLineItemComponent } from './shared/evaluation-line-item/evalu
     MatButtonModule,
     MatCardModule,
     MatFormFieldModule,
+    MatInputModule,
     MatListModule,
     MatSelectModule,
     MatToolbarModule,
   ],
-  declarations: [AppEvaluationsComponent, EvaluationsHeaderComponent, EvaluationsMainComponent, MainCardComponent, EvaluationCardComponent, EvaluationsCompetencyComponent, EvaluationsWigComponent, EvaluationsLeadershipComponent, EvaluationsEconomicComponent, EvaluationLineItemComponent]
+  declarations: [
+    AppEvaluationsComponent,
+    EvaluationsHeaderComponent,
+    EvaluationsMainComponent,
+    MainCardComponent,
+    EvaluationCardComponent,
+    EvaluationsCompetencyComponent,
+    EvaluationsWigComponent,
+    EvaluationsLeadershipComponent,
+    EvaluationsEconomicComponent,
+    EvaluationLineItemComponent,
+  ],
 })
-export class AppEvaluationsModule { }
+export class AppEvaluationsModule {}
