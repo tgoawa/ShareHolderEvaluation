@@ -1,4 +1,10 @@
-import { Component, OnInit, Input, OnChanges, ChangeDetectionStrategy } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  OnChanges,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
 import { GoalData } from '../../models/goal';
 import { Dropdowns } from '../../models/dropdowns';
@@ -13,28 +19,24 @@ export interface IndustryTeam {
   selector: 'app-goal-form-card',
   templateUrl: './goal-form-card.component.html',
   styleUrls: ['./goal-form-card.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GoalFormCardComponent implements OnInit, OnChanges {
   @Input() dropDownData: Dropdowns;
   @Input() goal: GoalData;
   weightValues: number[] = [5, 10, 15, 20, 25, 30, 35, 40];
   goalForm: FormGroup;
-  serviceLine = [
-    {id: 0, value: 'None'},
-    {id: 1, value: 'Assurance'},
-  ];
+  serviceLine = [{ id: 0, value: 'None' }, { id: 1, value: 'Assurance' }];
 
   industryTeams: IndustryTeam[] = [
-    {id: 0, value: 'None'},
-    {id: 1, value: 'Government'},
-    {id: 2, value: 'Construction'}
+    { id: 0, value: 'None' },
+    { id: 1, value: 'Government' },
+    { id: 2, value: 'Construction' },
   ];
 
-  constructor(private fb: FormBuilder, private goalsService: GoalsService) { }
+  constructor(private fb: FormBuilder, private goalsService: GoalsService) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   ngOnChanges() {
     this.goalForm = this.toFormGroup(this.goal);
@@ -54,7 +56,7 @@ export class GoalFormCardComponent implements OnInit, OnChanges {
       GoalDescription: data.GoalDescription,
       Weight: data.Weight,
       GoalYear: data.GoalYear,
-      DisplayDateCompleted: data.DisplayDateCompleted
+      DisplayDateCompleted: data.DisplayDateCompleted,
     });
 
     return formGroup;
@@ -70,20 +72,24 @@ export class GoalFormCardComponent implements OnInit, OnChanges {
   }
 
   private saveGoal(formValue: GoalData) {
-    this.goalsService.saveGoal(formValue)
-    .subscribe(data => {
-      console.log(data);
-    }, error => {
-      console.log(error);
-    });
+    this.goalsService.saveGoal(formValue).subscribe(
+      data => {
+        console.log(data);
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 
   private updateGoal(formValue: GoalData) {
-    this.goalsService.updateGoal(formValue)
-    .subscribe(data => {
-      console.log(data);
-    }, error => {
-      console.log(error);
-    });
+    this.goalsService.updateGoal(formValue).subscribe(
+      data => {
+        console.log(data);
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 }

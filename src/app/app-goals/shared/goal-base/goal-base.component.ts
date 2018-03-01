@@ -11,7 +11,7 @@ import { Dropdowns } from '../../models/dropdowns';
 @Component({
   selector: 'app-goal-base',
   templateUrl: './goal-base.component.html',
-  styleUrls: ['./goal-base.component.css']
+  styleUrls: ['./goal-base.component.css'],
 })
 export class GoalBaseComponent implements OnInit {
   dropdownLists = new Dropdowns();
@@ -40,18 +40,13 @@ export class GoalBaseComponent implements OnInit {
     this.goal = _.cloneDeep(goal);
   }
 
-  createGoalWeightData(goalData: GoalData[]): GoalWeightModel[] {
-    const dataDictionary: GoalWeightModel[] = [];
-    for (let x = 0; x < goalData.length; x++) {
-      const goalWeightModel = new GoalWeightModel(goalData[x].GoalId, goalData[x].Weight);
-      dataDictionary.push(goalWeightModel);
-    }
-    return dataDictionary;
+  onAddGoal() {
+    this.goal = new GoalData(this.goalTypeId, this.teamMemberId, this.year);
   }
 
   onWeightChange(goalWeightModel: GoalWeightModel) {
     const updatedDataDictionary: GoalWeightModel[] = [];
-    for (let x = 0; x < this.goalWeightData.length; x ++) {
+    for (let x = 0; x < this.goalWeightData.length; x++) {
       if (goalWeightModel.GoalId === this.goalWeightData[x].GoalId) {
         updatedDataDictionary.push(goalWeightModel);
       } else {
@@ -61,22 +56,35 @@ export class GoalBaseComponent implements OnInit {
     this.goalWeightData = updatedDataDictionary;
   }
 
+  private createGoalWeightData(goalData: GoalData[]): GoalWeightModel[] {
+    const dataDictionary: GoalWeightModel[] = [];
+    for (let x = 0; x < goalData.length; x++) {
+      const goalWeightModel = new GoalWeightModel(goalData[x].GoalId, goalData[x].Weight);
+      dataDictionary.push(goalWeightModel);
+    }
+    return dataDictionary;
+  }
+
   private getCompetencies() {
-    this.dropService.getCompetencies()
-    .subscribe(data => {
-      this.dropdownLists.Competencies = data;
-    }, error => {
-      console.log('Error binding data to view');
-    });
+    this.dropService.getCompetencies().subscribe(
+      data => {
+        this.dropdownLists.Competencies = data;
+      },
+      error => {
+        console.log('Error binding data to view');
+      }
+    );
   }
 
   private getCompetencyTypes() {
-    this.dropService.getCompetencyTypes()
-    .subscribe(data => {
-      this.dropdownLists.CompetencyTypes = data;
-    }, error => {
-      console.log('Error binding data to view');
-    });
+    this.dropService.getCompetencyTypes().subscribe(
+      data => {
+        this.dropdownLists.CompetencyTypes = data;
+      },
+      error => {
+        console.log('Error binding data to view');
+      }
+    );
   }
 
   private getDropdownLists() {
@@ -99,12 +107,14 @@ export class GoalBaseComponent implements OnInit {
   }
 
   private getWigs() {
-    this.dropService.getWIGs()
-    .subscribe(data => {
-      this.dropdownLists.WIG = data;
-    }, error => {
-      console.log('Could not bind wig dropdown to view');
-    });
+    this.dropService.getWIGs().subscribe(
+      data => {
+        this.dropdownLists.WIG = data;
+      },
+      error => {
+        console.log('Could not bind wig dropdown to view');
+      }
+    );
   }
 
   private setGoal(goals: GoalData[], teamMemberId: number) {
