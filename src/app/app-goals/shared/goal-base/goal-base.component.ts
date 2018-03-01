@@ -47,7 +47,6 @@ export class GoalBaseComponent implements OnInit {
 
   onAddGoal() {
     if (this.isFormDirty) {
-      console.log('Form is dirty');
       this.openConfirmationDialog();
     } else {
       this.goal = new GoalData(this.goalTypeId, this.teamMemberId, this.year);

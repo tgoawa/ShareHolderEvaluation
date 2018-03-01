@@ -39,7 +39,6 @@ export class GoalFormCardComponent implements DoCheck, OnInit, OnChanges {
 
   ngDoCheck() {
     if (!this.goalForm.pristine) {
-      console.log('Goal form is dirty!');
       this.isFormDirty.emit(true);
     }
   }
