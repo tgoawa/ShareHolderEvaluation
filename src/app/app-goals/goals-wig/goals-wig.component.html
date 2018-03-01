@@ -7,12 +7,18 @@
     <p fxFlex="66">Text goes here.</p>
   </section>
   <section fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="20px" *ngIf="goals; else loading">
-      <app-goal-list-card fxFlex="30" *ngIf="goals" [goals]="goals" (goal)="onSetExistingGoal($event)" (goalWeightModel)="onWeightChange($event)"></app-goal-list-card>
-      <app-goal-form-card fxFlex="70" [goal]="goal" [dropDownData]="dropdownLists"></app-goal-form-card>
-    </section>
-    <ng-template #loading>
-      <div fxLayout="column" fxLayoutAlign="center center">
-          <mat-spinner></mat-spinner>
-      </div>
-    </ng-template>
+    <mat-card fxFlex="30">
+      <section fxLayout="row" fxLayoutAlign="space-between center">
+        <h3 class="no-bottom-margin">Goals</h3>
+        <button mat-button color="accent" (click)="onAddGoal()">Add Goal</button>
+      </section>
+      <app-goal-list-card *ngIf="goals" [goals]="goals" (goal)="onSetExistingGoal($event)" (goalWeightModel)="onWeightChange($event)"></app-goal-list-card>
+    </mat-card>
+    <app-goal-form-card fxFlex="70" *ngIf="goal" [goal]="goal" [dropDownData]="dropdownLists" (isFormDirty)="setFormIsDirty($event)"></app-goal-form-card>
+  </section>
+  <ng-template #loading>
+    <div fxLayout="column" fxLayoutAlign="center center">
+      <mat-spinner></mat-spinner>
+    </div>
+  </ng-template>
 </div>
