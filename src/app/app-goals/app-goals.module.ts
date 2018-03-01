@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import {
-  CommonModule,
-  LocationStrategy,
-  HashLocationStrategy,
+  CommonModule
 } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -99,7 +97,6 @@ import { ConfirmationDialogComponent } from './shared/confirmation-dialog/confir
   ],
   entryComponents: [ConfirmationDialogComponent],
   providers: [
-    { provide: LocationStrategy, useClass: HashLocationStrategy },
     DropdownsService,
     GoalsService,
   ],

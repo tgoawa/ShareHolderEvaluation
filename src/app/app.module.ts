@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { HttpModule } from '@angular/http';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -37,7 +38,10 @@ import { LoginService } from './login/service/login.service';
     MatToolbarModule,
     ReactiveFormsModule,
   ],
-  providers: [LoginService],
+  providers: [
+    { provide: LocationStrategy, useClass: HashLocationStrategy },
+    LoginService
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
