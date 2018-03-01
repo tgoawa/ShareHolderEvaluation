@@ -14,7 +14,7 @@
       </section>
       <app-goal-list-card *ngIf="goals" [goals]="goals" (goal)="onSetExistingGoal($event)" (goalWeightModel)="onWeightChange($event)"></app-goal-list-card>
     </mat-card>
-    <app-goal-form-card fxFlex="70" *ngIf="goal" [goal]="goal" [dropDownData]="dropdownLists" (isFormDirty)="setFormIsDirty($event)"></app-goal-form-card>
+    <app-goal-form-card fxFlex="70" *ngIf="goal" [goal]="goal" [dropDownData]="dropdownLists" (isFormDirty)="setFormIsDirty($event)" (savedGoal)="onSaveGoal($event)" (updatedGoal)="onUpdateGoal($event)"></app-goal-form-card>
   </section>
   <ng-template #loading>
     <div fxLayout="column" fxLayoutAlign="center center">
