@@ -3,6 +3,7 @@ import { EconomicGoal } from '../models/economic-goal';
 
 import createNumberMask from 'text-mask-addons/dist/createNumberMask';
 import { FormGroup, FormBuilder } from '@angular/forms';
+import { GoalsService } from '../shared/services/goals.service';
 
 const numberMask = createNumberMask({
   prefix: '$'
@@ -15,13 +16,24 @@ const numberMask = createNumberMask({
 })
 export class GoalsEconomicComponent implements OnInit {
   mask = numberMask;
+  teamMemberId = 1936;
+  year = 2018;
   weightValues: number[] = [5, 10, 15, 20, 25, 30, 35, 40];
   economicGoal: FormGroup;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private goalService: GoalsService) { }
 
   ngOnInit() {
     this.economicGoal = this.toFormGroup(new EconomicGoal());
+    this.getEconomicGoal();
+  }
+
+  private getEconomicGoal() {
+    this.goalService.getEconomicGoals(this.teamMemberId, this.year)
+    .subscribe(data => {
+    }, error => {
+      console.log(error);
+    });
   }
 
   private toFormGroup(data: EconomicGoal): FormGroup {
@@ -29,19 +41,14 @@ export class GoalsEconomicComponent implements OnInit {
       EconomicGoalId: data.EconomicGoalId,
       TeamMemberId: data.TeamMemberId,
       Weight: data.Weight,
-      Year: data.Year,
-      BillingsTiers1_3: data.BillingsTiers1_3,
-      BillingsTiers4_5: data.BillingsTiers4_5,
-      BillingsTier6: data.BillingsTier6,
-      BusinessExistingClients: data.BusinessExistingClients,
-      BusinessNewClients: data.BusinessNewClients,
-      ReferralsSpecialityUnits: data.ReferralsSpecialityUnits,
-      ChargeHours: data.ChargeHours,
-      Realization: data.Realization,
-      DaysinWIP_AR: data.DaysinWIP_AR
+      Year: data.Year
     });
 
     return formGroup;
+  }
+
+  private mapEconomicGoalData(data: EconomicGoal[]) {
+
   }
 
 }

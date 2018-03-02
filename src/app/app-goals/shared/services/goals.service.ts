@@ -18,9 +18,14 @@ export class GoalsService {
       .map(response => response.json(), error => console.log(error));
   }
 
-  getWIGGoals(id: number) {
-    return this.http.get(api + 'GoalService/GetWigGoals/' + id)
-      .map(response => response.json(), error => console.log(error));
+  getDashboardGoals(teamMemberId: number, year: number) {
+    return this.http.get(api + 'ShareholderService/GetDashboardModel/' + teamMemberId + '/' + year)
+    .map(response => response.json(), error => console.log(error));
+  }
+
+  getEconomicGoals(teamMemberId: number, year: number) {
+    return this.http.get(api + 'GoalService/getEconomicGoals/' + teamMemberId + '/' + year)
+    .map(response => response.json(), error => console.log(error));
   }
 
   getGoals(id: number, goalTypeId: number, year: number) {
@@ -28,9 +33,9 @@ export class GoalsService {
       .map(response => response.json(), error => console.log(error));
   }
 
-  getDashboardGoals(teamMemberId: number, year: number) {
-    return this.http.get(api + 'ShareholderService/GetDashboardModel/' + teamMemberId + '/' + year)
-    .map(response => response.json(), error => console.log(error));
+  getWIGGoals(id: number) {
+    return this.http.get(api + 'GoalService/GetWigGoals/' + id)
+      .map(response => response.json(), error => console.log(error));
   }
 
   updateEconomicGoal(econGoal: EconomicGoal) {

@@ -48,6 +48,7 @@ import { GoalBaseComponent } from './shared/goal-base/goal-base.component';
 import { NotesListComponent } from './shared/goal-form-card/notes-list/notes-list.component';
 import { NoteItemsComponent } from './shared/goal-form-card/note-items/note-items.component';
 import { ConfirmationDialogComponent } from './shared/confirmation-dialog/confirmation-dialog.component';
+import { EconomicGoalDetailComponent } from './goals-economic/economic-goal-detail/economic-goal-detail.component';
 
 @NgModule({
   imports: [
@@ -93,7 +94,8 @@ import { ConfirmationDialogComponent } from './shared/confirmation-dialog/confir
     GoalBaseComponent,
     NotesListComponent,
     NoteItemsComponent,
-    ConfirmationDialogComponent
+    ConfirmationDialogComponent,
+    EconomicGoalDetailComponent
   ],
   entryComponents: [ConfirmationDialogComponent],
   providers: [
