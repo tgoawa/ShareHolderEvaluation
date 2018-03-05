@@ -15,7 +15,7 @@
     <mat-card-title>
       Personal
     </mat-card-title>
-    <form [formGroup]="economicGoal">
+    <form [formGroup]="economicGoalForm">
       <section>
         <mat-form-field class="list-input-width">
           <mat-select class="text-right" placeholder="Weight" name="weight" formControlName="Weight">
@@ -27,7 +27,7 @@
       <section fxLayout="row" fxLayoutGap="20px" class="text-right">
         <h3 fxFlex="15">Description</h3>
         <h3 fxFlex="10">{{currentYearHeading}}</h3>
-        <h3 fxFlex="10">{{previousYearActualHeading}}</h3>
+        <h3 fxFlex="15">{{previousYearActualHeading}}</h3>
         <h3 fxFlex="10">{{previousYearGoalheading}}</h3>
       </section>
       <section fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px" class="text-right">
@@ -35,75 +35,75 @@
         <mat-form-field fxFlex="10">
           <input matInput type="text" placeholder="Goal Amount" class="text-right" [textMask]="{mask: mask}" formControlName="BillingsTiers1_3">
         </mat-form-field>
-        <span fxFlex="10">$200,000</span>
-        <span fxFlex="10">$180,000</span>
+        <span fxFlex="15">{{economicGoal.PreviousYearActuals.Detail.BillingsTiers1_3 | currency: 'USD': 'symbol-narrow': '0.0-0'}}</span>
+        <span fxFlex="10">{{economicGoal.PreviousEconomicGoal.Detail.BillingsTiers1_3 | currency: 'USD': 'symbol-narrow': '0.0-0'}}</span>
       </section>
       <section fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px" class="text-right">
         <h4 fxFlex="15">Tiers 4-5</h4>
         <mat-form-field fxFlex="10">
           <input matInput type="text" placeholder="Goal Amount" class="text-right" [textMask]="{mask: mask}" formControlName="BillingsTiers4_5">
         </mat-form-field>
-        <span fxFlex="10">$200,000</span>
-        <span fxFlex="10">$180,000</span>
+        <span fxFlex="15">{{economicGoal.PreviousYearActuals.Detail.BillingsTiers4_5 | currency: 'USD': 'symbol-narrow': '0.0-0'}}</span>
+        <span fxFlex="10">{{economicGoal.PreviousEconomicGoal.Detail.BillingsTiers4_5 | currency: 'USD': 'symbol-narrow': '0.0-0'}}</span>
       </section>
       <section fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px" class="text-right">
         <h4 fxFlex="15">Tier 6</h4>
         <mat-form-field fxFlex="10">
           <input matInput type="text" placeholder="Goal Amount" class="text-right" [textMask]="{mask: mask}" formControlName="BillingsTier6">
         </mat-form-field>
-        <span fxFlex="10">$200,000</span>
-        <span fxFlex="10">$180,000</span>
+        <span fxFlex="15">{{economicGoal.PreviousYearActuals.Detail.BillingsTier6 | currency: 'USD': 'symbol-narrow': '0.0-0'}}</span>
+        <span fxFlex="10">{{economicGoal.PreviousEconomicGoal.Detail.BillingsTier6 | currency: 'USD': 'symbol-narrow': '0.0-0'}}</span>
       </section>
       <section fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px" class="text-right">
         <h4 fxFlex="15">New Business From New Clients</h4>
         <mat-form-field fxFlex="10">
           <input matInput type="text" placeholder="Goal Amount" class="text-right" [textMask]="{mask: mask}" formControlName="BusinessNewClients">
         </mat-form-field>
-        <span fxFlex="10">$200,000</span>
-        <span fxFlex="10">$180,000</span>
+        <span fxFlex="15">{{economicGoal.PreviousYearActuals.Detail.BusinessNewClients | currency: 'USD': 'symbol-narrow': '0.0-0'}}</span>
+        <span fxFlex="10">{{economicGoal.PreviousEconomicGoal.Detail.BusinessNewClients | currency: 'USD': 'symbol-narrow': '0.0-0'}}</span>
       </section>
       <section fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px" class="text-right">
         <h4 fxFlex="15">New Business From Existing Clients</h4>
         <mat-form-field fxFlex="10">
           <input matInput type="text" placeholder="Goal Amount" class="text-right" [textMask]="{mask: mask}" formControlName="BusinessExistingClients">
         </mat-form-field>
-        <span fxFlex="10">$200,000</span>
-        <span fxFlex="10">$180,000</span>
+        <span fxFlex="15">{{economicGoal.PreviousYearActuals.Detail.BusinessExistingClients | currency: 'USD': 'symbol-narrow': '0.0-0'}}</span>
+        <span fxFlex="10">{{economicGoal.PreviousEconomicGoal.Detail.BusinessExistingClients | currency: 'USD': 'symbol-narrow': '0.0-0'}}</span>
       </section>
       <section fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px" class="text-right">
         <h4 fxFlex="15">Referrals To Speciality Units</h4>
         <mat-form-field fxFlex="10">
           <input matInput type="text" placeholder="Goal Amount" class="text-right" [textMask]="{mask: mask}" formControlName="ReferralsSpecialityUnits">
         </mat-form-field>
-        <span fxFlex="10">$200,000</span>
-        <span fxFlex="10">$180,000</span>
+        <span fxFlex="15">{{economicGoal.PreviousYearActuals.Detail.ReferralsSpecialityUnits | currency: 'USD': 'symbol-narrow': '0.0-0'}}</span>
+        <span fxFlex="10">{{economicGoal.PreviousEconomicGoal.Detail.ReferralsSpecialityUnits | currency: 'USD': 'symbol-narrow': '0.0-0'}}</span>
       </section>
       <section fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px" class="text-right">
         <h4 fxFlex="15">Charge Hours</h4>
         <mat-form-field fxFlex="10">
           <input matInput type="text" placeholder="Goal Amount" class="text-right" formControlName="ChargeHours">
         </mat-form-field>
-        <span fxFlex="10">200</span>
-        <span fxFlex="10">180</span>
+        <span fxFlex="15">{{economicGoal.PreviousYearActuals.Detail.ChargeHours}}</span>
+        <span fxFlex="10">{{economicGoal.PreviousEconomicGoal.Detail.ChargeHours}}</span>
       </section>
       <section fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px" class="text-right">
         <h4 fxFlex="15">Realization</h4>
         <mat-form-field fxFlex="10">
           <input matInput type="text" placeholder="Goal Amount" class="text-right" formControlName="Realization">
         </mat-form-field>
-        <span fxFlex="10">200</span>
-        <span fxFlex="10">180</span>
+        <span fxFlex="15">{{economicGoal.PreviousYearActuals.Detail.Realization}}</span>
+        <span fxFlex="10">{{economicGoal.PreviousEconomicGoal.Detail.Realization}}</span>
       </section>
       <section fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px" class="text-right">
         <h4 fxFlex="15">Days in WIP and AR</h4>
         <mat-form-field fxFlex="10">
           <input matInput type="text" placeholder="Goal Amount" class="text-right" formControlName="DaysinWIP_AR">
         </mat-form-field>
-        <span fxFlex="10">200</span>
-        <span fxFlex="10">180</span>
+        <span fxFlex="15">{{economicGoal.PreviousYearActuals.Detail.DaysinWIP_AR}}</span>
+        <span fxFlex="10">{{economicGoal.PreviousEconomicGoal.Detail.DaysinWIP_AR}}</span>
       </section>
       <section fxLayout="row">
-        <button mat-raised-button color="accent">Save Personal Goals</button>
+        <button mat-raised-button color="accent">Update Personal Goals</button>
       </section>
     </form>
   </mat-card>

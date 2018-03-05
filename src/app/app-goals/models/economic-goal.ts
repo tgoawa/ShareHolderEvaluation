@@ -10,7 +10,7 @@ export class EconomicGoal {
   TeamMemberId: number;
   Weight: number;
   Year: number;
-  Details: Detail[];
+  Detail: Detail;
 }
 
 export interface Detail {

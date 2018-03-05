@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EconomicGoal } from '../models/economic-goal';
+import { EconomicGoal, EconomicGoalModel } from '../models/economic-goal';
 
 import createNumberMask from 'text-mask-addons/dist/createNumberMask';
 import { FormGroup, FormBuilder } from '@angular/forms';
@@ -15,7 +15,8 @@ const numberMask = createNumberMask({
   styleUrls: ['./goals-economic.component.css']
 })
 export class GoalsEconomicComponent implements OnInit {
-  currentYearHeading: string;
+  currentYearHeading = ' Goals';
+  economicGoal: EconomicGoalModel;
   previousYearActualHeading = 'Actuals ending June 30, ';
   previousYearGoalheading = ' Goals';
   mask = numberMask;
@@ -23,21 +24,22 @@ export class GoalsEconomicComponent implements OnInit {
   year = 2018;
   previousYear = this.year - 1;
   weightValues: number[] = [5, 10, 15, 20, 25, 30, 35, 40];
-  economicGoal: FormGroup;
+  economicGoalForm: FormGroup;
 
   constructor(private fb: FormBuilder, private goalService: GoalsService) { }
 
   ngOnInit() {
-    this.currentYearHeading = this.year.toString();
+    this.currentYearHeading = this.year.toString() + this.currentYearHeading;
     this.previousYearActualHeading = this.previousYearActualHeading + this.previousYear.toString();
     this.previousYearGoalheading = this.previousYear.toString() + this.previousYearGoalheading;
-    this.economicGoal = this.toFormGroup(new EconomicGoal());
+    this.economicGoalForm = this.toFormGroup(new EconomicGoal());
     this.getEconomicGoal();
   }
 
   private getEconomicGoal() {
     this.goalService.getEconomicGoals(this.teamMemberId, this.year)
     .subscribe(data => {
+      this.economicGoal = data;
     }, error => {
       console.log(error);
     });
