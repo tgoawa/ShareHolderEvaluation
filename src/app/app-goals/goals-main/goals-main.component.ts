@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-import { landingPageData } from '../mock-data/mock-goal-data';
 import { Goals } from './model/goals';
 import { GoalTypeWeightData } from './model/weight';
 import { GoalsService } from '../shared/services/goals.service';
