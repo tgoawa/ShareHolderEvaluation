@@ -13,4 +13,5 @@ export class EconomicGoalDetailComponent implements OnInit {
 
   ngOnInit() {
   }
+
 }

@@ -15,6 +15,9 @@ const numberMask = createNumberMask({
   styleUrls: ['./goals-economic.component.css']
 })
 export class GoalsEconomicComponent implements OnInit {
+  currentYearHeading: string;
+  previousYearActualHeading = 'Actuals ending June 30';
+  previousYearGoalheading = 'Goals';
   mask = numberMask;
   teamMemberId = 1936;
   year = 2018;
@@ -25,7 +28,7 @@ export class GoalsEconomicComponent implements OnInit {
 
   ngOnInit() {
     this.economicGoal = this.toFormGroup(new EconomicGoal());
-    this.getEconomicGoal();
+    // this.getEconomicGoal();
   }
 
   private getEconomicGoal() {
@@ -41,7 +44,16 @@ export class GoalsEconomicComponent implements OnInit {
       EconomicGoalId: data.EconomicGoalId,
       TeamMemberId: data.TeamMemberId,
       Weight: data.Weight,
-      Year: data.Year
+      Year: data.Year,
+      BillingsTiers1_3: 0,
+      BillingsTiers4_5: 0,
+      BillingsTier6: 0,
+      BusinessNewClients: 0,
+      BusinessExistingClients: 0,
+      ReferralsSpecialityUnits: 0,
+      ChargeHours: 0,
+      Realization: 0,
+      DaysinWIP_AR: 0
     });
 
     return formGroup;
