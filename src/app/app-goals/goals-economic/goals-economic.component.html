@@ -11,7 +11,7 @@
       Aenean et libero luctus enim iaculis blandit. Donec commodo, erat vitae vestibulum consequat, nisi nisi mattis metus,
       ut rhoncus neque diam eu quam.</p>
   </section>
-  <mat-card>
+  <mat-card *ngIf="economicGoal; else loading;">
     <mat-card-title>
       Personal
     </mat-card-title>
@@ -107,4 +107,9 @@
       </section>
     </form>
   </mat-card>
+  <ng-template #loading>
+    <div fxLayout="column" fxLayoutAlign="center center">
+      <mat-spinner></mat-spinner>
+    </div>
+  </ng-template>
 </div>
