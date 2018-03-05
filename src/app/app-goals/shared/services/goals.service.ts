@@ -43,6 +43,11 @@ export class GoalsService {
     .map(response => response.json(), error => console.log(error));
   }
 
+  updateEconomicGoalWeight(goalWeightObj: GoalWeightModel) {
+    return this.http.put(api + 'ShareholderService/UpdateEconomicWeight/', goalWeightObj)
+    .map(response => response.json(), error => console.log(error));
+  }
+
   updateGoalWeight(goalWeightObj: GoalWeightModel) {
     return this.http.put(api + 'ShareholderService/UpdateGoalWeights/', goalWeightObj)
     .map(response => response.json(), error => console.log(error));

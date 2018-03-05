@@ -8,8 +8,14 @@
     text goes here
   </section>
   <section fxLayout="row" fxLayoutAlign="space-between start" *ngIf="dashboardModels; else loading">
-    <app-main-card *ngFor="let dashboardModel of dashboardModels" [data]="dashboardModel" [route]="'/goals/'" (goalWeightData)="assignWeightTotal($event)"
+    <app-main-card [data]="dashboardModels[0]" [route]="'/goals/'" (goalWeightData)="assignWeightTotal($event)"
       fxFlex="24"></app-main-card>
+      <app-main-card [data]="dashboardModels[1]" [route]="'/goals/'" (goalWeightData)="assignWeightTotal($event)"
+      fxFlex="24"></app-main-card>
+      <app-main-card [data]="dashboardModels[2]" [route]="'/goals/'" (goalWeightData)="assignWeightTotal($event)"
+      fxFlex="24"></app-main-card>
+      <app-economic-card [data]="dashboardModels[3]" [route]="'/goals/'" (goalWeightData)="assignWeightTotal($event)"
+      fxFlex="24"></app-economic-card>
   </section>
   <ng-template #loading>
     <div fxLayout="column" fxLayoutAlign="center center">
