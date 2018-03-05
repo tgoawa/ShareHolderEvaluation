@@ -16,19 +16,23 @@ const numberMask = createNumberMask({
 })
 export class GoalsEconomicComponent implements OnInit {
   currentYearHeading: string;
-  previousYearActualHeading = 'Actuals ending June 30';
-  previousYearGoalheading = 'Goals';
+  previousYearActualHeading = 'Actuals ending June 30, ';
+  previousYearGoalheading = ' Goals';
   mask = numberMask;
   teamMemberId = 1936;
   year = 2018;
+  previousYear = this.year - 1;
   weightValues: number[] = [5, 10, 15, 20, 25, 30, 35, 40];
   economicGoal: FormGroup;
 
   constructor(private fb: FormBuilder, private goalService: GoalsService) { }
 
   ngOnInit() {
+    this.currentYearHeading = this.year.toString();
+    this.previousYearActualHeading = this.previousYearActualHeading + this.previousYear.toString();
+    this.previousYearGoalheading = this.previousYear.toString() + this.previousYearGoalheading;
     this.economicGoal = this.toFormGroup(new EconomicGoal());
-    // this.getEconomicGoal();
+    this.getEconomicGoal();
   }
 
   private getEconomicGoal() {

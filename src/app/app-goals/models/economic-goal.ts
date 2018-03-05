@@ -1,3 +1,9 @@
+export interface EconomicGoalModel {
+  CurrentEconomicGoal: EconomicGoal;
+  PreviousEconomicGoal: EconomicGoal;
+  PreviousYearActuals: EconomicGoal;
+}
+
 export class EconomicGoal {
   CoachId: number;
   EconomicGoalId: number;
