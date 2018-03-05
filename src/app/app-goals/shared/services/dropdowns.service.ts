@@ -17,6 +17,11 @@ export interface CompetencyType {
   GoalCompetencyTypeId: number;
 }
 
+export interface ServiceLine {
+  DisplayName: string;
+  Id: number;
+}
+
 export interface WIG {
   GoalWIGId: number;
   WIGTitle: string;
@@ -35,6 +40,11 @@ export class DropdownsService {
 
   getCompetencyTypes() {
     return this.http.get(api + 'GoalService/GetGoalCompetencyTypes/')
+    .map(response => response.json(), error => console.log(error));
+  }
+
+  getServiceLines() {
+    return this.http.get(api + 'ShareholderService/GetServiceLines/')
     .map(response => response.json(), error => console.log(error));
   }
 

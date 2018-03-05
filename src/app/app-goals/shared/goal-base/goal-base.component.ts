@@ -116,6 +116,7 @@ export class GoalBaseComponent implements OnInit {
   private getDropdownLists() {
     this.getCompetencies();
     this.getCompetencyTypes();
+    this.getServiceLines();
     this.getWigs();
   }
 
@@ -128,6 +129,17 @@ export class GoalBaseComponent implements OnInit {
       },
       error => {
         console.log('Could not retrieve list of goals');
+      }
+    );
+  }
+
+  private getServiceLines() {
+    this.dropService.getServiceLines().subscribe(
+      data => {
+        this.dropdownLists.ServiceLines = data;
+      },
+      error => {
+        console.log('Could not bind service dropdowns to view');
       }
     );
   }

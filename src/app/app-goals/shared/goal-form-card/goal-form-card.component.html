@@ -10,7 +10,7 @@
         </mat-form-field>
         <mat-form-field>
           <mat-select placeholder="Service Line" name="serviceLine" formControlName="ServiceLineId">
-            <mat-option *ngFor="let service of serviceLine" [value]="service.id">{{service.value}}</mat-option>
+            <mat-option *ngFor="let service of dropDownData.ServiceLines" [value]="service.Id">{{service.DisplayName}}</mat-option>
           </mat-select>
         </mat-form-field>
       </p>
