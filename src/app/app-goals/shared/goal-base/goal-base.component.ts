@@ -60,6 +60,7 @@ export class GoalBaseComponent implements OnInit {
   }
 
   onUpdateGoal(updatedGoal: GoalData) {
+    console.log('Goal Updated!');
     this.getGoals(this.teamMemberId, this.goalTypeId, this.year);
   }
 

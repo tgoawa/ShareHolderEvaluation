@@ -67,11 +67,11 @@ export class GoalFormCardComponent implements DoCheck, OnInit, OnChanges {
 
   onSubmit(formValue: GoalData) {
     if (formValue.GoalId !== 0) {
+      console.log(formValue);
       this.updateGoal(formValue);
     } else {
       this.saveGoal(formValue);
     }
-    console.log(formValue);
   }
 
   private saveGoal(formValue: GoalData) {
