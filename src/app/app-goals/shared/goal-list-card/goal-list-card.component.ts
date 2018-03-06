@@ -12,6 +12,7 @@ export class GoalListCardComponent implements OnInit {
   @Input() goals: GoalData[];
   @Output() goal: EventEmitter<GoalData> = new EventEmitter<GoalData>();
   @Output() goalWeightModel: EventEmitter<GoalWeightModel> = new EventEmitter<GoalWeightModel>();
+  selectedItemId: number;
   weightValues: number[] = [0, 5, 10, 15, 20, 25, 30, 35, 40];
 
   constructor(private goalService: GoalsService) { }
@@ -34,6 +35,7 @@ export class GoalListCardComponent implements OnInit {
   }
 
   selectGoal(goal: GoalData) {
+    this.selectedItemId = goal.GoalId;
     this.goal.emit(goal);
   }
 
