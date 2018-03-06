@@ -17,7 +17,7 @@ const routes: Routes = [
     {path: 'competency/:id', component: GoalsCompetencyComponent},
     {path: 'wig/:id', component: GoalsWigComponent},
     {path: 'leadership/:id', component: GoalsLeadershipComponent},
-    {path: 'economic-goals', component: GoalsEconomicComponent},
+    {path: 'economic', component: GoalsEconomicComponent},
     {path: 'review-meeting', component: GoalsReviewComponent}
   ]
 }
