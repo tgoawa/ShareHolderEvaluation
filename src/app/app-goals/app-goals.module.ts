@@ -19,6 +19,7 @@ import {
   MatNativeDateModule,
   MatProgressSpinnerModule,
   MatSelectModule,
+  MatSnackBarModule,
   MatToolbarModule,
 } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -70,6 +71,7 @@ import { EconomicCardComponent } from './goals-main/economic-card/economic-card.
     MatNativeDateModule,
     MatProgressSpinnerModule,
     MatSelectModule,
+    MatSnackBarModule,
     MatToolbarModule,
     ReactiveFormsModule,
     TextMaskModule,

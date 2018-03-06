@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
 import { GoalData } from '../../models/goal';
 import { Dropdowns } from '../../models/dropdowns';
 import { GoalsService } from '../services/goals.service';
+import { MatSnackBar } from '@angular/material';
 
 export interface IndustryTeam {
   id: number;
@@ -31,7 +32,7 @@ export class GoalFormCardComponent implements DoCheck, OnInit, OnChanges {
     { id: 2, value: 'Construction' },
   ];
 
-  constructor(private fb: FormBuilder, private goalsService: GoalsService) {}
+  constructor(public snackBar: MatSnackBar, private fb: FormBuilder, private goalsService: GoalsService) {}
 
   ngOnInit() {}
 
@@ -43,6 +44,34 @@ export class GoalFormCardComponent implements DoCheck, OnInit, OnChanges {
     if (!this.goalForm.pristine) {
       this.isFormDirty.emit(true);
     }
+  }
+
+  openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      duration: 2000,
+    });
+  }
+
+  onSubmit(formValue: GoalData) {
+    if (formValue.GoalId !== 0) {
+      console.log(formValue);
+      this.updateGoal(formValue);
+    } else {
+      this.saveGoal(formValue);
+    }
+  }
+
+  private saveGoal(formValue: GoalData) {
+    this.goalsService.saveGoal(formValue).subscribe(
+      data => {
+        console.log(data);
+        this.savedGoal.emit(data);
+        this.openSnackBar('Goal saved successfully!', '');
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 
   private toFormGroup(data: GoalData): FormGroup {
@@ -65,32 +94,12 @@ export class GoalFormCardComponent implements DoCheck, OnInit, OnChanges {
     return formGroup;
   }
 
-  onSubmit(formValue: GoalData) {
-    if (formValue.GoalId !== 0) {
-      console.log(formValue);
-      this.updateGoal(formValue);
-    } else {
-      this.saveGoal(formValue);
-    }
-  }
-
-  private saveGoal(formValue: GoalData) {
-    this.goalsService.saveGoal(formValue).subscribe(
-      data => {
-        console.log(data);
-        this.savedGoal.emit(data);
-      },
-      error => {
-        console.log(error);
-      }
-    );
-  }
-
   private updateGoal(formValue: GoalData) {
     this.goalsService.updateGoal(formValue).subscribe(
       data => {
         console.log(data);
         this.updatedGoal.emit(data);
+        this.openSnackBar('Goal updated successfully!', '');
       },
       error => {
         console.log(error);
