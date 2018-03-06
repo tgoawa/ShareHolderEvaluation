@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { GoalData } from '../../models/goal';
 import { GoalWeightModel } from '../../goals-main/model/weight';
 import { GoalsService } from '../services/goals.service';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-goal-list-card',
@@ -15,7 +16,7 @@ export class GoalListCardComponent implements OnInit {
   selectedItemId: number;
   weightValues: number[] = [0, 5, 10, 15, 20, 25, 30, 35, 40];
 
-  constructor(private goalService: GoalsService) { }
+  constructor(public snackBar: MatSnackBar, private goalService: GoalsService) { }
 
   ngOnInit() {
 
@@ -27,10 +28,17 @@ export class GoalListCardComponent implements OnInit {
     .subscribe(data => {
       if (data) {
         this.weightChange(goal);
+        this.openSnackBar('Weight updated successfully!', '');
         console.log('Goal Weight Updated');
       }
     }, error => {
       console.log('Error updating weight data');
+    });
+  }
+
+  openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      duration: 2000,
     });
   }
 
