@@ -22,11 +22,9 @@ export class GoalsMainComponent implements OnInit {
   constructor(private goalService: GoalsService, private yearService: YearSelectionService) { }
 
   ngOnInit() {
-    this.yearService.selectedYear$.subscribe(data => {
-      this.year = data;
-      this.getGoals(this.teamMemberId, this.year);
-    });
+    this.yearService.selectedYear$.subscribe(data => this.year = data);
     this.totalWeight = 0;
+    this.getGoals(1936, this.year);
   }
 
   getGoals(teamMemberId: number, year: number) {

@@ -9,6 +9,7 @@ import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation
 import * as _ from 'lodash';
 import { DropdownsService } from '../services/dropdowns.service';
 import { Dropdowns } from '../../models/dropdowns';
+import { YearSelectionService } from '../../../core/services/year-selection.service';
 
 @Component({
   selector: 'app-goal-base',
@@ -30,12 +31,13 @@ export class GoalBaseComponent implements OnInit {
     private route: ActivatedRoute,
     private goalsService: GoalsService,
     private dropService: DropdownsService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private yearService: YearSelectionService
   ) {}
 
   ngOnInit() {
     this.teamMemberId = 1936;
-    this.year = 2018;
+    this.yearService.selectedYear$.subscribe(data => this.year = data);
     this.getDropdownLists();
     this.getGoals(this.teamMemberId, this.goalTypeId, this.year);
   }
