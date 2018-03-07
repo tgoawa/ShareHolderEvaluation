@@ -3,7 +3,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { HttpModule } from '@angular/http';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import {
   MatButtonModule,
@@ -21,6 +21,7 @@ import { AppComponent } from './app.component';
 import { AppHomeComponent } from './app-home/app-home.component';
 import { LoginComponent } from './login/login.component';
 import { LoginService } from './login/service/login.service';
+import { CoreModule } from './core/core.module';
 
 @NgModule({
   declarations: [AppComponent, AppHomeComponent, LoginComponent],
@@ -29,7 +30,9 @@ import { LoginService } from './login/service/login.service';
     BrowserAnimationsModule,
     HttpModule,
     AppRoutingModule,
+    CoreModule,
     FlexLayoutModule,
+    FormsModule,
     MatButtonModule,
     MatCardModule,
     MatFormFieldModule,
