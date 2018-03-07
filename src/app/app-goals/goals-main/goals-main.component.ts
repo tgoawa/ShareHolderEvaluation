@@ -4,6 +4,8 @@ import { Goals } from './model/goals';
 import { GoalTypeWeightData } from './model/weight';
 import { GoalsService } from '../shared/services/goals.service';
 import { DashboardModel } from './model/dashboard.model';
+import { YearSelectionService } from '../../core/services/year-selection.service';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-goals-main',
@@ -14,13 +16,17 @@ export class GoalsMainComponent implements OnInit {
   totalWeight: number;
   dashboardModels: DashboardModel[];
   weightDataDictionary: GoalTypeWeightData[];
-  year = 2018;
+  teamMemberId = 1936;
+  year: number;
 
-  constructor(private goalService: GoalsService) { }
+  constructor(private goalService: GoalsService, private yearService: YearSelectionService) { }
 
   ngOnInit() {
+    this.yearService.selectedYear$.subscribe(data => {
+      this.year = data;
+      this.getGoals(this.teamMemberId, this.year);
+    });
     this.totalWeight = 0;
-    this.getGoals(1936, this.year);
   }
 
   getGoals(teamMemberId: number, year: number) {
