@@ -39,7 +39,7 @@ export class GoalsService {
   }
 
   updateEconomicGoal(econGoal: EconomicGoal) {
-    return this.http.put(api + 'GoalService/UpdateEconomicGoals/', econGoal)
+    return this.http.put(api + 'GoalService/UpdateSHEconomicGoal/', econGoal)
     .map(response => response.json(), error => console.log(error));
   }
 
