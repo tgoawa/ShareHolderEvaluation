@@ -4,6 +4,7 @@ import { EconomicGoal, EconomicGoalModel } from '../models/economic-goal';
 import createNumberMask from 'text-mask-addons/dist/createNumberMask';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { GoalsService } from '../shared/services/goals.service';
+import { YearSelectionService } from '../../core/services/year-selection.service';
 
 const numberMask = createNumberMask({
   prefix: '$'
@@ -21,18 +22,22 @@ export class GoalsEconomicComponent implements OnInit {
   previousYearGoalheading = ' Goals';
   mask = numberMask;
   teamMemberId = 1936;
-  year = 2018;
-  previousYear = this.year - 1;
+  year: number;
+  previousYear: number;
   weightValues: number[] = [5, 10, 15, 20, 25, 30, 35, 40];
   economicGoalForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private goalService: GoalsService) { }
+  constructor(private fb: FormBuilder, private goalService: GoalsService, private yearService: YearSelectionService) { }
 
   ngOnInit() {
+    this.yearService.selectedYear$.subscribe(data => this.year = data);
+    this.previousYear = this.year - 1;
     this.currentYearHeading = this.year.toString() + this.currentYearHeading;
-    this.previousYearActualHeading = this.previousYearActualHeading + this.previousYear.toString();
-    this.previousYearGoalheading = this.previousYear.toString() + this.previousYearGoalheading;
     this.getEconomicGoal();
+  }
+
+  onSubmit(formValue: FormGroup) {
+    console.log(formValue);
   }
 
   private getEconomicGoal() {
