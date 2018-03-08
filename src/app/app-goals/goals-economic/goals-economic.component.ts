@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { EconomicGoal, EconomicGoalModel } from '../models/economic-goal';
 
 import createNumberMask from 'text-mask-addons/dist/createNumberMask';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { GoalsService } from '../shared/services/goals.service';
 import { YearSelectionService } from '../../core/services/year-selection.service';
 import { MatSnackBar } from '@angular/material';
@@ -117,15 +117,15 @@ export class GoalsEconomicComponent implements OnInit {
       CoachId: data.CoachId,
       EconomicDetailId: data.Detail.EconomicDetailId,
       EconomicGoalTypeId: data.Detail.EconomicGoalTypeId,
-      BillingsTiers1_3: data.Detail.BillingsTiers1_3,
-      BillingsTiers4_5: data.Detail.BillingsTiers4_5,
-      BillingsTier6: data.Detail.BillingsTier6,
-      BusinessNewClients: data.Detail.BusinessNewClients,
-      BusinessExistingClients: data.Detail.BusinessExistingClients,
-      ReferralsSpecialityUnits: data.Detail.ReferralsSpecialityUnits,
-      ChargeHours: data.Detail.ChargeHours,
-      Realization: data.Detail.Realization,
-      DaysinWIP_AR: data.Detail.DaysinWIP_AR,
+      BillingsTiers1_3: [data.Detail.BillingsTiers1_3, Validators.required],
+      BillingsTiers4_5: [data.Detail.BillingsTiers4_5, Validators.required],
+      BillingsTier6: [data.Detail.BillingsTier6, Validators.required],
+      BusinessNewClients: [data.Detail.BusinessNewClients, Validators.required],
+      BusinessExistingClients: [data.Detail.BusinessExistingClients, Validators.required],
+      ReferralsSpecialityUnits: [data.Detail.ReferralsSpecialityUnits, Validators.required],
+      ChargeHours: [data.Detail.ChargeHours, Validators.required],
+      Realization: [data.Detail.Realization, Validators.required],
+      DaysinWIP_AR: [data.Detail.DaysinWIP_AR, Validators.required],
     });
 
     return formGroup;
