@@ -134,8 +134,12 @@ export class GoalsEconomicComponent implements OnInit {
   private updateEconomicGoal(economicGoal: EconomicGoal) {
     this.goalService.updateEconomicGoal(economicGoal).subscribe(
       data => {
-        this.openSnackBar('Economic goal updated successfully!', '');
-        console.log(data);
+        if (data === null || data === undefined) {
+          console.error('Goal did not update properly');
+        } else {
+          this.openSnackBar('Economic goal updated successfully!', '');
+          console.log(data);
+        }
       },
       error => {
         console.log(error);
