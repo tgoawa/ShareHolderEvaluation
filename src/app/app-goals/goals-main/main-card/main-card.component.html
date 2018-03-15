@@ -8,7 +8,7 @@
   </section>
   <mat-list>
     <mat-list-item *ngFor="let goal of data.Goals">
-      <h4 mat-line fxFlex="80">
+      <h4 mat-line>
         <a [routerLink]="route + routeName + '/' + goal.GoalId" mat-button color="primary">{{goal.GoalName}}</a>
       </h4>
       <mat-form-field fxFlex="20">
