@@ -33,6 +33,11 @@ export class GoalsService {
       .map(response => response.json(), error => console.log(error));
   }
 
+  getShareholderReview(id: number, year: number) {
+    return this.http.get(api + 'ShareholderService/GetSHReview/' + id + '/' + year)
+      .map(response => response.json(), error => console.log(error));
+  }
+
   getWIGGoals(id: number) {
     return this.http.get(api + 'GoalService/GetWigGoals/' + id)
       .map(response => response.json(), error => console.log(error));
