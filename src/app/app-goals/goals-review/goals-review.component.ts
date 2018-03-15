@@ -22,12 +22,12 @@ export class GoalsReviewComponent implements OnInit {
       ReviewId: data.ReviewId,
       TeamMemberId: data.TeamMemberId,
       ReviewerId: data.ReviewerId,
-      ReviewDate: [{value: data.ReviewDate, disabled: true}],
-      CompetencyNotes: data.CompetencyNotes,
-      WIGNotes: data.WIGNotes,
-      LeadershipNotes: data.LeadershipNotes,
-      EconomicNotes: data.EconomicNotes,
-      GeneralNotes: data.GeneralNotes
+      CreatedDate: [{value: data.CreatedDate, disabled: true}],
+      CompetencyNote: data.CompetencyNote,
+      WIGNote: data.WIGNote,
+      LeadershipNote: data.LeadershipNote,
+      EconomicNote: data.EconomicNote,
+      GeneralNote: data.GeneralNote
     });
 
     return formGroup;

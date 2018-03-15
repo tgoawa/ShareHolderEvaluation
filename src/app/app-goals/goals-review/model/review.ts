@@ -1,11 +1,12 @@
 export class ReviewModel {
+  CompetencyNote: string;
+  CreatedDate: string;
+  EconomicNote: string;
+  GeneralNote: string;
+  LeadershipNote: string;
   ReviewId: number;
-  TeamMemberId: number;
   ReviewerId: number;
-  ReviewDate: string;
-  CompetencyNotes: string;
-  WIGNotes: string;
-  LeadershipNotes: string;
-  EconomicNotes: string;
-  GeneralNotes: string;
+  TeamMemberId: number;
+  WIGNote: string;
+  Year: number;
 }
