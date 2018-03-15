@@ -38,10 +38,11 @@ export class GoalsEconomicComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.yearService.selectedYear$.subscribe(data => (this.year = data));
-    this.previousYear = this.year - 1;
-    this.currentYearHeading = this.year.toString() + this.currentYearHeading;
-    this.getEconomicGoal();
+    this.yearService.selectedYear$.subscribe(data => {
+      this.year = data;
+      this.getEconomicGoal(this.teamMemberId, this.year);
+      this.previousYear = this.year - 1;
+    });
   }
 
   openSnackBar(message: string, action: string) {
@@ -60,8 +61,8 @@ export class GoalsEconomicComponent implements OnInit {
     this.isDirty = true;
   }
 
-  private getEconomicGoal() {
-    this.goalService.getEconomicGoals(this.teamMemberId, this.year).subscribe(
+  private getEconomicGoal(teamMemberId: number, year: number) {
+    this.goalService.getEconomicGoals(teamMemberId, year).subscribe(
       data => {
         this.economicGoal = data;
         this.economicGoalForm = this.toFormGroup(

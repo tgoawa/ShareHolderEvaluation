@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { Goals } from './model/goals';
 import { GoalTypeWeightData } from './model/weight';
@@ -12,7 +12,7 @@ import { YearSelectionService } from '../shared/services/year-selection.service'
   templateUrl: './goals-main.component.html',
   styleUrls: ['./goals-main.component.css']
 })
-export class GoalsMainComponent implements OnInit, OnChanges {
+export class GoalsMainComponent implements OnInit {
   totalWeight: number;
   dashboardModels: DashboardModel[];
   weightDataDictionary: GoalTypeWeightData[];
@@ -27,10 +27,6 @@ export class GoalsMainComponent implements OnInit, OnChanges {
       this.year = data;
       this.getGoals(1936, this.year);
     });
-  }
-
-  ngOnChanges() {
-    // this.getGoals(1936, this.year);
   }
 
   getGoals(teamMemberId: number, year: number) {
