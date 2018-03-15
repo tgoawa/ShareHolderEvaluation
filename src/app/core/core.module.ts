@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { HttpModule } from '@angular/http';
 import { throwIfAlreadyLoaded } from './module-import.guard';
 import { TeamMemberService } from './services/team-member.service';
-import { YearSelectionService } from './services/year-selection.service';
 
 @NgModule({
   imports: [
@@ -11,7 +10,7 @@ import { YearSelectionService } from './services/year-selection.service';
     HttpModule
   ],
   declarations: [],
-  providers: [TeamMemberService, YearSelectionService]
+  providers: [TeamMemberService]
 })
 export class CoreModule {
   constructor( @Optional() @SkipSelf() parentModule: CoreModule) {

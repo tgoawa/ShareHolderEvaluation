@@ -4,8 +4,8 @@ import { EconomicGoal, EconomicGoalModel } from '../models/economic-goal';
 import createNumberMask from 'text-mask-addons/dist/createNumberMask';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { GoalsService } from '../shared/services/goals.service';
-import { YearSelectionService } from '../../core/services/year-selection.service';
 import { MatSnackBar } from '@angular/material';
+import { YearSelectionService } from '../shared/services/year-selection.service';
 
 const numberMask = createNumberMask({
   prefix: '$',

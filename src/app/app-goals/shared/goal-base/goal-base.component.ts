@@ -9,7 +9,7 @@ import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation
 import * as _ from 'lodash';
 import { DropdownsService } from '../services/dropdowns.service';
 import { Dropdowns } from '../../models/dropdowns';
-import { YearSelectionService } from '../../../core/services/year-selection.service';
+import { YearSelectionService } from '../services/year-selection.service';
 
 @Component({
   selector: 'app-goal-base',

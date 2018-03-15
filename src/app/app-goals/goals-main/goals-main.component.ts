@@ -1,18 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 
 import { Goals } from './model/goals';
 import { GoalTypeWeightData } from './model/weight';
 import { GoalsService } from '../shared/services/goals.service';
 import { DashboardModel } from './model/dashboard.model';
-import { YearSelectionService } from '../../core/services/year-selection.service';
 import { Observable } from 'rxjs/Observable';
+import { YearSelectionService } from '../shared/services/year-selection.service';
 
 @Component({
   selector: 'app-goals-main',
   templateUrl: './goals-main.component.html',
   styleUrls: ['./goals-main.component.css']
 })
-export class GoalsMainComponent implements OnInit {
+export class GoalsMainComponent implements OnInit, OnChanges {
   totalWeight: number;
   dashboardModels: DashboardModel[];
   weightDataDictionary: GoalTypeWeightData[];
@@ -22,9 +22,15 @@ export class GoalsMainComponent implements OnInit {
   constructor(private goalService: GoalsService, private yearService: YearSelectionService) { }
 
   ngOnInit() {
-    this.yearService.selectedYear$.subscribe(data => this.year = data);
     this.totalWeight = 0;
-    this.getGoals(1936, this.year);
+    this.yearService.selectedYear$.subscribe(data => {
+      this.year = data;
+      this.getGoals(1936, this.year);
+    });
+  }
+
+  ngOnChanges() {
+    // this.getGoals(1936, this.year);
   }
 
   getGoals(teamMemberId: number, year: number) {
