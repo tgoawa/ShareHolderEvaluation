@@ -9,11 +9,6 @@
     <h2>Welcome John Smith!</h2>
   </section>
   <section>
-    <mat-form-field>
-      <mat-select placeholder="Select Fiscal Year" [(ngModel)]="selectedYear" (selectionChange)="setEvaluationYear(selectedYear)">
-        <mat-option *ngFor="let year of evalYears" [value]="year">{{year}}</mat-option>
-      </mat-select>
-    </mat-form-field>
   </section>
   <section>
     <a mat-raised-button color="primary" routerLink="/goals/main">Goals</a>

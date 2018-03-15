@@ -6,10 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./goals-header.component.css']
 })
 export class GoalsHeaderComponent implements OnInit {
-
+  selectedYear: number;
+  evalYears: number[] = [2018, 2017];
   constructor() { }
 
   ngOnInit() {
+  }
+
+  setYear(year: number) {
+
   }
 
 }
