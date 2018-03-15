@@ -10,6 +10,8 @@ import {
   MatListModule,
   MatSelectModule,
   MatToolbarModule,
+  MatMenuModule,
+  MatIconModule,
 } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
@@ -24,6 +26,7 @@ import { EvaluationsWigComponent } from './evaluations-wig/evaluations-wig.compo
 import { EvaluationsLeadershipComponent } from './evaluations-leadership/evaluations-leadership.component';
 import { EvaluationsEconomicComponent } from './evaluations-economic/evaluations-economic.component';
 import { EvaluationLineItemComponent } from './shared/evaluation-line-item/evaluation-line-item.component';
+import { EvaluationYearService } from './shared/services/evaluation-year.service';
 
 @NgModule({
   imports: [
@@ -34,8 +37,10 @@ import { EvaluationLineItemComponent } from './shared/evaluation-line-item/evalu
     MatButtonModule,
     MatCardModule,
     MatFormFieldModule,
+    MatIconModule,
     MatInputModule,
     MatListModule,
+    MatMenuModule,
     MatSelectModule,
     MatToolbarModule,
   ],
@@ -51,5 +56,8 @@ import { EvaluationLineItemComponent } from './shared/evaluation-line-item/evalu
     EvaluationsEconomicComponent,
     EvaluationLineItemComponent,
   ],
+  providers: [
+    EvaluationYearService
+  ]
 })
 export class AppEvaluationsModule {}
