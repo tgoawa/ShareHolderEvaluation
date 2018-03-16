@@ -6,7 +6,6 @@ import { EvaluationsCompetencyComponent } from './evaluations-competency/evaluat
 import { EvaluationsWigComponent } from './evaluations-wig/evaluations-wig.component';
 import { EvaluationsLeadershipComponent } from './evaluations-leadership/evaluations-leadership.component';
 import { EvaluationsEconomicComponent } from './evaluations-economic/evaluations-economic.component';
-import { EvaluationsSignOffComponent } from './evaluations-sign-off/evaluations-sign-off.component';
 
 const routes: Routes = [
   {
@@ -17,8 +16,7 @@ const routes: Routes = [
       {path: 'competency', component: EvaluationsCompetencyComponent},
       {path: 'wig', component: EvaluationsWigComponent},
       {path: 'leadership', component: EvaluationsLeadershipComponent},
-      {path: 'economic', component: EvaluationsEconomicComponent},
-      {path: 'sign-off', component: EvaluationsSignOffComponent}
+      {path: 'economic', component: EvaluationsEconomicComponent}
     ]
   }
 ];

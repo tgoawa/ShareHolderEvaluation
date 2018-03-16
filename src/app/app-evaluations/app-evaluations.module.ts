@@ -12,7 +12,6 @@ import {
   MatToolbarModule,
   MatMenuModule,
   MatIconModule,
-  MatGridListModule,
 } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
@@ -28,7 +27,6 @@ import { EvaluationsLeadershipComponent } from './evaluations-leadership/evaluat
 import { EvaluationsEconomicComponent } from './evaluations-economic/evaluations-economic.component';
 import { EvaluationLineItemComponent } from './shared/evaluation-line-item/evaluation-line-item.component';
 import { EvaluationYearService } from './shared/services/evaluation-year.service';
-import { EvaluationsSignOffComponent } from './evaluations-sign-off/evaluations-sign-off.component';
 
 @NgModule({
   imports: [
@@ -39,7 +37,6 @@ import { EvaluationsSignOffComponent } from './evaluations-sign-off/evaluations-
     MatButtonModule,
     MatCardModule,
     MatFormFieldModule,
-    MatGridListModule,
     MatIconModule,
     MatInputModule,
     MatListModule,
@@ -58,7 +55,6 @@ import { EvaluationsSignOffComponent } from './evaluations-sign-off/evaluations-
     EvaluationsLeadershipComponent,
     EvaluationsEconomicComponent,
     EvaluationLineItemComponent,
-    EvaluationsSignOffComponent,
   ],
   providers: [
     EvaluationYearService
