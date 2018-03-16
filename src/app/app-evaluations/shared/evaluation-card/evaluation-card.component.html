@@ -33,17 +33,20 @@
   <section fxLayout="row" fxLayoutGap="20px">
     <span class="spacer"></span>
     <mat-form-field>
-      <input matInput placeholder="Average Self Score" value="" readonly>
+      <input matInput placeholder="Average Committee Score" value="" disabled>
     </mat-form-field>
     <mat-form-field>
-      <input matInput placeholder="Average PIC Score" value="" readonly>
-    </mat-form-field>
-    <mat-form-field>
-      <mat-select placeholder="Committee Score" [(ngModel)]="currentScore">
+      <mat-select placeholder="Final Score" [(ngModel)]="currentScore">
         <mat-option *ngFor="let score of scores" [value]="score">
           {{ score }}
         </mat-option>
       </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Total Weight" value="10" disabled>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Calculated Score" value="" disabled>
     </mat-form-field>
   </section>
 </mat-card>
