@@ -30,4 +30,20 @@
   <section>
     <app-evaluation-line-item [goalName]="'Test Goal 1'" [goalWeight]="'10'"></app-evaluation-line-item>
   </section>
+  <section fxLayout="row" fxLayoutGap="20px">
+    <span class="spacer"></span>
+    <mat-form-field>
+      <input matInput placeholder="Average Self Score" value="" readonly>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Average PIC Score" value="" readonly>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-select placeholder="Committee Score" [(ngModel)]="currentScore">
+        <mat-option *ngFor="let score of scores" [value]="score">
+          {{ score }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </section>
 </mat-card>
