@@ -1,141 +1,38 @@
 <mat-card fxLayout="column" fxLayoutAlign="space-between stretch" fxLayoutGap="20px" class="mat-typography">
   <section class="text-center">
     <h1>Evaluation Sign-off</h1>
-    <p>
-      <b>Shareholder:</b> Smith, John</p>
+      <b>Shareholder:</b> Smith, John
+      <mat-form-field>
+        <input matInput type="password" placeholder="Password">
+        <mat-hint>Use your Windows password</mat-hint>
+        <mat-error>This field is required</mat-error>
+      </mat-form-field>
+      <button mat-button color="primary">Sign Off</button>
+      <p>
+        <mat-form-field style="font-size: 14px">
+          <mat-select placeholder="PIC Name">
+            <mat-option *ngFor="let pic of picList" [value]="pic.id">{{pic.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput type="password" placeholder="Password">
+          <mat-hint>Use your Windows password</mat-hint>
+          <mat-error>This field is required</mat-error>
+        </mat-form-field>
+        <button mat-button color="primary">Sign Off</button>
+      </p>
+      <p>
+        <mat-form-field style="font-size: 14px">
+          <mat-select placeholder="Committee Person Name">
+            <mat-option *ngFor="let pic of picList" [value]="pic.id">{{pic.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput type="password" placeholder="Password">
+          <mat-hint>Use your Windows password</mat-hint>
+          <mat-error>This field is required</mat-error>
+        </mat-form-field>
+        <button mat-button color="primary">Sign Off</button>
+      </p>
   </section>
-  <mat-card-content fxLayout="column" fxLayoutAlign="space-between" class="mat-typography">
-    <mat-card>
-      <mat-card-title>
-        Competency Evaluation
-      </mat-card-title>
-      <mat-card-content>
-        <p>
-          <mat-form-field style="font-size: 14px">
-            <mat-select placeholder="PIC Name">
-              <mat-option *ngFor="let pic of picList" [value]="pic.id">{{pic.name}}</mat-option>
-            </mat-select>
-          </mat-form-field>
-          <mat-form-field>
-            <input matInput type="password" placeholder="Password">
-            <mat-hint>Use your Windows password</mat-hint>
-            <mat-error>This field is required</mat-error>
-          </mat-form-field>
-          <button mat-button color="primary">Sign Off</button>
-        </p>
-        <p>
-          <mat-form-field style="font-size: 14px">
-            <mat-select placeholder="Committee Person Name">
-              <mat-option *ngFor="let pic of picList" [value]="pic.id">{{pic.name}}</mat-option>
-            </mat-select>
-          </mat-form-field>
-          <mat-form-field>
-            <input matInput type="password" placeholder="Password">
-            <mat-hint>Use your Windows password</mat-hint>
-            <mat-error>This field is required</mat-error>
-          </mat-form-field>
-          <button mat-button color="primary">Sign Off</button>
-        </p>
-      </mat-card-content>
-    </mat-card>
-    <mat-card>
-      <mat-card-title>
-        WIG Evaluation
-      </mat-card-title>
-      <mat-card-content>
-        <p>
-          <mat-form-field style="font-size: 14px">
-            <mat-select placeholder="PIC Name">
-              <mat-option *ngFor="let pic of picList" [value]="pic.id">{{pic.name}}</mat-option>
-            </mat-select>
-          </mat-form-field>
-          <mat-form-field>
-            <input matInput type="password" placeholder="Password">
-            <mat-hint>Use your Windows password</mat-hint>
-            <mat-error>This field is required</mat-error>
-          </mat-form-field>
-          <button mat-button color="primary">Sign Off</button>
-        </p>
-        <p>
-          <mat-form-field style="font-size: 14px">
-            <mat-select placeholder="Committee Person Name">
-              <mat-option *ngFor="let pic of picList" [value]="pic.id">{{pic.name}}</mat-option>
-            </mat-select>
-          </mat-form-field>
-          <mat-form-field>
-            <input matInput type="password" placeholder="Password">
-            <mat-hint>Use your Windows password</mat-hint>
-            <mat-error>This field is required</mat-error>
-          </mat-form-field>
-          <button mat-button color="primary">Sign Off</button>
-        </p>
-      </mat-card-content>
-    </mat-card>
-    <mat-card>
-      <mat-card-title>
-        Leadership Evaluation
-      </mat-card-title>
-      <mat-card-content>
-        <p>
-          <mat-form-field style="font-size: 14px">
-            <mat-select placeholder="PIC Name">
-              <mat-option *ngFor="let pic of picList" [value]="pic.id">{{pic.name}}</mat-option>
-            </mat-select>
-          </mat-form-field>
-          <mat-form-field>
-            <input matInput type="password" placeholder="Password">
-            <mat-hint>Use your Windows password</mat-hint>
-            <mat-error>This field is required</mat-error>
-          </mat-form-field>
-          <button mat-button color="primary">Sign Off</button>
-        </p>
-        <p>
-          <mat-form-field style="font-size: 14px">
-            <mat-select placeholder="Committee Person Name">
-              <mat-option *ngFor="let pic of picList" [value]="pic.id">{{pic.name}}</mat-option>
-            </mat-select>
-          </mat-form-field>
-          <mat-form-field>
-            <input matInput type="password" placeholder="Password">
-            <mat-hint>Use your Windows password</mat-hint>
-            <mat-error>This field is required</mat-error>
-          </mat-form-field>
-          <button mat-button color="primary">Sign Off</button>
-        </p>
-      </mat-card-content>
-    </mat-card>
-    <mat-card>
-      <mat-card-title>
-        Economic Evaluation
-      </mat-card-title>
-      <mat-card-content>
-        <p>
-          <mat-form-field style="font-size: 14px">
-            <mat-select placeholder="PIC Name">
-              <mat-option *ngFor="let pic of picList" [value]="pic.id">{{pic.name}}</mat-option>
-            </mat-select>
-          </mat-form-field>
-          <mat-form-field>
-            <input matInput type="password" placeholder="Password">
-            <mat-hint>Use your Windows password</mat-hint>
-            <mat-error>This field is required</mat-error>
-          </mat-form-field>
-          <button mat-button color="primary">Sign Off</button>
-        </p>
-        <p>
-          <mat-form-field style="font-size: 14px">
-            <mat-select placeholder="Committee Person Name">
-              <mat-option *ngFor="let pic of picList" [value]="pic.id">{{pic.name}}</mat-option>
-            </mat-select>
-          </mat-form-field>
-          <mat-form-field>
-            <input matInput type="password" placeholder="Password">
-            <mat-hint>Use your Windows password</mat-hint>
-            <mat-error>This field is required</mat-error>
-          </mat-form-field>
-          <button mat-button color="primary">Sign Off</button>
-        </p>
-      </mat-card-content>
-    </mat-card>
-  </mat-card-content>
 </mat-card>
