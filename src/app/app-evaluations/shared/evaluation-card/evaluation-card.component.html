@@ -4,7 +4,12 @@
     <span>For the Year Ended September 30, 2017</span>
   </section>
   <section fxLayout="row" fxLayoutAlign="space-between center">
-    <p fxFlex="66">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec pellentesque ex elit, non suscipit eros bibendum ac. Sed vel ultrices ligula. In consectetur in nulla in consectetur. Duis ut dolor scelerisque, congue elit a, finibus diam. Cras scelerisque, purus sit amet feugiat rutrum, turpis lacus faucibus mauris, eu faucibus augue augue eu risus. Duis facilisis et mauris eget malesuada. Maecenas ac tortor vel tellus condimentum ullamcorper. Mauris quis ex blandit, placerat mauris vitae, laoreet elit. Sed blandit ornare felis vitae ultricies. Duis nec tincidunt risus, sed faucibus diam.</p>
+    <p fxFlex="66">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec pellentesque ex elit, non suscipit eros bibendum ac. Sed
+      vel ultrices ligula. In consectetur in nulla in consectetur. Duis ut dolor scelerisque, congue elit a, finibus diam.
+      Cras scelerisque, purus sit amet feugiat rutrum, turpis lacus faucibus mauris, eu faucibus augue augue eu risus. Duis
+      facilisis et mauris eget malesuada. Maecenas ac tortor vel tellus condimentum ullamcorper. Mauris quis ex blandit,
+      placerat mauris vitae, laoreet elit. Sed blandit ornare felis vitae ultricies. Duis nec tincidunt risus, sed faucibus
+      diam.</p>
   </section>
   <section fxLayout="row" fxLayoutAlign="space-between center">
     <div>
@@ -34,20 +39,29 @@
   </section>
   <section fxLayout="row" fxLayoutGap="20px">
     <span class="spacer"></span>
-    <mat-form-field>
+    <mat-form-field fxFlex="5">
+      <input matInput placeholder="Total Weight" value="10" disabled>
+    </mat-form-field>
+    <mat-form-field fxFlex="10">
+      <input matInput placeholder="Average Self Score" value="" disabled>
+    </mat-form-field>
+    <mat-form-field fxFlex="10">
+      <input matInput placeholder="Average PIC Score" value="" disabled>
+    </mat-form-field>
+    <mat-form-field fxFlex="10">
       <input matInput placeholder="Average Committee Score" value="" disabled>
     </mat-form-field>
-    <mat-form-field>
+  </section>
+  <section fxLayout="row" fxLayoutGap="20px">
+    <span class="spacer"></span>
+    <mat-form-field fxFlex="10">
       <mat-select placeholder="Final Score" [(ngModel)]="currentScore">
         <mat-option *ngFor="let score of scores" [value]="score">
           {{ score }}
         </mat-option>
       </mat-select>
     </mat-form-field>
-    <mat-form-field>
-      <input matInput placeholder="Total Weight" value="10" disabled>
-    </mat-form-field>
-    <mat-form-field>
+    <mat-form-field fxFlex="10">
       <input matInput placeholder="Calculated Score" value="" disabled>
     </mat-form-field>
   </section>
