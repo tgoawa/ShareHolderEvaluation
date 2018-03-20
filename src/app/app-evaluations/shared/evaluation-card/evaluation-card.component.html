@@ -55,14 +55,47 @@
   <section fxLayout="row" fxLayoutGap="20px">
     <span class="spacer"></span>
     <mat-form-field fxFlex="10">
-      <mat-select placeholder="Final Score" [(ngModel)]="currentScore">
+      <mat-select placeholder="Self Use Score">
         <mat-option *ngFor="let score of scores" [value]="score">
           {{ score }}
         </mat-option>
       </mat-select>
     </mat-form-field>
     <mat-form-field fxFlex="10">
-      <input matInput placeholder="Calculated Score" value="" disabled>
+      <mat-select placeholder="PIC Use Score">
+        <mat-option *ngFor="let score of scores" [value]="score">
+          {{ score }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field fxFlex="10">
+      <mat-select placeholder="Committee Use Score">
+        <mat-option *ngFor="let score of scores" [value]="score">
+          {{ score }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </section>
+  <section fxLayout="row" fxLayoutGap="20px">
+    <span class="spacer"></span>
+    <mat-form-field fxFlex="10">
+      <input matInput placeholder="Calculated Self Score" value="" disabled>
+    </mat-form-field>
+    <mat-form-field fxFlex="10">
+      <input matInput placeholder="Calculated PIC Score" value="" disabled>
+    </mat-form-field>
+    <mat-form-field fxFlex="10">
+      <input matInput placeholder="Calculated Committee Score" value="" disabled>
+    </mat-form-field>
+  </section>
+  <section fxLayout="row" fxLayoutGap="20px">
+    <span class="spacer"></span>
+    <mat-form-field fxFlex="10">
+      <mat-select placeholder="Final Use Score">
+        <mat-option *ngFor="let score of scores" [value]="score">
+          {{ score }}
+        </mat-option>
+      </mat-select>
     </mat-form-field>
   </section>
 </mat-card>
