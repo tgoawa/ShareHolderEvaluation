@@ -9,9 +9,9 @@ export interface EvaluationData {
 
 export interface EvaluationItem {
   ItemId: number;
-  ItemName: string;
+  GoalName: string;
   Comments: string;
-  Weight: number;
+  GoalWeight: number;
   SelfScore: number;
   PICScore: number;
   CommitteeScore: number;

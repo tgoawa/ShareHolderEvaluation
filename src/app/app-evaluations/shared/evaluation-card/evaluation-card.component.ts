@@ -18,6 +18,9 @@ export class EvaluationCardComponent implements OnInit, OnChanges {
   averageSelfScore: number;
   averagePicScore: number;
   averageCommitteeScore: number;
+  calculatedSelfScore: number;
+  calculatedPicScore: number;
+  calculatedCommitteeScore: number;
   currentScore = 10;
   selfUseScore: number;
   picUseScore: number;
@@ -41,6 +44,11 @@ export class EvaluationCardComponent implements OnInit, OnChanges {
 
   ngOnChanges() {
     this.totalWeight = this.calculateTotalWeight(this.evaluation.EvaluationItems);
+  }
+
+  calculateSelfScore() {
+    const multiplier = this.totalWeight * .01;
+    this.calculatedSelfScore = this.selfUseScore * multiplier;
   }
 
   selfScoreChanged(val: ScoreDictionary) {
@@ -91,7 +99,7 @@ export class EvaluationCardComponent implements OnInit, OnChanges {
   private calculateTotalWeight(evalItems: EvaluationItem[]) {
     let weight = 0;
     for (let x = 0; x < evalItems.length; x++) {
-      weight = weight + evalItems[x].Weight;
+      weight = weight + evalItems[x].GoalWeight;
     }
     return weight;
   }

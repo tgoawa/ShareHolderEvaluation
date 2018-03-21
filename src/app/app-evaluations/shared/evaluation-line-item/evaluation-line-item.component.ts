@@ -27,9 +27,9 @@ export class EvaluationLineItemComponent implements OnInit {
 
   ngOnInit() {
     this.itemId = this.evalItem.ItemId;
-    this.itemName = this.evalItem.ItemName;
+    this.itemName = this.evalItem.GoalName;
     this.comments = this.evalItem.Comments;
-    this.weight = this.evalItem.Weight;
+    this.weight = this.evalItem.GoalWeight;
     this.itemSelfScore = this.evalItem.SelfScore;
     this.itemPicScore = this.evalItem.PICScore;
     this.itemCommitteeScore = this.evalItem.CommitteeScore;
