@@ -36,6 +36,14 @@ export class EvaluationCardComponent implements OnInit, OnChanges {
     this.totalWeight = this.calculateTotalWeight(this.evaluation.EvaluationItems);
   }
 
+  private calculateTotalScore(scoreData: ScoreDictionary[]) {
+    let score = 0;
+    for (let x = 0; x < scoreData.length; x++) {
+      score = score + scoreData[x].value;
+    }
+    return score;
+  }
+
   private calculateTotalWeight(evalItems: EvaluationItem[]) {
     let weight = 0;
     for (let x = 0; x < evalItems.length; x++) {
