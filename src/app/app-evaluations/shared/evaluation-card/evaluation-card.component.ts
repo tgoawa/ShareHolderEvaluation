@@ -14,6 +14,10 @@ export class EvaluationCardComponent implements OnInit, OnChanges {
   scores = [
     10, 9, 8, 7, 6, 5, 4, 3, 2, 1
   ];
+
+  averageSelfScore: number;
+  averagePicScore: number;
+  averageCommitteeScore: number;
   currentScore = 10;
   selfUseScore: number;
   picUseScore: number;
@@ -30,10 +34,20 @@ export class EvaluationCardComponent implements OnInit, OnChanges {
     this.picUseScore = this.evaluation.PICUseScore;
     this.committeeUseScore = this.evaluation.CommitteeUseScore;
     this.createScoreDictionaries(this.evaluation.EvaluationItems);
+    this.averageSelfScore = this.calculateAverageScore(this.selfScoreDictionary);
+    this.averagePicScore = this.calculateAverageScore(this.picScoreDictionary);
+    this.averageCommitteeScore = this.calculateAverageScore(this.committeeScoreDictionary);
   }
 
   ngOnChanges() {
     this.totalWeight = this.calculateTotalWeight(this.evaluation.EvaluationItems);
+  }
+
+  private calculateAverageScore(scoreData: ScoreDictionary[]) {
+    const totalScore = this.calculateTotalScore(scoreData);
+    const length = scoreData.length + 1;
+    const averageScore = totalScore / length;
+    return averageScore;
   }
 
   private calculateTotalScore(scoreData: ScoreDictionary[]) {
