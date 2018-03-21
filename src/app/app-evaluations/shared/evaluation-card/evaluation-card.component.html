@@ -53,21 +53,21 @@
   <section fxLayout="row" fxLayoutGap="20px">
     <span class="spacer"></span>
     <mat-form-field fxFlex="10">
-      <mat-select placeholder="Self Use Score" [(ngModel)]="selfUseScore">
+      <mat-select placeholder="Self Use Score" [(ngModel)]="selfUseScore" (selectionChange)="selfUseScoreChanged($event.value)">
         <mat-option *ngFor="let score of scores" [value]="score">
           {{ score }}
         </mat-option>
       </mat-select>
     </mat-form-field>
     <mat-form-field fxFlex="10">
-      <mat-select placeholder="PIC Use Score" [(ngModel)]="picUseScore">
+      <mat-select placeholder="PIC Use Score" [(ngModel)]="picUseScore" (selectionChange)="picUseScoreChanged($event.value)">
         <mat-option *ngFor="let score of scores" [value]="score">
           {{ score }}
         </mat-option>
       </mat-select>
     </mat-form-field>
     <mat-form-field fxFlex="10">
-      <mat-select placeholder="Committee Use Score" [(ngModel)]="committeeUseScore">
+      <mat-select placeholder="Committee Use Score" [(ngModel)]="committeeUseScore" (selectionChange)="committeeUseScoreChanged($event.value)">
         <mat-option *ngFor="let score of scores" [value]="score">
           {{ score }}
         </mat-option>
@@ -77,13 +77,13 @@
   <section fxLayout="row" fxLayoutGap="20px">
     <span class="spacer"></span>
     <mat-form-field fxFlex="10">
-      <input matInput placeholder="Calculated Self Score" value="" disabled>
+      <input matInput placeholder="Calculated Self Score" [value]="calculatedSelfScore | number" disabled>
     </mat-form-field>
     <mat-form-field fxFlex="10">
-      <input matInput placeholder="Calculated PIC Score" value="" disabled>
+      <input matInput placeholder="Calculated PIC Score" [value]="calculatedPicScore | number" disabled>
     </mat-form-field>
     <mat-form-field fxFlex="10">
-      <input matInput placeholder="Calculated Committee Score" value="" disabled>
+      <input matInput placeholder="Calculated Committee Score" [value]="calculatedCommitteeScore | number" disabled>
     </mat-form-field>
   </section>
   <section fxLayout="row" fxLayoutGap="20px">
