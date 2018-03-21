@@ -1,29 +1,29 @@
 <section fxLayout="row" fxLayoutGap="20px">
   <mat-form-field fxFlex="15">
-    <input matInput placeholder="SH Goal" disabled [value]=goalName>
+    <input matInput placeholder="SH Goal" disabled [value]="itemName">
   </mat-form-field>
   <mat-form-field fxFlex="50">
-    <textarea matInput placeholder="Comments" matTextareaAutosize matAutosizeMinRows="1" matAutosizeMaxRows="5"></textarea>
+    <textarea matInput [(ngModel)]="comments" placeholder="Comments" matTextareaAutosize matAutosizeMinRows="1" matAutosizeMaxRows="5"></textarea>
   </mat-form-field>
   <mat-form-field fxFlex="5">
-    <input matInput placeholder="Weight" disabled [value]=goalWeight>
+    <input matInput placeholder="Weight" disabled [value]="weight">
   </mat-form-field>
   <mat-form-field fxFlex="10">
-    <mat-select placeholder="Self">
+    <mat-select placeholder="Self" [(ngModel)]="itemSelfScore">
       <mat-option *ngFor="let rating of ratings" [value]="rating">
         {{ rating }}
       </mat-option>
     </mat-select>
   </mat-form-field>
   <mat-form-field fxFlex="10">
-    <mat-select placeholder="PIC">
+    <mat-select placeholder="PIC" [(ngModel)]="itemPicScore">
       <mat-option *ngFor="let rating of ratings" [value]="rating">
         {{ rating }}
       </mat-option>
     </mat-select>
   </mat-form-field>
   <mat-form-field fxFlex="10">
-    <mat-select placeholder="Committee">
+    <mat-select placeholder="Committee" [(ngModel)]="itemCommitteeScore">
       <mat-option *ngFor="let rating of ratings" [value]="rating">
         {{ rating }}
       </mat-option>
