@@ -40,7 +40,7 @@
   <section fxLayout="row" fxLayoutGap="20px">
     <span class="spacer"></span>
     <mat-form-field fxFlex="5">
-      <input matInput placeholder="Total Weight" value="20" disabled>
+      <input matInput placeholder="Total Weight" [value]="totalWeight" disabled>
     </mat-form-field>
     <mat-form-field fxFlex="10">
       <input matInput placeholder="Average Self Score" value="" disabled>
@@ -55,21 +55,21 @@
   <section fxLayout="row" fxLayoutGap="20px">
     <span class="spacer"></span>
     <mat-form-field fxFlex="10">
-      <mat-select placeholder="Self Use Score">
+      <mat-select placeholder="Self Use Score" [(ngModel)]="selfUseScore">
         <mat-option *ngFor="let score of scores" [value]="score">
           {{ score }}
         </mat-option>
       </mat-select>
     </mat-form-field>
     <mat-form-field fxFlex="10">
-      <mat-select placeholder="PIC Use Score">
+      <mat-select placeholder="PIC Use Score" [(ngModel)]="picUseScore">
         <mat-option *ngFor="let score of scores" [value]="score">
           {{ score }}
         </mat-option>
       </mat-select>
     </mat-form-field>
     <mat-form-field fxFlex="10">
-      <mat-select placeholder="Committee Use Score">
+      <mat-select placeholder="Committee Use Score" [(ngModel)]="committeeUseScore">
         <mat-option *ngFor="let score of scores" [value]="score">
           {{ score }}
         </mat-option>

@@ -32,10 +32,10 @@ const data: EvaluationData = {
       CommitteeScore: 6
     }
   ],
-  SelfUseScore: 0,
-  PICUseScore: 0,
-  CommitteeUseScore: 0,
-  FinalUseScore: 0
+  SelfUseScore: 1,
+  PICUseScore: 1,
+  CommitteeUseScore: 1,
+  FinalUseScore: 1
 };
 
 @Component({

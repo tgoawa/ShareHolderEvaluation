@@ -1,4 +1,4 @@
-import { Component, Input, ChangeDetectionStrategy, OnChanges } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy, OnChanges, OnInit } from '@angular/core';
 import { EvaluationItem, EvaluationData } from '../models/Evaluation';
 
 @Component({
@@ -7,15 +7,24 @@ import { EvaluationItem, EvaluationData } from '../models/Evaluation';
   styleUrls: ['./evaluation-card.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class EvaluationCardComponent implements OnChanges {
+export class EvaluationCardComponent implements OnInit, OnChanges {
   @Input() title: string;
   @Input() evaluation: EvaluationData;
   scores = [
     10, 9, 8, 7, 6, 5, 4, 3, 2, 1
   ];
   currentScore = 10;
+  selfUseScore: number;
+  picUseScore: number;
+  committeeUseScore: number;
   totalWeight: number;
   constructor() { }
+
+  ngOnInit() {
+    this.selfUseScore = this.evaluation.SelfUseScore;
+    this.picUseScore = this.evaluation.PICUseScore;
+    this.committeeUseScore = this.evaluation.CommitteeUseScore;
+  }
 
   ngOnChanges() {
     this.totalWeight = this.calculateTotalWeight(this.evaluation.EvaluationItems);
