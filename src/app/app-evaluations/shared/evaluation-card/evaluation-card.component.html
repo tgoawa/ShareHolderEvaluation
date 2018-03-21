@@ -33,7 +33,7 @@
     </div>
   </section>
   <section>
-    <app-evaluation-line-item *ngFor="let evalItem of evaluation?.EvaluationItems" [evalItem]="evalItem"></app-evaluation-line-item>
+    <app-evaluation-line-item *ngFor="let evalItem of evaluation?.EvaluationItems" [evalItem]="evalItem" (selfScore)="selfScoreChanged($event)" (picScore)="picScoreChanged($event)" (committeeScore)="committeeScoreChanged($event)"></app-evaluation-line-item>
   </section>
   <section fxLayout="row" fxLayoutGap="20px">
     <span class="spacer"></span>
@@ -41,13 +41,13 @@
       <input matInput placeholder="Total Weight" [value]="totalWeight" disabled>
     </mat-form-field>
     <mat-form-field fxFlex="10">
-      <input matInput placeholder="Average Self Score" [value]="averageSelfScore" disabled>
+      <input matInput placeholder="Average Self Score" [value]="averageSelfScore | number" disabled>
     </mat-form-field>
     <mat-form-field fxFlex="10">
-      <input matInput placeholder="Average PIC Score" [value]="averagePicScore" disabled>
+      <input matInput placeholder="Average PIC Score" [value]="averagePicScore | number" disabled>
     </mat-form-field>
     <mat-form-field fxFlex="10">
-      <input matInput placeholder="Average Committee Score" [value]="averageCommitteeScore" disabled>
+      <input matInput placeholder="Average Committee Score" [value]="averageCommitteeScore | number" disabled>
     </mat-form-field>
   </section>
   <section fxLayout="row" fxLayoutGap="20px">

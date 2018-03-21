@@ -43,9 +43,39 @@ export class EvaluationCardComponent implements OnInit, OnChanges {
     this.totalWeight = this.calculateTotalWeight(this.evaluation.EvaluationItems);
   }
 
+  selfScoreChanged(val: ScoreDictionary) {
+    for (let x = 0; x < this.selfScoreDictionary.length; x++) {
+      if (val.id === this.selfScoreDictionary[x].id) {
+        this.selfScoreDictionary[x].value = val.value;
+        break;
+      }
+    }
+    this.averageSelfScore = this.calculateAverageScore(this.selfScoreDictionary);
+  }
+
+  picScoreChanged(val: ScoreDictionary) {
+    for (let x = 0; x < this.picScoreDictionary.length; x++) {
+      if (val.id === this.picScoreDictionary[x].id) {
+        this.picScoreDictionary[x].value = val.value;
+        break;
+      }
+    }
+    this.averagePicScore = this.calculateAverageScore(this.picScoreDictionary);
+  }
+
+  committeeScoreChanged(val: ScoreDictionary) {
+    for (let x = 0; x < this.committeeScoreDictionary.length; x++) {
+      if (val.id === this.committeeScoreDictionary[x].id) {
+        this.committeeScoreDictionary[x].value = val.value;
+        break;
+      }
+    }
+    this.averageCommitteeScore = this.calculateAverageScore(this.committeeScoreDictionary);
+  }
+
   private calculateAverageScore(scoreData: ScoreDictionary[]) {
     const totalScore = this.calculateTotalScore(scoreData);
-    const length = scoreData.length + 1;
+    const length = scoreData.length;
     const averageScore = totalScore / length;
     return averageScore;
   }
