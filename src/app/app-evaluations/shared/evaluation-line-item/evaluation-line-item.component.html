@@ -9,21 +9,21 @@
     <input matInput placeholder="Weight" disabled [value]="weight">
   </mat-form-field>
   <mat-form-field fxFlex="10">
-    <mat-select placeholder="Self" [(ngModel)]="itemSelfScore">
+    <mat-select placeholder="Self" [(ngModel)]="itemSelfScore" (selectionChange)="onSelfScoreChange()">
       <mat-option *ngFor="let rating of ratings" [value]="rating">
         {{ rating }}
       </mat-option>
     </mat-select>
   </mat-form-field>
   <mat-form-field fxFlex="10">
-    <mat-select placeholder="PIC" [(ngModel)]="itemPicScore">
+    <mat-select placeholder="PIC" [(ngModel)]="itemPicScore" (selectionChange)="onPicScoreChange()">
       <mat-option *ngFor="let rating of ratings" [value]="rating">
         {{ rating }}
       </mat-option>
     </mat-select>
   </mat-form-field>
   <mat-form-field fxFlex="10">
-    <mat-select placeholder="Committee" [(ngModel)]="itemCommitteeScore">
+    <mat-select placeholder="Committee" [(ngModel)]="itemCommitteeScore" (selectionChange)="onCommitteeScoreChange()">
       <mat-option *ngFor="let rating of ratings" [value]="rating">
         {{ rating }}
       </mat-option>
