@@ -41,13 +41,13 @@
       <input matInput placeholder="Total Weight" [value]="totalWeight" disabled>
     </mat-form-field>
     <mat-form-field fxFlex="10">
-      <input matInput placeholder="Average Self Score" [value]="averageSelfScore | number" disabled>
+      <input matInput placeholder="Average Self Score" [value]="averageSelfScore | number : '1.0-1'" disabled>
     </mat-form-field>
     <mat-form-field fxFlex="10">
-      <input matInput placeholder="Average PIC Score" [value]="averagePicScore | number" disabled>
+      <input matInput placeholder="Average PIC Score" [value]="averagePicScore | number : '1.0-1'" disabled>
     </mat-form-field>
     <mat-form-field fxFlex="10">
-      <input matInput placeholder="Average Committee Score" [value]="averageCommitteeScore | number" disabled>
+      <input matInput placeholder="Average Committee Score" [value]="averageCommitteeScore | number : '1.0-1'" disabled>
     </mat-form-field>
   </section>
   <section fxLayout="row" fxLayoutGap="20px">
@@ -77,13 +77,13 @@
   <section fxLayout="row" fxLayoutGap="20px">
     <span class="spacer"></span>
     <mat-form-field fxFlex="10">
-      <input matInput placeholder="Calculated Self Score" [value]="calculatedSelfScore | number" disabled>
+      <input matInput placeholder="Calculated Self Score" [value]="calculatedSelfScore | number : '1.0-1'" disabled>
     </mat-form-field>
     <mat-form-field fxFlex="10">
-      <input matInput placeholder="Calculated PIC Score" [value]="calculatedPicScore | number" disabled>
+      <input matInput placeholder="Calculated PIC Score" [value]="calculatedPicScore | number : '1.0-1'" disabled>
     </mat-form-field>
     <mat-form-field fxFlex="10">
-      <input matInput placeholder="Calculated Committee Score" [value]="calculatedCommitteeScore | number" disabled>
+      <input matInput placeholder="Calculated Committee Score" [value]="calculatedCommitteeScore | number : '1.0-1'" disabled>
     </mat-form-field>
   </section>
   <section fxLayout="row" fxLayoutGap="20px">
