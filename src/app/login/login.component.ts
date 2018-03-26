@@ -4,8 +4,8 @@ import { Router } from '@angular/router';
 
 import * as CryptoJS from 'crypto-js';
 import { User } from './model/user';
-// import { LoggerService } from '../core/services/logger.service';
-import { LoginService } from './service/login.service';
+import { LoginService } from '../core/services/login.service';
+import { TeamMemberService } from '../core/services/team-member.service';
 
 @Component({
   selector: 'app-login',
@@ -18,26 +18,25 @@ export class LoginComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
     private lgService: LoginService,
-    // private logger: LoggerService,
-    private router: Router) { }
+    private router: Router,
+    private teamMemberService: TeamMemberService) { }
 
   ngOnInit() {
     this.loginForm = this.toFormGroup();
   }
 
   onSubmit(formValue: User) {
-    // const encUser = this.encryptUser();
-    // this.checkUser(encUser);
-    this.router.navigate(['/home']);
+    const encUser = this.encryptUser();
+    this.checkUser(encUser);
   }
 
   private checkUser(user: User) {
     this.lgService.isValid(user)
       .subscribe(data => {
-        // this.logger.log('Login Successful!');
+        console.log('Login Successful!');
         this.setAuthStatus(data);
       }, error => {
-        // this.logger.error(error);
+        console.error(error);
       });
   }
 
@@ -57,26 +56,18 @@ export class LoginComponent implements OnInit {
   private setAuthStatus(data: boolean) {
     if (data) {
       this.loginError = false;
+      this.teamMemberService.getTeamMember(this.loginForm.get('username').value);
       this.router.navigate(['/home']);
     } else {
       this.loginError = true;
-      // this.logger.error('Login Failed!');
+      console.error('Login Failed!');
     }
   }
 
-  // private toFormGroup() {
-  //   const formGroup = this.fb.group({
-  //     username: [null, [Validators.required, Validators.minLength(4)]],
-  //     password: [null, [Validators.required, Validators.minLength(8)]]
-  //   });
-
-  //   return formGroup;
-  // }
-
   private toFormGroup() {
     const formGroup = this.fb.group({
-      username: ['jsmith'],
-      password: [null]
+      username: [null, [Validators.required, Validators.minLength(4)]],
+      password: [null, [Validators.required, Validators.minLength(8)]]
     });
 
     return formGroup;

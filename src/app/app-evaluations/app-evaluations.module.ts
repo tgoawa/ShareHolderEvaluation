@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import {
   MatButtonModule,
@@ -29,6 +29,7 @@ import { EvaluationsEconomicComponent } from './evaluations-economic/evaluations
 import { EvaluationLineItemComponent } from './shared/evaluation-line-item/evaluation-line-item.component';
 import { EvaluationYearService } from './shared/services/evaluation-year.service';
 import { EvaluationsSignOffComponent } from './evaluations-sign-off/evaluations-sign-off.component';
+import { SignOffComponent } from './evaluations-sign-off/sign-off/sign-off.component';
 
 @NgModule({
   imports: [
@@ -46,6 +47,7 @@ import { EvaluationsSignOffComponent } from './evaluations-sign-off/evaluations-
     MatMenuModule,
     MatSelectModule,
     MatToolbarModule,
+    ReactiveFormsModule
   ],
   declarations: [
     AppEvaluationsComponent,
@@ -59,6 +61,7 @@ import { EvaluationsSignOffComponent } from './evaluations-sign-off/evaluations-
     EvaluationsEconomicComponent,
     EvaluationLineItemComponent,
     EvaluationsSignOffComponent,
+    SignOffComponent,
   ],
   providers: [
     EvaluationYearService

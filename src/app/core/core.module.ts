@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { HttpModule } from '@angular/http';
 import { throwIfAlreadyLoaded } from './module-import.guard';
 import { TeamMemberService } from './services/team-member.service';
+import { LoginService } from './services/login.service';
+import { AuthGuard } from './auth.guard';
 
 @NgModule({
   imports: [
@@ -10,7 +12,7 @@ import { TeamMemberService } from './services/team-member.service';
     HttpModule
   ],
   declarations: [],
-  providers: [TeamMemberService]
+  providers: [LoginService, TeamMemberService, AuthGuard]
 })
 export class CoreModule {
   constructor( @Optional() @SkipSelf() parentModule: CoreModule) {

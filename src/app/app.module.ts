@@ -20,7 +20,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AppHomeComponent } from './app-home/app-home.component';
 import { LoginComponent } from './login/login.component';
-import { LoginService } from './login/service/login.service';
 import { CoreModule } from './core/core.module';
 
 @NgModule({
@@ -42,8 +41,7 @@ import { CoreModule } from './core/core.module';
     ReactiveFormsModule,
   ],
   providers: [
-    { provide: LocationStrategy, useClass: HashLocationStrategy },
-    LoginService
+    { provide: LocationStrategy, useClass: HashLocationStrategy }
   ],
   bootstrap: [AppComponent],
 })

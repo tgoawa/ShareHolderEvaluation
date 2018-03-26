@@ -1,0 +1,10 @@
+<form [formGroup]="signOffForm" (ngSubmit)="onSubmit(signOffForm.value)">
+    <input matInput type="text" placeholder="Shareholder" formControlName="username">
+    <mat-hint>Use your Windows username</mat-hint>
+    <mat-form-field>
+      <input matInput type="password" placeholder="Password">
+      <mat-hint>Use your Windows password</mat-hint>
+      <mat-error>This field is required</mat-error>
+    </mat-form-field>
+    <button mat-button color="primary">Sign Off</button>
+</form>
