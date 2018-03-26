@@ -2,6 +2,7 @@
   <form [formGroup]="goalForm" (ngSubmit)="onSubmit(goalForm.value)">
     <section>
       <h3>Goal Details</h3>
+      <p><app-wig-dropdowns [parentForm]="goalForm" [WIGS]="dropDownData.WIG" *ngIf="goal.GoalTypeId === 4"></app-wig-dropdowns></p>
       <p>
         <mat-form-field>
           <mat-select placeholder="Industry Team" name="industryTeam" formControlName="IndustryTeamId">
@@ -17,7 +18,6 @@
       </p>
       <p>
         <app-competency-dropdowns [parentForm]="goalForm" [competencies]="dropDownData.Competencies" [competencyTypes]="dropDownData.CompetencyTypes" *ngIf="goal.GoalTypeId === 7"></app-competency-dropdowns>
-        <app-wig-dropdowns [parentForm]="goalForm" [WIGS]="dropDownData.WIG" *ngIf="goal.GoalTypeId === 4"></app-wig-dropdowns>
       </p>
       <p>
         <mat-form-field class="half-width">
