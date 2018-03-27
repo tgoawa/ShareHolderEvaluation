@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { TeamMember } from '../core/model/team-member';
+import { TeamMemberService } from '../core/services/team-member.service';
 
 @Component({
   selector: 'app-app-home',
@@ -6,10 +8,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./app-home.component.css']
 })
 export class AppHomeComponent implements OnInit {
-
-  constructor() { }
+  teamMember: TeamMember;
+  constructor(private tmService: TeamMemberService) { }
 
   ngOnInit() {
+    this.tmService.teamMember$.subscribe(data => this.teamMember = data);
   }
 
 }

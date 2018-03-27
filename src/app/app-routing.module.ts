@@ -10,8 +10,12 @@ const routes: Routes = [
   {path: 'home',
     canActivate: [AuthGuard],
     component: AppHomeComponent},
-  {path: 'goals', loadChildren: './app-goals/app-goals.module#AppGoalsModule'},
-  {path: 'evaluations', loadChildren: './app-evaluations/app-evaluations.module#AppEvaluationsModule'}
+  {path: 'goals',
+    canActivate: [AuthGuard],
+    loadChildren: './app-goals/app-goals.module#AppGoalsModule'},
+  {path: 'evaluations',
+    canActivate: [AuthGuard],
+    loadChildren: './app-evaluations/app-evaluations.module#AppEvaluationsModule'}
 ];
 
 @NgModule({
