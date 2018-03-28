@@ -28,7 +28,7 @@ export class ActionItemsComponent implements OnInit, OnChanges {
     const formGroup = this.fb.group({
       ActionId: data.ActionId,
       GoalId: data.GoalId,
-      Action: [data.Action, Validators.required],
+      Action: [data.Action],
       IsDirty: [data.IsDirty],
       IsCompleted: data.IsCompleted,
       DisplayDateDue: data.DisplayDateDue
