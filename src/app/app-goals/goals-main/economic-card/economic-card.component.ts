@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter, AfterViewInit } from '@
 import { DashboardModel, DashboardGoal } from '../model/dashboard.model';
 import { GoalTypeWeightData, GoalWeightModel } from '../model/weight';
 import { GoalsService } from '../../shared/services/goals.service';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-economic-card',
@@ -17,7 +18,7 @@ export class EconomicCardComponent implements OnInit, AfterViewInit {
   totalWeight: number;
   routeName: string;
 
-  constructor(private goalService: GoalsService) { }
+  constructor(private goalService: GoalsService, private snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.routeName = this.data.GoalType.toLocaleLowerCase();
@@ -39,12 +40,19 @@ export class EconomicCardComponent implements OnInit, AfterViewInit {
     return value;
   }
 
+  openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      duration: 2000,
+    });
+  }
+
   updateGoalWeight(goalWeightData: GoalWeightModel) {
     this.goalService.updateEconomicGoalWeight(goalWeightData)
     .subscribe(data => {
       if (data) {
         this.totalWeight = this.calculateTotalWeight();
         this.sendWeightData();
+        this.openSnackBar('Weight updated successfully!', '');
       }
     }, error => {
       console.log('Error updating the weight data');
