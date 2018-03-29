@@ -1,10 +1,10 @@
 <mat-card>
   <section class="text-center">
-    <h3>{{data.GoalType}} Goals</h3>
+    <h3>{{data.GoalType}} <span *ngIf="data.GoalTypeId !== 4">Goals</span></h3>
     <h4>Weight:</h4>
     <p>{{totalWeight}}%</p>
     <br>
-    <a mat-button [routerLink]="route + routeName + '/' + 0" color="primary">View {{data.GoalType}} Goals</a>
+    <a mat-button [routerLink]="route + routeName + '/' + 0" color="primary">View {{data.GoalType}} <span *ngIf="data.GoalTypeId !== 4">Goals</span></a>
   </section>
   <mat-list>
     <mat-list-item *ngFor="let goal of data.Goals">
