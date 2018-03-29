@@ -13,6 +13,7 @@ import {
   MatMenuModule,
   MatIconModule,
   MatGridListModule,
+  MatCheckboxModule,
 } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
@@ -39,6 +40,7 @@ import { SignOffComponent } from './evaluations-sign-off/sign-off/sign-off.compo
     FormsModule,
     MatButtonModule,
     MatCardModule,
+    MatCheckboxModule,
     MatFormFieldModule,
     MatGridListModule,
     MatIconModule,

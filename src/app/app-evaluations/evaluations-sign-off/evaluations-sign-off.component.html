@@ -1,18 +1,11 @@
 <mat-card fxLayout="column" fxLayoutAlign="space-between stretch" fxLayoutGap="20px" class="mat-typography">
   <section class="text-center">
     <h1>Evaluation Sign-off</h1>
-      <b>Shareholder:</b> Smith, John
-      <mat-form-field>
-        <input matInput type="password" placeholder="Password">
-        <mat-hint>Use your Windows password</mat-hint>
-        <mat-error>This field is required</mat-error>
-      </mat-form-field>
+    <mat-checkbox>Shareholder sign-off</mat-checkbox>
       <button mat-button color="primary">Sign Off</button>
       <p>
         <mat-form-field style="font-size: 14px">
-          <mat-select placeholder="PIC Name">
-            <mat-option *ngFor="let pic of picList" [value]="pic.id">{{pic.name}}</mat-option>
-          </mat-select>
+          <input matInput type="text" placeholder="PIC User Name">
         </mat-form-field>
         <mat-form-field>
           <input matInput type="password" placeholder="Password">
@@ -23,9 +16,7 @@
       </p>
       <p>
         <mat-form-field style="font-size: 14px">
-          <mat-select placeholder="Committee Person Name">
-            <mat-option *ngFor="let pic of picList" [value]="pic.id">{{pic.name}}</mat-option>
-          </mat-select>
+          <input matInput type="text" placeholder="Committee User Name">
         </mat-form-field>
         <mat-form-field>
           <input matInput type="password" placeholder="Password">
