@@ -1,22 +1,10 @@
 <mat-card>
   <section class="text-center">
     <h3>{{data.Name}} Evaluations</h3>
-    <h4>Weight:</h4>
-    <p>{{totalScore}}%</p>
+    <p>Committee Weighted Score: 1.4</p>
+    <p>PIC Weighted Score: 1.6</p>
+    <p>Shareholder Weighted Score: 1.8</p>
     <br>
     <a mat-button [routerLink]="route + routeName + '/' + 0" color="primary">View {{data.Name}} Goals</a>
   </section>
-  <mat-list>
-    <mat-list-item *ngFor="let evaluation of data.Evaluations">
-      <h4 mat-line>
-        <a [routerLink]="route + routeName + '/' + evaluation.Id" mat-button color="primary">{{evaluation.Name}}</a>
-      </h4>
-      <mat-form-field class="list-input-width">
-        <mat-select class="text-right" placeholder="Score" [(ngModel)]="evaluation.Score" name="score" (ngModelChange)="updateTotalScore()">
-          <!-- <mat-option *ngFor="let score of scoreValues" [value]="score">{{score}}</mat-option> -->
-        </mat-select>
-        <span matSuffix>%</span>
-      </mat-form-field>
-    </mat-list-item>
-  </mat-list>
 </mat-card>
