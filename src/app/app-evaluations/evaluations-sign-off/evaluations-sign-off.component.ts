@@ -16,4 +16,8 @@ export class EvaluationsSignOffComponent implements OnInit {
   ngOnInit() {
   }
 
+  verifyEvalComplete() {
+
+  }
+
 }
