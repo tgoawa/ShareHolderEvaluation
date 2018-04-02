@@ -25,6 +25,13 @@ export class MainCardComponent implements OnInit, AfterViewInit {
     // this.sendScoreData();
   }
 
+  calculateWeightedScore(weight: number, enteredScore: number): number {
+    const multiplier = weight * .01;
+    let score = 0;
+    score = enteredScore * multiplier;
+    return score;
+  }
+
   // sendScoreData() {
   //   this.outputData = new ScoreData(this.data.EvaluationTypeId, this.totalScore);
   //   this.evalScoreData.emit(this.outputData);
