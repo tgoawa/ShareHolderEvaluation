@@ -7,11 +7,11 @@
   <section>
     text goes here
   </section>
-  <section fxLayout="row" fxLayoutAlign="space-between start" *ngIf="dashboardModels; else loading">
-    <app-main-card [data]="dashboardModels[1]" [route]="'/goals/'" (goalWeightData)="assignWeightTotal($event)" fxFlex="24"></app-main-card>
-    <app-main-card [data]="dashboardModels[0]" [route]="'/goals/'" (goalWeightData)="assignWeightTotal($event)" fxFlex="24"></app-main-card>
-    <app-main-card [data]="dashboardModels[2]" [route]="'/goals/'" (goalWeightData)="assignWeightTotal($event)" fxFlex="24"></app-main-card>
-    <app-economic-card [data]="dashboardModels[3]" [route]="'/goals/'" (goalWeightData)="assignWeightTotal($event)" fxFlex="24"></app-economic-card>
+  <section fxLayout="row" fxLayoutAlign="start" fxLayoutGap="10px" *ngIf="dashboardModels; else loading">
+    <app-main-card [data]="dashboardModels[1]" [route]="'/goals/'" (goalWeightData)="assignWeightTotal($event)" fxFlex="grow"></app-main-card>
+    <app-main-card [data]="dashboardModels[0]" [route]="'/goals/'" (goalWeightData)="assignWeightTotal($event)" fxFlex="grow"></app-main-card>
+    <app-main-card [data]="dashboardModels[2]" [route]="'/goals/'" (goalWeightData)="assignWeightTotal($event)" fxFlex="grow"></app-main-card>
+    <app-economic-card [data]="dashboardModels[3]" [route]="'/goals/'" (goalWeightData)="assignWeightTotal($event)" fxFlex="grow"></app-economic-card>
   </section>
   <ng-template #loading>
     <div fxLayout="column" fxLayoutAlign="center center">

@@ -9,6 +9,7 @@ import { Evaluations } from '../models/evaluations';
 })
 export class MainCardComponent implements OnInit, AfterViewInit {
   @Input() data: Evaluations;
+  @Input() name: string;
   @Input() route: string;
   @Output() evalScoreData: EventEmitter<ScoreData> = new EventEmitter<ScoreData>();
   outputData: ScoreData;
@@ -17,7 +18,7 @@ export class MainCardComponent implements OnInit, AfterViewInit {
   constructor() { }
 
   ngOnInit() {
-    this.routeName = this.data.Name.toLocaleLowerCase();
+    this.routeName = this.name.toLocaleLowerCase();
   }
 
   ngAfterViewInit() {

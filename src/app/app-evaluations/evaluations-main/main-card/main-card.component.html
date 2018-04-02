@@ -1,10 +1,12 @@
 <mat-card>
   <section class="text-center">
-    <h3>{{data.Name}} Evaluations</h3>
-    <p>Committee Weighted Score: 1.4</p>
-    <p>PIC Weighted Score: 1.6</p>
-    <p>Shareholder Weighted Score: 1.8</p>
+    <h3>{{name}} Evaluations</h3>
+    <mat-list role="list">
+      <mat-list-item>Committee Weighted Score: 1.4</mat-list-item>
+      <mat-list-item>PIC Weighted Score: 1.6</mat-list-item>
+      <mat-list-item>Shareholder Weighted Score: 1.8</mat-list-item>
+    </mat-list>
     <br>
-    <a mat-button [routerLink]="route + routeName + '/' + 0" color="primary">View {{data.Name}} Goals</a>
+    <a mat-button [routerLink]="route + routeName" color="primary">View {{name}} Evaluation</a>
   </section>
 </mat-card>
