@@ -13,10 +13,6 @@ const api = environment.envApi;
 export class GoalsService {
   constructor(private http: Http) {}
 
-  getCompetencyGoals(id: number) {
-    return this.http.get(api + 'GoalService/GetCompetencyGoals/' + id)
-      .map(response => response.json(), error => console.log(error));
-  }
 
   getDashboardGoals(teamMemberId: number, year: number) {
     return this.http.get(api + 'ShareholderService/GetDashboardModel/' + teamMemberId + '/' + year)
@@ -35,11 +31,6 @@ export class GoalsService {
 
   getShareholderReview(id: number, year: number) {
     return this.http.get(api + 'ShareholderService/GetSHReview/' + id + '/' + year)
-      .map(response => response.json(), error => console.log(error));
-  }
-
-  getWIGGoals(id: number) {
-    return this.http.get(api + 'GoalService/GetWigGoals/' + id)
       .map(response => response.json(), error => console.log(error));
   }
 
