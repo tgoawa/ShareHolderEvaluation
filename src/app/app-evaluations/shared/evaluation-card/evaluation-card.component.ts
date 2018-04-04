@@ -1,6 +1,8 @@
 import { Component, Input, ChangeDetectionStrategy, OnChanges, OnInit } from '@angular/core';
 import { EvaluationItem, EvaluationData } from '../models/Evaluation';
 import { ScoreDictionary } from '../models/score-dictionary';
+import { TeamMemberService } from '../../../core/services/team-member.service';
+import { TeamMember } from '../../../core/model/team-member';
 
 @Component({
   selector: 'app-evaluation-card',
@@ -22,6 +24,7 @@ export class EvaluationCardComponent implements OnInit, OnChanges {
   calculatedPicScore: number;
   calculatedCommitteeScore: number;
   currentScore = 10;
+  teamMember: TeamMember;
   selfUseScore: number;
   picUseScore: number;
   committeeUseScore: number;
@@ -30,9 +33,10 @@ export class EvaluationCardComponent implements OnInit, OnChanges {
   private picScoreDictionary: ScoreDictionary[] = [];
   private committeeScoreDictionary: ScoreDictionary[] = [];
 
-  constructor() { }
+  constructor(private tmService: TeamMemberService) { }
 
   ngOnInit() {
+    this.tmService.teamMember$.subscribe(data => this.teamMember = data);
     this.selfUseScore = this.evaluation.SelfUseScore;
     this.picUseScore = this.evaluation.PICUseScore;
     this.committeeUseScore = this.evaluation.CommitteeUseScore;
