@@ -59,7 +59,6 @@ export class GoalBaseComponent implements OnInit {
 
   onSaveGoal(savedGoal: GoalData) {
     console.log('Goal Saved!');
-    // this.goals.push(savedGoal);
     this.getGoals(this.teamMemberId, this.goalTypeId, this.year);
   }
 
