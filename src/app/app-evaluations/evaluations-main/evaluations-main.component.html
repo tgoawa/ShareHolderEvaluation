@@ -6,6 +6,12 @@
     </mat-form-field>
     <h2 class="text-center">Total Committee Score:</h2>
   </section>
+  <section fxLayout="row" fxLayoutAlign="start start">
+      <div fxFlex="66">
+          <p>This dashboard reflects the areas in which you, your PIC, and the committee will evaluate your accomplishments with regard to last year’s goals.  While there are four goal areas this year (WIG, Competency, Leadership and Economic), this evaluation area reflects only the areas in which you have established goals. For example, if you had WIG and Economic Goals, you will only see those two areas. If you had WIG, Competency and Economic goals, you will see all three areas.  Leadership is not formally part of this year’s evaluation process; however, it is taken into consideration during the overall evaluation and review process. The Leadership goal(s) you enter this year will be reflected in next year’s evaluation process.</p>
+          <p>The scores you see on this dashboard will be automatically populated when data is entered in each evaluation area.</p>
+      </div>
+    </section>
   <section fxLayout="row" fxLayoutAlign="start" fxLayoutGap="10px">
     <div fxFlex="grow" class="text-center">
       <app-main-card [route]="'/evaluations/'" [name]="'WIG'"></app-main-card>

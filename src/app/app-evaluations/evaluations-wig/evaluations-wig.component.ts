@@ -6,7 +6,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./evaluations-wig.component.css']
 })
 export class EvaluationsWigComponent implements OnInit {
-
   constructor() { }
 
   ngOnInit() {
