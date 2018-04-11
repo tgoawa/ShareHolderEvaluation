@@ -4,8 +4,11 @@
     <h2>Dashboard</h2>
     <h2>Total Goal Weight: {{totalWeight}}%</h2>
   </section>
-  <section>
-    text goes here
+  <section fxLayout="row" fxLayoutAlign="start start">
+    <div fxFlex="66">
+        <p>Below is your dashboard reflecting the four areas in which you will be evaluated and their respective weights.  As you enter goals, the weight you assign to each goal will be automatically populated to this dashboard.  In the upper right corner (by the welcome) is a year with a drop down arrow.  Please select the fiscal year in which you will be working.  Once you have selected the year, click on the blue “View XX Goals” in the respective section you will be adding goals.  Additional instructions are available when you access each section. Also, the menu bar running along the top of the page has clickable links that allow you to toggle between the different goals, your dashboard, and the review meeting area.</p>
+        <p>When considering your goals, it is better to have a few specific and measurable goals that you can focus on during the year. Having too many goals spreads your time and energy too thin and you end up not making any progress outside the daily whirlwind.  Also, consider your and your team’s commitment to the firm WIGs and Sub WIGs and how your competencies, leadership and economic goals align with the WIGs.</p>
+    </div>
   </section>
   <section fxLayout="row" fxLayoutAlign="start" fxLayoutGap="10px" *ngIf="dashboardModels; else loading">
     <app-main-card [data]="dashboardModels[1]" [route]="'/goals/'" (goalWeightData)="assignWeightTotal($event)" fxFlex="grow"></app-main-card>
