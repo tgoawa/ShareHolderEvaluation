@@ -18,8 +18,8 @@ export interface CompetencyType {
 }
 
 export interface ServiceLine {
-  DisplayName: string;
-  Id: number;
+  ServiceLine: string;
+  ServiceLineId: number;
 }
 
 export interface WIG {
