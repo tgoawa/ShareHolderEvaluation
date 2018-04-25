@@ -2,7 +2,7 @@
   <section class="text-center">
     <h1>Shareholder Goals</h1>
     <h2>Dashboard</h2>
-    <h2>Total Goal Weight: {{totalWeight}}%</h2>
+    <h2>Total Goal Weight: <span [ngClass]="{'red': totalWeight > 100, 'yellow': totalWeight < 100, 'green': totalWeight === 100}">{{totalWeight}}%</span></h2>
   </section>
   <!-- <section fxLayout="row" fxLayoutAlign="start start">
     <div>
