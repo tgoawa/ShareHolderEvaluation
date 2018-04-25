@@ -16,7 +16,7 @@
     </mat-select>
   </mat-form-field>
   <mat-form-field fxFlex="10">
-    <mat-select placeholder="PIC" [(ngModel)]="itemPicScore" (selectionChange)="onPicScoreChange()">
+    <mat-select placeholder="PIC/Practice Leader" [(ngModel)]="itemPicScore" (selectionChange)="onPicScoreChange()">
       <mat-option *ngFor="let rating of ratings" [value]="rating">
         {{ rating }}
       </mat-option>
