@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ChangeDetectorRef } from '@angular/core';
 
 import { Goals } from './model/goals';
 import { GoalTypeWeightData } from './model/weight';
@@ -19,7 +19,7 @@ export class GoalsMainComponent implements OnInit {
   teamMemberId = 1936;
   year: number;
 
-  constructor(private goalService: GoalsService, private yearService: YearSelectionService) { }
+  constructor(private goalService: GoalsService, private yearService: YearSelectionService, private cd: ChangeDetectorRef) { }
 
   ngOnInit() {
     this.totalWeight = 0;
@@ -55,6 +55,7 @@ export class GoalsMainComponent implements OnInit {
       }
     }
     this.totalWeight = this.calculateTotalWeight();
+    this.cd.detectChanges();
   }
 
   calculateTotalWeight() {
