@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, ChangeDetectionStrategy, Output, EventEmitter } from '@angular/core';
-import { EvaluationItem } from '../models/Evaluation';
+import { GoalEvaluation } from '../models/Evaluation';
 import { ScoreDictionary } from '../models/score-dictionary';
 
 @Component({
@@ -9,7 +9,7 @@ import { ScoreDictionary } from '../models/score-dictionary';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class EvaluationLineItemComponent implements OnInit {
-  @Input() evalItem: EvaluationItem;
+  @Input() evalItem: GoalEvaluation;
   @Output() selfScore: EventEmitter<ScoreDictionary> = new EventEmitter<ScoreDictionary>();
   @Output() picScore: EventEmitter<ScoreDictionary> = new EventEmitter<ScoreDictionary>();
   @Output() committeeScore: EventEmitter<ScoreDictionary> = new EventEmitter<ScoreDictionary>();
@@ -26,11 +26,11 @@ export class EvaluationLineItemComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.itemId = this.evalItem.ItemId;
+    this.itemId = this.evalItem.GoalEvaluationId;
     this.itemName = this.evalItem.GoalName;
-    this.comments = this.evalItem.Comments;
+    this.comments = this.evalItem.EvaluationNote;
     this.weight = this.evalItem.GoalWeight;
-    this.itemSelfScore = this.evalItem.SelfScore;
+    this.itemSelfScore = this.evalItem.ShareHolderScore;
     this.itemPicScore = this.evalItem.PICScore;
     this.itemCommitteeScore = this.evalItem.CommitteeScore;
   }

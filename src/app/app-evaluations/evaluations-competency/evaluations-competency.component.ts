@@ -1,41 +1,40 @@
 import { Component, OnInit } from '@angular/core';
-import { EvaluationData } from '../shared/models/Evaluation';
+import { GoalTypeEvaluation } from '../shared/models/Evaluation';
 
-const data: EvaluationData = {
-  EvaluationTypeId: 1,
+const data: GoalTypeEvaluation = {
+  GoalTypeEvaluationId: 1,
   EvaluationItems: [
     {
-      ItemId: 1,
+      GoalEvaluationId: 1,
       GoalName: 'Test Goal 1',
-      Comments: 'Test comment 1',
+      EvaluationNote: 'Test comment 1',
       GoalWeight: 10,
-      SelfScore: 6,
+      ShareHolderScore: 6,
       PICScore: 5,
       CommitteeScore: 6
     },
     {
-      ItemId: 2,
+      GoalEvaluationId: 2,
       GoalName: 'Test Goal 2',
-      Comments: 'Test comment 2',
+      EvaluationNote: 'Test comment 2',
       GoalWeight: 5,
-      SelfScore: 5,
+      ShareHolderScore: 5,
       PICScore: 6,
       CommitteeScore: 6
     },
     {
-      ItemId: 3,
+      GoalEvaluationId: 3,
       GoalName: 'Test Goal 3',
-      Comments: 'Test comment 3',
+      EvaluationNote: 'Test comment 3',
       GoalWeight: 5,
-      SelfScore: 7,
+      ShareHolderScore: 7,
       PICScore: 8,
       CommitteeScore: 6
     }
   ],
-  SelfUseScore: 1,
-  PICUseScore: 1,
-  CommitteeUseScore: 1,
-  FinalUseScore: 1
+  ShareHolderScore: 1,
+  PICScore: 1,
+  CommitteeScore: 1
 };
 
 @Component({
@@ -45,7 +44,7 @@ const data: EvaluationData = {
 })
 
 export class EvaluationsCompetencyComponent implements OnInit {
-  evalData: EvaluationData;
+  evalData: GoalTypeEvaluation;
   constructor() { }
 
   ngOnInit() {

@@ -1,18 +1,34 @@
-export interface EvaluationData {
-  EvaluationTypeId: number;
-  EvaluationItems: EvaluationItem[];
-  SelfUseScore: number;
-  PICUseScore: number;
-  CommitteeUseScore: number;
-  FinalUseScore: number;
+export interface EvaluationModel {
+  EvaluationId: number;
+  TeamMemberId: number;
+  EvaluationScore: number;
+  IsShareholderSignOff: boolean;
+  IsPICSignOff: boolean;
+  IsCommitteeSignOff: boolean;
+  EvaluationYear: number;
+  PowerLevelId: number;
+  EvaluationTypes: GoalTypeEvaluation[];
 }
 
-export interface EvaluationItem {
-  ItemId: number;
+export interface GoalTypeEvaluation {
+  GoalTypeEvaluationId: number;
+  EvaluationId: number;
+  GoalTypeId: number;
+  EvaluationItems: GoalEvaluation[];
+  ShareHolderScore: number;
+  PICScore: number;
+  CommitteeScore: number;
+  GoalTypeTotalWeight: number;
+}
+
+export interface GoalEvaluation {
+  GoalEvaluationId: number;
+  GoalTypeEvaluationId: number;
+  GoalId: number;
   GoalName: string;
-  Comments: string;
+  EvaluationNote: string;
   GoalWeight: number;
-  SelfScore: number;
+  ShareHolderScore: number;
   PICScore: number;
   CommitteeScore: number;
 }

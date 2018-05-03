@@ -1,5 +1,5 @@
 import { Component, Input, ChangeDetectionStrategy, OnChanges, OnInit } from '@angular/core';
-import { EvaluationItem, EvaluationData } from '../models/Evaluation';
+import { GoalEvaluation, GoalTypeEvaluation } from '../models/Evaluation';
 import { ScoreDictionary } from '../models/score-dictionary';
 import { TeamMemberService } from '../../../core/services/team-member.service';
 import { TeamMember } from '../../../core/model/team-member';
@@ -12,7 +12,7 @@ import { TeamMember } from '../../../core/model/team-member';
 })
 export class EvaluationCardComponent implements OnInit, OnChanges {
   @Input() title: string;
-  @Input() evaluation: EvaluationData;
+  @Input() evaluation: GoalTypeEvaluation;
   scores = [
     10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0
   ];
@@ -37,9 +37,9 @@ export class EvaluationCardComponent implements OnInit, OnChanges {
 
   ngOnInit() {
     this.tmService.teamMember$.subscribe(data => this.teamMember = data);
-    this.selfUseScore = this.evaluation.SelfUseScore;
-    this.picUseScore = this.evaluation.PICUseScore;
-    this.committeeUseScore = this.evaluation.CommitteeUseScore;
+    this.selfUseScore = this.evaluation.ShareHolderScore;
+    this.picUseScore = this.evaluation.PICScore;
+    this.committeeUseScore = this.evaluation.CommitteeScore;
     this.createScoreDictionaries(this.evaluation.EvaluationItems);
     this.averageSelfScore = this.calculateAverageScore(this.selfScoreDictionary);
     this.averagePicScore = this.calculateAverageScore(this.picScoreDictionary);
@@ -117,7 +117,7 @@ export class EvaluationCardComponent implements OnInit, OnChanges {
     return score;
   }
 
-  private calculateTotalWeight(evalItems: EvaluationItem[]) {
+  private calculateTotalWeight(evalItems: GoalEvaluation[]) {
     let weight = 0;
     for (let x = 0; x < evalItems.length; x++) {
       weight = weight + evalItems[x].GoalWeight;
@@ -125,11 +125,11 @@ export class EvaluationCardComponent implements OnInit, OnChanges {
     return weight;
   }
 
-  private createScoreDictionaries(evalItems: EvaluationItem[]) {
+  private createScoreDictionaries(evalItems: GoalEvaluation[]) {
     for (let x = 0; x < evalItems.length; x++) {
-      this.selfScoreDictionary.push(this.createScoreDictionary(evalItems[x].ItemId, evalItems[x].SelfScore));
-      this.picScoreDictionary.push(this.createScoreDictionary(evalItems[x].ItemId, evalItems[x].PICScore));
-      this.committeeScoreDictionary.push(this.createScoreDictionary(evalItems[x].ItemId, evalItems[x].CommitteeScore));
+      this.selfScoreDictionary.push(this.createScoreDictionary(evalItems[x].GoalEvaluationId, evalItems[x].SelfScore));
+      this.picScoreDictionary.push(this.createScoreDictionary(evalItems[x].GoalEvaluationId, evalItems[x].PICScore));
+      this.committeeScoreDictionary.push(this.createScoreDictionary(evalItems[x].GoalEvaluationId, evalItems[x].CommitteeScore));
     }
   }
 
