@@ -2,9 +2,9 @@
   <section class="text-center">
     <h3>{{name}} Evaluations</h3>
     <mat-list role="list">
-      <mat-list-item>Final Review Score: <span class="spacer"></span>1.4</mat-list-item>
-      <mat-list-item>PIC/Practice Leader Score: <span class="spacer"></span>1.6</mat-list-item>
-      <mat-list-item>Shareholder Score: <span class="spacer"></span>1.8</mat-list-item>
+      <mat-list-item>Final Review Score: <span class="spacer"></span>{{finalReviewScore}}</mat-list-item>
+      <mat-list-item>PIC/Practice Leader Score: <span class="spacer"></span>{{picScore}}</mat-list-item>
+      <mat-list-item>Shareholder Score: <span class="spacer"></span>{{shareholderScore}}</mat-list-item>
     </mat-list>
     <br>
     <a mat-button [routerLink]="route + routeName" color="primary">View {{name}} Evaluation</a>

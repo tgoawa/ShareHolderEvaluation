@@ -37,7 +37,7 @@ export class EvaluationCardComponent implements OnInit, OnChanges {
 
   ngOnInit() {
     this.tmService.teamMember$.subscribe(data => this.teamMember = data);
-    this.selfUseScore = this.evaluation.ShareHolderScore;
+    this.selfUseScore = this.evaluation.ShareholderScore;
     this.picUseScore = this.evaluation.PICScore;
     this.committeeUseScore = this.evaluation.CommitteeScore;
     this.createScoreDictionaries(this.evaluation.EvaluationItems);

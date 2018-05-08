@@ -1,6 +1,6 @@
-import { Component, OnInit, Input, EventEmitter, Output, AfterViewInit } from '@angular/core';
-import { ScoreData } from '../models/score';
-import { Evaluations } from '../models/evaluations';
+import { Component, OnInit, Input, EventEmitter, Output, AfterViewInit, ChangeDetectorRef } from '@angular/core';
+import { GoalTypeEvaluation } from '../../shared/models/Evaluation';
+
 
 @Component({
   selector: 'app-main-card',
@@ -8,21 +8,24 @@ import { Evaluations } from '../models/evaluations';
   styleUrls: ['./main-card.component.css']
 })
 export class MainCardComponent implements OnInit, AfterViewInit {
-  @Input() data: Evaluations;
+  @Input() data: GoalTypeEvaluation;
   @Input() name: string;
   @Input() route: string;
-  @Output() evalScoreData: EventEmitter<ScoreData> = new EventEmitter<ScoreData>();
-  outputData: ScoreData;
   routeName: string;
-
-  constructor() { }
+  shareholderScore: number;
+  picScore: number;
+  finalReviewScore: number;
+  constructor(private cd: ChangeDetectorRef) { }
 
   ngOnInit() {
     this.routeName = this.name.toLocaleLowerCase();
   }
 
   ngAfterViewInit() {
-    // this.sendScoreData();
+    this.finalReviewScore = this.calculateWeightedScore(this.data.GoalTypeTotalWeight, this.data.CommitteeScore);
+    this.picScore = this.calculateWeightedScore(this.data.GoalTypeTotalWeight, this.data.PICScore);
+    this.shareholderScore = this.calculateWeightedScore(this.data.GoalTypeTotalWeight, this.data.ShareholderScore);
+    this.cd.detectChanges();
   }
 
   calculateWeightedScore(weight: number, enteredScore: number): number {
@@ -31,10 +34,5 @@ export class MainCardComponent implements OnInit, AfterViewInit {
     score = enteredScore * multiplier;
     return score;
   }
-
-  // sendScoreData() {
-  //   this.outputData = new ScoreData(this.data.EvaluationTypeId, this.totalScore);
-  //   this.evalScoreData.emit(this.outputData);
-  // }
 
 }

@@ -15,18 +15,18 @@
           <p>The scores you see on this dashboard will be automatically populated when data is entered in each evaluation area.</p>
       </div>
     </section> -->
-  <section fxLayout="row" fxLayoutAlign="start" fxLayoutGap="10px">
+  <section fxLayout="row" fxLayoutAlign="start" fxLayoutGap="10px" *ngIf="evaluationData">
     <div fxFlex="grow" class="text-center">
-      <app-main-card [route]="'/evaluations/'" [name]="'WIG'"></app-main-card>
+      <app-main-card [route]="'/evaluations/'" [name]="'WIG'" [data]="evaluationData?.EvaluationTypes[0]"></app-main-card>
     </div>
     <div fxFlex="grow" class="text-center">
-      <app-main-card [route]="'/evaluations/'" [name]="'Competency'"></app-main-card>
+      <app-main-card [route]="'/evaluations/'" [name]="'Competency'" [data]="evaluationData?.EvaluationTypes[1]"></app-main-card>
     </div>
     <div fxFlex="grow" class="text-center">
-      <app-main-card [route]="'/evaluations/'" [name]="'Leadership'"></app-main-card>
+      <app-main-card [route]="'/evaluations/'" [name]="'Leadership'" [data]="evaluationData?.EvaluationTypes[2]"></app-main-card>
     </div>
     <div fxFlex="grow" class="text-center">
-      <app-main-card [route]="'/evaluations/'" [name]="'Economic'"></app-main-card>
+      <app-main-card [route]="'/evaluations/'" [name]="'Economic'" [data]="evaluationData?.EvaluationTypes[3]"></app-main-card>
     </div>
   </section>
 </div>

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ScoreData } from './models/score';
 import { YearSelectionService } from '../../core/services/year-selection.service';
 import { EvaluationService } from '../shared/services/evaluation.service';
 import { EvaluationModel } from '../shared/models/Evaluation';
@@ -11,9 +10,7 @@ import { EvaluationModel } from '../shared/models/Evaluation';
 })
 export class EvaluationsMainComponent implements OnInit {
   totalScore: Number;
-  evalationData: EvaluationModel;
-  evalScoreData: ScoreData;
-  scoreDataDictionary: ScoreData[];
+  evaluationData: EvaluationModel;
   teamMemberId = 1936;
   year: number;
   constructor(private yearService: YearSelectionService, private evaluationService: EvaluationService) { }
@@ -28,7 +25,7 @@ export class EvaluationsMainComponent implements OnInit {
   getEvaluations(teamMemberId: number, year: number) {
     this.evaluationService.getEvaluationModel(teamMemberId, year)
     .subscribe(data => {
-      this.evalationData = data;
+      this.evaluationData = data;
     }, error => {
       console.error('Could not bind evaluation model to view');
     });

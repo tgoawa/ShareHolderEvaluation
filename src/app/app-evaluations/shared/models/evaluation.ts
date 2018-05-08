@@ -15,7 +15,7 @@ export interface GoalTypeEvaluation {
   EvaluationId: number;
   GoalTypeId: number;
   EvaluationItems: GoalEvaluation[];
-  ShareHolderScore: number;
+  ShareholderScore: number;
   PICScore: number;
   CommitteeScore: number;
   GoalTypeTotalWeight: number;
