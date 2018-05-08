@@ -30,6 +30,7 @@ import { EvaluationsEconomicComponent } from './evaluations-economic/evaluations
 import { EvaluationLineItemComponent } from './shared/evaluation-line-item/evaluation-line-item.component';
 import { EvaluationsSignOffComponent } from './evaluations-sign-off/evaluations-sign-off.component';
 import { SignOffComponent } from './evaluations-sign-off/sign-off/sign-off.component';
+import { EvaluationService } from './shared/services/evaluation.service';
 
 @NgModule({
   imports: [
@@ -65,6 +66,7 @@ import { SignOffComponent } from './evaluations-sign-off/sign-off/sign-off.compo
     SignOffComponent,
   ],
   providers: [
+    EvaluationService
   ]
 })
 export class AppEvaluationsModule {}

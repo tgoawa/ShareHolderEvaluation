@@ -11,7 +11,9 @@ export class EvaluationService {
 
   constructor(private http: Http) { }
 
-  getEvaluations() {
+  getEvaluationModel(teamMemberId: number, year: number) {
+    return this.http.get(api + 'EvaluationService/GetEvaluationModel/' + teamMemberId + '/' + year )
+    .map(response => response.json(), error => console.log(error));
   }
 
 }
