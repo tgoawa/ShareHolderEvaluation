@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { EvaluationYearService } from '../shared/services/evaluation-year.service';
 import { TeamMember } from '../../core/model/team-member';
 import { TeamMemberService } from '../../core/services/team-member.service';
+import { YearSelectionService } from '../../core/services/year-selection.service';
 
 @Component({
   selector: 'app-evaluations-header',
@@ -13,7 +13,7 @@ export class EvaluationsHeaderComponent implements OnInit {
   evalYears: number[] = [2018, 2017];
   teamMember: TeamMember;
 
-  constructor(private evaluationYear: EvaluationYearService, private tmService: TeamMemberService) { }
+  constructor(private evaluationYear: YearSelectionService, private tmService: TeamMemberService) { }
 
   ngOnInit() {
     this.tmService.teamMember$.subscribe(data => this.teamMember = data);

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { YearSelectionService } from '../shared/services/year-selection.service';
 import { TeamMember } from '../../core/model/team-member';
 import { Observable } from 'rxjs/Observable';
 import { TeamMemberService } from '../../core/services/team-member.service';
+import { YearSelectionService } from '../../core/services/year-selection.service';
 
 @Component({
   selector: 'app-goals-header',

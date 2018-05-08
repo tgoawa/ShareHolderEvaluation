@@ -28,7 +28,6 @@ import { EvaluationsWigComponent } from './evaluations-wig/evaluations-wig.compo
 import { EvaluationsLeadershipComponent } from './evaluations-leadership/evaluations-leadership.component';
 import { EvaluationsEconomicComponent } from './evaluations-economic/evaluations-economic.component';
 import { EvaluationLineItemComponent } from './shared/evaluation-line-item/evaluation-line-item.component';
-import { EvaluationYearService } from './shared/services/evaluation-year.service';
 import { EvaluationsSignOffComponent } from './evaluations-sign-off/evaluations-sign-off.component';
 import { SignOffComponent } from './evaluations-sign-off/sign-off/sign-off.component';
 
@@ -66,7 +65,6 @@ import { SignOffComponent } from './evaluations-sign-off/sign-off/sign-off.compo
     SignOffComponent,
   ],
   providers: [
-    EvaluationYearService
   ]
 })
 export class AppEvaluationsModule {}

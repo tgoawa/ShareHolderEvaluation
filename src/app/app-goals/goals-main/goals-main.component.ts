@@ -5,7 +5,7 @@ import { GoalTypeWeightData } from './model/weight';
 import { GoalsService } from '../shared/services/goals.service';
 import { DashboardModel } from './model/dashboard.model';
 import { Observable } from 'rxjs/Observable';
-import { YearSelectionService } from '../shared/services/year-selection.service';
+import { YearSelectionService } from '../../core/services/year-selection.service';
 
 @Component({
   selector: 'app-goals-main',

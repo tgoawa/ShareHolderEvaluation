@@ -5,6 +5,7 @@ import { throwIfAlreadyLoaded } from './module-import.guard';
 import { TeamMemberService } from './services/team-member.service';
 import { LoginService } from './services/login.service';
 import { AuthGuard } from './auth.guard';
+import { YearSelectionService } from './services/year-selection.service';
 
 @NgModule({
   imports: [
@@ -12,7 +13,7 @@ import { AuthGuard } from './auth.guard';
     HttpModule
   ],
   declarations: [],
-  providers: [LoginService, TeamMemberService, AuthGuard]
+  providers: [LoginService, TeamMemberService, AuthGuard, YearSelectionService]
 })
 export class CoreModule {
   constructor( @Optional() @SkipSelf() parentModule: CoreModule) {

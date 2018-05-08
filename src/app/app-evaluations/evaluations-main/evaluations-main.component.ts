@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Evaluations } from './models/evaluations';
 import { ScoreData } from './models/score';
+import { YearSelectionService } from '../../core/services/year-selection.service';
 
 @Component({
   selector: 'app-evaluations-main',
@@ -12,9 +13,13 @@ export class EvaluationsMainComponent implements OnInit {
   evaluations: Evaluations[];
   evalScoreData: ScoreData;
   scoreDataDictionary: ScoreData[];
-  constructor() { }
+  year: number;
+  constructor(private yearService: YearSelectionService) { }
 
   ngOnInit() {
+    this.yearService.selectedYear$.subscribe(data => {
+      this.year = data;
+    });
   }
 
   getEvaluations() {

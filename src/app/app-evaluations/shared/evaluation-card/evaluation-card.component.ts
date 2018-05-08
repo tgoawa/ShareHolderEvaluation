@@ -127,7 +127,7 @@ export class EvaluationCardComponent implements OnInit, OnChanges {
 
   private createScoreDictionaries(evalItems: GoalEvaluation[]) {
     for (let x = 0; x < evalItems.length; x++) {
-      this.selfScoreDictionary.push(this.createScoreDictionary(evalItems[x].GoalEvaluationId, evalItems[x].SelfScore));
+      this.selfScoreDictionary.push(this.createScoreDictionary(evalItems[x].GoalEvaluationId, evalItems[x].ShareHolderScore));
       this.picScoreDictionary.push(this.createScoreDictionary(evalItems[x].GoalEvaluationId, evalItems[x].PICScore));
       this.committeeScoreDictionary.push(this.createScoreDictionary(evalItems[x].GoalEvaluationId, evalItems[x].CommitteeScore));
     }
