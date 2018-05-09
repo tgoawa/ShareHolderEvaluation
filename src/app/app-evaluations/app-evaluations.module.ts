@@ -14,6 +14,7 @@ import {
   MatIconModule,
   MatGridListModule,
   MatCheckboxModule,
+  MatProgressSpinnerModule,
 } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
@@ -48,6 +49,7 @@ import { EvaluationService } from './shared/services/evaluation.service';
     MatListModule,
     MatMenuModule,
     MatSelectModule,
+    MatProgressSpinnerModule,
     MatToolbarModule,
     ReactiveFormsModule
   ],

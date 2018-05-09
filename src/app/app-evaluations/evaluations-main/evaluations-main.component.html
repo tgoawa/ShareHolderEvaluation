@@ -15,7 +15,7 @@
           <p>The scores you see on this dashboard will be automatically populated when data is entered in each evaluation area.</p>
       </div>
     </section> -->
-  <section fxLayout="row" fxLayoutAlign="start" fxLayoutGap="10px" *ngIf="evaluationData?.EvaluationTypes">
+  <section fxLayout="row" fxLayoutAlign="start" fxLayoutGap="10px" *ngIf="evaluationData?.EvaluationTypes; else loading">
     <div fxFlex="grow" class="text-center">
       <app-main-card [route]="'/evaluations/'" [name]="'WIG'" [data]="evaluationData?.EvaluationTypes[1]"></app-main-card>
     </div>
@@ -29,4 +29,9 @@
       <app-main-card [route]="'/evaluations/'" [name]="'Economic'" [data]="evaluationData?.EvaluationTypes[3]"></app-main-card>
     </div>
   </section>
+  <ng-template #loading>
+    <div fxLayout="column" fxLayoutAlign="center center">
+      <mat-spinner></mat-spinner>
+    </div>
+  </ng-template>
 </div>
