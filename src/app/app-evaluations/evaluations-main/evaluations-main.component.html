@@ -15,7 +15,7 @@
           <p>The scores you see on this dashboard will be automatically populated when data is entered in each evaluation area.</p>
       </div>
     </section> -->
-  <section fxLayout="row" fxLayoutAlign="start" fxLayoutGap="10px" *ngIf="evaluationData">
+  <section fxLayout="row" fxLayoutAlign="start" fxLayoutGap="10px">
     <div fxFlex="grow" class="text-center">
       <app-main-card [route]="'/evaluations/'" [name]="'WIG'" [data]="evaluationData?.EvaluationTypes[0]"></app-main-card>
     </div>

@@ -25,7 +25,7 @@
     </div>
   </section>
   <section>
-    <app-evaluation-line-item *ngFor="let evalItem of evaluation?.EvaluationItems" [evalItem]="evalItem" (selfScore)="selfScoreChanged($event)" (picScore)="picScoreChanged($event)" (committeeScore)="committeeScoreChanged($event)"></app-evaluation-line-item>
+    <app-evaluation-line-item *ngFor="let evalItem of evaluation?.GoalEvaluations" [evalItem]="evalItem" (selfScore)="selfScoreChanged($event)" (picScore)="picScoreChanged($event)" (committeeScore)="committeeScoreChanged($event)"></app-evaluation-line-item>
   </section>
   <section fxLayout="row" fxLayoutGap="20px">
     <span class="spacer"></span>

@@ -19,6 +19,10 @@ export class AuthGuard implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): boolean {
+      if (!this.teamMember) {
+        this.router.navigate(['login']);
+        return false;
+      }
       if (!this.teamMember.IsShareHolder) {
         // this.router.navigate(['login']);
         return true;

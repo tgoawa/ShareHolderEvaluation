@@ -18,16 +18,10 @@ export class EvaluationsMainComponent implements OnInit {
   ngOnInit() {
     this.yearService.selectedYear$.subscribe(data => {
       this.year = data;
-      this.getEvaluations(this.teamMemberId, this.year);
+      this.evaluationService.getEvaluationModel(this.teamMemberId, this.year);
     });
-  }
-
-  getEvaluations(teamMemberId: number, year: number) {
-    this.evaluationService.getEvaluationModel(teamMemberId, year)
-    .subscribe(data => {
+    this.evaluationService.evaluationModel$.subscribe(data => {
       this.evaluationData = data;
-    }, error => {
-      console.error('Could not bind evaluation model to view');
     });
   }
 
