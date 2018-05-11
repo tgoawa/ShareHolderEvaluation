@@ -27,4 +27,9 @@ export class EvaluationService {
     }, error => console.error('Could not load evaluations'));
   }
 
+  getEconomicGoals(teamMemberId: number, year: number) {
+    return this.http.get(api + 'GoalService/getEconomicGoals/' + teamMemberId + '/' + year)
+    .map(response => response.json(), error => console.log(error));
+  }
+
 }
