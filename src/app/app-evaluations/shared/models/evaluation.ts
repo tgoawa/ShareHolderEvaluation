@@ -31,4 +31,5 @@ export interface GoalEvaluation {
   ShareHolderScore: number;
   PICScore: number;
   CommitteeScore: number;
+
 }

@@ -16,43 +16,32 @@ export class EvaluationLineItemComponent implements OnInit {
   @Output() picScore: EventEmitter<ScoreDictionary> = new EventEmitter<ScoreDictionary>();
   @Output() committeeScore: EventEmitter<ScoreDictionary> = new EventEmitter<ScoreDictionary>();
 
-  itemId: number;
-  itemName: string;
-  comments: string;
-  weight: number;
-  itemSelfScore: number;
-  itemPicScore: number;
-  itemCommitteeScore: number;
-
   ratings = [ 10, 9, 8, 7, 6, 5, 4, 3, 2 , 1];
   constructor(private evaluationService: EvaluationService, public snackBar: MatSnackBar) { }
 
   ngOnInit() {
-    this.itemId = this.evalItem.GoalEvaluationId;
-    this.itemName = this.evalItem.GoalName;
-    this.comments = this.evalItem.EvaluationNote;
-    this.weight = this.evalItem.GoalWeight;
-    this.itemSelfScore = this.evalItem.ShareHolderScore;
-    this.itemPicScore = this.evalItem.PICScore;
-    this.itemCommitteeScore = this.evalItem.CommitteeScore;
+
   }
 
   onSelfScoreChange() {
     const outputData = new ScoreDictionary();
-    outputData.id = this.itemId;
-    outputData.value = this.itemSelfScore;
+    outputData.id = this.evalItem.GoalEvaluationId;
+    outputData.value = this.evalItem.ShareHolderScore;
+    this.updateEvaluation();
     this.selfScore.emit(outputData);
   }
   onPicScoreChange() {
     const outputData = new ScoreDictionary();
-    outputData.id = this.itemId;
-    outputData.value = this.itemPicScore;
+    outputData.id = this.evalItem.GoalEvaluationId;
+    outputData.value = this.evalItem.PICScore;
+    this.updateEvaluation();
     this.picScore.emit(outputData);
   }
   onCommitteeScoreChange() {
     const outputData = new ScoreDictionary();
-    outputData.id = this.itemId;
-    outputData.value = this.itemCommitteeScore;
+    outputData.id = this.evalItem.GoalEvaluationId;
+    outputData.value = this.evalItem.CommitteeScore;
+    this.updateEvaluation();
     this.committeeScore.emit(outputData);
   }
 
@@ -62,8 +51,8 @@ export class EvaluationLineItemComponent implements OnInit {
     });
   }
 
-  updateEvaluation(evalItem: GoalEvaluation) {
-    this.evaluationService.updateEvaluationGoal(evalItem)
+  updateEvaluation() {
+    this.evaluationService.updateEvaluationGoal(this.evalItem)
     .subscribe(data => {
       if (data) {
         this.openSnackBar('Score update saved!', '');

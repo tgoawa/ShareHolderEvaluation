@@ -1,29 +1,29 @@
 <section fxLayout="row" fxLayoutGap="20px">
   <mat-form-field fxFlex="15">
-    <input matInput placeholder="SH Goal" disabled [value]="itemName">
+    <input matInput placeholder="SH Goal" disabled [value]="evalItem.GoalEvaluationId">
   </mat-form-field>
   <mat-form-field fxFlex="50">
-    <textarea matInput [(ngModel)]="comments" placeholder="Comments" matTextareaAutosize matAutosizeMinRows="1" matAutosizeMaxRows="5"></textarea>
+    <textarea matInput [(ngModel)]="evalItem.EvaluationNote" placeholder="Comments" matTextareaAutosize matAutosizeMinRows="1" matAutosizeMaxRows="5"></textarea>
   </mat-form-field>
   <mat-form-field fxFlex="5">
-    <input matInput placeholder="Weight" disabled [value]="weight">
+    <input matInput placeholder="Weight" disabled [value]="evalItem.GoalWeight">
   </mat-form-field>
   <mat-form-field fxFlex="10">
-    <mat-select placeholder="Self" [(ngModel)]="itemSelfScore" (selectionChange)="onSelfScoreChange()">
+    <mat-select placeholder="Self" [(ngModel)]="evalItem.ShareHolderScore" (selectionChange)="onSelfScoreChange()">
       <mat-option *ngFor="let rating of ratings" [value]="rating">
         {{ rating }}
       </mat-option>
     </mat-select>
   </mat-form-field>
   <mat-form-field fxFlex="10">
-    <mat-select placeholder="PIC/Practice Leader" [(ngModel)]="itemPicScore" (selectionChange)="onPicScoreChange()">
+    <mat-select placeholder="PIC/Practice Leader" [(ngModel)]="evalItem.PICScore" (selectionChange)="onPicScoreChange()">
       <mat-option *ngFor="let rating of ratings" [value]="rating">
         {{ rating }}
       </mat-option>
     </mat-select>
   </mat-form-field>
   <mat-form-field fxFlex="10">
-    <mat-select placeholder="Committee" [(ngModel)]="itemCommitteeScore" (selectionChange)="onCommitteeScoreChange()">
+    <mat-select placeholder="Committee" [(ngModel)]="evalItem.CommitteeScore" (selectionChange)="onCommitteeScoreChange()">
       <mat-option *ngFor="let rating of ratings" [value]="rating">
         {{ rating }}
       </mat-option>
