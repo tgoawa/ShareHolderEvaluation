@@ -4,6 +4,9 @@
       <h3>Goal Details</h3>
       <p><app-wig-dropdowns [parentForm]="goalForm" [WIGS]="dropDownData.WIG" *ngIf="goal.GoalTypeId === 4"></app-wig-dropdowns></p>
       <p>
+        <app-competency-dropdowns [parentForm]="goalForm" [competencies]="dropDownData.Competencies" [competencyTypes]="dropDownData.CompetencyTypes" *ngIf="goal.GoalTypeId === 7"></app-competency-dropdowns>
+      </p>
+      <p>
         <mat-form-field>
           <mat-select placeholder="Industry Team" name="industryTeam" formControlName="IndustryTeamId">
             <mat-option *ngFor="let industryTeam of industryTeams" [value]="industryTeam.id">{{industryTeam.value}}</mat-option>
@@ -15,9 +18,6 @@
             <mat-option *ngFor="let service of dropDownData.ServiceLines" [value]="service.ServiceLineId">{{service.ServiceLine}}</mat-option>
           </mat-select>
         </mat-form-field>
-      </p>
-      <p>
-        <app-competency-dropdowns [parentForm]="goalForm" [competencies]="dropDownData.Competencies" [competencyTypes]="dropDownData.CompetencyTypes" *ngIf="goal.GoalTypeId === 7"></app-competency-dropdowns>
       </p>
       <p>
         <mat-form-field class="half-width">
