@@ -51,7 +51,7 @@ export class EvaluationLineItemComponent implements OnInit {
     });
   }
 
-  updateEvaluation() {
+  private updateEvaluation() {
     this.evaluationService.updateEvaluationGoal(this.evalItem)
     .subscribe(data => {
       if (data) {

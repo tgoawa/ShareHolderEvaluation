@@ -3,6 +3,8 @@ import { GoalEvaluation, GoalTypeEvaluation } from '../models/Evaluation';
 import { ScoreDictionary } from '../models/score-dictionary';
 import { TeamMemberService } from '../../../core/services/team-member.service';
 import { TeamMember } from '../../../core/model/team-member';
+import { EvaluationService } from '../services/evaluation.service';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-evaluation-card',
@@ -33,18 +35,14 @@ export class EvaluationCardComponent implements OnInit, OnChanges {
   private picScoreDictionary: ScoreDictionary[] = [];
   private committeeScoreDictionary: ScoreDictionary[] = [];
 
-  constructor(private tmService: TeamMemberService) { }
+  constructor(private tmService: TeamMemberService, private evaluationService: EvaluationService, public snackBar: MatSnackBar) { }
 
   ngOnInit() {
 
   }
 
   ngOnChanges() {
-    // this.totalWeight = this.calculateTotalWeight(this.evaluation.EvaluationItems);
     this.tmService.teamMember$.subscribe(data => this.teamMember = data);
-    this.selfUseScore = this.evaluation.ShareholderScore;
-    this.picUseScore = this.evaluation.PICScore;
-    this.committeeUseScore = this.evaluation.CommitteeScore;
     this.createScoreDictionaries(this.evaluation.GoalEvaluations);
     this.averageSelfScore = this.calculateAverageScore(this.selfScoreDictionary);
     this.averagePicScore = this.calculateAverageScore(this.picScoreDictionary);
@@ -64,14 +62,17 @@ export class EvaluationCardComponent implements OnInit, OnChanges {
 
   selfUseScoreChanged(useScore: number) {
     this.calculatedSelfScore = this.calculateScore(useScore);
+    this.updateGoalTypeEvaluation();
   }
 
   picUseScoreChanged(useScore: number) {
     this.calculatedPicScore = this.calculateScore(useScore);
+    this.updateGoalTypeEvaluation();
   }
 
   committeeUseScoreChanged(useScore: number) {
     this.calculatedCommitteeScore = this.calculateScore(useScore);
+    this.updateGoalTypeEvaluation();
   }
 
   selfScoreChanged(val: ScoreDictionary) {
@@ -102,6 +103,12 @@ export class EvaluationCardComponent implements OnInit, OnChanges {
       }
     }
     this.averageCommitteeScore = this.calculateAverageScore(this.committeeScoreDictionary);
+  }
+
+  openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      duration: 2000,
+    });
   }
 
   private calculateAverageScore(scoreData: ScoreDictionary[]) {
@@ -140,6 +147,18 @@ export class EvaluationCardComponent implements OnInit, OnChanges {
     scoreDictionary.id = itemId;
     scoreDictionary.value = score;
     return scoreDictionary;
+  }
+
+  private updateGoalTypeEvaluation() {
+    this.evaluationService.updateEvaluationGoalType(this.evaluation)
+    .subscribe(data => {
+      if (data) {
+        this.openSnackBar('Score update saved!', '');
+      }
+    }, error => {
+      console.error(error);
+      this.openSnackBar('Error updating score. Score was not saved!', '');
+    });
   }
 
 }

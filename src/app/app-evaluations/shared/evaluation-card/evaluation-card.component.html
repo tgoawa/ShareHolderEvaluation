@@ -30,7 +30,7 @@
   <section fxLayout="row" fxLayoutGap="20px">
     <span class="spacer"></span>
     <mat-form-field fxFlex="5">
-      <input matInput placeholder="Total Weight" [value]="totalWeight" disabled>
+      <input matInput placeholder="Total Weight" [value]="evaluation.GoalTypeTotalWeight" disabled>
     </mat-form-field>
     <mat-form-field fxFlex="10">
       <input matInput placeholder="Average Self Score" [value]="averageSelfScore | number : '1.0-1'" disabled>
@@ -45,21 +45,21 @@
   <section fxLayout="row" fxLayoutGap="20px">
     <span class="spacer"></span>
     <mat-form-field fxFlex="10">
-      <mat-select placeholder="Self Use Score" [(ngModel)]="selfUseScore" (selectionChange)="selfUseScoreChanged($event.value)">
+      <mat-select placeholder="Self Use Score" [(ngModel)]="evaluation.ShareholderScore" (selectionChange)="selfUseScoreChanged($event.value)">
         <mat-option *ngFor="let score of scores" [value]="score">
           {{ score }}
         </mat-option>
       </mat-select>
     </mat-form-field>
     <mat-form-field fxFlex="10">
-      <mat-select placeholder="PIC Use Score" [(ngModel)]="picUseScore" (selectionChange)="picUseScoreChanged($event.value)">
+      <mat-select placeholder="PIC Use Score" [(ngModel)]="evaluation.PICScore" (selectionChange)="picUseScoreChanged($event.value)">
         <mat-option *ngFor="let score of scores" [value]="score">
           {{ score }}
         </mat-option>
       </mat-select>
     </mat-form-field>
     <mat-form-field fxFlex="10">
-      <mat-select placeholder="Consensus Use Score" [(ngModel)]="committeeUseScore" (selectionChange)="committeeUseScoreChanged($event.value)">
+      <mat-select placeholder="Consensus Use Score" [(ngModel)]="evaluation.CommitteeScore" (selectionChange)="committeeUseScoreChanged($event.value)">
         <mat-option *ngFor="let score of scores" [value]="score">
           {{ score }}
         </mat-option>
