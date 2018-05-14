@@ -59,7 +59,7 @@
       </mat-select>
     </mat-form-field>
     <mat-form-field fxFlex="10">
-      <mat-select placeholder="Committee Use Score" [(ngModel)]="committeeUseScore" (selectionChange)="committeeUseScoreChanged($event.value)">
+      <mat-select placeholder="Consensus Use Score" [(ngModel)]="committeeUseScore" (selectionChange)="committeeUseScoreChanged($event.value)">
         <mat-option *ngFor="let score of scores" [value]="score">
           {{ score }}
         </mat-option>
@@ -75,7 +75,7 @@
       <input matInput placeholder="Weighted PIC Score" [value]="calculatedPicScore | number : '1.0-1'" disabled>
     </mat-form-field>
     <mat-form-field fxFlex="10">
-      <input matInput placeholder="Weighted Committee Score" [value]="calculatedCommitteeScore | number : '1.0-1'" disabled>
+      <input matInput placeholder="Weighted Consensus Score" [value]="calculatedCommitteeScore | number : '1.0-1'" disabled>
     </mat-form-field>
   </section>
 </mat-card>

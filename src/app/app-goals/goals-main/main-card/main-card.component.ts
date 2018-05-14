@@ -12,6 +12,7 @@ import { MatSnackBar } from '@angular/material';
 })
 export class MainCardComponent implements OnInit, AfterViewInit {
   @Input() data: DashboardModel;
+  @Input() title: string;
   @Input() route: string;
   @Output() goalWeightData: EventEmitter<GoalTypeWeightData> = new EventEmitter<GoalTypeWeightData>();
   weightValues: number[] = [5, 10, 15, 20, 25, 30, 35, 40];
