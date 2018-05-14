@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/Observable';
 
 import 'rxjs/add/operator/map';
 import { environment } from '../../../../environments/environment';
-import { EvaluationModel } from '../models/Evaluation';
+import { EvaluationModel, GoalEvaluation } from '../models/Evaluation';
 
 const api = environment.envApi;
 
@@ -30,6 +30,11 @@ export class EvaluationService {
   getEconomicGoals(teamMemberId: number, year: number) {
     return this.http.get(api + 'GoalService/getEconomicGoals/' + teamMemberId + '/' + year)
     .map(response => response.json(), error => console.log(error));
+  }
+
+  updateEvaluationGoal(evaluationGoal: GoalEvaluation) {
+    return this.http.put(api + 'EvaluationService/updateEvaluationGoal/', evaluationGoal)
+    .map(response => response.json(), error => console.error(error));
   }
 
 }

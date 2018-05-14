@@ -1,6 +1,8 @@
 import { Component, OnInit, Input, ChangeDetectionStrategy, Output, EventEmitter } from '@angular/core';
 import { GoalEvaluation } from '../models/Evaluation';
 import { ScoreDictionary } from '../models/score-dictionary';
+import { EvaluationService } from '../services/evaluation.service';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-evaluation-line-item',
@@ -23,7 +25,7 @@ export class EvaluationLineItemComponent implements OnInit {
   itemCommitteeScore: number;
 
   ratings = [ 10, 9, 8, 7, 6, 5, 4, 3, 2 , 1];
-  constructor() { }
+  constructor(private evaluationService: EvaluationService, public snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.itemId = this.evalItem.GoalEvaluationId;
@@ -52,6 +54,24 @@ export class EvaluationLineItemComponent implements OnInit {
     outputData.id = this.itemId;
     outputData.value = this.itemCommitteeScore;
     this.committeeScore.emit(outputData);
+  }
+
+  openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      duration: 2000,
+    });
+  }
+
+  updateEvaluation(evalItem: GoalEvaluation) {
+    this.evaluationService.updateEvaluationGoal(evalItem)
+    .subscribe(data => {
+      if (data) {
+        this.openSnackBar('Score update saved!', '');
+      }
+    }, error => {
+      console.error(error);
+      this.openSnackBar('Error updating score. Score was not saved!', '');
+    });
   }
 
 }
