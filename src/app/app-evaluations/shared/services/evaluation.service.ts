@@ -32,6 +32,11 @@ export class EvaluationService {
     .map(response => response.json(), error => console.log(error));
   }
 
+  getPowerLevels() {
+    return this.http.get(api + 'EvaluationService/GetPowerLevels/')
+    .map(response => response.json(), error => console.error(error));
+  }
+
   updateEvaluationGoal(evaluationGoal: GoalEvaluation) {
     return this.http.put(api + 'EvaluationService/updateEvaluationGoal/', evaluationGoal)
     .map(response => response.json(), error => console.error(error));
