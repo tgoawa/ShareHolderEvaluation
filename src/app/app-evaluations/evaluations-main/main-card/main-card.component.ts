@@ -11,9 +11,12 @@ export class MainCardComponent implements OnInit, AfterViewInit {
   @Input() data: GoalTypeEvaluation;
   @Input() name: string;
   @Input() route: string;
+  @Output() consensusScore: EventEmitter<Number> = new EventEmitter<Number>();
+  @Output() picScore: EventEmitter<Number> = new EventEmitter<Number>();
+  @Output() shareholderScore: EventEmitter<Number> = new EventEmitter<Number>();
   routeName: string;
-  shareholderScore: number;
-  picScore: number;
+  finalShareHolderScore: number;
+  finalPicScore: number;
   finalReviewScore: number;
   constructor(private cd: ChangeDetectorRef) { }
 
@@ -23,8 +26,11 @@ export class MainCardComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     this.finalReviewScore = this.calculateWeightedScore(this.data.GoalTypeTotalWeight, this.data.CommitteeScore);
-    this.picScore = this.calculateWeightedScore(this.data.GoalTypeTotalWeight, this.data.PICScore);
-    this.shareholderScore = this.calculateWeightedScore(this.data.GoalTypeTotalWeight, this.data.ShareholderScore);
+    this.finalPicScore = this.calculateWeightedScore(this.data.GoalTypeTotalWeight, this.data.PICScore);
+    this.finalShareHolderScore = this.calculateWeightedScore(this.data.GoalTypeTotalWeight, this.data.ShareholderScore);
+    this.consensusScore.emit(this.finalReviewScore);
+    this.picScore.emit(this.finalPicScore);
+    this.shareholderScore.emit(this.finalShareHolderScore);
     this.cd.detectChanges();
   }
 

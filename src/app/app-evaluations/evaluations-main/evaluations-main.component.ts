@@ -10,7 +10,9 @@ import { Observable } from 'rxjs/Observable';
   styleUrls: ['./evaluations-main.component.css']
 })
 export class EvaluationsMainComponent implements OnInit {
-  totalScore: Number;
+  totalConsensusScore: Number;
+  totalPicScore: Number;
+  totalShareholderScore: Number;
   evaluationData: EvaluationModel;
   teamMemberId = 1936;
   year: number;
