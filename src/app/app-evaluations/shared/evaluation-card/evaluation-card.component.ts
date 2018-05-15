@@ -42,15 +42,15 @@ export class EvaluationCardComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges() {
+    this.totalWeight = this.evaluation.GoalTypeTotalWeight;
     this.tmService.teamMember$.subscribe(data => this.teamMember = data);
     this.createScoreDictionaries(this.evaluation.GoalEvaluations);
     this.averageSelfScore = this.calculateAverageScore(this.selfScoreDictionary);
     this.averagePicScore = this.calculateAverageScore(this.picScoreDictionary);
     this.averageCommitteeScore = this.calculateAverageScore(this.committeeScoreDictionary);
-    this.calculatedSelfScore = this.calculateScore(this.selfUseScore);
-    this.calculatedPicScore = this.calculateScore(this.picUseScore);
-    this.calculatedCommitteeScore = this.calculateScore(this.committeeUseScore);
-    this.totalWeight = this.evaluation.GoalTypeTotalWeight;
+    this.calculatedSelfScore = this.calculateScore(this.evaluation.ShareholderScore);
+    this.calculatedPicScore = this.calculateScore(this.evaluation.PICScore);
+    this.calculatedCommitteeScore = this.calculateScore(this.evaluation.CommitteeScore);
   }
 
   calculateScore(useScore: number) {
