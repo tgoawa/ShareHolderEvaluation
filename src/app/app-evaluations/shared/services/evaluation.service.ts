@@ -38,7 +38,7 @@ export class EvaluationService {
   }
 
   updateEvaluationGoalType(goalTypeEvaluation: GoalTypeEvaluation) {
-    return this.http.put(api + 'EvaluationService/updateEvaluationGoal/', goalTypeEvaluation)
+    return this.http.put(api + 'EvaluationService/updateEvaluationGoalType/', goalTypeEvaluation)
     .map(response => response.json(), error => console.error(error));
   }
 
