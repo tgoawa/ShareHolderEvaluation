@@ -41,7 +41,7 @@ export class GoalBaseComponent implements OnInit {
       this.year = data;
       this.getGoals(this.teamMemberId, this.goalTypeId, this.year);
     });
-    this.getDropdownLists();
+    this.getDropdownLists(this.year);
   }
 
   onSetExistingGoal(goal: GoalData) {
@@ -117,11 +117,11 @@ export class GoalBaseComponent implements OnInit {
     );
   }
 
-  private getDropdownLists() {
+  private getDropdownLists(year: Number) {
     this.getCompetencies();
     this.getCompetencyTypes();
     this.getServiceLines();
-    this.getWigs();
+    this.getWigs(year);
   }
 
   private getGoals(id: number, goalTypeId: number, year: number) {
@@ -148,8 +148,8 @@ export class GoalBaseComponent implements OnInit {
     );
   }
 
-  private getWigs() {
-    this.dropService.getWIGs().subscribe(
+  private getWigs(year: Number) {
+    this.dropService.getWIGs(year).subscribe(
       data => {
         this.dropdownLists.WIG = data;
       },

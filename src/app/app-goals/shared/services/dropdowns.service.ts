@@ -48,8 +48,8 @@ export class DropdownsService {
     .map(response => response.json(), error => console.log(error));
   }
 
-  getWIGs() {
-    return this.http.get(api + 'GoalService/GetGoalWIGs/')
+  getWIGs(year: Number) {
+    return this.http.get(api + 'GoalService/GetGoalWIGs/' + year)
     .map(response => response.json(), error => console.log(error));
   }
 }
