@@ -7,9 +7,9 @@
     <mat-form-field>
       <mat-select placeholder="Rating"></mat-select>
     </mat-form-field>
-    <h2 class="text-center">Total Shareholder Score:</h2>
-    <h2 class="text-center">Total PIC/Practice Leader Score:</h2>
-    <h2 class="text-center">Total Consensus Score:</h2>
+    <h2 class="text-center">Total Shareholder Score: {{totalShareholderScore | number : '1.0-1'}}</h2>
+    <h2 class="text-center">Total PIC/Practice Leader Score: {{totalPicScore | number : '1.0-1'}}</h2>
+    <h2 class="text-center">Total Consensus Score: {{totalConsensusScore | number : '1.0-1'}}</h2>
   </section>
   <!-- <section fxLayout="row" fxLayoutAlign="start start">
       <div>
@@ -19,16 +19,16 @@
     </section> -->
   <section fxLayout="row" fxLayoutAlign="start" fxLayoutGap="10px" *ngIf="evaluationData?.EvaluationTypes; else loading">
     <div fxFlex="grow" class="text-center">
-      <app-main-card [route]="'/evaluations/'" [name]="'WIG'" [data]="evaluationData?.EvaluationTypes[1]"></app-main-card>
+      <app-main-card [route]="'/evaluations/'" [name]="'WIG'" [data]="evaluationData?.EvaluationTypes[1]" (shareholderScore)="addToShareholderScoreArray($event)" (picScore)="addToPICScoreArray($event)" (consensusScore)="addToConsensusScoreArray($event)"></app-main-card>
     </div>
     <div fxFlex="grow" class="text-center">
-      <app-main-card [route]="'/evaluations/'" [name]="'Personal Competency'" [data]="evaluationData?.EvaluationTypes[0]"></app-main-card>
+      <app-main-card [route]="'/evaluations/'" [name]="'Personal Competency'" [data]="evaluationData?.EvaluationTypes[0]" (shareholderScore)="addToShareholderScoreArray($event)" (picScore)="addToPICScoreArray($event)" (consensusScore)="addToConsensusScoreArray($event)"></app-main-card>
     </div>
     <div fxFlex="grow" class="text-center">
-      <app-main-card [route]="'/evaluations/'" [name]="'Firm Leadership'" [data]="evaluationData?.EvaluationTypes[2]"></app-main-card>
+      <app-main-card [route]="'/evaluations/'" [name]="'Firm Leadership'" [data]="evaluationData?.EvaluationTypes[2]" (shareholderScore)="addToShareholderScoreArray($event)" (picScore)="addToPICScoreArray($event)" (consensusScore)="addToConsensusScoreArray($event)"></app-main-card>
     </div>
     <div fxFlex="grow" class="text-center">
-      <app-main-card [route]="'/evaluations/'" [name]="'Personal Economic'" [data]="evaluationData?.EvaluationTypes[3]"></app-main-card>
+      <app-main-card [route]="'/evaluations/'" [name]="'Personal Economic'" [data]="evaluationData?.EvaluationTypes[3]" (shareholderScore)="addToShareholderScoreArray($event)" (picScore)="addToPICScoreArray($event)" (consensusScore)="addToConsensusScoreArray($event)"></app-main-card>
     </div>
   </section>
   <ng-template #loading>

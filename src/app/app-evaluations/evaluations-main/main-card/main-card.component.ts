@@ -34,7 +34,7 @@ export class MainCardComponent implements OnInit, AfterViewInit {
     this.cd.detectChanges();
   }
 
-  calculateWeightedScore(weight: number, enteredScore: number): number {
+  private calculateWeightedScore(weight: number, enteredScore: number): number {
     const multiplier = weight * .01;
     let score = 0;
     score = enteredScore * multiplier;

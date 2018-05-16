@@ -6,7 +6,7 @@ import { Observable } from 'rxjs/Observable';
 export class YearSelectionService {
   selectedYear$: Observable<number>;
   evalYears: number[] = [2019, 2018, 2017];
-  private _selectedYear = new BehaviorSubject<number>(2019);
+  private _selectedYear = new BehaviorSubject<number>(2018);
 
   constructor() {
     this.selectedYear$ = this._selectedYear.asObservable();
