@@ -11,10 +11,10 @@
     </div>
   </section> -->
   <section fxLayout="row" fxLayoutAlign="start" fxLayoutGap="10px" *ngIf="dashboardModels; else loading">
-    <app-main-card [title]="'WIG'" [data]="dashboardModels[1]" [route]="'/goals/'" (goalWeightData)="assignWeightTotal($event)" fxFlex="grow"></app-main-card>
-    <app-main-card [title]="'Personal Competency'" [data]="dashboardModels[0]" [route]="'/goals/'" (goalWeightData)="assignWeightTotal($event)" fxFlex="grow"></app-main-card>
-    <app-main-card [title]="'Firm Leadership'"[data]="dashboardModels[2]" [route]="'/goals/'" (goalWeightData)="assignWeightTotal($event)" fxFlex="grow"></app-main-card>
-    <app-economic-card [data]="dashboardModels[3]" [route]="'/goals/'" (goalWeightData)="assignWeightTotal($event)" fxFlex="grow"></app-economic-card>
+    <app-main-card [title]="'WIG'" [data]="dashboardModels[1]" [route]="'/goals/'" (goalWeightData)="assignWeightTotal($event)" fxFlex="25"></app-main-card>
+    <app-main-card [title]="'Personal Competency'" [data]="dashboardModels[0]" [route]="'/goals/'" (goalWeightData)="assignWeightTotal($event)" fxFlex="25"></app-main-card>
+    <app-main-card [title]="'Firm Leadership'"[data]="dashboardModels[2]" [route]="'/goals/'" (goalWeightData)="assignWeightTotal($event)" fxFlex="25"></app-main-card>
+    <app-economic-card [data]="dashboardModels[3]" [route]="'/goals/'" (goalWeightData)="assignWeightTotal($event)" fxFlex="25"></app-economic-card>
   </section>
   <ng-template #loading>
     <div fxLayout="column" fxLayoutAlign="center center">
