@@ -38,6 +38,11 @@ export class EvaluationService {
     .map(response => response.json(), error => console.error(error));
   }
 
+  updateEvaluation(evaluation: EvaluationModel) {
+    return this.http.put(api + 'EvaluationService/updateEvaluation/', evaluation)
+    .map(response => response.json(), error => console.error(error));
+  }
+
   updateEvaluationGoal(evaluationGoal: GoalEvaluation) {
     return this.http.put(api + 'EvaluationService/updateEvaluationGoal/', evaluationGoal)
     .map(response => response.json(), error => console.error(error));

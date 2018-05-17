@@ -3,6 +3,7 @@ import { YearSelectionService } from '../../core/services/year-selection.service
 import { EvaluationService } from '../shared/services/evaluation.service';
 import { EvaluationModel } from '../shared/models/Evaluation';
 import { Observable } from 'rxjs/Observable';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-evaluations-main',
@@ -17,11 +18,13 @@ export class EvaluationsMainComponent implements OnInit {
   picScoreArray: number[];
   consensusScoreArray: number[];
   evaluationData: EvaluationModel;
+  scores: number[];
   teamMemberId = 1936;
   year: number;
-  constructor(private yearService: YearSelectionService, private evaluationService: EvaluationService) { }
+  constructor(private yearService: YearSelectionService, private evaluationService: EvaluationService, public snackBar: MatSnackBar) { }
 
   ngOnInit() {
+    this.scores = this.evaluationService.evaluationRatings;
     this.yearService.selectedYear$.subscribe(data => {
       this.year = data;
       this.evaluationService.getEvaluationModel(this.teamMemberId, this.year);
@@ -48,6 +51,24 @@ export class EvaluationsMainComponent implements OnInit {
   addToConsensusScoreArray(score: number) {
     this.consensusScoreArray.push(score);
     this.totalConsensusScore = this.addTotalScore(this.consensusScoreArray);
+  }
+
+  finalScoreChanged() {
+    this.evaluationService.updateEvaluation(this.evaluationData)
+    .subscribe(data => {
+      if (data) {
+        this.openSnackBar('Score update saved!', '');
+      }
+    }, error => {
+      console.error(error);
+      this.openSnackBar('Error updating score. Score was not saved!', '');
+    });
+  }
+
+  openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      duration: 2000,
+    });
   }
 
   private addTotalScore(scoreArray: number[]): number {

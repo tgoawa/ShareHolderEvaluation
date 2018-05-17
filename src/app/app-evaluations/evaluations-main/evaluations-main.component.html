@@ -2,7 +2,11 @@
   <section class="text-center">
     <h1>Evaluation</h1>
     <mat-form-field>
-      <mat-select placeholder="Final Score"></mat-select>
+      <mat-select placeholder="Final Score" [(ngModel)]="evaluationData.EvaluationScore" (selectionChange)="finalScoreChanged()">
+          <mat-option *ngFor="let score of scores" [value]="score">
+              {{ score }}
+            </mat-option>
+      </mat-select>
     </mat-form-field>
     <mat-form-field>
       <mat-select placeholder="Rating"></mat-select>
