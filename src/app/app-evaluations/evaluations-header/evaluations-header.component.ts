@@ -17,7 +17,7 @@ export class EvaluationsHeaderComponent implements OnInit {
   constructor(private evaluationYear: YearSelectionService, private tmService: TeamMemberService, private router: Router) { }
 
   ngOnInit() {
-    this.evalYears = this.evaluationYear.goalYears;
+    this.evalYears = this.evaluationYear.evalYears;
     this.tmService.teamMember$.subscribe(data => {
       this.teamMember = data;
       if (this.teamMember === null) {
