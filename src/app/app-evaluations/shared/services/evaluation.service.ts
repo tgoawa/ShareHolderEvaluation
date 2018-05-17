@@ -12,6 +12,7 @@ const api = environment.envApi;
 @Injectable()
 export class EvaluationService {
   evaluationModel$: Observable<EvaluationModel>;
+  evaluationRatings = [ 10, 9, 8, 7, 6, 5, 4, 3, 2 , 1];
   private _evaluationModel: BehaviorSubject<EvaluationModel>;
 
   constructor(private http: Http) {

@@ -15,9 +15,7 @@ import { MatSnackBar } from '@angular/material';
 export class EvaluationCardComponent implements OnInit, OnChanges {
   @Input() title: string;
   @Input() evaluation: GoalTypeEvaluation;
-  scores = [
-    10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0
-  ];
+  scores: number[];
 
   averageSelfScore: number;
   averagePicScore: number;
@@ -38,7 +36,7 @@ export class EvaluationCardComponent implements OnInit, OnChanges {
   constructor(private tmService: TeamMemberService, private evaluationService: EvaluationService, public snackBar: MatSnackBar) { }
 
   ngOnInit() {
-
+    this.scores = this.evaluationService.evaluationRatings;
   }
 
   ngOnChanges() {

@@ -16,11 +16,11 @@ export class EvaluationLineItemComponent implements OnInit {
   @Output() picScore: EventEmitter<ScoreDictionary> = new EventEmitter<ScoreDictionary>();
   @Output() committeeScore: EventEmitter<ScoreDictionary> = new EventEmitter<ScoreDictionary>();
 
-  ratings = [ 10, 9, 8, 7, 6, 5, 4, 3, 2 , 1];
+  ratings: number[];
   constructor(private evaluationService: EvaluationService, public snackBar: MatSnackBar) { }
 
   ngOnInit() {
-
+    this.ratings = this.evaluationService.evaluationRatings;
   }
 
   onSelfScoreChange() {
