@@ -23,7 +23,7 @@ export class GoalsHeaderComponent implements OnInit {
   }
 
   setYear(year: number) {
-    this.yearService.setEvaluationYear(year);
+    this.yearService.setGoalYear(year);
   }
 
 }
