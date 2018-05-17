@@ -4,7 +4,7 @@ export interface EvaluationModel {
   EvaluationScore: number;
   IsShareholderSignOff: boolean;
   IsPICSignOff: boolean;
-  IsCommitteeSignOff: boolean;
+  IsConsensusSignOff: boolean;
   EvaluationYear: number;
   PowerLevelId: number;
   EvaluationTypes: GoalTypeEvaluation[];
@@ -17,7 +17,7 @@ export interface GoalTypeEvaluation {
   GoalEvaluations: GoalEvaluation[];
   ShareholderScore: number;
   PICScore: number;
-  CommitteeScore: number;
+  ConsensusScore: number;
   GoalTypeTotalWeight: number;
 }
 
@@ -30,6 +30,6 @@ export interface GoalEvaluation {
   GoalWeight: number;
   ShareHolderScore: number;
   PICScore: number;
-  CommitteeScore: number;
+  ConsensusScore: number;
 
 }

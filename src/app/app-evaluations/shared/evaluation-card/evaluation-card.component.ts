@@ -48,7 +48,7 @@ export class EvaluationCardComponent implements OnInit, OnChanges {
     this.averageCommitteeScore = this.calculateAverageScore(this.committeeScoreDictionary);
     this.calculatedSelfScore = this.calculateScore(this.evaluation.ShareholderScore);
     this.calculatedPicScore = this.calculateScore(this.evaluation.PICScore);
-    this.calculatedCommitteeScore = this.calculateScore(this.evaluation.CommitteeScore);
+    this.calculatedCommitteeScore = this.calculateScore(this.evaluation.ConsensusScore);
   }
 
   calculateScore(useScore: number) {
@@ -136,7 +136,7 @@ export class EvaluationCardComponent implements OnInit, OnChanges {
     for (let x = 0; x < evalItems.length; x++) {
       this.selfScoreDictionary.push(this.createScoreDictionary(evalItems[x].GoalEvaluationId, evalItems[x].ShareHolderScore));
       this.picScoreDictionary.push(this.createScoreDictionary(evalItems[x].GoalEvaluationId, evalItems[x].PICScore));
-      this.committeeScoreDictionary.push(this.createScoreDictionary(evalItems[x].GoalEvaluationId, evalItems[x].CommitteeScore));
+      this.committeeScoreDictionary.push(this.createScoreDictionary(evalItems[x].GoalEvaluationId, evalItems[x].ConsensusScore));
     }
   }
 

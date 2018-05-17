@@ -40,7 +40,7 @@ export class EvaluationLineItemComponent implements OnInit {
   onCommitteeScoreChange() {
     const outputData = new ScoreDictionary();
     outputData.id = this.evalItem.GoalEvaluationId;
-    outputData.value = this.evalItem.CommitteeScore;
+    outputData.value = this.evalItem.ConsensusScore;
     this.updateEvaluation();
     this.committeeScore.emit(outputData);
   }

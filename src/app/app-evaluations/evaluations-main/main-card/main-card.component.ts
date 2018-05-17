@@ -25,7 +25,7 @@ export class MainCardComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.finalReviewScore = this.calculateWeightedScore(this.data.GoalTypeTotalWeight, this.data.CommitteeScore);
+    this.finalReviewScore = this.calculateWeightedScore(this.data.GoalTypeTotalWeight, this.data.ConsensusScore);
     this.finalPicScore = this.calculateWeightedScore(this.data.GoalTypeTotalWeight, this.data.PICScore);
     this.finalShareHolderScore = this.calculateWeightedScore(this.data.GoalTypeTotalWeight, this.data.ShareholderScore);
     this.consensusScore.emit(this.finalReviewScore);
