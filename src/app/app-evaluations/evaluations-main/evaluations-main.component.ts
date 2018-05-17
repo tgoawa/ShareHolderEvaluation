@@ -4,6 +4,7 @@ import { EvaluationService } from '../shared/services/evaluation.service';
 import { EvaluationModel } from '../shared/models/Evaluation';
 import { Observable } from 'rxjs/Observable';
 import { MatSnackBar } from '@angular/material';
+import { PowerLevel } from '../shared/models/powerLevel';
 
 @Component({
   selector: 'app-evaluations-main',
@@ -11,19 +12,23 @@ import { MatSnackBar } from '@angular/material';
   styleUrls: ['./evaluations-main.component.css']
 })
 export class EvaluationsMainComponent implements OnInit {
+  consensusScoreArray: number[];
+  picScoreArray: number[];
+  shareholderScoreArray: number[];
+
+  evaluationData: EvaluationModel;
+
+  powerLevelDropdown: PowerLevel;
+  scores: number[];
+  teamMemberId = 1936;
   totalConsensusScore: Number = 0;
   totalPicScore: Number = 0;
   totalShareholderScore: Number = 0;
-  shareholderScoreArray: number[];
-  picScoreArray: number[];
-  consensusScoreArray: number[];
-  evaluationData: EvaluationModel;
-  scores: number[];
-  teamMemberId = 1936;
   year: number;
   constructor(private yearService: YearSelectionService, private evaluationService: EvaluationService, public snackBar: MatSnackBar) { }
 
   ngOnInit() {
+    this.getPowerLevelDropdown();
     this.scores = this.evaluationService.evaluationRatings;
     this.yearService.selectedEvalYear$.subscribe(data => {
       this.year = data;
@@ -53,7 +58,7 @@ export class EvaluationsMainComponent implements OnInit {
     this.totalConsensusScore = this.addTotalScore(this.consensusScoreArray);
   }
 
-  finalScoreChanged() {
+  updateEvaluation() {
     this.evaluationService.updateEvaluation(this.evaluationData)
     .subscribe(data => {
       if (data) {
@@ -77,6 +82,15 @@ export class EvaluationsMainComponent implements OnInit {
       score = score + scoreArray[x];
     }
     return score;
+  }
+
+  private getPowerLevelDropdown() {
+    this.evaluationService.getPowerLevels()
+    .subscribe(data => {
+      this.powerLevelDropdown = data;
+    }, error => {
+      console.error(error);
+    });
   }
 
 }

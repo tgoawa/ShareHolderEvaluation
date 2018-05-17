@@ -2,14 +2,18 @@
   <section class="text-center">
     <h1>Evaluation</h1>
     <mat-form-field>
-      <mat-select placeholder="Final Score" [(ngModel)]="evaluationData.EvaluationScore" (selectionChange)="finalScoreChanged()">
+      <mat-select placeholder="Final Score" [(ngModel)]="evaluationData.EvaluationScore" (selectionChange)="updateEvaluation()">
           <mat-option *ngFor="let score of scores" [value]="score">
               {{ score }}
             </mat-option>
       </mat-select>
     </mat-form-field>
     <mat-form-field>
-      <mat-select placeholder="Rating"></mat-select>
+      <mat-select placeholder="Power Level" [(ngModel)]="evaluationData.PowerLevelId" (selectionChange)="updateEvaluation()">
+          <mat-option *ngFor="let level of powerLevelDropdown" [value]="powerLevelDropdown.PowerLevelId">
+              {{ powerLevelDropdown.PowerValue }}
+            </mat-option>
+      </mat-select>
     </mat-form-field>
     <h2 class="text-center">Total Shareholder Score: {{totalShareholderScore | number : '1.0-1'}}</h2>
     <h2 class="text-center">Total PIC/Practice Leader Score: {{totalPicScore | number : '1.0-1'}}</h2>
