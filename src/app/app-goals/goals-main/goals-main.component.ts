@@ -23,7 +23,7 @@ export class GoalsMainComponent implements OnInit {
 
   ngOnInit() {
     this.totalWeight = 0;
-    this.yearService.selectedYear$.subscribe(data => {
+    this.yearService.selectedGoalYear$.subscribe(data => {
       this.year = data;
       this.getGoals(1936, this.year);
     });

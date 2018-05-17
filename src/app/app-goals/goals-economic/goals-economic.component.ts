@@ -38,7 +38,7 @@ export class GoalsEconomicComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.yearService.selectedYear$.subscribe(data => {
+    this.yearService.selectedGoalYear$.subscribe(data => {
       this.year = data;
       this.getEconomicGoal(this.teamMemberId, this.year);
       this.previousYear = this.year - 1;

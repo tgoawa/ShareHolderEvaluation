@@ -9,7 +9,7 @@
   <span class="example-spacer"></span>
   <mat-form-field style="font-size: 14px">
     <mat-select placeholder="Select Fiscal Year" [(ngModel)]="selectedYear" (selectionChange)="setYear(selectedYear)">
-      <mat-option *ngFor="let year of evalYears" [value]="year">{{year}}</mat-option>
+      <mat-option *ngFor="let year of goalYears" [value]="year">{{year}}</mat-option>
     </mat-select>
   </mat-form-field>
   <button mat-button [matMenuTriggerFor]="user">Welcome {{teamMember.FirstName}} {{teamMember.LastName}}! <mat-icon>arrow_drop_down</mat-icon></button>

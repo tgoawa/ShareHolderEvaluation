@@ -37,7 +37,7 @@ export class GoalBaseComponent implements OnInit {
 
   ngOnInit() {
     this.teamMemberId = 1936;
-    this.yearService.selectedYear$.subscribe(data => {
+    this.yearService.selectedGoalYear$.subscribe(data => {
       this.year = data;
       this.getGoals(this.teamMemberId, this.goalTypeId, this.year);
     });

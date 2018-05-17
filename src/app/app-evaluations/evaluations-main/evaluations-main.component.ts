@@ -25,7 +25,7 @@ export class EvaluationsMainComponent implements OnInit {
 
   ngOnInit() {
     this.scores = this.evaluationService.evaluationRatings;
-    this.yearService.selectedYear$.subscribe(data => {
+    this.yearService.selectedEvalYear$.subscribe(data => {
       this.year = data;
       this.evaluationService.getEvaluationModel(this.teamMemberId, this.year);
     });

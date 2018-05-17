@@ -11,15 +11,15 @@ import { YearSelectionService } from '../../core/services/year-selection.service
 })
 export class GoalsHeaderComponent implements OnInit {
   selectedYear: number;
-  evalYears: number[];
+  goalYears: number[];
   teamMember: TeamMember;
 
   constructor(private yearService: YearSelectionService, private tmService: TeamMemberService) { }
 
   ngOnInit() {
-    this.evalYears = this.yearService.evalYears;
+    this.goalYears = this.yearService.goalYears;
     this.tmService.teamMember$.subscribe(data => this.teamMember = data);
-    this.yearService.selectedYear$.subscribe(data => this.selectedYear = data);
+    this.yearService.selectedGoalYear$.subscribe(data => this.selectedYear = data);
   }
 
   setYear(year: number) {

@@ -16,9 +16,9 @@ export class EvaluationsHeaderComponent implements OnInit {
   constructor(private evaluationYear: YearSelectionService, private tmService: TeamMemberService) { }
 
   ngOnInit() {
-    this.evalYears = this.evaluationYear.evalYears;
+    this.evalYears = this.evaluationYear.goalYears;
     this.tmService.teamMember$.subscribe(data => this.teamMember = data);
-    this.evaluationYear.selectedYear$.subscribe(data => this.selectedYear = data);
+    this.evaluationYear.selectedEvalYear$.subscribe(data => this.selectedYear = data);
   }
 
   setYear(year: number) {

@@ -13,7 +13,7 @@ export class EconomicCardComponent implements OnInit, AfterViewInit {
   @Input() data: DashboardModel;
   @Input() route: string;
   @Output() goalWeightData: EventEmitter<GoalTypeWeightData> = new EventEmitter<GoalTypeWeightData>();
-  weightValues: number[] = [5, 10, 15, 20, 25, 30, 35, 40];
+  weightValues: number[] = [0, 5, 10, 15, 20, 25, 30, 35, 40];
   outputData: GoalTypeWeightData;
   totalWeight: number;
   routeName: string;

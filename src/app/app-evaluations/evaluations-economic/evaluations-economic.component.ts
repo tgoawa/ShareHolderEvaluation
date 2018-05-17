@@ -20,7 +20,7 @@ export class EvaluationsEconomicComponent implements OnInit {
   constructor(private evaluationService: EvaluationService, private yearService: YearSelectionService) { }
 
   ngOnInit() {
-    this.yearService.selectedYear$.subscribe(data => {
+    this.yearService.selectedEvalYear$.subscribe(data => {
       this.year = data;
       this.getEconomicGoal(this.teamMemberId, this.year);
       this.previousYear = this.year - 1;
