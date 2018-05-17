@@ -14,7 +14,7 @@ export class TeamMemberService {
   private _teamMember: BehaviorSubject<TeamMember>;
 
   constructor(private http: Http) {
-    this._teamMember = <BehaviorSubject<TeamMember>>new BehaviorSubject({});
+    this._teamMember = <BehaviorSubject<TeamMember>>new BehaviorSubject(null);
     this.teamMember$ = this._teamMember.asObservable();
   }
 
