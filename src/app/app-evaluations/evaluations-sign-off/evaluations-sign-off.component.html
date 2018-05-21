@@ -1,8 +1,12 @@
 <mat-card fxLayout="column" fxLayoutAlign="space-between stretch" fxLayoutGap="20px" class="mat-typography">
   <section class="text-center">
     <h1>Evaluation Sign-off</h1>
-    <mat-checkbox>Shareholder sign-off</mat-checkbox>
-      <button mat-button color="primary">Sign Off</button>
+    <form [formGroup]="shareholderSignOff" (ngSubmit)="onShareholderSignOff()">
+      <mat-checkbox formControlName="shareholderCheckBox" [disabled]="evaluationData?.IsShareholderSignOff">Shareholder sign-off</mat-checkbox>
+      <div *ngIf="!evaluationData?.IsShareholderSignOff">
+        <button mat-button color="primary">Sign Off</button>
+      </div>
+    </form>
       <p>
         <mat-form-field style="font-size: 14px">
           <input matInput type="text" placeholder="PIC User Name">

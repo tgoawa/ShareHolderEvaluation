@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { EvaluationService } from '../shared/services/evaluation.service';
+import { EvaluationModel } from '../shared/models/Evaluation';
 
 @Component({
   selector: 'app-evaluations-sign-off',
@@ -6,18 +9,35 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./evaluations-sign-off.component.css']
 })
 export class EvaluationsSignOffComponent implements OnInit {
-  picList = [
-    {id: 0, name: 'Jay Pic 1'},
-    {id: 1, name: 'Jay Pic 2'},
-    {id: 2, name: 'Jay Pic 3'},
-  ];
-  constructor() { }
+  evaluationData: EvaluationModel;
+  shareholderSignOff: FormGroup;
+
+  constructor(private fb: FormBuilder, private evaluationService: EvaluationService) { }
 
   ngOnInit() {
+    this.evaluationService.evaluationModel$.subscribe(data => {
+      if (data) {
+        this.evaluationData = data;
+        this.createShareholderForm(this.evaluationData);
+      }
+    });
   }
 
-  verifyEvalComplete() {
+  createShareholderForm(evaluationData: EvaluationModel) {
+    this.shareholderSignOff = this.fb.group({
+      shareholderCheckBox: [evaluationData.IsShareholderSignOff, Validators.required]
+    })
+  }
 
+  onShareholderSignOff() {
+    this.evaluationService.updateShareholderSignOff(this.evaluationData)
+    .subscribe(data => {
+      if (data) {
+        console.log('Shareholder sign off success!');
+      }
+    }, error => {
+      console.error(error);
+    });
   }
 
 }
