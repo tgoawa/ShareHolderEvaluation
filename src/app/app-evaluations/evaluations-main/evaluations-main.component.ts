@@ -59,7 +59,7 @@ export class EvaluationsMainComponent implements OnInit {
   }
 
   updateEvaluation() {
-    this.evaluationService.updateEvaluation(this.evaluationData)
+    this.evaluationService.updateEvaluationTotalScore(this.evaluationData)
     .subscribe(data => {
       if (data) {
         this.openSnackBar('Score update saved!', '');

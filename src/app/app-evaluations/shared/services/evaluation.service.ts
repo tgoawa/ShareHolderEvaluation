@@ -38,8 +38,8 @@ export class EvaluationService {
     .map(response => response.json(), error => console.error(error));
   }
 
-  updateEvaluation(evaluation: EvaluationModel) {
-    return this.http.put(api + 'EvaluationService/updateEvaluation/', evaluation)
+  updateEvaluationTotalScore(evaluation: EvaluationModel) {
+    return this.http.put(api + 'EvaluationService/updateEvaluationTotalScore/', evaluation)
     .map(response => response.json(), error => console.error(error));
   }
 
