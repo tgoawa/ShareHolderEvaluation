@@ -8,7 +8,7 @@
   </section> -->
   <section fxLayout="row" fxLayoutAlign="space-between center">
     <div>
-        <b>Business Unit/Department:</b> {{teamMember?.BusinessUnit}}
+        Business Unit/Department: {{teamMember?.BusinessUnit}}
     </div>
   </section>
   <section fxLayout="row" fxLayoutGap="20px">
@@ -59,7 +59,7 @@
       </mat-select>
     </mat-form-field>
     <mat-form-field fxFlex="10">
-      <mat-select placeholder="Consensus Use Score" [(ngModel)]="evaluation.CommitteeScore" (selectionChange)="committeeUseScoreChanged($event.value)">
+      <mat-select placeholder="Consensus Use Score" [(ngModel)]="evaluation.ConsensusScore" (selectionChange)="committeeUseScoreChanged($event.value)">
         <mat-option *ngFor="let score of scores" [value]="score">
           {{ score }}
         </mat-option>
