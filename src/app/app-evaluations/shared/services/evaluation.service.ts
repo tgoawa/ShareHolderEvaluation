@@ -16,7 +16,7 @@ export class EvaluationService {
   private _evaluationModel: BehaviorSubject<EvaluationModel>;
 
   constructor(private http: Http) {
-    this._evaluationModel = <BehaviorSubject<EvaluationModel>>new BehaviorSubject({});
+    this._evaluationModel = <BehaviorSubject<EvaluationModel>>new BehaviorSubject(null);
     this.evaluationModel$ = this._evaluationModel.asObservable();
   }
 
