@@ -57,7 +57,13 @@ export class LoginComponent implements OnInit {
     if (data) {
       this.loginError = false;
       this.teamMemberService.getTeamMember(this.loginForm.get('username').value);
-      this.router.navigate(['/home']);
+      this.teamMemberService.teamMember$.subscribe(value => {
+        if (value !== null) {
+          this.router.navigate(['/home']);
+        }
+      }, error => {
+        console.error(error);
+      });
     } else {
       this.loginError = true;
       console.error('Login Failed!');
