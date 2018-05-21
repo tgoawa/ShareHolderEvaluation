@@ -9,9 +9,9 @@
       </mat-select>
     </mat-form-field>
     <mat-form-field>
-      <mat-select placeholder="Power Level" [(ngModel)]="evaluationData.PowerLevelId" (selectionChange)="updateEvaluation()">
+      <mat-select placeholder="Power Level" [(ngModel)]="evaluationData.PowerLevelId" (selectionChange)="updateEvaluation()" class="text-center">
           <mat-option *ngFor="let level of powerLevelDropdown" [value]="level.PowerLevelId">
-              {{ level.PowerValue }}
+              <b>{{ level.PowerValue }}</b>
             </mat-option>
       </mat-select>
     </mat-form-field>
