@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit, AfterViewInit, Input, Output, EventEmitter } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, AfterViewInit, Input, Output, EventEmitter, OnChanges } from '@angular/core';
 import { GoalTypeWeightData, GoalWeightModel } from '../model/weight';
 import { DashboardGoal, DashboardModel } from '../model/dashboard.model';
 import { GoalsService } from '../../shared/services/goals.service';
@@ -10,7 +10,7 @@ import { MatSnackBar } from '@angular/material';
   styleUrls: ['./main-card.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class MainCardComponent implements OnInit, AfterViewInit {
+export class MainCardComponent implements OnInit, AfterViewInit, OnChanges {
   @Input() data: DashboardModel;
   @Input() title: string;
   @Input() route: string;
@@ -28,6 +28,11 @@ export class MainCardComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
+    this.sendWeightData();
+  }
+
+  ngOnChanges() {
+    this.totalWeight = this.calculateTotalWeight();
     this.sendWeightData();
   }
 

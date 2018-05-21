@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, AfterViewInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, AfterViewInit, ChangeDetectionStrategy, OnChanges } from '@angular/core';
 import { DashboardModel, DashboardGoal } from '../model/dashboard.model';
 import { GoalTypeWeightData, GoalWeightModel } from '../model/weight';
 import { GoalsService } from '../../shared/services/goals.service';
@@ -7,9 +7,10 @@ import { MatSnackBar } from '@angular/material';
 @Component({
   selector: 'app-economic-card',
   templateUrl: './economic-card.component.html',
-  styleUrls: ['./economic-card.component.css']
+  styleUrls: ['./economic-card.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class EconomicCardComponent implements OnInit, AfterViewInit {
+export class EconomicCardComponent implements OnInit, AfterViewInit, OnChanges {
   @Input() data: DashboardModel;
   @Input() route: string;
   @Output() goalWeightData: EventEmitter<GoalTypeWeightData> = new EventEmitter<GoalTypeWeightData>();
@@ -26,6 +27,11 @@ export class EconomicCardComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
+    this.sendWeightData();
+  }
+
+  ngOnChanges() {
+    this.totalWeight = this.calculateTotalWeight();
     this.sendWeightData();
   }
 
