@@ -3,12 +3,12 @@
     <h1>Competency Goals</h1>
     <app-goal-total-weight *ngIf="goals" [goalWeightModel]="goalWeightData"></app-goal-total-weight>
   </section>
-  <!-- <section fxLayout="row" fxLayoutAlign="start start">
+  <section fxLayout="row" fxLayoutAlign="start start">
     <div>
-        <p>To add a goal, click on the green “Add Goal” in the Goals box below and choose the weight you want to assign to this goal.  Next, click on the blue “New competency goal” text to add your goal detail.  If applicable, use the drop down arrow to choose an Industry Team and/or a Service Line in which this goal applies.  Next, choose the competency and goal type and give your goal a name and provide a description.  Next, add actions/measures to help you keep you on track to achieving the goal.  Competency Goals are behavioral goals that lead to results.</p>
-        <p>When considering a competency goal, think about a specific behavior you would like to focus on this year. For example, if developing self and others is an area in which you would like to leverage perhaps you may want to identify 2 or 3 team members to bring along with you on more client visits.  See the guidebook and Brainshark for more tips on setting goals that align with your lag and lead measures.</p>
+        <p>When considering a competency goal, think about a specific behavior you would like to focus on this year. For example, if developing self and others is an area in which you would like to leverage perhaps you may want to identify 2 or 3 team members to bring along with you on more client visits.  See the guidebook for more tips on setting goals that align with your lag measures. </p>
+        <p>To add a goal, click on the green “Add Goal” in the Goals box below.  To the right of the Goals box, is where you will add “Goal Details.” Use the drop down arrow to choose the Competency goal and goal type.  Next, choose an Industry Team and/or a Service Line in which this goal applies (if applicable), give it a name and choose the weight you want to assign to this goal.  Next, add a description of your goal.   Describe the goal using the SMART methodology– Specific Measurable Achievable Realistic and Timely; or, the X to Y by when.  See the guidebook for details on creating goals.  Add specific actions that you need to take in order for you to achieve your goal.</p>
       </div>
-  </section> -->
+  </section>
   <section fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="20px" *ngIf="goals; else loading">
     <mat-card fxFlex="30">
       <section fxLayout="row" fxLayoutAlign="space-between center">
