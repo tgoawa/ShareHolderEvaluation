@@ -1,6 +1,6 @@
 <section fxLayout="row" fxLayoutGap="20px">
   <mat-form-field fxFlex="15">
-    <input matInput placeholder="SH Goal" disabled [value]="evalItem.GoalEvaluationId">
+    <input matInput placeholder="SH Goal" disabled [value]="evalItem.GoalName">
   </mat-form-field>
   <mat-form-field fxFlex="50">
     <textarea matInput [(ngModel)]="evalItem.EvaluationNote" placeholder="Comments" matTextareaAutosize matAutosizeMinRows="1" matAutosizeMaxRows="5" (change)="updateEvaluation()"></textarea>
@@ -23,7 +23,7 @@
     </mat-select>
   </mat-form-field>
   <mat-form-field fxFlex="10">
-    <mat-select placeholder="Committee" [(ngModel)]="evalItem.CommitteeScore" (selectionChange)="onCommitteeScoreChange()">
+    <mat-select placeholder="Committee" [(ngModel)]="evalItem.ConsensusScore" (selectionChange)="onCommitteeScoreChange()">
       <mat-option *ngFor="let rating of ratings" [value]="rating">
         {{ rating }}
       </mat-option>
