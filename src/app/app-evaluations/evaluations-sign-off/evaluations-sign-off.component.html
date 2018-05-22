@@ -1,35 +1,49 @@
 <mat-card fxLayout="column" fxLayoutAlign="space-between stretch" fxLayoutGap="20px" class="mat-typography">
   <section class="text-center">
     <h1>Evaluation Sign-off</h1>
-    <form [formGroup]="shareholderSignOff" (ngSubmit)="onShareholderSignOff()">
-      <mat-checkbox formControlName="shareholderCheckBox" [disabled]="evaluationData?.IsShareholderSignOff">Shareholder sign-off</mat-checkbox>
-      <div *ngIf="!evaluationData?.IsShareholderSignOff">
-        <button mat-button color="primary">Sign Off</button>
-      </div>
-    </form>
     <div>
-      <form [formGroup]="picSignOff" (ngSubmit)="onPicSignOff()">
-        <mat-form-field style="font-size: 14px">
-          <input matInput type="text" placeholder="PIC/Practice Leader User Name">
-        </mat-form-field>
-        <mat-form-field>
-          <input matInput type="password" placeholder="Password">
-          <mat-hint>Use your Windows password</mat-hint>
-          <mat-error>This field is required</mat-error>
-        </mat-form-field>
-        <button mat-button color="primary" [disabled]="!picSignOff.isValid">Sign Off</button>
-      </form>
+      <section *ngIf="!evaluationData?.IsShareholderSignOff; else shareholderSignedOff">
+        <form [formGroup]="shareholderSignOff" (ngSubmit)="onShareholderSignOff()">
+          <mat-checkbox formControlName="shareholderCheckBox">Shareholder sign-off</mat-checkbox>
+          <div>
+            <button mat-button color="primary">Sign Off</button>
+          </div>
+        </form>
+      </section>
+      <ng-template #shareholderSignedOff>
+        Shareholder has signed off!
+      </ng-template>
     </div>
-    <p>
-      <mat-form-field style="font-size: 14px">
-        <input matInput type="text" placeholder="Consensus User Name">
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput type="password" placeholder="Password">
-        <mat-hint>Use your Windows password</mat-hint>
-        <mat-error>This field is required</mat-error>
-      </mat-form-field>
-      <button mat-button color="primary">Sign Off</button>
-    </p>
+
+    <div>
+      <section>
+        <form [formGroup]="picSignOff" (ngSubmit)="onPicSignOff()">
+          <mat-form-field style="font-size: 14px">
+            <input matInput type="text" placeholder="PIC/Practice Leader User Name" formControlName="username">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput type="password" placeholder="Password" formControlName="password">
+            <mat-hint>Use your Windows password</mat-hint>
+            <mat-error>This field is required</mat-error>
+          </mat-form-field>
+          <button mat-button color="primary" [disabled]="!picSignOff.isValid">Sign Off</button>
+        </form>
+      </section>
+    </div>
+    <div>
+      <section>
+        <form [formGroup]="consensusSignOff" (ngSubmit)="onConsensusSignOff()">
+          <mat-form-field style="font-size: 14px">
+            <input matInput type="text" placeholder="Consensus User Name" formControlName="username">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput type="password" placeholder="Password" formControlName="password">
+            <mat-hint>Use your Windows password</mat-hint>
+            <mat-error>This field is required</mat-error>
+          </mat-form-field>
+          <button mat-button color="primary" [disabled]="!consensusSignOff.isValid">Sign Off</button>
+        </form>
+      </section>
+    </div>
   </section>
 </mat-card>
