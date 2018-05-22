@@ -53,6 +53,16 @@ export class EvaluationService {
     .map(response => response.json(), error => console.error(error));
   }
 
+  updateConsensusSignOff(evaluation: EvaluationModel) {
+    return this.http.put(api + 'EvaluationService/updateConsensusSignOff/', evaluation)
+    .map(response => response.json(), error => console.error(error));
+  }
+
+  updatePicSignOff(evaluation: EvaluationModel) {
+    return this.http.put(api + 'EvaluationService/updatePICSignOff/', evaluation)
+    .map(response => response.json(), error => console.error(error));
+  }
+
   updateShareholderSignOff(evaluation: EvaluationModel) {
     return this.http.put(api + 'EvaluationService/updateSharholderSignOff/', evaluation)
     .map(response => response.json(), error => console.error(error));

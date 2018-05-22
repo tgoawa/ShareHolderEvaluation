@@ -7,27 +7,29 @@
         <button mat-button color="primary">Sign Off</button>
       </div>
     </form>
-      <p>
+    <div>
+      <form [formGroup]="picSignOff" (ngSubmit)="onPicSignOff()">
         <mat-form-field style="font-size: 14px">
-          <input matInput type="text" placeholder="PIC User Name">
+          <input matInput type="text" placeholder="PIC/Practice Leader User Name">
         </mat-form-field>
         <mat-form-field>
           <input matInput type="password" placeholder="Password">
           <mat-hint>Use your Windows password</mat-hint>
           <mat-error>This field is required</mat-error>
         </mat-form-field>
-        <button mat-button color="primary">Sign Off</button>
-      </p>
-      <p>
-        <mat-form-field style="font-size: 14px">
-          <input matInput type="text" placeholder="Committee User Name">
-        </mat-form-field>
-        <mat-form-field>
-          <input matInput type="password" placeholder="Password">
-          <mat-hint>Use your Windows password</mat-hint>
-          <mat-error>This field is required</mat-error>
-        </mat-form-field>
-        <button mat-button color="primary">Sign Off</button>
-      </p>
+        <button mat-button color="primary" [disabled]="!picSignOff.isValid">Sign Off</button>
+      </form>
+    </div>
+    <p>
+      <mat-form-field style="font-size: 14px">
+        <input matInput type="text" placeholder="Consensus User Name">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="password" placeholder="Password">
+        <mat-hint>Use your Windows password</mat-hint>
+        <mat-error>This field is required</mat-error>
+      </mat-form-field>
+      <button mat-button color="primary">Sign Off</button>
+    </p>
   </section>
 </mat-card>

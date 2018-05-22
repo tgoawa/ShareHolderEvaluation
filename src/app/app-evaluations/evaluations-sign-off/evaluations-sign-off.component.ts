@@ -11,6 +11,8 @@ import { EvaluationModel } from '../shared/models/Evaluation';
 export class EvaluationsSignOffComponent implements OnInit {
   evaluationData: EvaluationModel;
   shareholderSignOff: FormGroup;
+  picSignOff: FormGroup;
+  consensusSignOff: FormGroup;
 
   constructor(private fb: FormBuilder, private evaluationService: EvaluationService) { }
 
@@ -26,7 +28,24 @@ export class EvaluationsSignOffComponent implements OnInit {
   createShareholderForm(evaluationData: EvaluationModel) {
     this.shareholderSignOff = this.fb.group({
       shareholderCheckBox: [evaluationData.IsShareholderSignOff, Validators.required]
-    })
+    });
+  }
+
+  private toFormGroup() {
+    const formGroup = this.fb.group({
+      username: [null, [Validators.required, Validators.minLength(4)]],
+      password: [null, [Validators.required, Validators.minLength(8)]]
+    });
+
+    return formGroup;
+  }
+
+  onConsensusSignOff() {
+    //
+  }
+
+  onPicSignOff() {
+    //
   }
 
   onShareholderSignOff() {
