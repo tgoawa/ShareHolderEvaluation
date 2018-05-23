@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { EvaluationService } from '../shared/services/evaluation.service';
 import { EvaluationModel } from '../shared/models/Evaluation';
@@ -12,11 +12,12 @@ import { User } from '../../login/model/user';
   templateUrl: './evaluations-sign-off.component.html',
   styleUrls: ['./evaluations-sign-off.component.css']
 })
-export class EvaluationsSignOffComponent implements OnInit {
+export class EvaluationsSignOffComponent implements OnInit, OnChanges {
   evaluationData: EvaluationModel;
   shareholderSignOff: FormGroup;
   picSignOff: FormGroup;
   consensusSignOff: FormGroup;
+  canConsensusSignOff: boolean;
 
   constructor(private fb: FormBuilder,
     private evaluationService: EvaluationService,
@@ -34,6 +35,10 @@ export class EvaluationsSignOffComponent implements OnInit {
     });
   }
 
+  ngOnChanges() {
+    this.canConsensusSignOff = this.isReadyForConsensusSignOff();
+  }
+
   createShareholderForm(evaluationData: EvaluationModel) {
     this.shareholderSignOff = this.fb.group({
       shareholderCheckBox: [evaluationData.IsShareholderSignOff, Validators.required]
@@ -46,8 +51,17 @@ export class EvaluationsSignOffComponent implements OnInit {
     });
   }
 
-  onConsensusSignOff() {
-    //
+  onConsensusSignOff(form: FormGroup) {
+    const encUser = this.encryptUser(form);
+    this.loginService.isValid(encUser)
+      .subscribe(data => {
+        if (data) {
+          this.evaluationData.ConsensusNetworkName = this.consensusSignOff.get('username').value;
+          this.updateConsensusignOff();
+        }
+      }, error => {
+        console.error(error);
+      });
   }
 
   onPicSignOff(form: FormGroup) {
@@ -55,6 +69,7 @@ export class EvaluationsSignOffComponent implements OnInit {
     this.loginService.isValid(encUser)
       .subscribe(data => {
         if (data) {
+          this.evaluationData.PICNetworkName = this.picSignOff.get('username').value;
           this.updatePICSignOff();
         }
       }, error => {
@@ -110,6 +125,19 @@ export class EvaluationsSignOffComponent implements OnInit {
       });
   }
 
+  private updateConsensusignOff() {
+    this.evaluationService.updateConsensusSignOff(this.evaluationData)
+      .subscribe(data => {
+        if (data) {
+          this.openSnackBar('Consensus signed Off!', '');
+          this.evaluationData.IsConsensusSignOff = true;
+        }
+      }, error => {
+        this.openSnackBar('Error attempting to complete Consensus sign off', '');
+        console.error(error);
+      });
+  }
+
   private toFormGroup() {
     const formGroup = this.fb.group({
       username: [null, [Validators.required, Validators.minLength(4)]],
@@ -117,6 +145,52 @@ export class EvaluationsSignOffComponent implements OnInit {
     });
 
     return formGroup;
+  }
+
+  private isReadyForConsensusSignOff(): boolean {
+    if (!this.isScoreSet) {
+      return false;
+    } else if (!this.isPowerLevelSet) {
+      return false;
+    } else if (!this.isShareholderSignedOff) {
+      return false;
+    } else if (!this.isPicSignedOff) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  private isScoreSet(): boolean {
+    if (this.evaluationData.EvaluationScore > 0) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  private isPowerLevelSet(): boolean {
+    if (this.evaluationData.PowerLevelId > 0) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  private isPicSignedOff(): boolean {
+    if (this.evaluationData.IsPICSignOff) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  private isShareholderSignedOff(): boolean {
+    if (this.evaluationData.IsShareholderSignOff) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
 }

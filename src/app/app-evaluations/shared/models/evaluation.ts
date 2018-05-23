@@ -5,6 +5,8 @@ export interface EvaluationModel {
   IsShareholderSignOff: boolean;
   IsPICSignOff: boolean;
   IsConsensusSignOff: boolean;
+  ConsensusNetworkName: string;
+  PICNetworkName: string;
   EvaluationYear: number;
   PowerLevelId: number;
   EvaluationTypes: GoalTypeEvaluation[];
