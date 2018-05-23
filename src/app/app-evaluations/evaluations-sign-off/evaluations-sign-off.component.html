@@ -16,8 +16,8 @@
     </div>
 
     <div>
-      <section>
-        <form [formGroup]="picSignOff" (ngSubmit)="onPicSignOff()">
+      <section *ngIf="!evaluationData?.IsPICSignOff; else picSignedOff">
+        <form [formGroup]="picSignOff" (ngSubmit)="onPicSignOff(picSignOff)">
           <mat-form-field style="font-size: 14px">
             <input matInput type="text" placeholder="PIC/Practice Leader User Name" formControlName="username">
           </mat-form-field>
@@ -26,13 +26,16 @@
             <mat-hint>Use your Windows password</mat-hint>
             <mat-error>This field is required</mat-error>
           </mat-form-field>
-          <button mat-button color="primary" [disabled]="!picSignOff.isValid">Sign Off</button>
+          <button mat-button color="primary" [disabled]="!picSignOff.valid">Sign Off</button>
         </form>
+        <ng-template #picSignedOff>
+          Shareholder has signed off!
+        </ng-template>
       </section>
     </div>
     <div>
-      <section>
-        <form [formGroup]="consensusSignOff" (ngSubmit)="onConsensusSignOff()">
+      <section *ngIf="!evaluationData?.IsConsensusSignOff; else consensusSignedOff">
+        <form [formGroup]="consensusSignOff" (ngSubmit)="onConsensusSignOff(consensusSignOff)">
           <mat-form-field style="font-size: 14px">
             <input matInput type="text" placeholder="Consensus User Name" formControlName="username">
           </mat-form-field>
@@ -41,8 +44,11 @@
             <mat-hint>Use your Windows password</mat-hint>
             <mat-error>This field is required</mat-error>
           </mat-form-field>
-          <button mat-button color="primary" [disabled]="!consensusSignOff.isValid">Sign Off</button>
+          <button mat-button color="primary" [disabled]="!consensusSignOff.valid">Sign Off</button>
         </form>
+        <ng-template #consensusSignedOff>
+          Shareholder has signed off!
+        </ng-template>
       </section>
     </div>
   </section>

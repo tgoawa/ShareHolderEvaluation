@@ -1,9 +1,18 @@
+<section class="text-center">
+    <h1>Economic Evaluation Form</h1>
+  </section>
+  <section fxLayout="row" fxLayoutAlign="space-between center">
+    <p>The below economic goals were transferred over from the goals you established last year. The actuals ending June 30,
+      2018 are found in the Star Monthly Reports for on the X:/G: drive. **Please confirm with Jeff – and do we need to have
+      a link to that folder? As you reflect on the below goals, consider your achievement towards those goals and score yourself
+      on a scale of 1 to 10. Please see the guidebook for the complete scale and corresponding definitions or click here.
+      As a reminder, 9’ and 10’s are the highest level are given for truly for exceptional performance. The weighted self-score
+      will be automatically calculated. The PIC and committee scores will be entered during your meeting. Please note, we
+      have compressed this economic section to more accurately evaluate your personal economic goals. </p>
+  </section>
 <div fxLayout="row" fxLayoutAlign="start" fxLayoutGap="10px" class="mat-typography">
   <div fxFlex="40">
     <mat-card *ngIf="economicGoal; else loading;">
-      <mat-card-title>
-        Personal Economic Goal
-      </mat-card-title>
       <section fxLayout="row" fxLayoutGap="20px" class="text-right">
         <h3 fxFlex="50">Description</h3>
         <h3 fxFlex="20">{{year}} Goals</h3>
@@ -23,7 +32,7 @@
         <h4 fxFlex="50">Tier 6</h4>
         <span fxFlex="20">{{economicGoal.CurrentEconomicGoal.Detail.BillingsTier6 | currency: 'USD': 'symbol-narrow': '0.0-0'}}</span>
         <span fxFlex="30">{{economicGoal.PreviousYearActuals.Detail.BillingsTier6 | currency: 'USD': 'symbol-narrow': '0.0-0'}}</span>
-        </section>
+      </section>
       <section fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px" class="text-right">
         <h4 fxFlex="50">New Business From New Clients</h4>
         <span fxFlex="20">{{economicGoal.CurrentEconomicGoal.Detail.BusinessNewClients | currency: 'USD': 'symbol-narrow': '0.0-0'}}</span>
@@ -54,11 +63,11 @@
         <span fxFlex="20">{{economicGoal.CurrentEconomicGoal.Detail.DaysinWIP_AR}}</span>
         <span fxFlex="30">{{economicGoal.PreviousYearActuals.Detail.DaysinWIP_AR}}</span>
       </section>
-    <ng-template #loading>
-      <div fxLayout="column" fxLayoutAlign="center center">
-        <mat-spinner></mat-spinner>
-      </div>
-    </ng-template>
+      <ng-template #loading>
+        <div fxLayout="column" fxLayoutAlign="center center">
+          <mat-spinner></mat-spinner>
+        </div>
+      </ng-template>
     </mat-card>
   </div>
   <app-evaluation-card fxFlex="60" title="Economic" [evaluation]="evalData?.EvaluationTypes[3]" *ngIf="evalData"></app-evaluation-card>

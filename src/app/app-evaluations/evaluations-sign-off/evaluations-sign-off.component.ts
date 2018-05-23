@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { EvaluationService } from '../shared/services/evaluation.service';
 import { EvaluationModel } from '../shared/models/Evaluation';
 import { LoginService } from '../../core/services/login.service';
+import { MatSnackBar } from '@angular/material';
 
 import * as CryptoJS from 'crypto-js';
 import { User } from '../../login/model/user';
@@ -19,7 +20,8 @@ export class EvaluationsSignOffComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
     private evaluationService: EvaluationService,
-    private loginService: LoginService) { }
+    private loginService: LoginService,
+    public snackBar: MatSnackBar ) { }
 
   ngOnInit() {
     this.evaluationService.evaluationModel$.subscribe(data => {
@@ -38,22 +40,26 @@ export class EvaluationsSignOffComponent implements OnInit {
     });
   }
 
+  openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      duration: 2000,
+    });
+  }
+
   onConsensusSignOff() {
     //
   }
 
   onPicSignOff(form: FormGroup) {
     const encUser = this.encryptUser(form);
-    if (this.checkUser(encUser)) {
-      this.evaluationService.updatePicSignOff(this.evaluationData)
+    this.loginService.isValid(encUser)
       .subscribe(data => {
         if (data) {
-          this.evaluationData.IsPICSignOff = true;
+          this.updatePICSignOff();
         }
       }, error => {
         console.error(error);
       });
-    }
   }
 
   onShareholderSignOff() {
@@ -89,6 +95,19 @@ export class EvaluationsSignOffComponent implements OnInit {
     encryptedUser.username = CryptoJS.AES.encrypt(form.get('username').value, key, { iv: iv }).toString();
     encryptedUser.password = CryptoJS.AES.encrypt(form.get('password').value, key, { iv: iv }).toString();
     return encryptedUser;
+  }
+
+  private updatePICSignOff() {
+    this.evaluationService.updatePicSignOff(this.evaluationData)
+      .subscribe(data => {
+        if (data) {
+          this.openSnackBar('PIC signed Off!', '');
+          this.evaluationData.IsPICSignOff = true;
+        }
+      }, error => {
+        this.openSnackBar('Error attempting to complete pic sign off', '');
+        console.error(error);
+      });
   }
 
   private toFormGroup() {
