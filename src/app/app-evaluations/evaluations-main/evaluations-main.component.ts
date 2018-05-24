@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import { YearSelectionService } from '../../core/services/year-selection.service';
 import { EvaluationService } from '../shared/services/evaluation.service';
 import { EvaluationModel } from '../shared/models/Evaluation';
@@ -10,7 +10,7 @@ import { PowerLevel } from '../shared/models/powerLevel';
   templateUrl: './evaluations-main.component.html',
   styleUrls: ['./evaluations-main.component.css']
 })
-export class EvaluationsMainComponent implements OnInit {
+export class EvaluationsMainComponent implements OnInit, OnChanges {
   evaluationData: EvaluationModel;
   powerLevelDropdown: PowerLevel;
   teamMemberId = 1936;
@@ -19,6 +19,17 @@ export class EvaluationsMainComponent implements OnInit {
     private evaluationService: EvaluationService) { }
 
   ngOnInit() {
+    this.getPowerLevelDropdown();
+    this.yearService.selectedEvalYear$.subscribe(data => {
+      this.year = data;
+      this.evaluationService.getEvaluationModel(this.teamMemberId, this.year);
+    });
+    this.evaluationService.evaluationModel$.subscribe(data => {
+      this.evaluationData = data;
+    }, error => console.error(error));
+  }
+
+  ngOnChanges() {
     this.getPowerLevelDropdown();
     this.yearService.selectedEvalYear$.subscribe(data => {
       this.year = data;

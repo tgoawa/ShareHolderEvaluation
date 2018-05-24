@@ -1,9 +1,9 @@
 <div fxLayout="column" fxLayoutAlign="space-around stretch" class="mat-typography" *ngIf="evaluationData?.EvaluationTypes; else loading">
   <section class="text-center">
     <h1>Evaluation</h1>
-    <div fxLayout="row" fxLayoutAlign="start">
-      <h2 class="text-center" fxFlex="50">Final Score: {{evaluationData?.EvaluationScore}}</h2>
-      <h2 class="text-center" fxFlex="50" >Power Level: <span *ngIf="powerLevel.PowerLevelId === evaluationData?.PowerLevelId">{{powerLevel.PowerValue}}</span></h2>
+    <div fxLayout="row" fxLayoutGap="20px">
+      <h2 class="text-right" fxFlex="50">Final Score: {{evaluationData?.EvaluationScore}}</h2>
+      <h2 class="text-left" fxFlex="50" >Power Level: {{powerRating}}</h2>
     </div>
     <h2 class="text-center">Total Shareholder Score: {{totalShareholderScore | number : '1.0-1'}}</h2>
     <h2 class="text-center">Total PIC/Practice Leader Score: {{totalPicScore | number : '1.0-1'}}</h2>

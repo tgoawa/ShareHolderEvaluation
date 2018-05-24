@@ -11,13 +11,13 @@ import { MatSnackBar } from '@angular/material';
 })
 export class DashboardComponent implements OnInit {
   @Input() evaluationData: EvaluationModel;
-  @Input() powerLevel: PowerLevel;
+  @Input() powerLevelDropdown: PowerLevel[];
   canUpdate = false;
 
   consensusScoreArray: number[];
   picScoreArray: number[];
   shareholderScoreArray: number[];
-  powerLevelDropdown: PowerLevel;
+  powerRating: string;
   scores: number[];
   totalConsensusScore: Number = 0;
   totalPicScore: Number = 0;
@@ -33,6 +33,7 @@ export class DashboardComponent implements OnInit {
     this.picScoreArray = [];
     this.consensusScoreArray = [];
     this.canUpdateTotalScore(this.evaluationData);
+    this.setPowerRating();
   }
 
   addToShareholderScoreArray(score: number) {
@@ -103,5 +104,14 @@ export class DashboardComponent implements OnInit {
     }, error => {
       console.error(error);
     });
+  }
+
+  private setPowerRating() {
+    for (let x = 0; x < this.powerLevelDropdown.length; x++) {
+      if (this.evaluationData.PowerLevelId === this.powerLevelDropdown[x].PowerLevelId) {
+        this.powerRating = this.powerLevelDropdown[x].PowerValue;
+        break;
+      }
+    }
   }
 }
