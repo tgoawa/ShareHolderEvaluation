@@ -33,6 +33,8 @@ import { EvaluationLineItemComponent } from './shared/evaluation-line-item/evalu
 import { EvaluationsSignOffComponent } from './evaluations-sign-off/evaluations-sign-off.component';
 import { SignOffComponent } from './evaluations-sign-off/sign-off/sign-off.component';
 import { EvaluationService } from './shared/services/evaluation.service';
+import { ReadOnlyDashboardComponent } from './evaluations-main/read-only-dashboard/read-only-dashboard.component';
+import { DashboardComponent } from './evaluations-main/dashboard/dashboard.component';
 
 @NgModule({
   imports: [
@@ -68,6 +70,8 @@ import { EvaluationService } from './shared/services/evaluation.service';
     EvaluationLineItemComponent,
     EvaluationsSignOffComponent,
     SignOffComponent,
+    ReadOnlyDashboardComponent,
+    DashboardComponent,
   ],
   providers: [
     EvaluationService

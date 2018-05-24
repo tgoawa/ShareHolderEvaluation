@@ -1,0 +1,48 @@
+<div fxLayout="column" fxLayoutAlign="space-around stretch" class="mat-typography" *ngIf="evaluationData?.EvaluationTypes; else loading">
+  <section class="text-center">
+    <h1>Evaluation</h1>
+    <mat-form-field>
+      <mat-select placeholder="Final Score" [(ngModel)]="evaluationData.EvaluationScore" (selectionChange)="updateEvaluation()" [disabled]="!canUpdate">
+          <mat-option *ngFor="let score of scores" [value]="score">
+              {{ score }}
+            </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-select placeholder="Power Level" [(ngModel)]="evaluationData.PowerLevelId" (selectionChange)="updateEvaluation()" class="text-center" [disabled]="!canUpdate">
+          <mat-option *ngFor="let level of powerLevelDropdown" [value]="level.PowerLevelId">
+              <b>{{ level.PowerValue }}</b>
+            </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <h2 class="text-center">Total Shareholder Score: {{totalShareholderScore | number : '1.0-1'}}</h2>
+    <h2 class="text-center">Total PIC/Practice Leader Score: {{totalPicScore | number : '1.0-1'}}</h2>
+    <h2 class="text-center">Total Consensus Score: {{totalConsensusScore | number : '1.0-1'}}</h2>
+  </section>
+  <section fxLayout="row" fxLayoutAlign="start start">
+      <div>
+          <p>This dashboard reflects the areas in which you, your PIC, and the assigned compensation committee member will evaluate your accomplishments with regard to last year’s goals (i.e. 2017-18 fiscal year).  The information in this evaluation section was populated based on the goals you entered in CORE for the most recent fiscal year.  To begin the process, you need to go into each evaluation area and score yourself. You can access each area by either clicking at the top of the screen or within each evaluation area. For example, if you want to begin with your Economic score, you can either click “Economic Evaluation” at the top of the screen or “View Economic Evaluation” within that specific area.</p>
+          <p>As you are completing your evaluation scores, this dashboard will be automatically populated. Once you have completed all evaluation scores, you can then inform your PIC that they can begin their evaluation of you. During the meeting with your PIC and compensation committee member, a committee score will then be entered into each evaluation area. The calculated score on this dashboard is derived by the committee score. A final overall score will then be determined.</p>
+          <p>*** Please note:  The sign off is completed during the final meeting.  Please do not sign off until your consensus meeting.</p>
+      </div>
+    </section>
+  <section fxLayout="row" fxLayoutAlign="start" fxLayoutGap="10px">
+    <div fxFlex="grow" class="text-center">
+      <app-main-card [route]="'/evaluations/'" [name]="'WIG'" [data]="evaluationData?.EvaluationTypes[1]" (shareholderScore)="addToShareholderScoreArray($event)" (picScore)="addToPICScoreArray($event)" (consensusScore)="addToConsensusScoreArray($event)"></app-main-card>
+    </div>
+    <div fxFlex="grow" class="text-center">
+      <app-main-card [route]="'/evaluations/'" [name]="'Personal Competency'" [data]="evaluationData?.EvaluationTypes[0]" (shareholderScore)="addToShareholderScoreArray($event)" (picScore)="addToPICScoreArray($event)" (consensusScore)="addToConsensusScoreArray($event)"></app-main-card>
+    </div>
+    <div fxFlex="grow" class="text-center">
+      <app-main-card [route]="'/evaluations/'" [name]="'Firm Leadership'" [data]="evaluationData?.EvaluationTypes[2]" (shareholderScore)="addToShareholderScoreArray($event)" (picScore)="addToPICScoreArray($event)" (consensusScore)="addToConsensusScoreArray($event)"></app-main-card>
+    </div>
+    <div fxFlex="grow" class="text-center">
+      <app-main-card [route]="'/evaluations/'" [name]="'Personal Economic'" [data]="evaluationData?.EvaluationTypes[3]" (shareholderScore)="addToShareholderScoreArray($event)" (picScore)="addToPICScoreArray($event)" (consensusScore)="addToConsensusScoreArray($event)"></app-main-card>
+    </div>
+  </section>
+  <ng-template #loading>
+    <div fxLayout="column" fxLayoutAlign="center center">
+      <mat-spinner></mat-spinner>
+    </div>
+  </ng-template>
+</div>
