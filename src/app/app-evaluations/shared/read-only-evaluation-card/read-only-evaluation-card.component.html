@@ -1,0 +1,74 @@
+<mat-card fxLayout="column" fxLayoutAlign="space-between stretch" fxLayoutGap="20px" class="mat-typography">
+  <section fxLayout="row" fxLayoutAlign="space-between center">
+    <div>
+        Business Unit/Department: {{teamMember?.BusinessUnit}}
+    </div>
+  </section>
+  <section fxLayout="row" fxLayoutGap="20px">
+    <div fxFlex="15">
+      <h3>Individual Goals, by Group</h3>
+    </div>
+    <div fxFlex="40">
+      <h3>Comments as to Individual, Group and Final Evaluation Scores</h3>
+    </div>
+    <div fxFlex="40">
+    </div>
+    <div fxFlex="45">
+      <h3>Individual Goal Evaluation</h3>
+    </div>
+  </section>
+  <section>
+    <app-read-only-evaluation-line-item *ngFor="let evalItem of evaluation?.GoalEvaluations" [evalItem]="evalItem" (selfScore)="selfScoreChanged($event)" (picScore)="picScoreChanged($event)" (committeeScore)="committeeScoreChanged($event)"></app-read-only-evaluation-line-item>
+  </section>
+  <section fxLayout="row" fxLayoutGap="20px">
+    <span class="spacer"></span>
+    <mat-form-field fxFlex="5">
+      <input matInput placeholder="Total Weight" [value]="evaluation.GoalTypeTotalWeight" disabled>
+    </mat-form-field>
+    <mat-form-field fxFlex="10">
+      <input matInput placeholder="Average Self Score" [value]="averageSelfScore | number : '1.0-1'" disabled>
+    </mat-form-field>
+    <mat-form-field fxFlex="10">
+      <input matInput placeholder="Average PIC Score" [value]="averagePicScore | number : '1.0-1'" disabled>
+    </mat-form-field>
+    <mat-form-field fxFlex="10">
+      <input matInput placeholder="Average Committee Score" [value]="averageCommitteeScore | number : '1.0-1'" disabled>
+    </mat-form-field>
+  </section>
+  <section fxLayout="row" fxLayoutGap="20px">
+    <span class="spacer"></span>
+    <mat-form-field fxFlex="10">
+      <mat-select placeholder="Self Use Score" [(ngModel)]="evaluation.ShareholderScore" (selectionChange)="selfUseScoreChanged($event.value)" disabled>
+        <mat-option *ngFor="let score of scores" [value]="score">
+          {{ score }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field fxFlex="10">
+      <mat-select placeholder="PIC Use Score" [(ngModel)]="evaluation.PICScore" (selectionChange)="picUseScoreChanged($event.value)" disabled>
+        <mat-option *ngFor="let score of scores" [value]="score">
+          {{ score }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field fxFlex="10">
+      <mat-select placeholder="Consensus Use Score" [(ngModel)]="evaluation.ConsensusScore" (selectionChange)="committeeUseScoreChanged($event.value)" disabled>
+        <mat-option *ngFor="let score of scores" [value]="score">
+          {{ score }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </section>
+  <section fxLayout="row" fxLayoutGap="20px">
+    <span class="spacer"></span>
+    <mat-form-field fxFlex="10">
+      <input matInput placeholder="Weighted Self Score" [value]="calculatedSelfScore | number : '1.0-1'" disabled>
+    </mat-form-field>
+    <mat-form-field fxFlex="10">
+      <input matInput placeholder="Weighted PIC Score" [value]="calculatedPicScore | number : '1.0-1'" disabled>
+    </mat-form-field>
+    <mat-form-field fxFlex="10">
+      <input matInput placeholder="Weighted Consensus Score" [value]="calculatedCommitteeScore | number : '1.0-1'" disabled>
+    </mat-form-field>
+  </section>
+</mat-card>

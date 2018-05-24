@@ -8,4 +8,12 @@
     for exceptional performance. The weighted self-score will be automatically calculated. The PIC and committee scores will
     be entered during your meeting.</p>
 </section>
-<app-evaluation-card [title]="'WIGs'" [evaluation]="evalData?.EvaluationTypes[1]" *ngIf="evalData"></app-evaluation-card>
+<div *ngIf="evalData?.EvaluationTypes[1]; else isLoading">
+  <app-evaluation-card [title]="'WIGs'" [evaluation]="evalData?.EvaluationTypes[1]" *ngIf="evalData?.IsConsensusSignOff === false"></app-evaluation-card>
+  <app-read-only-evaluation-card [title]="'WIGs'" [evaluation]="evalData?.EvaluationTypes[1]" *ngIf="evalData?.IsConsensusSignOff"></app-read-only-evaluation-card>
+</div>
+<ng-template #isLoading>
+  <div fxLayout="column" fxLayoutAlign="center center">
+    <mat-spinner></mat-spinner>
+  </div>
+</ng-template>

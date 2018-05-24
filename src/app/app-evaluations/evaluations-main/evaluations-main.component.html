@@ -1,4 +1,4 @@
-  <div *ngIf="evaluationData && powerLevelDropdown; isLoading">
+  <div *ngIf="evaluationData && powerLevelDropdown; else isLoading">
     <app-dashboard [evaluationData]="evaluationData" [powerLevelDropdown]="powerLevelDropdown" *ngIf="evaluationData?.IsConsensusSignOff === false"></app-dashboard>
     <app-read-only-dashboard [evaluationData]="evaluationData" [powerLevelDropdown]="powerLevelDropdown" *ngIf="evaluationData?.IsConsensusSignOff"></app-read-only-dashboard>
   </div>

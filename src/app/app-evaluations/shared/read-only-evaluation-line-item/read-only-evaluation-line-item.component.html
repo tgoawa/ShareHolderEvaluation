@@ -1,0 +1,32 @@
+<section fxLayout="row" fxLayoutGap="20px">
+  <mat-form-field fxFlex="15">
+    <input matInput placeholder="SH Goal" disabled [value]="evalItem.GoalName">
+  </mat-form-field>
+  <mat-form-field fxFlex="50">
+    <textarea matInput [(ngModel)]="evalItem.EvaluationNote" placeholder="Comments" matTextareaAutosize matAutosizeMinRows="1" matAutosizeMaxRows="5" (change)="updateEvaluation()" disabled></textarea>
+  </mat-form-field>
+  <mat-form-field fxFlex="5">
+    <input matInput placeholder="Weight" disabled [value]="evalItem.GoalWeight">
+  </mat-form-field>
+  <mat-form-field fxFlex="10">
+    <mat-select placeholder="Self" [(ngModel)]="evalItem.ShareHolderScore" (selectionChange)="onSelfScoreChange()" disabled>
+      <mat-option *ngFor="let rating of ratings" [value]="rating">
+        {{ rating }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field fxFlex="10">
+    <mat-select placeholder="PIC/Practice Leader" [(ngModel)]="evalItem.PICScore" (selectionChange)="onPicScoreChange()" disabled>
+      <mat-option *ngFor="let rating of ratings" [value]="rating">
+        {{ rating }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field fxFlex="10">
+    <mat-select placeholder="Committee" [(ngModel)]="evalItem.ConsensusScore" (selectionChange)="onCommitteeScoreChange()" disabled>
+      <mat-option *ngFor="let rating of ratings" [value]="rating">
+        {{ rating }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</section>
