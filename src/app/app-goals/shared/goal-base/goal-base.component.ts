@@ -10,6 +10,8 @@ import * as _ from 'lodash';
 import { DropdownsService } from '../services/dropdowns.service';
 import { Dropdowns } from '../../models/dropdowns';
 import { YearSelectionService } from '../../../core/services/year-selection.service';
+import { TeamMember } from '../../../core/model/team-member';
+import { TeamMemberService } from '../../../core/services/team-member.service';
 
 @Component({
   selector: 'app-goal-base',
@@ -24,7 +26,7 @@ export class GoalBaseComponent implements OnInit {
   goalTypeId: number;
   isFormDirty: boolean;
   year: number;
-  teamMemberId: number;
+  teamMember: TeamMember;
   totalWeight: number;
   goalWeightData: GoalWeightModel[];
   constructor(
@@ -32,15 +34,12 @@ export class GoalBaseComponent implements OnInit {
     private goalsService: GoalsService,
     private dropService: DropdownsService,
     private dialog: MatDialog,
-    private yearService: YearSelectionService
+    private yearService: YearSelectionService,
+    private teamMemberService: TeamMemberService
   ) {}
 
   ngOnInit() {
-    this.teamMemberId = 1936;
-    this.yearService.selectedGoalYear$.subscribe(data => {
-      this.year = data;
-      this.getGoals(this.teamMemberId, this.goalTypeId, this.year);
-    });
+    this.getData();
     this.getDropdownLists(this.year);
   }
 
@@ -53,18 +52,18 @@ export class GoalBaseComponent implements OnInit {
     if (this.isFormDirty) {
       this.openConfirmationDialog();
     } else {
-      this.goal = new GoalData(this.goalTypeId, this.teamMemberId, this.year);
+      this.goal = new GoalData(this.goalTypeId, this.teamMember.TeamMemberId, this.year);
     }
   }
 
   onSaveGoal(savedGoal: GoalData) {
     console.log('Goal Saved!');
-    this.getGoals(this.teamMemberId, this.goalTypeId, this.year);
+    this.getGoals(this.teamMember.TeamMemberId, this.goalTypeId, this.year);
   }
 
   onUpdateGoal(updatedGoal: GoalData) {
     console.log('Goal Updated!');
-    this.getGoals(this.teamMemberId, this.goalTypeId, this.year);
+    this.getGoals(this.teamMember.TeamMemberId, this.goalTypeId, this.year);
   }
 
   onWeightChange(goalWeightModel: GoalWeightModel) {
@@ -137,6 +136,19 @@ export class GoalBaseComponent implements OnInit {
     );
   }
 
+  private getData() {
+  this.teamMemberService.teamMember$
+    .subscribe(teamMemberObject => {
+      this.teamMember = teamMemberObject;
+      this.yearService.selectedGoalYear$.subscribe(data => {
+        this.year = data;
+        this.getGoals(this.teamMember.TeamMemberId, this.goalTypeId, this.year);
+      });
+    }, error => {
+      console.error('Could not retrieve team member object');
+    });
+  }
+
   private getServiceLines() {
     this.dropService.getServiceLines().subscribe(
       data => {
@@ -174,7 +186,7 @@ export class GoalBaseComponent implements OnInit {
 
     this.confirmationDialogRef.afterClosed().subscribe(ignoreChanges => {
       if (ignoreChanges) {
-        this.goal = new GoalData(this.goalTypeId, this.teamMemberId, this.year);
+        this.goal = new GoalData(this.goalTypeId, this.teamMember.TeamMemberId, this.year);
         this.isFormDirty = false;
       }
     });

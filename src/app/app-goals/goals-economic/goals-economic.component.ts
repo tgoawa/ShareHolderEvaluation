@@ -6,6 +6,8 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { GoalsService } from '../shared/services/goals.service';
 import { MatSnackBar } from '@angular/material';
 import { YearSelectionService } from '../../core/services/year-selection.service';
+import { TeamMember } from '../../core/model/team-member';
+import { TeamMemberService } from '../../core/services/team-member.service';
 
 const numberMask = createNumberMask({
   prefix: '$',
@@ -22,7 +24,7 @@ export class GoalsEconomicComponent implements OnInit {
   previousYearActualHeading = 'Actuals ending June 30, ';
   previousYearGoalheading = ' Goals';
   mask = numberMask;
-  teamMemberId = 1936;
+  teamMember: TeamMember;
   year: number;
   previousYear: number;
   weightValues: number[] = [5, 10, 15, 20, 25, 30, 35, 40];
@@ -34,15 +36,12 @@ export class GoalsEconomicComponent implements OnInit {
     private fb: FormBuilder,
     private goalService: GoalsService,
     private yearService: YearSelectionService,
+    private teamMemberService: TeamMemberService,
     private snackBar: MatSnackBar
   ) {}
 
   ngOnInit() {
-    this.yearService.selectedGoalYear$.subscribe(data => {
-      this.year = data;
-      this.getEconomicGoal(this.teamMemberId, this.year);
-      this.previousYear = this.year - 1;
-    });
+    this.getData();
   }
 
   openSnackBar(message: string, action: string) {
@@ -59,6 +58,20 @@ export class GoalsEconomicComponent implements OnInit {
 
   setDirtyFlag() {
     this.isDirty = true;
+  }
+
+  private getData() {
+    this.teamMemberService.teamMember$
+      .subscribe(teamMemberObject => {
+        this.teamMember = teamMemberObject;
+        this.yearService.selectedGoalYear$.subscribe(data => {
+          this.year = data;
+          this.getEconomicGoal(this.teamMember.TeamMemberId, this.year);
+          this.previousYear = this.year - 1;
+        });
+      }, error => {
+        console.error('Could not retrieve team member object!');
+      });
   }
 
   private getEconomicGoal(teamMemberId: number, year: number) {
