@@ -6,6 +6,8 @@ import { GoalsService } from '../shared/services/goals.service';
 import { DashboardModel } from './model/dashboard.model';
 import { Observable } from 'rxjs/Observable';
 import { YearSelectionService } from '../../core/services/year-selection.service';
+import { TeamMember } from '../../core/model/team-member';
+import { TeamMemberService } from '../../core/services/team-member.service';
 
 @Component({
   selector: 'app-goals-main',
@@ -16,17 +18,17 @@ export class GoalsMainComponent implements OnInit {
   totalWeight: number;
   dashboardModels: DashboardModel[];
   weightDataDictionary: GoalTypeWeightData[];
-  teamMemberId = 1936;
+  teamMember: TeamMember;
   year: number;
 
-  constructor(private goalService: GoalsService, private yearService: YearSelectionService, private cd: ChangeDetectorRef) { }
+  constructor(private goalService: GoalsService,
+    private yearService: YearSelectionService,
+    private teamMemberService: TeamMemberService,
+    private cd: ChangeDetectorRef) { }
 
   ngOnInit() {
     this.totalWeight = 0;
-    this.yearService.selectedGoalYear$.subscribe(data => {
-      this.year = data;
-      this.getGoals(1936, this.year);
-    });
+    this.getData();
   }
 
   getGoals(teamMemberId: number, year: number) {
@@ -64,6 +66,19 @@ export class GoalsMainComponent implements OnInit {
       calculatedWeight = calculatedWeight + this.weightDataDictionary[x].GoalWeight;
     }
     return calculatedWeight;
+  }
+
+  private getData() {
+    this.teamMemberService.teamMember$
+      .subscribe(teamMemberObject => {
+        this.teamMember = teamMemberObject;
+        this.yearService.selectedGoalYear$.subscribe(data => {
+          this.year = data;
+          this.getGoals(this.teamMember.TeamMemberId, this.year);
+        });
+      }, error => {
+        console.error('Could not retrieve team member object!');
+      });
   }
 
 }
