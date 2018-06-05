@@ -11,10 +11,14 @@
     </div>
   </section>
   <section fxLayout="row" fxLayoutAlign="start" fxLayoutGap="10px" *ngIf="dashboardModels; else loading">
-    <app-main-card [title]="'WIG'" [data]="dashboardModels[1]" [route]="'/goals/'" (goalWeightData)="assignWeightTotal($event)" fxFlex="25"></app-main-card>
-    <app-main-card [title]="'Personal Competency'" [data]="dashboardModels[0]" [route]="'/goals/'" (goalWeightData)="assignWeightTotal($event)" fxFlex="25"></app-main-card>
-    <app-main-card [title]="'Firm Leadership'"[data]="dashboardModels[2]" [route]="'/goals/'" (goalWeightData)="assignWeightTotal($event)" fxFlex="25"></app-main-card>
-    <app-economic-card [data]="dashboardModels[3]" [route]="'/goals/'" (goalWeightData)="assignWeightTotal($event)" fxFlex="25"></app-economic-card>
+    <app-main-card [title]="'WIG'" [data]="dashboardModels[1]" [route]="'/goals/'" (goalWeightData)="assignWeightTotal($event)" fxFlex="25" *ngIf="!dashboardModels[1].IsReadOnly"></app-main-card>
+    <app-main-card [title]="'Personal Competency'" [data]="dashboardModels[0]" [route]="'/goals/'" (goalWeightData)="assignWeightTotal($event)" fxFlex="25" *ngIf="!dashboardModels[0].IsReadOnly"></app-main-card>
+    <app-main-card [title]="'Firm Leadership'"[data]="dashboardModels[2]" [route]="'/goals/'" (goalWeightData)="assignWeightTotal($event)" fxFlex="25" *ngIf="!dashboardModels[2].IsReadOnly"></app-main-card>
+    <app-economic-card [data]="dashboardModels[3]" [route]="'/goals/'" (goalWeightData)="assignWeightTotal($event)" fxFlex="25" *ngIf="!dashboardModels[3].IsReadOnly"></app-economic-card>
+    <app-read-only-main-card [title]="'WIG'" [data]="dashboardModels[1]" [route]="'/goals/'" (goalWeightData)="assignWeightTotal($event)" fxFlex="25" *ngIf="dashboardModels[1].IsReadOnly"></app-read-only-main-card>
+    <app-read-only-main-card [title]="'Personal Competency'" [data]="dashboardModels[0]" [route]="'/goals/'" (goalWeightData)="assignWeightTotal($event)" fxFlex="25" *ngIf="dashboardModels[0].IsReadOnly"></app-read-only-main-card>
+    <app-read-only-main-card [title]="'Firm Leadership'"[data]="dashboardModels[2]" [route]="'/goals/'" (goalWeightData)="assignWeightTotal($event)" fxFlex="25" *ngIf="dashboardModels[2].IsReadOnly"></app-read-only-main-card>
+    <app-read-only-economic-card [data]="dashboardModels[3]" [route]="'/goals/'" (goalWeightData)="assignWeightTotal($event)" fxFlex="25" *ngIf="dashboardModels[3].IsReadOnly"></app-read-only-economic-card>
   </section>
   <ng-template #loading>
     <div fxLayout="column" fxLayoutAlign="center center">
