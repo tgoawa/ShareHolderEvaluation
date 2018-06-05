@@ -54,6 +54,10 @@ import { ReadOnlyMainCardComponent } from './goals-main/read-only-main-card/read
 import { ReadOnlyEconomicCardComponent } from './goals-main/read-only-economic-card/read-only-economic-card.component';
 import { ReadOnlyGoalListComponent } from './shared/read-only-goal-list/read-only-goal-list.component';
 import { ReadOnlyGoalFormComponent } from './shared/read-only-goal-form/read-only-goal-form.component';
+import { ReadOnlyActionItemsComponent } from './shared/read-only-goal-form/read-only-action-items/read-only-action-items.component';
+import { ReadOnlyActionsListComponent } from './shared/read-only-goal-form/read-only-actions-list/read-only-actions-list.component';
+import { ReadOnlyNoteItemsComponent } from './shared/read-only-goal-form/read-only-note-items/read-only-note-items.component';
+import { ReadOnlyNoteListComponent } from './shared/read-only-goal-form/read-only-note-list/read-only-note-list.component';
 
 @NgModule({
   imports: [
@@ -105,7 +109,11 @@ import { ReadOnlyGoalFormComponent } from './shared/read-only-goal-form/read-onl
     ReadOnlyMainCardComponent,
     ReadOnlyEconomicCardComponent,
     ReadOnlyGoalListComponent,
-    ReadOnlyGoalFormComponent
+    ReadOnlyGoalFormComponent,
+    ReadOnlyActionItemsComponent,
+    ReadOnlyActionsListComponent,
+    ReadOnlyNoteItemsComponent,
+    ReadOnlyNoteListComponent
   ],
   entryComponents: [ConfirmationDialogComponent],
   providers: [

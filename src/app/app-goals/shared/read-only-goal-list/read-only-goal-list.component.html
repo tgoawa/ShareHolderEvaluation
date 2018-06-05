@@ -1,3 +1,13 @@
-<p>
-  read-only-goal-list works!
-</p>
+<mat-list>
+  <mat-list-item *ngFor="let goal of goals">
+    <h4 mat-line>
+      <button mat-button color="primary" (click)="selectGoal(goal)" [ngClass]="{'active': selectedItemId === goal.GoalId}">{{goal.Name}}</button>
+    </h4>
+    <mat-form-field class="list-input-width">
+      <mat-select class="text-right" placeholder="Weight" name="weight" [(value)]="goal.Weight" (selectionChange)="onWeightChange(goal)" [disabled]="true">
+        <mat-option *ngFor="let weight of weightValues" [value]="weight">{{weight}}</mat-option>
+      </mat-select>
+      <span matSuffix>%</span>
+    </mat-form-field>
+  </mat-list-item>
+</mat-list>

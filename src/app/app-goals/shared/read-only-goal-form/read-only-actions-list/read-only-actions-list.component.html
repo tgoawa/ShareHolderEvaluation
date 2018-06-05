@@ -1,0 +1,8 @@
+<div [formGroup]="parentForm">
+  <section fxLayout="row" fxLayoutAlign="start center">
+      <h3 class="no-bottom-margin">Actions/Measures:</h3>
+  </section>
+  <section formArrayName="Actions">
+    <app-read-only-action-items *ngFor="let action of Actions; let i = index" [actionItem]="action" [actionItems]="parentForm.controls.Actions"></app-read-only-action-items>
+  </section>
+</div>

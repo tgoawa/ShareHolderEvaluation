@@ -1,3 +1,44 @@
-<p>
-  read-only-goal-form works!
-</p>
+<mat-card>
+    <section>
+      <h3>Goal Details</h3>
+      <p><app-wig-dropdowns [parentForm]="goalForm" [WIGS]="dropDownData.WIG" *ngIf="goal.GoalTypeId === 4"></app-wig-dropdowns></p>
+      <p>
+        <app-competency-dropdowns [parentForm]="goalForm" [competencies]="dropDownData.Competencies" [competencyTypes]="dropDownData.CompetencyTypes" *ngIf="goal.GoalTypeId === 7"></app-competency-dropdowns>
+      </p>
+      <p>
+        <mat-form-field>
+          <mat-select placeholder="Industry Team" name="industryTeam" formControlName="IndustryTeamId" [disabled]="true">
+            <mat-option *ngFor="let industryTeam of industryTeams" [value]="industryTeam.id">{{industryTeam.value}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-select placeholder="Service Line" name="serviceLine" formControlName="ServiceLineId" [disabled]="true">
+            <mat-option [value]="0">None</mat-option>
+            <mat-option *ngFor="let service of dropDownData.ServiceLines" [value]="service.ServiceLineId">{{service.ServiceLine}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field class="half-width">
+          <input matInput type="text" placeholder="Goal Name" formControlName="Name" [disabled]="true">
+        </mat-form-field>
+        <mat-form-field class="list-input-width">
+          <mat-select class="text-right" placeholder="Weight" name="weight" formControlName="Weight" [disabled]="true">
+            <mat-option *ngFor="let weight of weightValues" [value]="weight">{{weight}}</mat-option>
+          </mat-select>
+          <span matSuffix>%</span>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field class="half-width">
+          <textarea matInput placeholder="Goal Description" matTextareaAutosize matAutosizeMinRows="1" matAutosizeMaxRows="5" formControlName="GoalDescription"></textarea>
+        </mat-form-field>
+      </p>
+    </section>
+    <section>
+      <app-read-only-actions-list [goalId]="goal.GoalId" [parentForm]="goalForm" [Actions]="goal.Actions"></app-read-only-actions-list>
+    </section>
+    <section>
+      <app-notes-list [goalId]="goal.GoalId" [parentForm]="goalForm" [Notes]="goal.Notes"></app-notes-list>
+    </section>
+</mat-card>
