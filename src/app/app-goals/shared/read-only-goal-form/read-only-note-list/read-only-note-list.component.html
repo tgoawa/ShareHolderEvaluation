@@ -1,3 +1,8 @@
-<p>
-  read-only-note-list works!
-</p>
+<div [formGroup]="parentForm">
+  <section fxLayout="row" fxLayoutAlign="start center">
+    <h3 class="no-bottom-margin">Additional Comments:</h3>
+  </section>
+  <section formArrayName="Notes">
+    <app-read-only-note-items [noteItem]="note" [noteItems]="parentForm.controls.Notes"></app-read-only-note-items>
+  </section>
+</div>

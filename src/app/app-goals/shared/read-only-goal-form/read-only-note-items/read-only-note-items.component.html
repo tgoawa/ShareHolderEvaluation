@@ -1,3 +1,6 @@
-<p>
-  read-only-note-items works!
-</p>
+<div [formGroup]="noteItemForm">
+  <mat-form-field class="half-width">
+    <textarea matInput placeholder="Additional Comments" matTextareaAutosize matAutosizeMinRows="1" matAutosizeMaxRows="5" formControlName="Note"
+      (keyup)="onValueChange()" [disabled]="true"></textarea>
+  </mat-form-field>
+</div>
