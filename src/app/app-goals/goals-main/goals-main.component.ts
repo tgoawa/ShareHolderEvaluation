@@ -8,6 +8,7 @@ import { Observable } from 'rxjs/Observable';
 import { YearSelectionService } from '../../core/services/year-selection.service';
 import { TeamMember } from '../../core/model/team-member';
 import { TeamMemberService } from '../../core/services/team-member.service';
+import { ReadOnlyService } from '../../core/services/read-only.service';
 
 @Component({
   selector: 'app-goals-main',
@@ -20,21 +21,27 @@ export class GoalsMainComponent implements OnInit {
   weightDataDictionary: GoalTypeWeightData[];
   teamMember: TeamMember;
   year: number;
+  isReadOnly: boolean;
 
   constructor(private goalService: GoalsService,
     private yearService: YearSelectionService,
     private teamMemberService: TeamMemberService,
+    private readOnlyService: ReadOnlyService,
     private cd: ChangeDetectorRef) { }
 
   ngOnInit() {
     this.totalWeight = 0;
     this.getData();
+    this.readOnlyService.readOnly$.subscribe(data =>{
+      this.isReadOnly = data;
+    });
   }
 
   getGoals(teamMemberId: number, year: number) {
     this.goalService.getDashboardGoals(teamMemberId, year)
     .subscribe(data => {
       this.dashboardModels = data;
+      this.checkForReadOnly(this.dashboardModels);
       this.weightDataDictionary = this.createWeightDataDictionary();
     }, error => {
       console.log('Could not bind goal data to view');
@@ -79,6 +86,19 @@ export class GoalsMainComponent implements OnInit {
       }, error => {
         console.error('Could not retrieve team member object!');
       });
+  }
+
+  private checkForReadOnly(dashboardModels: DashboardModel[]) {
+    for (let x = 0; x < dashboardModels.length; x++) {
+      if (!dashboardModels[x].IsReadOnly) {
+        this.setReadOnly(false);
+        break;
+      }
+    }
+  }
+
+  private setReadOnly(val: boolean) {
+    this.readOnlyService.setReadOnly(val);
   }
 
 }

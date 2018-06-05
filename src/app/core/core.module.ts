@@ -6,6 +6,7 @@ import { TeamMemberService } from './services/team-member.service';
 import { LoginService } from './services/login.service';
 import { AuthGuard } from './auth.guard';
 import { YearSelectionService } from './services/year-selection.service';
+import { ReadOnlyService } from './services/read-only.service';
 
 @NgModule({
   imports: [
@@ -13,7 +14,7 @@ import { YearSelectionService } from './services/year-selection.service';
     HttpModule
   ],
   declarations: [],
-  providers: [LoginService, TeamMemberService, AuthGuard, YearSelectionService]
+  providers: [LoginService, TeamMemberService, AuthGuard, YearSelectionService, ReadOnlyService]
 })
 export class CoreModule {
   constructor( @Optional() @SkipSelf() parentModule: CoreModule) {
