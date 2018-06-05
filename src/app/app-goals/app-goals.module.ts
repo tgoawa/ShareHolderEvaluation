@@ -50,6 +50,8 @@ import { NotesListComponent } from './shared/goal-form-card/notes-list/notes-lis
 import { NoteItemsComponent } from './shared/goal-form-card/note-items/note-items.component';
 import { ConfirmationDialogComponent } from './shared/confirmation-dialog/confirmation-dialog.component';
 import { EconomicCardComponent } from './goals-main/economic-card/economic-card.component';
+import { ReadOnlyMainCardComponent } from './goals-main/read-only-main-card/read-only-main-card.component';
+import { ReadOnlyEconomicCardComponent } from './goals-main/read-only-economic-card/read-only-economic-card.component';
 
 @NgModule({
   imports: [
@@ -97,7 +99,9 @@ import { EconomicCardComponent } from './goals-main/economic-card/economic-card.
     NotesListComponent,
     NoteItemsComponent,
     ConfirmationDialogComponent,
-    EconomicCardComponent
+    EconomicCardComponent,
+    ReadOnlyMainCardComponent,
+    ReadOnlyEconomicCardComponent
   ],
   entryComponents: [ConfirmationDialogComponent],
   providers: [
