@@ -52,6 +52,8 @@ import { ConfirmationDialogComponent } from './shared/confirmation-dialog/confir
 import { EconomicCardComponent } from './goals-main/economic-card/economic-card.component';
 import { ReadOnlyMainCardComponent } from './goals-main/read-only-main-card/read-only-main-card.component';
 import { ReadOnlyEconomicCardComponent } from './goals-main/read-only-economic-card/read-only-economic-card.component';
+import { ReadOnlyGoalListComponent } from './shared/read-only-goal-list/read-only-goal-list.component';
+import { ReadOnlyGoalFormComponent } from './shared/read-only-goal-form/read-only-goal-form.component';
 
 @NgModule({
   imports: [
@@ -101,7 +103,9 @@ import { ReadOnlyEconomicCardComponent } from './goals-main/read-only-economic-c
     ConfirmationDialogComponent,
     EconomicCardComponent,
     ReadOnlyMainCardComponent,
-    ReadOnlyEconomicCardComponent
+    ReadOnlyEconomicCardComponent,
+    ReadOnlyGoalListComponent,
+    ReadOnlyGoalFormComponent
   ],
   entryComponents: [ConfirmationDialogComponent],
   providers: [
