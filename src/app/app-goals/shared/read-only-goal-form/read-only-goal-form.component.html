@@ -1,18 +1,19 @@
 <mat-card>
+    <form [formGroup]="goalForm">
     <section>
       <h3>Goal Details</h3>
-      <p><app-wig-dropdowns [parentForm]="goalForm" [WIGS]="dropDownData.WIG" *ngIf="goal.GoalTypeId === 4"></app-wig-dropdowns></p>
+      <p><app-read-only-wig-dropdowns [parentForm]="goalForm" [WIGS]="dropDownData.WIG" *ngIf="goal.GoalTypeId === 4"></app-read-only-wig-dropdowns></p>
       <p>
         <app-competency-dropdowns [parentForm]="goalForm" [competencies]="dropDownData.Competencies" [competencyTypes]="dropDownData.CompetencyTypes" *ngIf="goal.GoalTypeId === 7"></app-competency-dropdowns>
       </p>
       <p>
         <mat-form-field>
-          <mat-select placeholder="Industry Team" name="industryTeam" formControlName="IndustryTeamId" [disabled]="true">
+          <mat-select placeholder="Industry Team" name="industryTeam" formControlName="IndustryTeamId">
             <mat-option *ngFor="let industryTeam of industryTeams" [value]="industryTeam.id">{{industryTeam.value}}</mat-option>
           </mat-select>
         </mat-form-field>
         <mat-form-field>
-          <mat-select placeholder="Service Line" name="serviceLine" formControlName="ServiceLineId" [disabled]="true">
+          <mat-select placeholder="Service Line" name="serviceLine" formControlName="ServiceLineId">
             <mat-option [value]="0">None</mat-option>
             <mat-option *ngFor="let service of dropDownData.ServiceLines" [value]="service.ServiceLineId">{{service.ServiceLine}}</mat-option>
           </mat-select>
@@ -20,10 +21,10 @@
       </p>
       <p>
         <mat-form-field class="half-width">
-          <input matInput type="text" placeholder="Goal Name" formControlName="Name" [disabled]="true">
+          <input matInput type="text" placeholder="Goal Name" formControlName="Name">
         </mat-form-field>
         <mat-form-field class="list-input-width">
-          <mat-select class="text-right" placeholder="Weight" name="weight" formControlName="Weight" [disabled]="true">
+          <mat-select class="text-right" placeholder="Weight" name="weight" formControlName="Weight">
             <mat-option *ngFor="let weight of weightValues" [value]="weight">{{weight}}</mat-option>
           </mat-select>
           <span matSuffix>%</span>
@@ -41,4 +42,5 @@
     <section>
       <app-read-only-note-list [goalId]="goal.GoalId" [parentForm]="goalForm" [Notes]="goal.Notes"></app-read-only-note-list>
     </section>
+    </form>
 </mat-card>

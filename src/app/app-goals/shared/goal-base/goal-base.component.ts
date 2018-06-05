@@ -12,6 +12,7 @@ import { Dropdowns } from '../../models/dropdowns';
 import { YearSelectionService } from '../../../core/services/year-selection.service';
 import { TeamMember } from '../../../core/model/team-member';
 import { TeamMemberService } from '../../../core/services/team-member.service';
+import { ReadOnlyService } from '../../../core/services/read-only.service';
 
 @Component({
   selector: 'app-goal-base',
@@ -26,6 +27,7 @@ export class GoalBaseComponent implements OnInit {
   goalTypeId: number;
   isFormDirty: boolean;
   year: number;
+  isReadOnly: boolean;
   teamMember: TeamMember;
   totalWeight: number;
   goalWeightData: GoalWeightModel[];
@@ -35,12 +37,16 @@ export class GoalBaseComponent implements OnInit {
     private dropService: DropdownsService,
     private dialog: MatDialog,
     private yearService: YearSelectionService,
+    private readOnlyService: ReadOnlyService,
     private teamMemberService: TeamMemberService
   ) {}
 
   ngOnInit() {
     this.getData();
     this.getDropdownLists(this.year);
+    this.readOnlyService.readOnly$.subscribe(data => {
+      this.isReadOnly = data;
+    });
   }
 
   onSetExistingGoal(goal: GoalData) {

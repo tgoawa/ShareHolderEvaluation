@@ -58,6 +58,7 @@ import { ReadOnlyActionItemsComponent } from './shared/read-only-goal-form/read-
 import { ReadOnlyActionsListComponent } from './shared/read-only-goal-form/read-only-actions-list/read-only-actions-list.component';
 import { ReadOnlyNoteItemsComponent } from './shared/read-only-goal-form/read-only-note-items/read-only-note-items.component';
 import { ReadOnlyNoteListComponent } from './shared/read-only-goal-form/read-only-note-list/read-only-note-list.component';
+import { ReadOnlyWigDropdownsComponent } from './shared/read-only-wig-dropdowns/read-only-wig-dropdowns.component';
 
 @NgModule({
   imports: [
@@ -113,7 +114,8 @@ import { ReadOnlyNoteListComponent } from './shared/read-only-goal-form/read-onl
     ReadOnlyActionItemsComponent,
     ReadOnlyActionsListComponent,
     ReadOnlyNoteItemsComponent,
-    ReadOnlyNoteListComponent
+    ReadOnlyNoteListComponent,
+    ReadOnlyWigDropdownsComponent
   ],
   entryComponents: [ConfirmationDialogComponent],
   providers: [
