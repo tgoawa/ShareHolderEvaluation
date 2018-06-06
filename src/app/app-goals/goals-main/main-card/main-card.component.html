@@ -4,7 +4,7 @@
     <h4>Weight:</h4>
     <p>{{totalWeight}}%</p>
     <br>
-    <a mat-button [routerLink]="route + routeName + '/' + 0" color="primary">View {{data.GoalType}} Goals</a>
+    <a mat-button [routerLink]="route + routeName + '/' + 0" color="primary">View {{title}} Goals</a>
   </section>
   <mat-list>
     <mat-list-item *ngFor="let goal of data.Goals">
