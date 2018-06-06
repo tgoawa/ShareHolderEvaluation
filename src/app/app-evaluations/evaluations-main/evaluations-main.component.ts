@@ -16,7 +16,6 @@ export class EvaluationsMainComponent implements OnInit, OnChanges {
   evaluationData: EvaluationModel;
   powerLevelDropdown: PowerLevel;
   teamMember: TeamMember;
-  teamMemberId = 1936;
   year: number;
   constructor(private yearService: YearSelectionService,
     private teamMemberService: TeamMemberService,
@@ -53,7 +52,7 @@ export class EvaluationsMainComponent implements OnInit, OnChanges {
         this.teamMember = teamMemberObject;
         this.yearService.selectedEvalYear$.subscribe(data => {
           this.year = data;
-          this.evaluationService.getEvaluationModel(this.teamMember.TeamMemberId, this.year);
+          this.evaluationService.getEvaluationModel(55, this.year);
         }, error => {
           console.error(error);
         });

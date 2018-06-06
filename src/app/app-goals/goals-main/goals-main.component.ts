@@ -81,7 +81,7 @@ export class GoalsMainComponent implements OnInit {
         this.teamMember = teamMemberObject;
         this.yearService.selectedGoalYear$.subscribe(data => {
           this.year = data;
-          this.getGoals(this.teamMember.TeamMemberId, this.year);
+          this.getGoals(55, this.year);
         });
       }, error => {
         console.error('Could not retrieve team member object!');
