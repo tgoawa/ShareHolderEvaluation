@@ -4,12 +4,12 @@
     <h4>Weight:</h4>
     <p>{{totalWeight}}%</p>
     <br>
-    <a mat-button [routerLink]="route + routeName + '/' + 0" color="primary">View {{title}} Goals</a>
+    <a mat-button [routerLink]="route + '/' + 0" color="primary">View {{title}} Goals</a>
   </section>
   <mat-list>
     <mat-list-item *ngFor="let goal of data.Goals">
       <h4 mat-line>
-        <a [routerLink]="route + routeName + '/' + goal.GoalId" mat-button color="primary">{{goal.GoalName}}</a>
+        <a [routerLink]="route + '/' + goal.GoalId" mat-button color="primary">{{goal.GoalName}}</a>
       </h4>
       <mat-form-field fxFlex="20">
         <mat-select class="text-right" placeholder="Weight" [(ngModel)]="goal.Weight" name="weight" (selectionChange)="updateTotalWeight(goal)">
