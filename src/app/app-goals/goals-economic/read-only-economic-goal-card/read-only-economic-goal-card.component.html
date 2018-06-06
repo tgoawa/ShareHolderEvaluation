@@ -1,3 +1,123 @@
-<p>
-  read-only-economic-goal-card works!
-</p>
+<mat-card>
+  <mat-card-title>
+    Personal
+  </mat-card-title>
+  <form [formGroup]="economicGoalForm" (ngSubmit)="onSubmit(economicGoalForm.value)">
+    <section>
+      <mat-form-field class="list-input-width">
+        <mat-select class="text-right" placeholder="Weight" name="weight" formControlName="Weight">
+          <mat-option *ngFor="let weight of weightValues" [value]="weight">{{weight}}</mat-option>
+        </mat-select>
+        <span matSuffix>%</span>
+      </mat-form-field>
+    </section>
+    <section fxLayout="row" fxLayoutGap="20px" class="text-right">
+      <h3 fxFlex="15">Description</h3>
+      <h3 fxFlex="10">{{year}} Goals</h3>
+      <h3 fxFlex="15">{{previousYearActualHeading}} {{previousYear}}</h3>
+      <h3 fxFlex="10">{{previousYear}} {{previousYearGoalheading}}</h3>
+    </section>
+    <section fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px" class="text-right">
+      <h4 fxFlex="15">Tiers 1-3</h4>
+      <mat-form-field fxFlex="10">
+        <input matInput type="text" placeholder="Goal Amount" class="text-right" [textMask]="{mask: mask}" formControlName="BillingsTiers1_3" (keyup)="setDirtyFlag()">
+        <mat-error *ngIf="economicGoalForm.get('BillingsTiers1_3').hasError('required')">
+          A numeric value is required <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <span fxFlex="15">{{economicGoal.PreviousYearActuals.Detail.BillingsTiers1_3 | currency: 'USD': 'symbol-narrow': '0.0-0'}}</span>
+      <span fxFlex="10">{{economicGoal.PreviousEconomicGoal.Detail.BillingsTiers1_3 | currency: 'USD': 'symbol-narrow': '0.0-0'}}</span>
+    </section>
+    <section fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px" class="text-right">
+      <h4 fxFlex="15">Tiers 4-5</h4>
+      <mat-form-field fxFlex="10">
+        <input matInput type="text" placeholder="Goal Amount" class="text-right" [textMask]="{mask: mask}" formControlName="BillingsTiers4_5" (keyup)="setDirtyFlag()">
+        <mat-error *ngIf="economicGoalForm.get('BillingsTiers4_5').hasError('required')">
+          A numeric value is required <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <span fxFlex="15">{{economicGoal.PreviousYearActuals.Detail.BillingsTiers4_5 | currency: 'USD': 'symbol-narrow': '0.0-0'}}</span>
+      <span fxFlex="10">{{economicGoal.PreviousEconomicGoal.Detail.BillingsTiers4_5 | currency: 'USD': 'symbol-narrow': '0.0-0'}}</span>
+    </section>
+    <section fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px" class="text-right">
+      <h4 fxFlex="15">Tier 6</h4>
+      <mat-form-field fxFlex="10">
+        <input matInput type="text" placeholder="Goal Amount" class="text-right" [textMask]="{mask: mask}" formControlName="BillingsTier6" (keyup)="setDirtyFlag()">
+        <mat-error *ngIf="economicGoalForm.get('BillingsTier6').hasError('required')">
+          A numeric value is required <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <span fxFlex="15">{{economicGoal.PreviousYearActuals.Detail.BillingsTier6 | currency: 'USD': 'symbol-narrow': '0.0-0'}}</span>
+      <span fxFlex="10">{{economicGoal.PreviousEconomicGoal.Detail.BillingsTier6 | currency: 'USD': 'symbol-narrow': '0.0-0'}}</span>
+    </section>
+    <section fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px" class="text-right">
+      <h4 fxFlex="15">New Business From New Clients</h4>
+      <mat-form-field fxFlex="10">
+        <input matInput type="text" placeholder="Goal Amount" class="text-right" [textMask]="{mask: mask}" formControlName="BusinessNewClients" (keyup)="setDirtyFlag()">
+        <mat-error *ngIf="economicGoalForm.get('BusinessNewClients').hasError('required')">
+          A numeric value is required <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <span fxFlex="15">{{economicGoal.PreviousYearActuals.Detail.BusinessNewClients | currency: 'USD': 'symbol-narrow': '0.0-0'}}</span>
+      <span fxFlex="10">{{economicGoal.PreviousEconomicGoal.Detail.BusinessNewClients | currency: 'USD': 'symbol-narrow': '0.0-0'}}</span>
+    </section>
+    <section fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px" class="text-right">
+      <h4 fxFlex="15">New Business From Existing Clients</h4>
+      <mat-form-field fxFlex="10">
+        <input matInput type="text" placeholder="Goal Amount" class="text-right" [textMask]="{mask: mask}" formControlName="BusinessExistingClients" (keyup)="setDirtyFlag()">
+        <mat-error *ngIf="economicGoalForm.get('BusinessExistingClients').hasError('required')">
+          A numeric value is required <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <span fxFlex="15">{{economicGoal.PreviousYearActuals.Detail.BusinessExistingClients | currency: 'USD': 'symbol-narrow': '0.0-0'}}</span>
+      <span fxFlex="10">{{economicGoal.PreviousEconomicGoal.Detail.BusinessExistingClients | currency: 'USD': 'symbol-narrow': '0.0-0'}}</span>
+    </section>
+    <section fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px" class="text-right">
+      <h4 fxFlex="15">Referrals To Speciality Units</h4>
+      <mat-form-field fxFlex="10">
+        <input matInput type="text" placeholder="Goal Amount" class="text-right" [textMask]="{mask: mask}" formControlName="ReferralsSpecialityUnits" (keyup)="setDirtyFlag()">
+        <mat-error *ngIf="economicGoalForm.get('ReferralsSpecialityUnits').hasError('required')">
+          A numeric value is required <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <span fxFlex="15">{{economicGoal.PreviousYearActuals.Detail.ReferralsSpecialityUnits | currency: 'USD': 'symbol-narrow': '0.0-0'}}</span>
+      <span fxFlex="10">{{economicGoal.PreviousEconomicGoal.Detail.ReferralsSpecialityUnits | currency: 'USD': 'symbol-narrow': '0.0-0'}}</span>
+    </section>
+    <section fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px" class="text-right">
+      <h4 fxFlex="15">Charge Hours</h4>
+      <mat-form-field fxFlex="10">
+        <input matInput type="text" placeholder="Goal Amount" class="text-right" formControlName="ChargeHours" (keyup)="setDirtyFlag()">
+        <mat-error *ngIf="economicGoalForm.get('ChargeHours').hasError('required')">
+          A numeric value is required <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <span fxFlex="15">{{economicGoal.PreviousYearActuals.Detail.ChargeHours}}</span>
+      <span fxFlex="10">{{economicGoal.PreviousEconomicGoal.Detail.ChargeHours}}</span>
+    </section>
+    <section fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px" class="text-right">
+      <h4 fxFlex="15">Realization</h4>
+      <mat-form-field fxFlex="10">
+        <input matInput type="text" placeholder="Goal Amount" class="text-right" formControlName="Realization" (keyup)="setDirtyFlag()">
+        <mat-error *ngIf="economicGoalForm.get('Realization').hasError('required')">
+          A numeric value is required <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <span fxFlex="15">{{economicGoal.PreviousYearActuals.Detail.Realization}}</span>
+      <span fxFlex="10">{{economicGoal.PreviousEconomicGoal.Detail.Realization}}</span>
+    </section>
+    <section fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px" class="text-right">
+      <h4 fxFlex="15">Days in WIP and AR</h4>
+      <mat-form-field fxFlex="10">
+        <input matInput type="text" placeholder="Goal Amount" class="text-right" formControlName="DaysinWIP_AR" (keyup)="setDirtyFlag()">
+        <mat-error *ngIf="economicGoalForm.get('DaysinWIP_AR').hasError('required')">
+          A numeric value is required <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <span fxFlex="15">{{economicGoal.PreviousYearActuals.Detail.DaysinWIP_AR}}</span>
+      <span fxFlex="10">{{economicGoal.PreviousEconomicGoal.Detail.DaysinWIP_AR}}</span>
+    </section>
+    <section fxLayout="row">
+      <button mat-raised-button color="accent" type="submit" [disabled]="!economicGoalForm.valid">Update Personal Goals</button>
+    </section>
+  </form>
+</mat-card>

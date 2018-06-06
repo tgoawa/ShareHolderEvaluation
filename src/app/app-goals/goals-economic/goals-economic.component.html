@@ -9,7 +9,8 @@
     </div>
   </section> -->
   <section *ngIf="economicGoal; else loading;">
-    <app-economic-goal-card [economicGoal]="economicGoal" [year]="year" [previousYear]="previousYear"></app-economic-goal-card>
+    <app-economic-goal-card [economicGoal]="economicGoal" [year]="year" [previousYear]="previousYear" *ngIf="!isReadOnly"></app-economic-goal-card>
+    <app-read-only-economic-goal-card [economicGoal]="economicGoal" [year]="year" [previousYear]="previousYear" *ngIf="isReadOnly"></app-read-only-economic-goal-card>
   </section>
   <ng-template #loading>
     <div fxLayout="column" fxLayoutAlign="center center">
