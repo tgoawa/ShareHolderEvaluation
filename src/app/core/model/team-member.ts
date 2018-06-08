@@ -9,4 +9,10 @@ export class TeamMember {
   Location: string;
   BusinessUnit: string;
   IsShareHolder: boolean;
+  IndustryTeams: IndustryTeam[]
+}
+
+export interface IndustryTeam {
+  IndustryTeamId: number;
+  TeamName: string;
 }

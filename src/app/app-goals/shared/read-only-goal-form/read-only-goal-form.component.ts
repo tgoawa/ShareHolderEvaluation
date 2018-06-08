@@ -2,7 +2,8 @@ import { Component, OnChanges, Input, ChangeDetectionStrategy } from '@angular/c
 import { Dropdowns } from '../../models/dropdowns';
 import { GoalData } from '../../models/goal';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { IndustryTeam } from '../goal-form-card/goal-form-card.component';
+import { IndustryTeam } from '../../../core/model/team-member';
+import { TeamMemberService } from '../../../core/services/team-member.service';
 
 @Component({
   selector: 'app-read-only-goal-form',
@@ -19,16 +20,13 @@ export class ReadOnlyGoalFormComponent implements OnChanges {
 
   serviceLine = [{ id: 0, value: 'None' }, { id: 1, value: 'Assurance' }];
 
-  industryTeams: IndustryTeam[] = [
-    { id: 0, value: 'None' },
-    { id: 1, value: 'Government' },
-    { id: 2, value: 'Construction' },
-  ];
+  industryTeams: IndustryTeam[];
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private teamMemberService: TeamMemberService) { }
 
   ngOnChanges() {
     this.goalForm = this.toFormGroup(this.goal);
+    this.teamMemberService.teamMember$.subscribe(data => this.industryTeams = data.IndustryTeams);
   }
 
   private toFormGroup(data: GoalData): FormGroup {

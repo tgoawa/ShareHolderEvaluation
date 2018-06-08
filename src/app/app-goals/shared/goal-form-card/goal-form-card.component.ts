@@ -4,11 +4,8 @@ import { GoalData } from '../../models/goal';
 import { Dropdowns } from '../../models/dropdowns';
 import { GoalsService } from '../services/goals.service';
 import { MatSnackBar } from '@angular/material';
-
-export interface IndustryTeam {
-  id: number;
-  value: string;
-}
+import { TeamMemberService } from '../../../core/services/team-member.service';
+import { IndustryTeam } from '../../../core/model/team-member';
 
 @Component({
   selector: 'app-goal-form-card',
@@ -22,22 +19,23 @@ export class GoalFormCardComponent implements DoCheck, OnInit, OnChanges {
   @Output() isFormDirty: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() savedGoal: EventEmitter<GoalData> = new EventEmitter<GoalData>();
   @Output() updatedGoal: EventEmitter<GoalData> = new EventEmitter<GoalData>();
+
   weightValues: number[] = [5, 10, 15, 20, 25, 30, 35, 40];
   goalForm: FormGroup;
   serviceLine = [{ id: 0, value: 'None' }, { id: 1, value: 'Assurance' }];
 
-  industryTeams: IndustryTeam[] = [
-    { id: 0, value: 'None' },
-    { id: 1, value: 'Government' },
-    { id: 2, value: 'Construction' },
-  ];
+  industryTeams: IndustryTeam[];
 
-  constructor(public snackBar: MatSnackBar, private fb: FormBuilder, private goalsService: GoalsService) {}
+  constructor(public snackBar: MatSnackBar,
+    private fb: FormBuilder,
+    private goalsService: GoalsService,
+    private teamMemberService: TeamMemberService) {}
 
   ngOnInit() {}
 
   ngOnChanges() {
     this.goalForm = this.toFormGroup(this.goal);
+    this.teamMemberService.teamMember$.subscribe(data => this.industryTeams = data.IndustryTeams);
   }
 
   ngDoCheck() {
