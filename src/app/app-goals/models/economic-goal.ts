@@ -1,7 +1,7 @@
 export interface EconomicGoalModel {
   CurrentEconomicGoal: EconomicGoal;
   PreviousEconomicGoal: EconomicGoal;
-  PreviousYearActuals: EconomicGoal;
+  PreviousYearActuals: PreviousActuals;
 }
 
 export class EconomicGoal {
@@ -27,4 +27,20 @@ export class Detail {
   Realization: number;
   DaysinWIP_AR: number;
   IsDirty: boolean;
+}
+
+export interface PreviousActuals {
+  EconomicActualId: number;
+  EconomicDetailId: number;
+  EconomicGoalTypeId: number;
+  BillingsTiers1_3: number;
+  BillingsTiers4_5: number;
+  BillingsTier6: number;
+  BusinessExistingClients: number;
+  BusinessNewClients: number;
+  ReferralsSpecialityUnits: number;
+  ChargeHours: number;
+  Realization: number;
+  DaysinWIP_AR: number;
+  ActualYear: number;
 }
