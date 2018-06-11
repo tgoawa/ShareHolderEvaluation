@@ -22,7 +22,7 @@ export class EvaluationsEconomicComponent implements OnInit {
   ngOnInit() {
     this.yearService.selectedEvalYear$.subscribe(data => {
       this.year = data;
-      this.getEconomicGoal(this.teamMemberId, this.year);
+      this.getEconomicGoal(23, this.year);
       this.previousYear = this.year - 1;
     });
 
