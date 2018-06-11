@@ -11,6 +11,7 @@ import { MatSnackBar } from '@angular/material';
 })
 export class GoalListCardComponent implements OnInit {
   @Input() goals: GoalData[];
+  @Input() existingGoalId: number;
   @Output() goal: EventEmitter<GoalData> = new EventEmitter<GoalData>();
   @Output() goalWeightModel: EventEmitter<GoalWeightModel> = new EventEmitter<GoalWeightModel>();
   selectedItemId: number;
@@ -19,7 +20,7 @@ export class GoalListCardComponent implements OnInit {
   constructor(public snackBar: MatSnackBar, private goalService: GoalsService) { }
 
   ngOnInit() {
-
+    this.checkExistingGoal();
   }
 
   onWeightChange(goal: GoalData) {
@@ -50,6 +51,12 @@ export class GoalListCardComponent implements OnInit {
   weightChange(goalData: GoalData) {
     const _goalWeightModel = new GoalWeightModel(goalData.GoalId, goalData.Weight);
     this.goalWeightModel.emit(_goalWeightModel);
+  }
+
+  checkExistingGoal() {
+    if (this.existingGoalId > 0) {
+      this.selectedItemId = this.existingGoalId;
+    }
   }
 
 }

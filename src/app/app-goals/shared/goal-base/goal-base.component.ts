@@ -30,6 +30,7 @@ export class GoalBaseComponent implements OnInit {
   isReadOnly: boolean;
   teamMember: TeamMember;
   totalWeight: number;
+  preSelectedGoalId: number;
   goalWeightData: GoalWeightModel[];
   constructor(
     private route: ActivatedRoute,
@@ -179,7 +180,8 @@ export class GoalBaseComponent implements OnInit {
 
   private setGoal(goals: GoalData[], teamMemberId: number) {
     this.route.params.subscribe(params => {
-      if (params['id'] === '0') {
+      this.preSelectedGoalId = +params['id'];
+      if (this.preSelectedGoalId === 0) {
         this.goal = new GoalData(this.goalTypeId, teamMemberId, this.year);
       } else {
         this.setGoalFromRoute(goals, params['id']);
