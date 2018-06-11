@@ -23,7 +23,7 @@
     <div fxFlex="grow" class="text-center">
       <app-main-card [route]="'/evaluations/competency'" [name]="'Personal Competency'" [data]="evaluationData?.EvaluationTypes[0]" (shareholderScore)="addToShareholderScoreArray($event)" (picScore)="addToPICScoreArray($event)" (consensusScore)="addToConsensusScoreArray($event)"></app-main-card>
     </div>
-    <div fxFlex="grow" class="text-center" *ngIf="evaluationData?.EvaluationTypes[2]">
+    <div fxFlex="grow" class="text-center" *ngIf="evaluationData?.EvaluationTypes[2]?.GoalEvaluations.length > 0">
       <app-main-card [route]="'/evaluations/leadership'" [name]="'Firm Leadership'" [data]="evaluationData?.EvaluationTypes[2]" (shareholderScore)="addToShareholderScoreArray($event)" (picScore)="addToPICScoreArray($event)" (consensusScore)="addToConsensusScoreArray($event)"></app-main-card>
     </div>
     <div fxFlex="grow" class="text-center">
