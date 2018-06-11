@@ -14,7 +14,6 @@ export class EvaluationsEconomicComponent implements OnInit {
   economicGoal: EconomicGoalModel;
   previousYearActualHeading = 'Actuals ending June 30, ';
   evalData: EvaluationModel;
-  teamMemberId = 1936;
   year: number;
   previousYear: number;
   constructor(private evaluationService: EvaluationService, private yearService: YearSelectionService) { }
@@ -22,7 +21,7 @@ export class EvaluationsEconomicComponent implements OnInit {
   ngOnInit() {
     this.yearService.selectedEvalYear$.subscribe(data => {
       this.year = data;
-      this.getEconomicGoal(23, this.year);
+      this.getEconomicGoal(22, this.year);
       this.previousYear = this.year - 1;
     });
 
