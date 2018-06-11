@@ -1,4 +1,4 @@
-<mat-card>
+<mat-card *ngIf="dropDownData">
   <form [formGroup]="goalForm" (ngSubmit)="onSubmit(goalForm.value)">
     <section>
       <h3>Goal Details</h3>

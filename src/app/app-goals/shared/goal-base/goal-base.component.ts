@@ -43,7 +43,6 @@ export class GoalBaseComponent implements OnInit {
 
   ngOnInit() {
     this.getData();
-    this.getDropdownLists(this.year);
     this.readOnlyService.readOnly$.subscribe(data => {
       this.isReadOnly = data;
     });
@@ -148,6 +147,7 @@ export class GoalBaseComponent implements OnInit {
       this.teamMember = teamMemberObject;
       this.yearService.selectedGoalYear$.subscribe(data => {
         this.year = data;
+        this.getDropdownLists(this.year);
         this.getGoals(this.teamMember.TeamMemberId, this.goalTypeId, this.year);
       });
     }, error => {
