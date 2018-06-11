@@ -39,7 +39,7 @@ export class EvaluationsEconomicComponent implements OnInit {
   }
 
   private getEconomicGoal(teamMemberId: number, year: number) {
-    this.evaluationService.getEconomicGoals(teamMemberId, year).subscribe(
+    this.evaluationService.getEconomicEval(teamMemberId, year).subscribe(
       data => {
         this.economicGoal = data;
       },
