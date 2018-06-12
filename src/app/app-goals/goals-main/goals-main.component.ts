@@ -42,6 +42,7 @@ export class GoalsMainComponent implements OnInit {
     .subscribe(data => {
       this.dashboardModel = data;
       this.weightDataDictionary = this.createWeightDataDictionary();
+      this.checkForReadOnly(this.dashboardModel);
     }, error => {
       console.log('Could not bind goal data to view');
     });
