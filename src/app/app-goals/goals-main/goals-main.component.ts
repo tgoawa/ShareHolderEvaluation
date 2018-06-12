@@ -93,6 +93,8 @@ export class GoalsMainComponent implements OnInit {
       if (!dashboardModels[x].IsReadOnly) {
         this.setReadOnly(false);
         break;
+      } else {
+        this.setReadOnly(true);
       }
     }
   }
