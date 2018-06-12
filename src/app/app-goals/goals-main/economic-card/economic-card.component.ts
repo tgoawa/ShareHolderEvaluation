@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter, AfterViewInit, ChangeDetectionStrategy, OnChanges } from '@angular/core';
-import { DashboardModel, DashboardGoal } from '../model/dashboard.model';
+import { GoalType, DashboardGoal } from '../model/dashboard.model';
 import { GoalTypeWeightData, GoalWeightModel } from '../model/weight';
 import { GoalsService } from '../../shared/services/goals.service';
 import { MatSnackBar } from '@angular/material';
@@ -11,7 +11,7 @@ import { MatSnackBar } from '@angular/material';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class EconomicCardComponent implements OnInit, AfterViewInit, OnChanges {
-  @Input() data: DashboardModel;
+  @Input() data: GoalType;
   @Input() route: string;
   @Output() goalWeightData: EventEmitter<GoalTypeWeightData> = new EventEmitter<GoalTypeWeightData>();
   weightValues: number[] = [0, 5, 10, 15, 20, 25, 30, 35, 40];

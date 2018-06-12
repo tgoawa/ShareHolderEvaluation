@@ -3,7 +3,7 @@ import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Goals } from './model/goals';
 import { GoalTypeWeightData } from './model/weight';
 import { GoalsService } from '../shared/services/goals.service';
-import { DashboardModel } from './model/dashboard.model';
+import { GoalType, DashboardModel } from './model/dashboard.model';
 import { Observable } from 'rxjs/Observable';
 import { YearSelectionService } from '../../core/services/year-selection.service';
 import { TeamMember } from '../../core/model/team-member';
@@ -17,7 +17,7 @@ import { ReadOnlyService } from '../../core/services/read-only.service';
 })
 export class GoalsMainComponent implements OnInit {
   totalWeight: number;
-  dashboardModels: DashboardModel[];
+  dashboardModel: DashboardModel;
   weightDataDictionary: GoalTypeWeightData[];
   teamMember: TeamMember;
   year: number;
@@ -32,7 +32,7 @@ export class GoalsMainComponent implements OnInit {
   ngOnInit() {
     this.totalWeight = 0;
     this.getData();
-    this.readOnlyService.readOnly$.subscribe(data =>{
+    this.readOnlyService.readOnly$.subscribe(data => {
       this.isReadOnly = data;
     });
   }
@@ -40,8 +40,7 @@ export class GoalsMainComponent implements OnInit {
   getGoals(teamMemberId: number, year: number) {
     this.goalService.getDashboardGoals(teamMemberId, year)
     .subscribe(data => {
-      this.dashboardModels = data;
-      this.checkForReadOnly(this.dashboardModels);
+      this.dashboardModel = data;
       this.weightDataDictionary = this.createWeightDataDictionary();
     }, error => {
       console.log('Could not bind goal data to view');
@@ -50,8 +49,8 @@ export class GoalsMainComponent implements OnInit {
 
   createWeightDataDictionary() {
     const dataDictionary = [];
-    for (let x = 0; x < this.dashboardModels.length; x++) {
-      const goalTypeWeightData = new GoalTypeWeightData(this.dashboardModels[x].GoalTypeId, 0);
+    for (let x = 0; x < this.dashboardModel.GoalTypes.length; x++) {
+      const goalTypeWeightData = new GoalTypeWeightData(this.dashboardModel.GoalTypes[x].GoalTypeId, 0);
       dataDictionary.push(goalTypeWeightData);
     }
     return dataDictionary;
@@ -88,14 +87,11 @@ export class GoalsMainComponent implements OnInit {
       });
   }
 
-  private checkForReadOnly(dashboardModels: DashboardModel[]) {
-    for (let x = 0; x < dashboardModels.length; x++) {
-      if (!dashboardModels[x].IsReadOnly) {
-        this.setReadOnly(false);
-        break;
-      } else {
-        this.setReadOnly(true);
-      }
+  private checkForReadOnly(dashboardModel: DashboardModel) {
+    if (dashboardModel.IsReadOnly) {
+      this.setReadOnly(true);
+    } else {
+      this.setReadOnly(false);
     }
   }
 

@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit, AfterViewInit, Input, Output, EventEmitter, OnChanges } from '@angular/core';
 import { GoalTypeWeightData, GoalWeightModel } from '../model/weight';
-import { DashboardGoal, DashboardModel } from '../model/dashboard.model';
+import { DashboardGoal, GoalType } from '../model/dashboard.model';
 import { GoalsService } from '../../shared/services/goals.service';
 import { MatSnackBar } from '@angular/material';
 
@@ -11,7 +11,7 @@ import { MatSnackBar } from '@angular/material';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MainCardComponent implements OnInit, AfterViewInit, OnChanges {
-  @Input() data: DashboardModel;
+  @Input() data: GoalType;
   @Input() title: string;
   @Input() route: string;
   @Output() goalWeightData: EventEmitter<GoalTypeWeightData> = new EventEmitter<GoalTypeWeightData>();

@@ -10,18 +10,18 @@
         <p>When considering your goals, it is better to have a few specific and measurable goals that you can focus on during the year. Having too many goals spreads your time and energy too thin and you end up not making any progress outside the daily whirlwind.  Also, consider your and your team’s commitment to the firm WIGs and Sub WIGs and how your competencies, leadership and economic goals align with the WIGs.  As a general rule of thumb, our expectation is that you have your Economic goals plus three total goals from a combination of WIG, Competency and Leadership. </p>
     </div>
   </section>
-  <section *ngIf="dashboardModels; else loading">
+  <section *ngIf="dashboardModel; else loading">
     <section fxLayout="row" fxLayoutAlign="start" fxLayoutGap="10px" *ngIf="!isReadOnly">
-        <app-main-card [title]="'WIG'" [data]="dashboardModels[1]" [route]="'/goals/wig'" (goalWeightData)="assignWeightTotal($event)" fxFlex="25"></app-main-card>
-        <app-main-card [title]="'Personal Competency'" [data]="dashboardModels[0]" [route]="'/goals/competency'" (goalWeightData)="assignWeightTotal($event)" fxFlex="25"></app-main-card>
-        <app-main-card [title]="'Firm Leadership'"[data]="dashboardModels[2]" [route]="'/goals/leadership'" (goalWeightData)="assignWeightTotal($event)" fxFlex="25"></app-main-card>
-        <app-economic-card [data]="dashboardModels[3]" [route]="'/goals/economic'" (goalWeightData)="assignWeightTotal($event)" fxFlex="25"></app-economic-card>
+        <app-main-card [title]="'WIG'" [data]="dashboardModel.GoalTypes[1]" [route]="'/goals/wig'" (goalWeightData)="assignWeightTotal($event)" fxFlex="25"></app-main-card>
+        <app-main-card [title]="'Personal Competency'" [data]="dashboardModel.GoalTypes[0]" [route]="'/goals/competency'" (goalWeightData)="assignWeightTotal($event)" fxFlex="25"></app-main-card>
+        <app-main-card [title]="'Firm Leadership'"[data]="dashboardModel.GoalTypes[2]" [route]="'/goals/leadership'" (goalWeightData)="assignWeightTotal($event)" fxFlex="25"></app-main-card>
+        <app-economic-card [data]="dashboardModel.GoalTypes[3]" [route]="'/goals/economic'" (goalWeightData)="assignWeightTotal($event)" fxFlex="25"></app-economic-card>
     </section>
     <section fxLayout="row" fxLayoutAlign="start" fxLayoutGap="10px" *ngIf="isReadOnly">
-        <app-read-only-main-card [title]="'WIG'" [data]="dashboardModels[1]" [route]="'/goals/wig'" (goalWeightData)="assignWeightTotal($event)" fxFlex="25"></app-read-only-main-card>
-        <app-read-only-main-card [title]="'Personal Competency'" [data]="dashboardModels[0]" [route]="'/goals/competency'" (goalWeightData)="assignWeightTotal($event)" fxFlex="25"></app-read-only-main-card>
-        <app-read-only-main-card [title]="'Firm Leadership'"[data]="dashboardModels[2]" [route]="'/goals/leadership'" (goalWeightData)="assignWeightTotal($event)" fxFlex="25"></app-read-only-main-card>
-        <app-read-only-economic-card [data]="dashboardModels[3]" [route]="'/goals/economic'" (goalWeightData)="assignWeightTotal($event)" fxFlex="25"></app-read-only-economic-card>
+        <app-read-only-main-card [title]="'WIG'" [data]="dashboardModel.GoalTypes[1]" [route]="'/goals/wig'" (goalWeightData)="assignWeightTotal($event)" fxFlex="25"></app-read-only-main-card>
+        <app-read-only-main-card [title]="'Personal Competency'" [data]="dashboardModel.GoalTypes[0]" [route]="'/goals/competency'" (goalWeightData)="assignWeightTotal($event)" fxFlex="25"></app-read-only-main-card>
+        <app-read-only-main-card [title]="'Firm Leadership'"[data]="dashboardModel.GoalTypes[2]" [route]="'/goals/leadership'" (goalWeightData)="assignWeightTotal($event)" fxFlex="25"></app-read-only-main-card>
+        <app-read-only-economic-card [data]="dashboardModel.GoalTypes[3]" [route]="'/goals/economic'" (goalWeightData)="assignWeightTotal($event)" fxFlex="25"></app-read-only-economic-card>
     </section>
   </section>
   <ng-template #loading>
