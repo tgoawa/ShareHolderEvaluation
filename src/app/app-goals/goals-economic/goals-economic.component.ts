@@ -39,7 +39,7 @@ export class GoalsEconomicComponent implements OnInit {
         this.teamMember = teamMemberObject;
         this.yearService.selectedGoalYear$.subscribe(data => {
           this.year = data;
-          this.getEconomicGoal(22, this.year);
+          this.getEconomicGoal(this.teamMember.TeamMemberId, this.year);
           this.previousYear = this.year - 1;
         });
       }, error => {
