@@ -69,7 +69,7 @@
       </ng-template>
     </mat-card>
   </div>
-  <div *ngIf="evalData?.EvaluationTypes[3]; else isLoading">
+  <div *ngIf="evalData?.EvaluationTypes[3]; else isLoading" fxFlex="60">
     <app-evaluation-card [title]="'Competency'" [evaluation]="evalData?.EvaluationTypes[3]" *ngIf="evalData?.IsConsensusSignOff === false"></app-evaluation-card>
     <app-read-only-evaluation-card [title]="'Competency'" [evaluation]="evalData?.EvaluationTypes[3]" *ngIf="evalData?.IsConsensusSignOff"></app-read-only-evaluation-card>
   </div>
