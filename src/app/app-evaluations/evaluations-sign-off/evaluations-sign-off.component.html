@@ -4,7 +4,7 @@
     <div>
       <section *ngIf="!evaluationData?.IsShareholderSignOff; else shareholderSignedOff">
           <div>
-            <button mat-button color="primary" [disabled]="!canShareholderSignOff" (click)="onShareholderSignOff()">Shareholder Sign Off</button>
+            <button mat-button color="primary" [disabled]="!canShareholderSignOff" (click)="onShareholderSignOff()" matTooltip="Clicking this button initiates the sign off process for this evaluation">Shareholder Sign Off</button>
           </div>
       </section>
       <ng-template #shareholderSignedOff>

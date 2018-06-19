@@ -16,6 +16,7 @@ import {
   MatCheckboxModule,
   MatProgressSpinnerModule,
   MatSnackBarModule,
+  MatTooltipModule,
 } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
@@ -57,6 +58,7 @@ import { ReadOnlyEvaluationLineItemComponent } from './shared/read-only-evaluati
     MatSnackBarModule,
     MatProgressSpinnerModule,
     MatToolbarModule,
+    MatTooltipModule,
     ReactiveFormsModule
   ],
   declarations: [
