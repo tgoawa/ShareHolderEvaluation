@@ -3,12 +3,9 @@
     <h1>Evaluation Sign-off</h1>
     <div>
       <section *ngIf="!evaluationData?.IsShareholderSignOff; else shareholderSignedOff">
-        <form [formGroup]="shareholderSignOff" (ngSubmit)="onShareholderSignOff()">
-          <mat-checkbox formControlName="shareholderCheckBox">Shareholder sign-off</mat-checkbox>
           <div>
-            <button mat-button color="primary">Sign Off</button>
+            <button mat-button color="primary" [disabled]="!canShareholderSignOff" (click)="onShareholderSignOff()" matTooltip="Clicking this button initiates the sign off process for this evaluation">Shareholder Sign Off</button>
           </div>
-        </form>
       </section>
       <ng-template #shareholderSignedOff>
         Shareholder has signed off!
@@ -44,7 +41,7 @@
             <mat-hint>Use your Windows password</mat-hint>
             <mat-error>This field is required</mat-error>
           </mat-form-field>
-          <button mat-button color="primary" [disabled]="!consensusSignOff.valid || canConsensusSignOff">Sign Off</button>
+          <button mat-button color="primary" [disabled]="!consensusSignOff.valid || !canConsensusSignOff">Sign Off</button>
         </form>
       </section>
       <ng-template #consensusSignedOff>

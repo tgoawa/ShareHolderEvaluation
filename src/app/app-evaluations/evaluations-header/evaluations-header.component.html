@@ -3,7 +3,7 @@
   <a mat-button color="primary" routerLink="/evaluations/main" routerLinkActive="active">Main</a>
   <a mat-button color="primary" routerLink="/evaluations/wig" routerLinkActive="active">WIGs Eval</a>
   <a mat-button color="primary" routerLink="/evaluations/competency" routerLinkActive="active">Personal Competency Eval</a>
-  <a mat-button color="primary" routerLink="/evaluations/leadership" routerLinkActive="active">Firm Leadership Eval</a>
+  <a *ngIf="selectedYear != 2018" mat-button color="primary" routerLink="/evaluations/leadership" routerLinkActive="active">Firm Leadership Eval</a>
   <a mat-button color="primary" routerLink="/evaluations/economic" routerLinkActive="active">Personal Economic Eval</a>
   <a mat-button color="primary" routerLink="/evaluations/sign-off" routerLinkActive="active">Eval Sign-off</a>
   <span class="example-spacer"></span>

@@ -9,7 +9,7 @@ export class TeamMember {
   Location: string;
   BusinessUnit: string;
   IsShareHolder: boolean;
-  IndustryTeams: IndustryTeam[]
+  IndustryTeams: IndustryTeam[];
 }
 
 export interface IndustryTeam {

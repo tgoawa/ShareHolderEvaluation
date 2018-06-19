@@ -7,6 +7,7 @@ import { MatSnackBar } from '@angular/material';
 
 import * as CryptoJS from 'crypto-js';
 import { User } from '../../login/model/user';
+import { TeamMember } from '../../core/model/team-member';
 @Component({
   selector: 'app-evaluations-sign-off',
   templateUrl: './evaluations-sign-off.component.html',
@@ -18,6 +19,9 @@ export class EvaluationsSignOffComponent implements OnInit, OnChanges {
   picSignOff: FormGroup;
   consensusSignOff: FormGroup;
   canConsensusSignOff: boolean;
+  canShareholderSignOff: boolean;
+  teamMember: TeamMember;
+  year: number;
 
   constructor(private fb: FormBuilder,
     private evaluationService: EvaluationService,
@@ -28,20 +32,23 @@ export class EvaluationsSignOffComponent implements OnInit, OnChanges {
     this.evaluationService.evaluationModel$.subscribe(data => {
       if (data) {
         this.evaluationData = data;
-        this.createShareholderForm(this.evaluationData);
+        this.createShareholderForm();
         this.picSignOff = this.toFormGroup();
         this.consensusSignOff = this.toFormGroup();
       }
     });
-  }
-
-  ngOnChanges() {
+    this.canShareholderSignOff = this.isReadyForShareholderSignOff();
     this.canConsensusSignOff = this.isReadyForConsensusSignOff();
   }
 
-  createShareholderForm(evaluationData: EvaluationModel) {
+  ngOnChanges() {
+    this.canShareholderSignOff = this.isReadyForShareholderSignOff();
+    this.canConsensusSignOff = this.isReadyForConsensusSignOff();
+  }
+
+  createShareholderForm() {
     this.shareholderSignOff = this.fb.group({
-      shareholderCheckBox: [evaluationData.IsShareholderSignOff, Validators.required]
+      shareholderCheckBox: ['', Validators.required]
     });
   }
 
@@ -82,6 +89,7 @@ export class EvaluationsSignOffComponent implements OnInit, OnChanges {
     .subscribe(data => {
       if (data) {
         console.log('Shareholder sign off success!');
+        this.evaluationData.IsShareholderSignOff = true;
       }
     }, error => {
       console.error(error);
@@ -147,8 +155,18 @@ export class EvaluationsSignOffComponent implements OnInit, OnChanges {
     return formGroup;
   }
 
+  private isReadyForShareholderSignOff(): boolean {
+    if (!this.isScoreSet()) {
+      return false;
+    } else if (!this.isPowerLevelSet) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
   private isReadyForConsensusSignOff(): boolean {
-    if (!this.isScoreSet) {
+    if (!this.isScoreSet()) {
       return false;
     } else if (!this.isPowerLevelSet) {
       return false;
