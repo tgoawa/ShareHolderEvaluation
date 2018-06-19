@@ -8,7 +8,11 @@
     <div>
         <p>Below is your dashboard reflecting the four goal areas in which you will be evaluated next year and their respective weights.  As you enter your goals, the weight you assign to each goal will be automatically populated to this dashboard.  In the upper right corner (by the welcome) is a year with a drop down arrow.  The default is “2019” as this is the open year that needs to be completed. In future years, you will have the ability to go back and view prior years if that is beneficial for you. Once you have verified that “2019” is selected, click on the blue “View XX Goals” in the respective section you will be adding goals.  Additional instructions are available when you access each section. Also, the menu bar running along the top of the page has clickable links that allow you to toggle between the different goals, your dashboard, and the review meeting area. Once you have completed entering all goals, the “Total Goal Weight” at the top of the screen should equal 100%.</p>
         <p>When considering your goals, it is better to have a few specific and measurable goals that you can focus on during the year. Having too many goals spreads your time and energy too thin and you end up not making any progress outside the daily whirlwind.  Also, consider your and your team’s commitment to the firm WIGs and Sub WIGs and how your competencies, leadership and economic goals align with the WIGs.  As a general rule of thumb, our expectation is that you have your Economic goals plus three total goals from a combination of WIG, Competency and Leadership. </p>
-    </div>
+        <p>When considering the weighting of your goals, please keep in mind that as a firm we strive for weightings of:</p>
+        <div fxLayout="row" fxLayoutAlign="space-around" style="margin-top: 20px; margin-bottom: 20px">
+          <span class="bold">Wigs: 30%</span> <span class="bold">Competencies: 25%</span> <span class="bold">Leadership: 15%</span> <span class="bold">Economic: 30%</span>
+        </div>
+      </div>
   </section>
   <section *ngIf="dashboardModel; else loading">
     <section fxLayout="row" fxLayoutAlign="start" fxLayoutGap="10px" *ngIf="!isReadOnly">
