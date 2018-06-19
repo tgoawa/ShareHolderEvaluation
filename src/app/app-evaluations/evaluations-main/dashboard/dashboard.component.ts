@@ -82,7 +82,9 @@ export class DashboardComponent implements OnInit {
 
   private canUpdateTotalScore(evalData: EvaluationModel) {
     for (let x = 0; x < evalData.EvaluationTypes.length; x++) {
-      if (evalData.EvaluationTypes[x].ShareholderScore === 0) {
+      if (evalData.EvaluationTypes[x].GoalEvaluations.length === 0) {
+        this.canUpdate = true;
+      } else if (evalData.EvaluationTypes[x].ShareholderScore === 0) {
         this.canUpdate = false;
         break;
       } else if (evalData.EvaluationTypes[x].PICScore === 0) {
