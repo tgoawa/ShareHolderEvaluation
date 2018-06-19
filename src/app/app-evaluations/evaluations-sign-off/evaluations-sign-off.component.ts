@@ -8,6 +8,9 @@ import { MatSnackBar } from '@angular/material';
 import * as CryptoJS from 'crypto-js';
 import { User } from '../../login/model/user';
 import { TeamMember } from '../../core/model/team-member';
+import { TeamMemberService } from '../../core/services/team-member.service';
+import { YearSelectionService } from '../../core/services/year-selection.service';
+
 @Component({
   selector: 'app-evaluations-sign-off',
   templateUrl: './evaluations-sign-off.component.html',
@@ -16,8 +19,8 @@ import { TeamMember } from '../../core/model/team-member';
 export class EvaluationsSignOffComponent implements OnInit, OnChanges {
   evaluationData: EvaluationModel;
   shareholderSignOff: FormGroup;
-  picSignOff: FormGroup;
-  consensusSignOff: FormGroup;
+  picSignOffForm: FormGroup;
+  consensusSignOffForm: FormGroup;
   canConsensusSignOff: boolean;
   canShareholderSignOff: boolean;
   teamMember: TeamMember;
@@ -26,6 +29,8 @@ export class EvaluationsSignOffComponent implements OnInit, OnChanges {
   constructor(private fb: FormBuilder,
     private evaluationService: EvaluationService,
     private loginService: LoginService,
+    private teamMemberService: TeamMemberService,
+    private yearService: YearSelectionService,
     public snackBar: MatSnackBar ) { }
 
   ngOnInit() {
@@ -33,8 +38,8 @@ export class EvaluationsSignOffComponent implements OnInit, OnChanges {
       if (data) {
         this.evaluationData = data;
         this.createShareholderForm();
-        this.picSignOff = this.toFormGroup();
-        this.consensusSignOff = this.toFormGroup();
+        this.picSignOffForm = this.toFormGroup();
+        this.consensusSignOffForm = this.toFormGroup();
       }
     });
     this.canShareholderSignOff = this.isReadyForShareholderSignOff();
@@ -59,29 +64,33 @@ export class EvaluationsSignOffComponent implements OnInit, OnChanges {
   }
 
   onConsensusSignOff(form: FormGroup) {
-    const encUser = this.encryptUser(form);
-    this.loginService.isValid(encUser)
-      .subscribe(data => {
-        if (data) {
-          this.evaluationData.ConsensusNetworkName = this.consensusSignOff.get('username').value;
-          this.updateConsensusignOff();
+    const userName = form.get('username').value;
+    this.teamMemberService.teamMember$.subscribe(teamMemberObject => {
+      this.teamMember = teamMemberObject;
+      this.evaluationService.evaluationModel$.subscribe(evalModel => {
+        const evalModelData = evalModel;
+        if ((this.teamMember.UserName !== userName) && (evalModelData.PICNetworkName !== userName)) {
+          this.consensusSignOff(form);
+        } else {
+          this.openSnackBar('Team member has already acted as a signoff on this evaluation', '');
         }
-      }, error => {
-        console.error(error);
       });
+    }, error => {
+      console.error(error);
+    });
   }
 
   onPicSignOff(form: FormGroup) {
-    const encUser = this.encryptUser(form);
-    this.loginService.isValid(encUser)
-      .subscribe(data => {
-        if (data) {
-          this.evaluationData.PICNetworkName = this.picSignOff.get('username').value;
-          this.updatePICSignOff();
-        }
-      }, error => {
-        console.error(error);
-      });
+    this.teamMemberService.teamMember$.subscribe(teamMemberObject => {
+      this.teamMember = teamMemberObject;
+      if (this.teamMember.UserName !== form.get('username').value) {
+        this.picSignOff(form);
+      } else {
+        this.openSnackBar('Shareholder cannot sign off as PIC', '');
+      }
+    }, error => {
+      console.error(error);
+    });
   }
 
   onShareholderSignOff() {
@@ -90,20 +99,25 @@ export class EvaluationsSignOffComponent implements OnInit, OnChanges {
       if (data) {
         console.log('Shareholder sign off success!');
         this.evaluationData.IsShareholderSignOff = true;
+        this.getEvaluationData();
       }
     }, error => {
       console.error(error);
     });
   }
 
-  private checkUser(user: User) {
-    this.loginService.isValid(user)
-      .subscribe(data => {
-        if (data) {
-          return data;
-        }
+  private getEvaluationData() {
+    this.teamMemberService.teamMember$
+      .subscribe(teamMemberObject => {
+        this.teamMember = teamMemberObject;
+        this.yearService.selectedEvalYear$.subscribe(data => {
+          this.year = data;
+          this.evaluationService.getEvaluationModel(this.teamMember.TeamMemberId, this.year);
+        }, error => {
+          console.error(error);
+        });
       }, error => {
-        console.error(error);
+        console.error('Could not retrieve team member data!');
       });
   }
 
@@ -118,6 +132,32 @@ export class EvaluationsSignOffComponent implements OnInit, OnChanges {
     encryptedUser.username = CryptoJS.AES.encrypt(form.get('username').value, key, { iv: iv }).toString();
     encryptedUser.password = CryptoJS.AES.encrypt(form.get('password').value, key, { iv: iv }).toString();
     return encryptedUser;
+  }
+
+  private picSignOff(form: FormGroup) {
+    const encUser = this.encryptUser(form);
+    this.loginService.isValid(encUser)
+      .subscribe(data => {
+        if (data) {
+          this.evaluationData.PICNetworkName = this.picSignOffForm.get('username').value;
+          this.updatePICSignOff();
+        }
+      }, error => {
+        console.error(error);
+      });
+  }
+
+  private consensusSignOff(form) {
+    const encUser = this.encryptUser(form);
+    this.loginService.isValid(encUser)
+      .subscribe(data => {
+        if (data) {
+          this.evaluationData.ConsensusNetworkName = this.consensusSignOffForm.get('username').value;
+          this.updateConsensusignOff();
+        }
+      }, error => {
+        console.error(error);
+      });
   }
 
   private updatePICSignOff() {
