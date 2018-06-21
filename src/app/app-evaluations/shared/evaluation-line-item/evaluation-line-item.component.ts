@@ -2,7 +2,8 @@ import { Component, OnInit, Input, ChangeDetectionStrategy, Output, EventEmitter
 import { GoalEvaluation } from '../models/Evaluation';
 import { ScoreDictionary } from '../models/score-dictionary';
 import { EvaluationService } from '../services/evaluation.service';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar, MatDialog, MatDialogConfig } from '@angular/material';
+import { GoalDescriptionDialogComponent } from '../goal-description-dialog/goal-description-dialog.component';
 
 @Component({
   selector: 'app-evaluation-line-item',
@@ -17,7 +18,7 @@ export class EvaluationLineItemComponent implements OnInit {
   @Output() committeeScore: EventEmitter<ScoreDictionary> = new EventEmitter<ScoreDictionary>();
 
   ratings: number[];
-  constructor(private evaluationService: EvaluationService, public snackBar: MatSnackBar) { }
+  constructor(private evaluationService: EvaluationService, public snackBar: MatSnackBar, private dialog: MatDialog) { }
 
   ngOnInit() {
     this.ratings = this.evaluationService.evaluationRatings;
@@ -49,6 +50,17 @@ export class EvaluationLineItemComponent implements OnInit {
     this.snackBar.open(message, action, {
       duration: 2000,
     });
+  }
+
+  openDialog() {
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.data = {
+      goalName: this.evalItem.GoalName,
+      // goalDescription: this.evalItem.GoalDescripton;
+    };
+
+    this.dialog.open(GoalDescriptionDialogComponent);
   }
 
   updateEvaluation() {

@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
   MatButtonModule,
   MatCardModule,
+  MatDialogModule,
   MatFormFieldModule,
   MatInputModule,
   MatListModule,
@@ -38,6 +39,7 @@ import { ReadOnlyDashboardComponent } from './evaluations-main/read-only-dashboa
 import { DashboardComponent } from './evaluations-main/dashboard/dashboard.component';
 import { ReadOnlyEvaluationCardComponent } from './shared/read-only-evaluation-card/read-only-evaluation-card.component';
 import { ReadOnlyEvaluationLineItemComponent } from './shared/read-only-evaluation-line-item/read-only-evaluation-line-item.component';
+import { GoalDescriptionDialogComponent } from './shared/goal-description-dialog/goal-description-dialog.component';
 
 @NgModule({
   imports: [
@@ -48,6 +50,7 @@ import { ReadOnlyEvaluationLineItemComponent } from './shared/read-only-evaluati
     MatButtonModule,
     MatCardModule,
     MatCheckboxModule,
+    MatDialogModule,
     MatFormFieldModule,
     MatGridListModule,
     MatIconModule,
@@ -78,9 +81,13 @@ import { ReadOnlyEvaluationLineItemComponent } from './shared/read-only-evaluati
     DashboardComponent,
     ReadOnlyEvaluationCardComponent,
     ReadOnlyEvaluationLineItemComponent,
+    GoalDescriptionDialogComponent,
   ],
   providers: [
     EvaluationService
+  ],
+  entryComponents: [
+    GoalDescriptionDialogComponent
   ]
 })
 export class AppEvaluationsModule {}
