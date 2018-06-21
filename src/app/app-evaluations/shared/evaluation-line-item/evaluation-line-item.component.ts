@@ -57,10 +57,10 @@ export class EvaluationLineItemComponent implements OnInit {
 
     dialogConfig.data = {
       goalName: this.evalItem.GoalName,
-      // goalDescription: this.evalItem.GoalDescripton;
+      goalDescription: this.evalItem.GoalDescription
     };
 
-    this.dialog.open(GoalDescriptionDialogComponent);
+    this.dialog.open(GoalDescriptionDialogComponent, dialogConfig);
   }
 
   updateEvaluation() {

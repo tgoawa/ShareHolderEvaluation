@@ -30,6 +30,7 @@ export interface GoalEvaluation {
   GoalTypeEvaluationId: number;
   GoalId: number;
   GoalName: string;
+  GoalDescription: string;
   EvaluationNote: string;
   GoalWeight: number;
   ShareHolderScore: number;

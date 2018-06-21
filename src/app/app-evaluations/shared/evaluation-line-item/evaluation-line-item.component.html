@@ -1,7 +1,13 @@
 <section fxLayout="row" fxLayoutGap="20px">
-  <mat-form-field fxFlex="15">
-    <input matInput placeholder="SH Goal" disabled [value]="evalItem.GoalName">
-  </mat-form-field>
+  <div fxFlex="15" *ngIf="evalItem.GoalDescription != null">
+      <button mat-button matTooltip="click to view goal description" (click)="openDialog()">{{evalItem.GoalName}}</button>
+  </div>
+  <div fxFlex="15" *ngIf="evalItem.GoalDescription == null">
+      <span>{{evalItem.GoalName}}</span>
+  </div>
+  <!-- <mat-form-field fxFlex="15">
+    <input matInput placeholder="SH Goal" [value]="evalItem.GoalName" matTooltip="click to view goal description">
+  </mat-form-field> -->
   <mat-form-field fxFlex="42">
     <textarea matInput [(ngModel)]="evalItem.EvaluationNote" placeholder="Comments" matTextareaAutosize matAutosizeMinRows="1" matAutosizeMaxRows="5" (change)="updateEvaluation()"></textarea>
   </mat-form-field>
