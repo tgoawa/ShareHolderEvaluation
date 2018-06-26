@@ -15,11 +15,11 @@ export class AppHomeComponent implements OnInit {
 
   ngOnInit() {
     this.tmService.teamMember$.subscribe(data => this.teamMember = data);
-    console.log(Cookie.get('user'));
+    this.getTeamMember();
   }
 
   getTeamMember() {
-
+    this.tmService.getTeamMember(Cookie.get('user'));
   }
 
 }

@@ -6,6 +6,7 @@ import * as CryptoJS from 'crypto-js';
 import { User } from './model/user';
 import { LoginService } from '../core/services/login.service';
 import { TeamMemberService } from '../core/services/team-member.service';
+import { Cookie } from 'ng2-cookies';
 
 @Component({
   selector: 'app-login',
@@ -53,18 +54,20 @@ export class LoginComponent implements OnInit {
     return encryptedUser;
   }
 
+  private proceedToApplication() {
+    this.loginError = false;
+    if (!Cookie.check('user')) {
+      Cookie.set('user', this.loginForm.get('username').value, 45);
+      this.router.navigate(['/home']);
+    } else {
+      this.router.navigate(['/home']);
+    }
+  }
+
   private setAuthStatus(data: boolean) {
     if (data) {
-      this.loginError = false;
-      this.teamMemberService.getTeamMember(this.loginForm.get('username').value);
-      this.teamMemberService.teamMember$.subscribe(value => {
-        if (value !== null) {
-          this.router.navigate(['/home']);
-        }
-      }, error => {
-        console.error(error);
-      });
-    } else {
+      this.proceedToApplication();
+      } else {
       this.loginError = true;
       console.error('Login Failed!');
     }

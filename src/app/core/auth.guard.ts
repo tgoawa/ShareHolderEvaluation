@@ -1,32 +1,18 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
-import { Observable } from 'rxjs/Observable';
 
-import 'rxjs/add/observable/of';
-import 'rxjs/add/operator/map';
-import { LoginService } from './services/login.service';
-import { TeamMemberService } from './services/team-member.service';
-import { TeamMember } from './model/team-member';
+import { Cookie } from 'ng2-cookies';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
-  teamMember: TeamMember;
-  constructor(private router: Router,
-    private lsService: LoginService,
-    private tmService: TeamMemberService) {
-      this.tmService.teamMember$.subscribe(data => this.teamMember = data);
-    }
+  constructor(private router: Router) {}
   canActivate(
     next: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): boolean {
-      if (!this.teamMember) {
+    state: RouterStateSnapshot) {
+      if (Cookie.check('user') === false) {
         this.router.navigate(['login']);
         return false;
       }
-      if (!this.teamMember.IsShareHolder) {
-        // this.router.navigate(['login']);
-        return true;
-      }
-      return true;
+    return true;
   }
 }
