@@ -5,17 +5,24 @@
   <section class="text-center">
     <h1>Shareholder G & D App</h1>
   </section>
-  <section class="text-center">
-    <h2>Welcome {{teamMember?.FirstName}} {{teamMember?.LastName}}!</h2>
-  </section>
-  <section class="text-center">
-    <a mat-raised-button color="primary" routerLink="/evaluations/main">Evaluation</a>
-    <a mat-raised-button color="primary" routerLink="/goals/main">Goals</a>
-    <a mat-raised-button color="primary" routerLink="/goals/review-meeting" [disabled]="true">Review Meeting</a>
-  </section>
-  <section fxLayout="row" fxLayoutAlign="start start">
-      <div>
-          <p style="margin-top: 20px">Welcome to the Shareholder Growth and Development Process.  From this page you have access to the Evaluation, Goals, and Review Meeting sections.  Click on one of the above buttons to access the section in which you would like to complete.  Once completed, you simply click on the Schenck logo in the upper left corner of the window to return to this screen.  You can revisit this page and continue editing the content in both sections until the process is closed.  The process is closed during your review meeting; at the time information becomes read only.</p>
-      </div>
+  <div *ngIf="teamMember; else loading">
+    <section class="text-center">
+      <h2>Welcome {{teamMember?.FirstName}} {{teamMember?.LastName}}!</h2>
     </section>
+    <section class="text-center">
+      <a mat-raised-button color="primary" routerLink="/evaluations/main">Evaluation</a>
+      <a mat-raised-button color="primary" routerLink="/goals/main">Goals</a>
+      <a mat-raised-button color="primary" routerLink="/goals/review-meeting" [disabled]="true">Review Meeting</a>
+    </section>
+    <section fxLayout="row" fxLayoutAlign="start start">
+        <div>
+            <p style="margin-top: 20px">Welcome to the Shareholder Growth and Development Process.  From this page you have access to the Evaluation, Goals, and Review Meeting sections.  Click on one of the above buttons to access the section in which you would like to complete.  Once completed, you simply click on the Schenck logo in the upper left corner of the window to return to this screen.  You can revisit this page and continue editing the content in both sections until the process is closed.  The process is closed during your review meeting; at the time information becomes read only.</p>
+        </div>
+      </section>
+  </div>
+  <ng-template #loading>
+    <div fxLayout="column" fxLayoutAlign="center center">
+      <mat-spinner></mat-spinner>
+    </div>
+  </ng-template>
 </div>

@@ -12,6 +12,7 @@ import {
   MatInputModule,
   MatSelectModule,
   MatToolbarModule,
+  MatProgressSpinnerModule,
 } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
@@ -36,6 +37,7 @@ import { CoreModule } from './core/core.module';
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
+    MatProgressSpinnerModule,
     MatSelectModule,
     MatToolbarModule,
     ReactiveFormsModule,
