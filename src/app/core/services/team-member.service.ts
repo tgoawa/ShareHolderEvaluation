@@ -27,5 +27,4 @@ export class TeamMemberService {
       console.log('There was an error with the team member data');
     });
   }
-
 }
