@@ -1,6 +1,6 @@
 <section fxLayout="row" fxLayoutGap="20px">
-  <div fxFlex="15" *ngIf="evalItem.GoalDescription != null">
-      <span class="btn" matTooltip="click to view goal description" (click)="openDialog()">{{evalItem.GoalName}}</span>
+  <div fxFlex="15" *ngIf="evalItem.GoalDescription != null" class="btn">
+      <span matTooltip="click to view goal description" (click)="openDialog()">{{evalItem.GoalName}}</span>
       <!-- <button class="btn" mat-button matTooltip="click to view goal description" (click)="openDialog()">{{evalItem.GoalName}}</button> -->
   </div>
   <div fxFlex="15" *ngIf="evalItem.GoalDescription == null">
