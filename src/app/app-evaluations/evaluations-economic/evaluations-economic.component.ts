@@ -14,7 +14,7 @@ import { TeamMember } from '../../core/model/team-member';
 export class EvaluationsEconomicComponent implements OnInit {
   currentYearHeading = ' Goals';
   economicGoal: EconomicGoalModel;
-  previousYearActualHeading = 'Actuals ending Apr. 30, ';
+  previousYearActualHeading = 'Actuals ending June 30, ';
   evalData: EvaluationModel;
   teamMember: TeamMember;
   year: number;
