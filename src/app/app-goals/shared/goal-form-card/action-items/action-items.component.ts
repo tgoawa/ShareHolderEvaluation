@@ -37,4 +37,10 @@ export class ActionItemsComponent implements OnInit, OnChanges {
     return formGroup;
   }
 
+  onValueChange() {
+    this.actionItemForm.patchValue({
+      IsDirty: true
+    });
+  }
+
 }
