@@ -196,9 +196,7 @@ export class EvaluationsSignOffComponent implements OnInit, OnChanges {
   }
 
   private isReadyForShareholderSignOff(): boolean {
-    if (!this.isScoreSet()) {
-      return false;
-    } else if (!this.isPowerLevelSet) {
+    if (!this.isScoreSet() && !this.isPowerLevelSet()) {
       return false;
     } else {
       return true;
@@ -206,13 +204,7 @@ export class EvaluationsSignOffComponent implements OnInit, OnChanges {
   }
 
   private isReadyForConsensusSignOff(): boolean {
-    if (!this.isScoreSet()) {
-      return false;
-    } else if (!this.isPowerLevelSet) {
-      return false;
-    } else if (!this.isShareholderSignedOff) {
-      return false;
-    } else if (!this.isPicSignedOff) {
+    if (!this.isScoreSet() && !this.isPowerLevelSet() && !this.isPicSignedOff()) {
       return false;
     } else {
       return true;
