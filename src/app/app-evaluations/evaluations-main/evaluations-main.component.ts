@@ -2,10 +2,10 @@ import { Component, OnInit, OnChanges } from '@angular/core';
 import { YearSelectionService } from '../../core/services/year-selection.service';
 import { EvaluationService } from '../shared/services/evaluation.service';
 import { EvaluationModel } from '../shared/models/Evaluation';
-import { Observable } from 'rxjs/Observable';
 import { PowerLevel } from '../shared/models/powerLevel';
 import { TeamMemberService } from '../../core/services/team-member.service';
 import { TeamMember } from '../../core/model/team-member';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-evaluations-main',
@@ -19,7 +19,8 @@ export class EvaluationsMainComponent implements OnInit, OnChanges {
   year: number;
   constructor(private yearService: YearSelectionService,
     private teamMemberService: TeamMemberService,
-    private evaluationService: EvaluationService) { }
+    private evaluationService: EvaluationService,
+    private router: Router) { }
 
   ngOnInit() {
     this.getPowerLevelDropdown();
@@ -50,12 +51,16 @@ export class EvaluationsMainComponent implements OnInit, OnChanges {
     this.teamMemberService.teamMember$
       .subscribe(teamMemberObject => {
         this.teamMember = teamMemberObject;
-        this.yearService.selectedEvalYear$.subscribe(data => {
-          this.year = data;
-          this.evaluationService.getEvaluationModel(this.teamMember.TeamMemberId, this.year);
-        }, error => {
-          console.error(error);
-        });
+        if (this.teamMember === null || this.teamMember.TeamMemberId === null || this.teamMember.TeamMemberId === 0) {
+          this.router.navigate(['/login']);
+        } else {
+          this.yearService.selectedEvalYear$.subscribe(data => {
+            this.year = data;
+            this.evaluationService.getEvaluationModel(this.teamMember.TeamMemberId, this.year);
+          }, error => {
+            console.error(error);
+          });
+        }
       }, error => {
         console.error('Could not retrieve team member data!');
       });
