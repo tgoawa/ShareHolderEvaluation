@@ -1,4 +1,10 @@
-import { Component, Input, ChangeDetectionStrategy, OnChanges, OnInit } from '@angular/core';
+import {
+  Component,
+  Input,
+  ChangeDetectionStrategy,
+  OnChanges,
+  OnInit,
+} from '@angular/core';
 import { GoalEvaluation, GoalTypeEvaluation } from '../models/Evaluation';
 import { ScoreDictionary } from '../models/score-dictionary';
 import { TeamMemberService } from '../../../core/services/team-member.service';
@@ -10,16 +16,18 @@ import { MatSnackBar } from '@angular/material';
   selector: 'app-evaluation-card',
   templateUrl: './evaluation-card.component.html',
   styleUrls: ['./evaluation-card.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class EvaluationCardComponent implements OnInit, OnChanges {
-  @Input() title: string;
-  @Input() evaluation: GoalTypeEvaluation;
+  @Input()
+  title: string;
+  @Input()
+  evaluation: GoalTypeEvaluation;
   scores: number[];
 
-  averageSelfScore: number;
-  averagePicScore: number;
-  averageCommitteeScore: number;
+  weightedSelfScore: number;
+  weightedPicScore: number;
+  weightedCommitteeScore: number;
   calculatedSelfScore: number;
   calculatedPicScore: number;
   calculatedCommitteeScore: number;
@@ -33,7 +41,11 @@ export class EvaluationCardComponent implements OnInit, OnChanges {
   private picScoreDictionary: ScoreDictionary[] = [];
   private committeeScoreDictionary: ScoreDictionary[] = [];
 
-  constructor(private tmService: TeamMemberService, private evaluationService: EvaluationService, public snackBar: MatSnackBar) { }
+  constructor(
+    private tmService: TeamMemberService,
+    private evaluationService: EvaluationService,
+    public snackBar: MatSnackBar
+  ) {}
 
   ngOnInit() {
     this.scores = this.evaluationService.evaluationRatings;
@@ -41,18 +53,26 @@ export class EvaluationCardComponent implements OnInit, OnChanges {
 
   ngOnChanges() {
     this.totalWeight = this.evaluation.GoalTypeTotalWeight;
-    this.tmService.teamMember$.subscribe(data => this.teamMember = data);
+    this.tmService.teamMember$.subscribe(data => (this.teamMember = data));
     this.createScoreDictionaries(this.evaluation.GoalEvaluations);
-    this.averageSelfScore = this.calculateAverageScore(this.selfScoreDictionary);
-    this.averagePicScore = this.calculateAverageScore(this.picScoreDictionary);
-    this.averageCommitteeScore = this.calculateAverageScore(this.committeeScoreDictionary);
-    this.calculatedSelfScore = this.calculateScore(this.evaluation.ShareholderScore);
+    this.weightedSelfScore = this.calculateWeightedScore(
+      this.selfScoreDictionary
+    );
+    this.weightedPicScore = this.calculateWeightedScore(this.picScoreDictionary);
+    this.weightedCommitteeScore = this.calculateWeightedScore(
+      this.committeeScoreDictionary
+    );
+    this.calculatedSelfScore = this.calculateScore(
+      this.evaluation.ShareholderScore
+    );
     this.calculatedPicScore = this.calculateScore(this.evaluation.PICScore);
-    this.calculatedCommitteeScore = this.calculateScore(this.evaluation.ConsensusScore);
+    this.calculatedCommitteeScore = this.calculateScore(
+      this.evaluation.ConsensusScore
+    );
   }
 
   calculateScore(useScore: number) {
-    const multiplier = this.totalWeight * .01;
+    const multiplier = this.totalWeight * 0.01;
     let score = 0;
     score = useScore * multiplier;
     return score;
@@ -80,7 +100,9 @@ export class EvaluationCardComponent implements OnInit, OnChanges {
         break;
       }
     }
-    this.averageSelfScore = this.calculateAverageScore(this.selfScoreDictionary);
+    this.weightedSelfScore = this.calculateWeightedScore(
+      this.selfScoreDictionary
+    );
   }
 
   picScoreChanged(val: ScoreDictionary) {
@@ -90,7 +112,7 @@ export class EvaluationCardComponent implements OnInit, OnChanges {
         break;
       }
     }
-    this.averagePicScore = this.calculateAverageScore(this.picScoreDictionary);
+    this.weightedPicScore = this.calculateWeightedScore(this.picScoreDictionary);
   }
 
   committeeScoreChanged(val: ScoreDictionary) {
@@ -100,7 +122,9 @@ export class EvaluationCardComponent implements OnInit, OnChanges {
         break;
       }
     }
-    this.averageCommitteeScore = this.calculateAverageScore(this.committeeScoreDictionary);
+    this.weightedCommitteeScore = this.calculateWeightedScore(
+      this.committeeScoreDictionary
+    );
   }
 
   openSnackBar(message: string, action: string) {
@@ -109,54 +133,67 @@ export class EvaluationCardComponent implements OnInit, OnChanges {
     });
   }
 
-  private calculateAverageScore(scoreData: ScoreDictionary[]) {
+  private calculateWeightedScore(scoreData: ScoreDictionary[]) {
     const totalScore = this.calculateTotalScore(scoreData);
-    const length = scoreData.length;
-    const averageScore = totalScore / length;
-    return averageScore;
+    // const length = scoreData.length;
+    // const averageScore = totalScore / length;
+    return totalScore;
   }
 
   private calculateTotalScore(scoreData: ScoreDictionary[]) {
     let score = 0;
+    const totalWeightModifier = this.totalWeight / 100;
     for (let x = 0; x < scoreData.length; x++) {
-      score = score + scoreData[x].value;
+      score = score + scoreData[x].value * ((scoreData[x].weight / 100) / totalWeightModifier);
     }
     return score;
   }
 
-  private calculateTotalWeight(evalItems: GoalEvaluation[]) {
-    let weight = 0;
-    for (let x = 0; x < evalItems.length; x++) {
-      weight = weight + evalItems[x].GoalWeight;
-    }
-    return weight;
-  }
-
   private createScoreDictionaries(evalItems: GoalEvaluation[]) {
     for (let x = 0; x < evalItems.length; x++) {
-      this.selfScoreDictionary.push(this.createScoreDictionary(evalItems[x].GoalEvaluationId, evalItems[x].ShareHolderScore));
-      this.picScoreDictionary.push(this.createScoreDictionary(evalItems[x].GoalEvaluationId, evalItems[x].PICScore));
-      this.committeeScoreDictionary.push(this.createScoreDictionary(evalItems[x].GoalEvaluationId, evalItems[x].ConsensusScore));
+      this.selfScoreDictionary.push(
+        this.createScoreDictionary(
+          evalItems[x].GoalEvaluationId,
+          evalItems[x].ShareHolderScore,
+          evalItems[x].GoalWeight
+        )
+      );
+      this.picScoreDictionary.push(
+        this.createScoreDictionary(
+          evalItems[x].GoalEvaluationId,
+          evalItems[x].PICScore,
+          evalItems[x].GoalWeight
+        )
+      );
+      this.committeeScoreDictionary.push(
+        this.createScoreDictionary(
+          evalItems[x].GoalEvaluationId,
+          evalItems[x].ConsensusScore,
+          evalItems[x].GoalWeight
+        )
+      );
     }
   }
 
-  private createScoreDictionary(itemId: number, score: number) {
+  private createScoreDictionary(itemId: number, score: number, weight: number) {
     const scoreDictionary = new ScoreDictionary();
     scoreDictionary.id = itemId;
     scoreDictionary.value = score;
+    scoreDictionary.weight = weight;
     return scoreDictionary;
   }
 
   private updateGoalTypeEvaluation() {
-    this.evaluationService.updateEvaluationGoalType(this.evaluation)
-    .subscribe(data => {
-      if (data) {
-        this.openSnackBar('Score update saved!', '');
+    this.evaluationService.updateEvaluationGoalType(this.evaluation).subscribe(
+      data => {
+        if (data) {
+          this.openSnackBar('Score update saved!', '');
+        }
+      },
+      error => {
+        console.error(error);
+        this.openSnackBar('Error updating score. Score was not saved!', '');
       }
-    }, error => {
-      console.error(error);
-      this.openSnackBar('Error updating score. Score was not saved!', '');
-    });
+    );
   }
-
 }
