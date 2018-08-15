@@ -25,9 +25,9 @@ export class EvaluationCardComponent implements OnInit, OnChanges {
   evaluation: GoalTypeEvaluation;
   scores: number[];
 
-  weightedSelfScore: number;
-  weightedPicScore: number;
-  weightedCommitteeScore: number;
+  averageSelfScore: number;
+  averagePicScore: number;
+  averageCommitteeScore: number;
   calculatedSelfScore: number;
   calculatedPicScore: number;
   calculatedCommitteeScore: number;
@@ -55,11 +55,11 @@ export class EvaluationCardComponent implements OnInit, OnChanges {
     this.totalWeight = this.evaluation.GoalTypeTotalWeight;
     this.tmService.teamMember$.subscribe(data => (this.teamMember = data));
     this.createScoreDictionaries(this.evaluation.GoalEvaluations);
-    this.weightedSelfScore = this.calculateWeightedScore(
+    this.averageSelfScore = this.calculateWeightedScore(
       this.selfScoreDictionary
     );
-    this.weightedPicScore = this.calculateWeightedScore(this.picScoreDictionary);
-    this.weightedCommitteeScore = this.calculateWeightedScore(
+    this.averagePicScore = this.calculateWeightedScore(this.picScoreDictionary);
+    this.averageCommitteeScore = this.calculateWeightedScore(
       this.committeeScoreDictionary
     );
     this.calculatedSelfScore = this.calculateScore(
@@ -100,7 +100,7 @@ export class EvaluationCardComponent implements OnInit, OnChanges {
         break;
       }
     }
-    this.weightedSelfScore = this.calculateWeightedScore(
+    this.averageSelfScore = this.calculateWeightedScore(
       this.selfScoreDictionary
     );
   }
@@ -112,7 +112,7 @@ export class EvaluationCardComponent implements OnInit, OnChanges {
         break;
       }
     }
-    this.weightedPicScore = this.calculateWeightedScore(this.picScoreDictionary);
+    this.averagePicScore = this.calculateWeightedScore(this.picScoreDictionary);
   }
 
   committeeScoreChanged(val: ScoreDictionary) {
@@ -122,7 +122,7 @@ export class EvaluationCardComponent implements OnInit, OnChanges {
         break;
       }
     }
-    this.weightedCommitteeScore = this.calculateWeightedScore(
+    this.averageCommitteeScore = this.calculateWeightedScore(
       this.committeeScoreDictionary
     );
   }
