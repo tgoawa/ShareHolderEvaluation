@@ -40,6 +40,7 @@ import { DashboardComponent } from './evaluations-main/dashboard/dashboard.compo
 import { ReadOnlyEvaluationCardComponent } from './shared/read-only-evaluation-card/read-only-evaluation-card.component';
 import { ReadOnlyEvaluationLineItemComponent } from './shared/read-only-evaluation-line-item/read-only-evaluation-line-item.component';
 import { GoalDescriptionDialogComponent } from './shared/goal-description-dialog/goal-description-dialog.component';
+import { EvaluationsPrintComponent } from './evaluations-print/evaluations-print.component';
 
 @NgModule({
   imports: [
@@ -82,6 +83,7 @@ import { GoalDescriptionDialogComponent } from './shared/goal-description-dialog
     ReadOnlyEvaluationCardComponent,
     ReadOnlyEvaluationLineItemComponent,
     GoalDescriptionDialogComponent,
+    EvaluationsPrintComponent,
   ],
   providers: [
     EvaluationService
