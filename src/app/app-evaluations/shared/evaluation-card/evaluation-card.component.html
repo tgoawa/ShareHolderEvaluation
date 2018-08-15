@@ -26,13 +26,13 @@
       <input matInput placeholder="Total Weight" [value]="evaluation.GoalTypeTotalWeight" disabled>
     </mat-form-field>
     <mat-form-field fxFlex="10">
-      <input matInput placeholder="Total Weighted Self Score" [value]="weightedSelfScore | number : '1.0-2'" disabled>
+      <input matInput placeholder="Average Self Score" [value]="weightedSelfScore | number : '1.0-1'" disabled>
     </mat-form-field>
     <mat-form-field fxFlex="10">
-      <input matInput placeholder="Total Weighted PIC Score" [value]="weightedPicScore | number : '1.0-2'" disabled>
+      <input matInput placeholder="Average PIC Score" [value]="weightedPicScore | number : '1.0-1'" disabled>
     </mat-form-field>
     <mat-form-field fxFlex="10">
-      <input matInput placeholder="Total Weighted Committee Score" [value]="weightedCommitteeScore | number : '1.0-2'" disabled>
+      <input matInput placeholder="Average Committee Score" [value]="weightedCommitteeScore | number : '1.0-1'" disabled>
     </mat-form-field>
   </section>
   <section fxLayout="row" fxLayoutGap="20px">
@@ -62,13 +62,13 @@
   <section fxLayout="row" fxLayoutGap="20px">
     <span class="spacer"></span>
     <mat-form-field fxFlex="10">
-      <input matInput placeholder="Final Weighted Self Score" [value]="calculatedSelfScore | number : '1.0-1'" disabled>
+      <input matInput placeholder="Weighted Self Score" [value]="calculatedSelfScore | number : '1.0-1'" disabled>
     </mat-form-field>
     <mat-form-field fxFlex="10">
-      <input matInput placeholder="Final Weighted PIC Score" [value]="calculatedPicScore | number : '1.0-1'" disabled>
+      <input matInput placeholder="Weighted PIC Score" [value]="calculatedPicScore | number : '1.0-1'" disabled>
     </mat-form-field>
     <mat-form-field fxFlex="10">
-      <input matInput placeholder="Final Weighted Consensus Score" [value]="calculatedCommitteeScore | number : '1.0-1'" disabled>
+      <input matInput placeholder="Weighted Consensus Score" [value]="calculatedCommitteeScore | number : '1.0-1'" disabled>
     </mat-form-field>
   </section>
 </mat-card>
