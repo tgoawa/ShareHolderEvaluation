@@ -1,3 +1,22 @@
-<p>
-  evaluation-print-summary works!
-</p>
+<div div fxLayout="column" fxLayoutAlign="space-between start" class="mat-typography">
+  <div class="text-center">
+    <h1>Evaluation Summary of {{teamMember?.FirstName}} {{teamMember?.LastName}} for {{evalData?.EvaluationYear}}</h1>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="10px">
+    <div><h3>Final Score: {{finalScore}}</h3></div>
+    <div><h3>Power Level: {{powerLevel?.PowerValue}}</h3></div>
+  </div>
+  <div>
+    <h3>Shareholder Score: {{shareHolderScore}}</h3>
+    <h3>PIC/Practice Leader Score: {{picScore}}</h3>
+    <h3>Consensus Score: {{consensusScore}}</h3>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="10px">
+    <div *ngFor="let eval of evalData?.EvaluationTypes">
+      <p>{{}}</p>
+      <p>{{}}</p>
+      <p>{{}}</p>
+      <p>{{}}</p>
+    </div>
+  </div>
+</div>

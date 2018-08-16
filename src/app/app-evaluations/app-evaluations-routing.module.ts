@@ -7,6 +7,7 @@ import { EvaluationsWigComponent } from './evaluations-wig/evaluations-wig.compo
 import { EvaluationsLeadershipComponent } from './evaluations-leadership/evaluations-leadership.component';
 import { EvaluationsEconomicComponent } from './evaluations-economic/evaluations-economic.component';
 import { EvaluationsSignOffComponent } from './evaluations-sign-off/evaluations-sign-off.component';
+import { EvaluationsPrintComponent } from './evaluations-print/evaluations-print.component';
 
 const routes: Routes = [
   {
@@ -18,7 +19,8 @@ const routes: Routes = [
       {path: 'wig', component: EvaluationsWigComponent},
       {path: 'leadership', component: EvaluationsLeadershipComponent},
       {path: 'economic', component: EvaluationsEconomicComponent},
-      {path: 'sign-off', component: EvaluationsSignOffComponent}
+      {path: 'sign-off', component: EvaluationsSignOffComponent},
+      {path: 'print', component: EvaluationsPrintComponent}
     ]
   }
 ];
