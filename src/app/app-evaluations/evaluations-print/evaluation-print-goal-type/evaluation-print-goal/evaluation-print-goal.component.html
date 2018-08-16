@@ -1,0 +1,20 @@
+<div fxLayout="column" fxLayoutAlign="space-between start" class="mat-typography">
+  <div fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="10px" fxFill>
+    <div>Goal Name: {{data?.GoalName}} </div>
+    <div>Goal Weight: {{data?.GoalWeight}}</div>
+  </div>
+  <div>
+    Goal Description: {{data?.GoalDescription}}
+  </div>
+  <div fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="10px" fxFill>
+    <div>Shareholder Score: {{data?.ShareHolderScore}} </div>
+    <div>PIC Score: {{data?.PICScore}}</div>
+    <div>Consensus Score: {{data?.ConsensusScore}}</div>
+  </div>
+  <div>
+    <p>Comments:</p>
+    <div>
+      {{data?.EvaluationNote}}
+    </div>
+  </div>
+</div>

@@ -42,6 +42,8 @@ import { ReadOnlyEvaluationLineItemComponent } from './shared/read-only-evaluati
 import { GoalDescriptionDialogComponent } from './shared/goal-description-dialog/goal-description-dialog.component';
 import { EvaluationsPrintComponent } from './evaluations-print/evaluations-print.component';
 import { EvaluationPrintSummaryComponent } from './evaluations-print/evaluation-print-summary/evaluation-print-summary.component';
+import { EvaluationPrintGoalTypeComponent } from './evaluations-print/evaluation-print-goal-type/evaluation-print-goal-type.component';
+import { EvaluationPrintGoalComponent } from './evaluations-print/evaluation-print-goal-type/evaluation-print-goal/evaluation-print-goal.component';
 
 @NgModule({
   imports: [
@@ -86,6 +88,8 @@ import { EvaluationPrintSummaryComponent } from './evaluations-print/evaluation-
     GoalDescriptionDialogComponent,
     EvaluationsPrintComponent,
     EvaluationPrintSummaryComponent,
+    EvaluationPrintGoalTypeComponent,
+    EvaluationPrintGoalComponent,
   ],
   providers: [
     EvaluationService
