@@ -166,6 +166,8 @@ export class EvaluationsSignOffComponent implements OnInit, OnChanges {
         if (data) {
           this.openSnackBar('PIC signed Off!', '');
           this.evaluationData.IsPICSignOff = true;
+        } else {
+          this.invalidUserInfo();
         }
       }, error => {
         this.openSnackBar('Error attempting to complete pic sign off', '');
@@ -179,6 +181,8 @@ export class EvaluationsSignOffComponent implements OnInit, OnChanges {
         if (data) {
           this.openSnackBar('Consensus signed Off!', '');
           this.evaluationData.IsConsensusSignOff = true;
+        } else {
+          this.invalidUserInfo();
         }
       }, error => {
         this.openSnackBar('Error attempting to complete Consensus sign off', '');
@@ -249,6 +253,10 @@ export class EvaluationsSignOffComponent implements OnInit, OnChanges {
     } else {
       return false;
     }
+  }
+
+  private invalidUserInfo() {
+    this.openSnackBar('Invalid username or password entered!', '');
   }
 
 }
