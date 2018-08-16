@@ -141,6 +141,8 @@ export class EvaluationsSignOffComponent implements OnInit, OnChanges {
         if (data) {
           this.evaluationData.PICNetworkName = this.picSignOffForm.get('username').value;
           this.updatePICSignOff();
+        } else {
+          this.invalidUserInfo();
         }
       }, error => {
         console.error(error);
@@ -154,6 +156,8 @@ export class EvaluationsSignOffComponent implements OnInit, OnChanges {
         if (data) {
           this.evaluationData.ConsensusNetworkName = this.consensusSignOffForm.get('username').value;
           this.updateConsensusignOff();
+        } else {
+          this.invalidUserInfo();
         }
       }, error => {
         console.error(error);
@@ -249,6 +253,10 @@ export class EvaluationsSignOffComponent implements OnInit, OnChanges {
     } else {
       return false;
     }
+  }
+
+  private invalidUserInfo() {
+    this.openSnackBar('Invalid username or password entered!', '');
   }
 
 }
