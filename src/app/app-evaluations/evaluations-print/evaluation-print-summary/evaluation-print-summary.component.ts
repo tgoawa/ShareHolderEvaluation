@@ -23,7 +23,7 @@ export class EvaluationPrintSummaryComponent implements OnChanges {
   constructor(private teamMemberService: TeamMemberService) { }
 
   ngOnChanges() {
-    this.mapData();
+
   }
 
   private mapData() {
