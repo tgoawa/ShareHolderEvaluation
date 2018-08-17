@@ -2,5 +2,7 @@
   <div>
     <h1>{{goalTypeName}} Total Weight: {{data?.GoalTypeTotalWeight}}</h1>
   </div>
-  <app-evaluation-print-goal *ngFor="let goal of data?.GoalEvaluations" [data]="goal"></app-evaluation-print-goal>
+  <div>
+    <app-evaluation-print-goal *ngFor="let goal of data?.GoalEvaluations" [data]="goal"></app-evaluation-print-goal>
+  </div>
 </div>
