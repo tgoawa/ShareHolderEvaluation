@@ -1,7 +1,16 @@
 <div fxLayout="column" fxLayoutAlign="space-between start">
-  <app-evaluation-print-summary [evalData]="evalData" [teamMember]="teamMember" fxFill></app-evaluation-print-summary>
-  <app-evaluation-print-goal-type [data]="evalData?.EvaluationTypes[1]" [goalTypeName]="'WIG Goals'"></app-evaluation-print-goal-type>
-  <app-evaluation-print-goal-type [data]="evalData?.EvaluationTypes[0]" [goalTypeName]="'Personal Competency Goals'"></app-evaluation-print-goal-type>
-  <app-evaluation-print-goal-type [data]="evalData?.EvaluationTypes[2]" [goalTypeName]="'Firm Leadership Goals'"></app-evaluation-print-goal-type>
-  <app-evaluation-print-goal-type [data]="evalData?.EvaluationTypes[3]" [goalTypeName]="'Personal Economic Goals'"></app-evaluation-print-goal-type>
+  <div>
+    <h3>Select which sections you want included in print</h3>
+    <mat-checkbox [(ngModel)]="displayWIG">WIG Goals</mat-checkbox>
+    <mat-checkbox [(ngModel)]="displayCompetency">Personal Competency</mat-checkbox>
+    <mat-checkbox [(ngModel)]="displayLeadership">Firm Leadership</mat-checkbox>
+    <mat-checkbox [(ngModel)]="displayEconomic">Personal Economic</mat-checkbox>
+  </div>
+  <div>
+    <app-evaluation-print-summary [evalData]="evalData" [teamMember]="teamMember"></app-evaluation-print-summary>
+    <app-evaluation-print-goal-type [data]="evalData?.EvaluationTypes[1]" [goalTypeName]="'WIG Goals'" *ngIf="displayWIG"></app-evaluation-print-goal-type>
+    <app-evaluation-print-goal-type [data]="evalData?.EvaluationTypes[0]" [goalTypeName]="'Personal Competency Goals'" *ngIf="displayCompetency"></app-evaluation-print-goal-type>
+    <app-evaluation-print-goal-type [data]="evalData?.EvaluationTypes[2]" [goalTypeName]="'Firm Leadership Goals'" *ngIf="displayLeadership"></app-evaluation-print-goal-type>
+    <app-evaluation-print-goal-type [data]="evalData?.EvaluationTypes[3]" [goalTypeName]="'Personal Economic Goals'" *ngIf="displayEconomic"></app-evaluation-print-goal-type>
+  </div>
 </div>
