@@ -18,3 +18,11 @@ body {
 .text-right {
   text-align: right;
 }
+
+@media print
+{
+    .no-print, .no-print *
+    {
+        display: none !important;
+    }
+}
