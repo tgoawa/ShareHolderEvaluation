@@ -7,19 +7,19 @@
     <mat-checkbox [(ngModel)]="displayEconomic">Personal Economic</mat-checkbox>
   </div>
   <div>
-    <div class="page-break-after">
+    <div>
       <app-evaluation-print-summary [evalData]="evalData" [teamMember]="teamMember" fxFill style="width: 100%"></app-evaluation-print-summary>
     </div>
-    <div class="page-break-after">
+    <div class="page-break-before">
       <app-evaluation-print-goal-type [data]="evalData?.EvaluationTypes[1]" [goalTypeName]="'WIG Goals'" *ngIf="displayWIG"></app-evaluation-print-goal-type>
     </div>
-    <div class="page-break-after">
+    <div class="page-break-before">
       <app-evaluation-print-goal-type [data]="evalData?.EvaluationTypes[0]" [goalTypeName]="'Personal Competency Goals'" *ngIf="displayCompetency"></app-evaluation-print-goal-type>
     </div>
-    <div class="page-break-after">
+    <div class="page-break-before">
       <app-evaluation-print-goal-type [data]="evalData?.EvaluationTypes[2]" [goalTypeName]="'Firm Leadership Goals'" *ngIf="displayLeadership"></app-evaluation-print-goal-type>
     </div>
-    <div>
+    <div class="page-break-before">
       <app-evaluation-print-goal-type [data]="evalData?.EvaluationTypes[3]" [goalTypeName]="'Personal Economic Goals'" *ngIf="displayEconomic"></app-evaluation-print-goal-type>
     </div>
   </div>
