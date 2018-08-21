@@ -1,4 +1,4 @@
-<div fxLayout="column" fxLayoutAlign="space-between start">
+<div>
   <div class="no-print">
     <h3>Select which sections you want included in print</h3>
     <mat-checkbox [(ngModel)]="displayWIG">WIG Goals</mat-checkbox>
@@ -8,7 +8,7 @@
   </div>
   <div>
     <div>
-      <app-evaluation-print-summary [evalData]="evalData" [teamMember]="teamMember" fxFill style="width: 100%"></app-evaluation-print-summary>
+      <app-evaluation-print-summary [evalData]="evalData" [teamMember]="teamMember" style="width: 100%"></app-evaluation-print-summary>
     </div>
     <div class="page-break-before">
       <app-evaluation-print-goal-type [data]="evalData?.EvaluationTypes[1]" [goalTypeName]="'WIG Goals'" *ngIf="displayWIG"></app-evaluation-print-goal-type>
