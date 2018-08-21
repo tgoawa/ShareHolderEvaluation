@@ -26,6 +26,10 @@ export class EvaluationsPrintComponent implements OnInit {
     }, error => console.error('Error binding evaluation data to view'));
   }
 
+  print() {
+    window.print();
+  }
+
   private getTeamMember() {
     this.teamMemberService.teamMember$.subscribe((data: TeamMember) => {
       this.teamMember = data;
