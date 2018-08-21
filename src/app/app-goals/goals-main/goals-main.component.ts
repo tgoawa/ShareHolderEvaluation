@@ -9,6 +9,7 @@ import { YearSelectionService } from '../../core/services/year-selection.service
 import { TeamMember } from '../../core/model/team-member';
 import { TeamMemberService } from '../../core/services/team-member.service';
 import { ReadOnlyService } from '../../core/services/read-only.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-goals-main',
@@ -27,7 +28,8 @@ export class GoalsMainComponent implements OnInit {
     private yearService: YearSelectionService,
     private teamMemberService: TeamMemberService,
     private readOnlyService: ReadOnlyService,
-    private cd: ChangeDetectorRef) { }
+    private cd: ChangeDetectorRef,
+    private router: Router) { }
 
   ngOnInit() {
     this.totalWeight = 0;
@@ -79,10 +81,14 @@ export class GoalsMainComponent implements OnInit {
     this.teamMemberService.teamMember$
       .subscribe(teamMemberObject => {
         this.teamMember = teamMemberObject;
-        this.yearService.selectedGoalYear$.subscribe(data => {
-          this.year = data;
-          this.getGoals(this.teamMember.TeamMemberId, this.year);
-        });
+        if (this.teamMember === null || this.teamMember.TeamMemberId === null || this.teamMember.TeamMemberId === 0) {
+          this.router.navigate(['/login']);
+        } else {
+          this.yearService.selectedGoalYear$.subscribe(data => {
+            this.year = data;
+            this.getGoals(this.teamMember.TeamMemberId, this.year);
+          });
+        }
       }, error => {
         console.error('Could not retrieve team member object!');
       });
