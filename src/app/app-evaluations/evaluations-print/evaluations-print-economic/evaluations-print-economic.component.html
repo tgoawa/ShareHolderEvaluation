@@ -1,0 +1,57 @@
+<div fxLayout="row" fxLayoutAlign="start" fxLayoutGap="10px" class="mat-typography">
+  <div style="width: 90%">
+    <section fxLayout="row" fxLayoutGap="20px" class="text-right">
+      <h3 fxFlex="45">Description</h3>
+      <h3 fxFlex="20">{{year}} Goals</h3>
+      <h3 fxFlex="35">{{previousYearActualHeading}} {{year}}</h3>
+    </section>
+    <section fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px" class="text-right">
+      <span fxFlex="45">Tiers 1-3</span>
+      <span fxFlex="20">{{economicGoal.CurrentEconomicGoal.Detail.BillingsTiers1_3 | currency: 'USD': 'symbol-narrow': '0.0-0'}}</span>
+      <span fxFlex="35">{{economicGoal.PreviousYearActuals.BillingsTiers1_3 | currency: 'USD': 'symbol-narrow': '0.0-0'}}</span>
+    </section>
+    <section fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px" class="text-right">
+      <span fxFlex="45">Tiers 4-5</span>
+      <span fxFlex="20">{{economicGoal.CurrentEconomicGoal.Detail.BillingsTiers4_5 | currency: 'USD': 'symbol-narrow': '0.0-0'}}</span>
+      <span fxFlex="35">{{economicGoal.PreviousYearActuals.BillingsTiers4_5 | currency: 'USD': 'symbol-narrow': '0.0-0'}}</span>
+    </section>
+    <section fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px" class="text-right">
+      <span fxFlex="45">Tier 6</span>
+      <span fxFlex="20">{{economicGoal.CurrentEconomicGoal.Detail.BillingsTier6 | currency: 'USD': 'symbol-narrow': '0.0-0'}}</span>
+      <span fxFlex="35">{{economicGoal.PreviousYearActuals.BillingsTier6 | currency: 'USD': 'symbol-narrow': '0.0-0'}}</span>
+    </section>
+    <section fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px" class="text-right">
+      <span fxFlex="45">New Business From New Clients</span>
+      <span fxFlex="20">{{economicGoal.CurrentEconomicGoal.Detail.BusinessNewClients | currency: 'USD': 'symbol-narrow':
+        '0.0-0'}}</span>
+      <span fxFlex="35">{{economicGoal.PreviousYearActuals.BusinessNewClients | currency: 'USD': 'symbol-narrow': '0.0-0'}}</span>
+    </section>
+    <section fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px" class="text-right">
+      <span fxFlex="45">New Business From Existing Clients</span>
+      <span fxFlex="20">{{economicGoal.CurrentEconomicGoal.Detail.BusinessExistingClients | currency: 'USD': 'symbol-narrow':
+        '0.0-0'}}</span>
+      <span fxFlex="35">{{economicGoal.PreviousYearActuals.BusinessExistingClients | currency: 'USD': 'symbol-narrow': '0.0-0'}}</span>
+    </section>
+    <section fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px" class="text-right">
+      <span fxFlex="45">Referrals To Speciality Units</span>
+      <span fxFlex="20">{{economicGoal.CurrentEconomicGoal.Detail.ReferralsSpecialityUnits | currency: 'USD': 'symbol-narrow':
+        '0.0-0'}}</span>
+      <span fxFlex="35">{{economicGoal.PreviousYearActuals.ReferralsSpecialityUnits | currency: 'USD': 'symbol-narrow': '0.0-0'}}</span>
+    </section>
+    <section fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px" class="text-right">
+      <span fxFlex="45">Charge Hours</span>
+      <span fxFlex="20">{{economicGoal.CurrentEconomicGoal.Detail.ChargeHours}}</span>
+      <span fxFlex="35">{{economicGoal.PreviousYearActuals.ChargeHours}}</span>
+    </section>
+    <section fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px" class="text-right">
+      <span fxFlex="45">Realization</span>
+      <span fxFlex="20">{{economicGoal.CurrentEconomicGoal.Detail.Realization}}</span>
+      <span fxFlex="35">{{economicGoal.PreviousYearActuals.Realization}}</span>
+    </section>
+    <section fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px" class="text-right">
+      <span fxFlex="45">Days in WIP and AR</span>
+      <span fxFlex="20">{{economicGoal.CurrentEconomicGoal.Detail.DaysinWIP_AR}}</span>
+      <span fxFlex="35">{{economicGoal.PreviousYearActuals.DaysinWIP_AR}}</span>
+    </section>
+  </div>
+</div>
