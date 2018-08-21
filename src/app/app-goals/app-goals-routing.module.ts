@@ -7,6 +7,7 @@ import { GoalsWigComponent } from './goals-wig/goals-wig.component';
 import { GoalsLeadershipComponent } from './goals-leadership/goals-leadership.component';
 import { GoalsEconomicComponent } from './goals-economic/goals-economic.component';
 import { GoalsReviewComponent } from './goals-review/goals-review.component';
+import { GoalsPrintComponent } from './goals-print/goals-print.component';
 
 const routes: Routes = [
 {
@@ -18,7 +19,8 @@ const routes: Routes = [
     {path: 'wig/:id', component: GoalsWigComponent},
     {path: 'leadership/:id', component: GoalsLeadershipComponent},
     {path: 'economic', component: GoalsEconomicComponent},
-    {path: 'review-meeting', component: GoalsReviewComponent}
+    {path: 'review-meeting', component: GoalsReviewComponent},
+    {path: 'print', component: GoalsPrintComponent}
   ]
 }
 ];
