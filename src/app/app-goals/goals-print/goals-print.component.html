@@ -11,16 +11,16 @@
     <div>
       <h1>Goal Summary of {{teamMember?.FirstName}} {{teamMember?.LastName}} for {{year}}</h1>
     </div>
-    <div class="page-break-before" *ngIf="displayWIG">
+    <div class="page-break-after" *ngIf="displayWIG">
       <app-goals-print-type [goalTypeId]="4" [title]="'WIG Goals'"></app-goals-print-type>
     </div>
-    <div class="page-break-before" *ngIf="displayCompetency">
+    <div class="page-break-after" *ngIf="displayCompetency">
       <app-goals-print-type [goalTypeId]="7" [title]="'Personal Competency Goals'"></app-goals-print-type>
     </div>
-    <div class="page-break-before" *ngIf="displayLeadership">
+    <div class="page-break-after" *ngIf="displayLeadership">
       <app-goals-print-type [goalTypeId]="6" [title]="'Firm Leadership Goals'"></app-goals-print-type>
     </div>
-    <div class="page-break-before" *ngIf="displayEconomic">
+    <div *ngIf="displayEconomic">
       <app-goals-print-type [goalTypeId]="0" [title]="'Personal Economic Goals'"></app-goals-print-type>
     </div>
   </div>
