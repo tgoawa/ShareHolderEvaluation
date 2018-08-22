@@ -63,6 +63,7 @@ import { EconomicGoalCardComponent } from './goals-economic/economic-goal-card/e
 import { ReadOnlyEconomicGoalCardComponent } from './goals-economic/read-only-economic-goal-card/read-only-economic-goal-card.component';
 import { GoalsPrintComponent } from './goals-print/goals-print.component';
 import { GoalsPrintTypeComponent } from './goals-print/goals-print-type/goals-print-type.component';
+import { GoalsPrintGoalComponent } from './goals-print/goals-print-type/goals-print-goal/goals-print-goal.component';
 
 @NgModule({
   imports: [
@@ -123,7 +124,8 @@ import { GoalsPrintTypeComponent } from './goals-print/goals-print-type/goals-pr
     EconomicGoalCardComponent,
     ReadOnlyEconomicGoalCardComponent,
     GoalsPrintComponent,
-    GoalsPrintTypeComponent
+    GoalsPrintTypeComponent,
+    GoalsPrintGoalComponent
   ],
   entryComponents: [ConfirmationDialogComponent],
   providers: [
