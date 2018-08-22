@@ -1,3 +1,20 @@
-<p>
-  goals-print-goal works!
-</p>
+<div class="mat-typography">
+  <div>
+    Goal Name: {{goal.Name}} Weight: {{goal.Weight}}
+  </div>
+  <div>
+    <h3>Goal Description:</h3>
+    <p>{{goal.GoalDescription}}</p>
+  </div>
+  <div>
+    dropdowns
+  </div>
+  <div>
+    <h3>Actions/Measures:</h3>
+    <p *ngFor="let action of goal.Actions">{{action.Action}}</p>
+  </div>
+  <div>
+    <h3>Additional Comments:</h3>Additional Comments:
+    <p *ngFor="let comment of goal.Notes">{{comment.Note}}</p>
+  </div>
+</div>
