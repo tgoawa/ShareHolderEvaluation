@@ -1,5 +1,5 @@
 <div>
   <h2>{{title}}</h2>
   <app-goal-total-weight *ngIf="goals" [goalWeightModel]="goalWeightData"></app-goal-total-weight>
-    <app-goals-print-goal *ngFor="let goal of goals" [goal]="goal"></app-goals-print-goal>
+    <app-goals-print-goal *ngFor="let goal of goals" [goal]="goal" [dropDownData]="dropdownLists"></app-goals-print-goal>
 </div>

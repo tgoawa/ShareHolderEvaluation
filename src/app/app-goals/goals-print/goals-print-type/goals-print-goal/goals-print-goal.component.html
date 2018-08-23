@@ -1,13 +1,48 @@
 <div class="mat-typography">
   <div>
-    Goal Name: {{goal.Name}} Weight: {{goal.Weight}}
+    <h3>Goal Name:</h3>
+    {{goal.Name}}
+    <h3>Weight:</h3>
+    {{goal.Weight}}
   </div>
   <div>
     <h3>Goal Description:</h3>
-    <p>{{goal.GoalDescription}}</p>
+    {{goal.GoalDescription}}
   </div>
   <div>
-    dropdowns
+    <section *ngIf="goal.GoalTypeId === 7">
+      <h3>Competencies:</h3>
+      <p *ngFor="let competency of dropDownData?.Competencies">
+        <span *ngIf="competency.GoalCompetencyId === goal.GoalCompetencyId">{{competency.Competency}}</span>
+      </p>
+      <p *ngFor="let competencyType of dropDownData?.CompetencyTypes">
+        <span *ngIf="competencyType.GoalCompetencyTypeId === goal.GoalCompetencyTypeId">{{competencyType.CompetencyType}}</span>
+      </p>
+    </section>
+    <section *ngIf="goal.GoalTypeId === 4">
+      <h3>WIG for current goal:</h3>
+      <p *ngFor="let wig of dropDownData?.WIG">
+        <span *ngIf="wig.GoalWIGId === goal.GoalWIGId">{{wig.WIGTitle}}</span>
+      </p>
+    </section>
+    <section>
+      <h3>Industry Team for current goal:</h3>
+      <p *ngIf="goal.IndustryTeamId === 0; else hasIndustryTeam">None</p>
+      <ng-template #hasIndustryTeam>
+        <p *ngFor="let industryTeam of industryTeams">
+          <span *ngIf="industryTeam.IndustryTeamId === goal.IndustryTeamId">{{industryTeam.TeamName}}</span>
+        </p>
+      </ng-template>
+    </section>
+    <section>
+      <h3>Service Line for current goal:</h3>
+      <p *ngIf="goal.ServiceLineId === 0; else hasServiceLine">None</p>
+      <ng-template #hasServiceLine>
+        <p *ngFor="let service of dropDownData?.ServiceLines">
+          <span *ngIf="service.ServiceLineId === goal.ServiceLineId">{{service.ServiceLine}}</span>
+        </p>
+      </ng-template>
+    </section>
   </div>
   <div>
     <h3>Actions/Measures:</h3>
