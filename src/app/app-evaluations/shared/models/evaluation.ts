@@ -16,6 +16,7 @@ export interface EvaluationModel {
 
 export interface GoalTypeEvaluation {
   GoalTypeEvaluationId: number;
+  GoalTypeName: string;
   EvaluationId: number;
   GoalTypeId: number;
   GoalEvaluations: GoalEvaluation[];

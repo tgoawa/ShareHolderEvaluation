@@ -61,6 +61,11 @@ import { ReadOnlyNoteListComponent } from './shared/read-only-goal-form/read-onl
 import { ReadOnlyWigDropdownsComponent } from './shared/read-only-wig-dropdowns/read-only-wig-dropdowns.component';
 import { EconomicGoalCardComponent } from './goals-economic/economic-goal-card/economic-goal-card.component';
 import { ReadOnlyEconomicGoalCardComponent } from './goals-economic/read-only-economic-goal-card/read-only-economic-goal-card.component';
+import { GoalsPrintComponent } from './goals-print/goals-print.component';
+import { GoalsPrintTypeComponent } from './goals-print/goals-print-type/goals-print-type.component';
+import { GoalsPrintGoalComponent } from './goals-print/goals-print-type/goals-print-goal/goals-print-goal.component';
+import { GoalsPrintEconomicComponent } from './goals-print/goals-print-economic/goals-print-economic.component';
+import { GoalsPrintEconomicDetailComponent } from './goals-print/goals-print-economic/goals-print-economic-detail/goals-print-economic-detail.component';
 
 @NgModule({
   imports: [
@@ -119,7 +124,12 @@ import { ReadOnlyEconomicGoalCardComponent } from './goals-economic/read-only-ec
     ReadOnlyNoteListComponent,
     ReadOnlyWigDropdownsComponent,
     EconomicGoalCardComponent,
-    ReadOnlyEconomicGoalCardComponent
+    ReadOnlyEconomicGoalCardComponent,
+    GoalsPrintComponent,
+    GoalsPrintTypeComponent,
+    GoalsPrintGoalComponent,
+    GoalsPrintEconomicComponent,
+    GoalsPrintEconomicDetailComponent
   ],
   entryComponents: [ConfirmationDialogComponent],
   providers: [

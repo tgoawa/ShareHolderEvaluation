@@ -18,3 +18,19 @@ body {
 .text-right {
   text-align: right;
 }
+
+@media print
+{
+    .no-print, .no-print *
+    {
+        display: none !important;
+    }
+
+    .page-break-before {
+      page-break-before: always;
+    }
+
+    .page-break-after {
+      page-break-after: always;
+    }
+}

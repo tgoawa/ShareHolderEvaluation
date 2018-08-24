@@ -1,0 +1,27 @@
+<div class="mat-typography">
+  <div class="no-print">
+    <h3>Select which sections you want included in print</h3>
+    <mat-checkbox [(ngModel)]="displayWIG">WIG Goals</mat-checkbox>
+    <mat-checkbox [(ngModel)]="displayCompetency">Personal Competency</mat-checkbox>
+    <mat-checkbox [(ngModel)]="displayLeadership" *ngIf="dashboardModel?.GoalTypes[2].Goals.length > 0">Firm Leadership</mat-checkbox>
+    <mat-checkbox [(ngModel)]="displayEconomic">Personal Economic</mat-checkbox>
+    <button mat-button (click)="print()">Print</button>
+  </div>
+  <div>
+    <div>
+      <h1>Goal Summary of {{teamMember?.FirstName}} {{teamMember?.LastName}} for {{year}}</h1>
+    </div>
+    <div class="page-break-after" *ngIf="displayWIG">
+      <app-goals-print-type [goalTypeId]="4" [title]="'WIG Goals'"></app-goals-print-type>
+    </div>
+    <div class="page-break-after" *ngIf="displayCompetency">
+      <app-goals-print-type [goalTypeId]="7" [title]="'Personal Competency Goals'"></app-goals-print-type>
+    </div>
+    <div class="page-break-after" *ngIf="displayLeadership">
+      <app-goals-print-type [goalTypeId]="6" [title]="'Firm Leadership Goals'"></app-goals-print-type>
+    </div>
+    <div *ngIf="displayEconomic">
+      <app-goals-print-economic></app-goals-print-economic>
+    </div>
+  </div>
+</div>

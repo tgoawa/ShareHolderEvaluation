@@ -40,6 +40,11 @@ import { DashboardComponent } from './evaluations-main/dashboard/dashboard.compo
 import { ReadOnlyEvaluationCardComponent } from './shared/read-only-evaluation-card/read-only-evaluation-card.component';
 import { ReadOnlyEvaluationLineItemComponent } from './shared/read-only-evaluation-line-item/read-only-evaluation-line-item.component';
 import { GoalDescriptionDialogComponent } from './shared/goal-description-dialog/goal-description-dialog.component';
+import { EvaluationsPrintComponent } from './evaluations-print/evaluations-print.component';
+import { EvaluationPrintSummaryComponent } from './evaluations-print/evaluation-print-summary/evaluation-print-summary.component';
+import { EvaluationPrintGoalTypeComponent } from './evaluations-print/evaluation-print-goal-type/evaluation-print-goal-type.component';
+import { EvaluationPrintGoalComponent } from './evaluations-print/evaluation-print-goal-type/evaluation-print-goal/evaluation-print-goal.component';
+import { EvaluationsPrintEconomicComponent } from './evaluations-print/evaluations-print-economic/evaluations-print-economic.component';
 
 @NgModule({
   imports: [
@@ -82,6 +87,12 @@ import { GoalDescriptionDialogComponent } from './shared/goal-description-dialog
     ReadOnlyEvaluationCardComponent,
     ReadOnlyEvaluationLineItemComponent,
     GoalDescriptionDialogComponent,
+    EvaluationsPrintComponent,
+    EvaluationPrintSummaryComponent,
+    EvaluationPrintGoalTypeComponent,
+    EvaluationsPrintComponent,
+    EvaluationPrintGoalComponent,
+    EvaluationsPrintEconomicComponent
   ],
   providers: [
     EvaluationService

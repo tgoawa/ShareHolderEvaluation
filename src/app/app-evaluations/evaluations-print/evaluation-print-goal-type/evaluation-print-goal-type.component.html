@@ -1,0 +1,8 @@
+<div div fxLayout="column" fxLayoutAlign="space-between start" class="mat-typography">
+  <div>
+    <h2>{{goalTypeName}} Total Weight: {{data?.GoalTypeTotalWeight}}</h2>
+  </div>
+  <div>
+    <app-evaluation-print-goal *ngFor="let goal of data?.GoalEvaluations" [data]="goal"></app-evaluation-print-goal>
+  </div>
+</div>

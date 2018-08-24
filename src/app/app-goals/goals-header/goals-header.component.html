@@ -1,4 +1,4 @@
-<mat-toolbar class="transparent-bg bottom-border">
+<mat-toolbar class="transparent-bg bottom-border no-print">
   <a routerLink="/home"><img src="../../../assets/images/schenck-logo.png"></a>
   <a mat-button color="primary" routerLink="/goals/main" routerLinkActive="active">Main</a>
   <a mat-button color="primary" routerLink="/goals/wig/0" routerLinkActive="active">WIG Goals</a>
@@ -6,6 +6,7 @@
   <a mat-button color="primary" routerLink="/goals/leadership/0" routerLinkActive="active">Firm Leadership Goals</a>
   <a mat-button color="primary" routerLink="/goals/economic" routerLinkActive="active">Personal Economic Goals</a>
   <!-- <a mat-button color="primary" routerLink="/goals/review-meeting" routerLinkActive="active">Review Meeting</a> -->
+  <a mat-button color="primary" routerLink="/goals/print" routerLinkActive="active">Print</a>
   <span class="example-spacer"></span>
   <mat-form-field style="font-size: 14px">
     <mat-select placeholder="Select Fiscal Year" [(ngModel)]="selectedYear" (selectionChange)="setYear(selectedYear)">
@@ -15,6 +16,6 @@
   <button mat-button [matMenuTriggerFor]="user">Welcome {{teamMember.FirstName}} {{teamMember.LastName}}! <mat-icon>arrow_drop_down</mat-icon></button>
   <mat-menu #user="matMenu">
     <button mat-menu-item>Log Out</button>
-    <button mat-menu-item>Impersonate</button>
+    <!-- <button mat-menu-item>Impersonate</button> -->
   </mat-menu>
 </mat-toolbar>
