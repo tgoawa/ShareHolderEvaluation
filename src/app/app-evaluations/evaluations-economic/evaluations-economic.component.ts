@@ -5,6 +5,7 @@ import { EconomicGoalModel } from '../../app-goals/models/economic-goal';
 import { YearSelectionService } from '../../core/services/year-selection.service';
 import { TeamMemberService } from '../../core/services/team-member.service';
 import { TeamMember } from '../../core/model/team-member';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-evaluations-economic',
@@ -21,14 +22,19 @@ export class EvaluationsEconomicComponent implements OnInit {
   previousYear: number;
   constructor(private evaluationService: EvaluationService,
     private yearService: YearSelectionService,
-    private teamMemberService: TeamMemberService) { }
+    private teamMemberService: TeamMemberService,
+    private router: Router) { }
 
   ngOnInit() {
     this.yearService.selectedEvalYear$.subscribe(data => {
       this.year = data;
       this.teamMemberService.teamMember$.subscribe(val => {
         this.teamMember = val;
+        if (this.teamMember === null || this.teamMember.TeamMemberId === null || this.teamMember.TeamMemberId === 0) {
+          this.router.navigate(['/login']);
+        } else {
         this.getEconomicGoal(this.teamMember.TeamMemberId, this.year);
+        }
       });
       this.previousYear = this.year - 1;
     });
