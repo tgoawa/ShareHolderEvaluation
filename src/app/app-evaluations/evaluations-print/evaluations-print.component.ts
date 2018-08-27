@@ -12,10 +12,11 @@ import { TeamMember } from '../../core/model/team-member';
 })
 export class EvaluationsPrintComponent implements OnInit {
   evalData: EvaluationModel;
-  displayWIG = false;
-  displayCompetency = false;
-  displayLeadership = false;
-  displayEconomic = false;
+  displaySummary = true;
+  displayWIG = true;
+  displayCompetency = true;
+  displayLeadership = true;
+  displayEconomic = true;
   teamMember: TeamMember;
   constructor(private evaluationService: EvaluationService, private teamMemberService: TeamMemberService) {}
 
