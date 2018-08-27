@@ -1,25 +1,43 @@
 <div div fxLayout="column" fxLayoutAlign="space-between start" class="mat-typography">
   <div class="text-center">
-    <h1>Evaluation Summary of {{teamMember?.FirstName}} {{teamMember?.LastName}} for {{evalData?.EvaluationYear}}</h1>
+    <h1>Evaluation Summary of {{teamMember?.FirstName}} {{teamMember?.LastName}} for {{evaluationData?.EvaluationYear}}</h1>
   </div>
   <div fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="10px" fxFill>
-    <div><h3>Final Score: {{evalData?.EvaluationScore}}</h3></div>
-    <div><h3>Power Level: {{powerLevel?.PowerValue}}</h3></div>
+    <div>
+      <h3>Final Score: {{evaluationData?.EvaluationScore}}</h3>
+    </div>
+    <div>
+      <h3>Power Level:
+        <span *ngFor="let level of powerLevelDropdown">
+          <span *ngIf="level.PowerLevelId === evaluationData?.PowerLevelId">{{level.PowerValue}}</span>
+        </span>
+      </h3>
+    </div>
   </div>
   <div>
-    <h3>Shareholder Score: {{shareHolderScore}}</h3>
-    <h3>PIC/Practice Leader Score: {{picScore}}</h3>
-    <h3>Consensus Score: {{consensusScore}}</h3>
+    <h3>Shareholder Score: {{totalShareholderScore | number : '1.0-1'}}</h3>
+    <h3>PIC/Practice Leader Score: {{totalPicScore | number : '1.0-1'}}</h3>
+    <h3>Consensus Score: {{totalConsensusScore | number : '1.0-1'}}</h3>
   </div>
   <div class="text-center">
     <h2>Summary of Goal Scores:</h2>
   </div>
   <div fxLayout="row" fxLayoutGap="10px" style="width: 100%">
-    <div *ngFor="let eval of evalData?.EvaluationTypes" fxFlex="30">
-      <p>{{eval.GoalTypeName}}</p>
-      <p>Shareholder Score: {{eval.ShareholderScore}}</p>
-      <p>PIC/Practice Leader Score: {{eval.PICScore}}</p>
-      <p>Consensus Score: {{eval.ConsensusScore}}</p>
+    <div fxFlex="grow">
+      <app-evaluation-print-summary-goal-types [name]="'WIG'" [data]="evaluationData?.EvaluationTypes[1]" (shareholderScore)="addToShareholderScoreArray($event)"
+        (picScore)="addToPICScoreArray($event)" (consensusScore)="addToConsensusScoreArray($event)"></app-evaluation-print-summary-goal-types>
+    </div>
+    <div fxFlex="grow">
+      <app-evaluation-print-summary-goal-types [name]="'Personal Competency'" [data]="evaluationData?.EvaluationTypes[0]" (shareholderScore)="addToShareholderScoreArray($event)"
+        (picScore)="addToPICScoreArray($event)" (consensusScore)="addToConsensusScoreArray($event)"></app-evaluation-print-summary-goal-types>
+    </div>
+    <div fxFlex="grow" *ngIf="evaluationData?.EvaluationTypes[2]?.GoalEvaluations.length > 0">
+      <app-evaluation-print-summary-goal-types [name]="'Firm Leadership'" [data]="evaluationData?.EvaluationTypes[2]" (shareholderScore)="addToShareholderScoreArray($event)"
+        (picScore)="addToPICScoreArray($event)" (consensusScore)="addToConsensusScoreArray($event)"></app-evaluation-print-summary-goal-types>
+    </div>
+    <div fxFlex="grow">
+      <app-evaluation-print-summary-goal-types [name]="'Personal Economic'" [data]="evaluationData?.EvaluationTypes[3]" (shareholderScore)="addToShareholderScoreArray($event)"
+        (picScore)="addToPICScoreArray($event)" (consensusScore)="addToConsensusScoreArray($event)"></app-evaluation-print-summary-goal-types>
     </div>
   </div>
 </div>

@@ -45,6 +45,7 @@ import { EvaluationPrintSummaryComponent } from './evaluations-print/evaluation-
 import { EvaluationPrintGoalTypeComponent } from './evaluations-print/evaluation-print-goal-type/evaluation-print-goal-type.component';
 import { EvaluationPrintGoalComponent } from './evaluations-print/evaluation-print-goal-type/evaluation-print-goal/evaluation-print-goal.component';
 import { EvaluationsPrintEconomicComponent } from './evaluations-print/evaluations-print-economic/evaluations-print-economic.component';
+import { EvaluationPrintSummaryGoalTypesComponent } from './evaluations-print/evaluation-print-summary-goal-types/evaluation-print-summary-goal-types.component';
 
 @NgModule({
   imports: [
@@ -92,7 +93,8 @@ import { EvaluationsPrintEconomicComponent } from './evaluations-print/evaluatio
     EvaluationPrintGoalTypeComponent,
     EvaluationsPrintComponent,
     EvaluationPrintGoalComponent,
-    EvaluationsPrintEconomicComponent
+    EvaluationsPrintEconomicComponent,
+    EvaluationPrintSummaryGoalTypesComponent
   ],
   providers: [
     EvaluationService

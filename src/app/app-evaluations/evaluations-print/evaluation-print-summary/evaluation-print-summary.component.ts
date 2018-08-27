@@ -1,34 +1,13 @@
-import { Component, OnChanges, Input, ChangeDetectionStrategy } from '@angular/core';
-import { PowerLevel } from '../../shared/models/powerLevel';
-import { EvaluationModel } from '../../shared/models/Evaluation';
+import { Component, Input } from '@angular/core';
 import { TeamMember } from '../../../core/model/team-member';
-import { TeamMemberService } from '../../../core/services/team-member.service';
+import { DashboardComponent } from '../../evaluations-main/dashboard/dashboard.component';
 
 @Component({
   selector: 'app-evaluation-print-summary',
   templateUrl: './evaluation-print-summary.component.html',
   styleUrls: ['./evaluation-print-summary.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class EvaluationPrintSummaryComponent implements OnChanges {
-  @Input() evalData: EvaluationModel;
+export class EvaluationPrintSummaryComponent extends DashboardComponent {
   @Input() teamMember: TeamMember;
-
-  finalScore: number;
-  shareHolderScore: number;
-  picScore: number;
-  consensusScore: number;
-  powerLevel: PowerLevel;
-  year: number;
-  constructor(private teamMemberService: TeamMemberService) { }
-
-  ngOnChanges() {
-
-  }
-
-  private mapData() {
-    this.finalScore = this.evalData.EvaluationScore;
-
-  }
 
 }

@@ -7,26 +7,26 @@
     <mat-checkbox [(ngModel)]="displaySummary">Evaluation Summary</mat-checkbox>
     <mat-checkbox [(ngModel)]="displayWIG">WIG Goals</mat-checkbox>
     <mat-checkbox [(ngModel)]="displayCompetency">Personal Competency</mat-checkbox>
-    <mat-checkbox [(ngModel)]="displayLeadership" *ngIf="evalData?.EvaluationTypes[2].length > 0">Firm Leadership</mat-checkbox>
+    <mat-checkbox [(ngModel)]="displayLeadership" *ngIf="evaluationData?.EvaluationTypes[2].length > 0">Firm Leadership</mat-checkbox>
     <mat-checkbox [(ngModel)]="displayEconomic">Personal Economic</mat-checkbox>
   </div>
-  <div>
+  <div *ngIf="evaluationData && powerLevelDropdown">
     <div *ngIf="displaySummary">
-      <app-evaluation-print-summary [evalData]="evalData" [teamMember]="teamMember" style="width: 100%"></app-evaluation-print-summary>
+      <app-evaluation-print-summary [evaluationData]="evaluationData" [powerLevelDropdown]="powerLevelDropdown" [teamMember]="teamMember" style="width: 100%"></app-evaluation-print-summary>
     </div>
     <div class="page-break-before" *ngIf="displayWIG">
-      <app-evaluation-print-goal-type [data]="evalData?.EvaluationTypes[1]" [goalTypeName]="'WIG Goals'"></app-evaluation-print-goal-type>
+      <app-evaluation-print-goal-type [data]="evaluationData?.EvaluationTypes[1]" [goalTypeName]="'WIG Goals'"></app-evaluation-print-goal-type>
     </div>
     <div class="page-break-before" *ngIf="displayCompetency">
-      <app-evaluation-print-goal-type [data]="evalData?.EvaluationTypes[0]" [goalTypeName]="'Personal Competency Goals'"></app-evaluation-print-goal-type>
+      <app-evaluation-print-goal-type [data]="evaluationData?.EvaluationTypes[0]" [goalTypeName]="'Personal Competency Goals'"></app-evaluation-print-goal-type>
     </div>
-    <ng-template *ngIf="evalData?.EvaluationTypes[2].length > 0">
+    <ng-template *ngIf="evaluationData?.EvaluationTypes[2].length > 0">
       <div class="page-break-before" *ngIf="displayLeadership">
-        <app-evaluation-print-goal-type [data]="evalData?.EvaluationTypes[2]" [goalTypeName]="'Firm Leadership Goals'"></app-evaluation-print-goal-type>
+        <app-evaluation-print-goal-type [data]="evaluationData?.EvaluationTypes[2]" [goalTypeName]="'Firm Leadership Goals'"></app-evaluation-print-goal-type>
       </div>
     </ng-template>
     <div class="page-break-before" *ngIf="displayEconomic">
-      <app-evaluation-print-goal-type [data]="evalData?.EvaluationTypes[3]" [goalTypeName]="'Personal Economic Goals'"></app-evaluation-print-goal-type>
+      <app-evaluation-print-goal-type [data]="evaluationData?.EvaluationTypes[3]" [goalTypeName]="'Personal Economic Goals'"></app-evaluation-print-goal-type>
       <app-evaluations-print-economic></app-evaluations-print-economic>
     </div>
   </div>
