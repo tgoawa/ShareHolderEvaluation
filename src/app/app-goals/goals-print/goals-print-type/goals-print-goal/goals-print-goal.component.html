@@ -1,55 +1,55 @@
-<div class="mat-typography">
+<div class="mat-typography print-top-margin">
   <div>
-    <h3>Goal Name:</h3>
+    <b>Goal Name:</b>
     {{goal.Name}}
-    <h3>Weight:</h3>
+    <b>Weight:</b>
     {{goal.Weight}}
   </div>
   <div>
-    <h3>Goal Description:</h3>
+    <b>Goal Description:</b>
     {{goal.GoalDescription}}
   </div>
   <div>
     <section *ngIf="goal.GoalTypeId === 7">
-      <h3>Competencies:</h3>
-      <p *ngFor="let competency of dropDownData?.Competencies">
+      <b>Competencies:</b>
+      <span *ngFor="let competency of dropDownData?.Competencies">
         <span *ngIf="competency.GoalCompetencyId === goal.GoalCompetencyId">{{competency.Competency}}</span>
-      </p>
-      <p *ngFor="let competencyType of dropDownData?.CompetencyTypes">
+      </span>
+      <span *ngFor="let competencyType of dropDownData?.CompetencyTypes">
         <span *ngIf="competencyType.GoalCompetencyTypeId === goal.GoalCompetencyTypeId">{{competencyType.CompetencyType}}</span>
-      </p>
+      </span>
     </section>
     <section *ngIf="goal.GoalTypeId === 4">
-      <h3>WIG for current goal:</h3>
-      <p *ngFor="let wig of dropDownData?.WIG">
+      <b>WIG for current goal:</b>
+      <span *ngFor="let wig of dropDownData?.WIG">
         <span *ngIf="wig.GoalWIGId === goal.GoalWIGId">{{wig.WIGTitle}}</span>
-      </p>
+      </span>
     </section>
     <section>
-      <h3>Industry Team for current goal:</h3>
-      <p *ngIf="goal.IndustryTeamId === 0; else hasIndustryTeam">None</p>
+      <b>Industry Team for current goal:</b>
+      <span *ngIf="goal.IndustryTeamId === 0; else hasIndustryTeam">None</span>
       <ng-template #hasIndustryTeam>
-        <p *ngFor="let industryTeam of industryTeams">
+        <span *ngFor="let industryTeam of industryTeams">
           <span *ngIf="industryTeam.IndustryTeamId === goal.IndustryTeamId">{{industryTeam.TeamName}}</span>
-        </p>
+        </span>
       </ng-template>
     </section>
     <section>
-      <h3>Service Line for current goal:</h3>
-      <p *ngIf="goal.ServiceLineId === 0; else hasServiceLine">None</p>
+      <b>Service Line for current goal:</b>
+      <span *ngIf="goal.ServiceLineId === 0; else hasServiceLine">None</span>
       <ng-template #hasServiceLine>
-        <p *ngFor="let service of dropDownData?.ServiceLines">
+        <span *ngFor="let service of dropDownData?.ServiceLines">
           <span *ngIf="service.ServiceLineId === goal.ServiceLineId">{{service.ServiceLine}}</span>
-        </p>
+        </span>
       </ng-template>
     </section>
   </div>
   <div>
-    <h3>Actions/Measures:</h3>
-    <p *ngFor="let action of goal.Actions">{{action.Action}}</p>
+    <b>Actions/Measures:</b>
+    <span *ngFor="let action of goal.Actions">{{action.Action}}</span>
   </div>
   <div>
-    <h3>Additional Comments:</h3>Additional Comments:
-    <p *ngFor="let comment of goal.Notes">{{comment.Note}}</p>
+    <b>Additional Comments:</b>
+    <span *ngFor="let comment of goal.Notes">{{comment.Note}}</span>
   </div>
 </div>

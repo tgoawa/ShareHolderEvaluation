@@ -13,7 +13,7 @@
       <mat-option *ngFor="let year of goalYears" [value]="year">{{year}}</mat-option>
     </mat-select>
   </mat-form-field>
-  <button mat-button [matMenuTriggerFor]="user">Welcome {{teamMember.FirstName}} {{teamMember.LastName}}! <mat-icon>arrow_drop_down</mat-icon></button>
+  <button mat-button [matMenuTriggerFor]="user">Welcome {{teamMember?.FirstName}} {{teamMember?.LastName}}! <mat-icon>arrow_drop_down</mat-icon></button>
   <mat-menu #user="matMenu">
     <button mat-menu-item>Log Out</button>
     <!-- <button mat-menu-item>Impersonate</button> -->
