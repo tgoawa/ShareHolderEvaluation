@@ -37,4 +37,8 @@ body {
     .page-break-after {
       page-break-after: always;
     }
+
+    .print-font-10 {
+      font-size: 10px
+    }
 }

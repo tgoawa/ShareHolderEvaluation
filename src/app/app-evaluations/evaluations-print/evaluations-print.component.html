@@ -14,18 +14,18 @@
     <div *ngIf="displaySummary">
       <app-evaluation-print-summary [evaluationData]="evaluationData" [powerLevelDropdown]="powerLevelDropdown" [teamMember]="teamMember" style="width: 100%"></app-evaluation-print-summary>
     </div>
-    <div class="page-break-before" *ngIf="displayWIG">
+    <div class="print-top-margin" *ngIf="displayWIG">
       <app-evaluation-print-goal-type [data]="evaluationData?.EvaluationTypes[1]" [goalTypeName]="'WIG Goals'"></app-evaluation-print-goal-type>
     </div>
-    <div class="page-break-before" *ngIf="displayCompetency">
+    <div class="print-top-margin" *ngIf="displayCompetency">
       <app-evaluation-print-goal-type [data]="evaluationData?.EvaluationTypes[0]" [goalTypeName]="'Personal Competency Goals'"></app-evaluation-print-goal-type>
     </div>
     <ng-template *ngIf="evaluationData?.EvaluationTypes[2].length > 0">
-      <div class="page-break-before" *ngIf="displayLeadership">
+      <div class="print-top-margin" *ngIf="displayLeadership">
         <app-evaluation-print-goal-type [data]="evaluationData?.EvaluationTypes[2]" [goalTypeName]="'Firm Leadership Goals'"></app-evaluation-print-goal-type>
       </div>
     </ng-template>
-    <div class="page-break-before" *ngIf="displayEconomic">
+    <div class="print-top-margin" *ngIf="displayEconomic">
       <app-evaluation-print-goal-type [data]="evaluationData?.EvaluationTypes[3]" [goalTypeName]="'Personal Economic Goals'"></app-evaluation-print-goal-type>
       <app-evaluations-print-economic></app-evaluations-print-economic>
     </div>

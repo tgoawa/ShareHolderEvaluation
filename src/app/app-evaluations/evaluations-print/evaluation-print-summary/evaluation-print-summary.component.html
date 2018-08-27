@@ -4,10 +4,10 @@
   </div>
   <div fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="10px" fxFill>
     <div>
-      <h3>Final Score: {{evaluationData?.EvaluationScore}}</h3>
+      <h3><b>Final Score:</b> {{evaluationData?.EvaluationScore}}</h3>
     </div>
     <div>
-      <h3>Power Level:
+      <h3><b>Power Level:</b>
         <span *ngFor="let level of powerLevelDropdown">
           <span *ngIf="level.PowerLevelId === evaluationData?.PowerLevelId">{{level.PowerValue}}</span>
         </span>
@@ -15,9 +15,9 @@
     </div>
   </div>
   <div>
-    <h3>Shareholder Score: {{totalShareholderScore | number : '1.0-1'}}</h3>
-    <h3>PIC/Practice Leader Score: {{totalPicScore | number : '1.0-1'}}</h3>
-    <h3>Consensus Score: {{totalConsensusScore | number : '1.0-1'}}</h3>
+    <h3><b>Shareholder Score: {{totalShareholderScore | number : '1.0-1'}}</b></h3>
+    <h3><b>PIC/Practice Leader Score: {{totalPicScore | number : '1.0-1'}}</b></h3>
+    <h3><b>Consensus Score: {{totalConsensusScore | number : '1.0-1'}}</b></h3>
   </div>
   <div class="text-center">
     <h2>Summary of Goal Scores:</h2>

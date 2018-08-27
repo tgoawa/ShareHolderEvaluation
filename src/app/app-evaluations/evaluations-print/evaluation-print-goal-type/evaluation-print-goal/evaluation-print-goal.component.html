@@ -1,18 +1,18 @@
 <div fxLayout="column" fxLayoutAlign="space-between start" class="mat-typography">
   <div fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="10px" fxFill>
-    <div>Goal Name: {{data?.GoalName}} </div>
-    <div>Goal Weight: {{data?.GoalWeight}}</div>
+    <div><b>Goal Name:</b> {{data?.GoalName}} </div>
+    <div><b>Goal Weight:</b> {{data?.GoalWeight}}</div>
   </div>
   <div>
-    Goal Description: {{data?.GoalDescription}}
+    <b>Goal Description:</b> {{data?.GoalDescription}}
   </div>
   <div fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="10px" fxFill>
-    <div>Shareholder Score: {{data?.ShareHolderScore}} </div>
-    <div>PIC Score: {{data?.PICScore}}</div>
-    <div>Consensus Score: {{data?.ConsensusScore}}</div>
+    <div><b>Shareholder Score:</b> {{data?.ShareHolderScore}} </div>
+    <div><b>PIC Score:</b> {{data?.PICScore}}</div>
+    <div><b>Consensus Score:</b> {{data?.ConsensusScore}}</div>
   </div>
   <div>
-    <p>Comments:</p>
+    <p><b>Comments:</b></p>
     <div>
       {{data?.EvaluationNote}}
     </div>
