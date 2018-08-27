@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-evaluations-economic',
   templateUrl: './evaluations-economic.component.html',
-  styleUrls: ['./evaluations-economic.component.css']
+  styleUrls: ['./evaluations-economic.component.css'],
 })
 export class EvaluationsEconomicComponent implements OnInit {
   currentYearHeading = ' Goals';
@@ -20,28 +20,37 @@ export class EvaluationsEconomicComponent implements OnInit {
   teamMember: TeamMember;
   year: number;
   previousYear: number;
-  constructor(private evaluationService: EvaluationService,
+  constructor(
+    private evaluationService: EvaluationService,
     private yearService: YearSelectionService,
     private teamMemberService: TeamMemberService,
-    private router: Router) { }
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.yearService.selectedEvalYear$.subscribe(data => {
       this.year = data;
       this.teamMemberService.teamMember$.subscribe(val => {
         this.teamMember = val;
-        if (this.teamMember === null || this.teamMember.TeamMemberId === null || this.teamMember.TeamMemberId === 0) {
+        if (
+          this.teamMember === null ||
+          this.teamMember.TeamMemberId === null ||
+          this.teamMember.TeamMemberId === 0
+        ) {
           this.router.navigate(['/login']);
         } else {
-        this.getEconomicGoal(this.teamMember.TeamMemberId, this.year);
+          this.getEconomicGoal(this.teamMember.TeamMemberId, this.year);
         }
       });
       this.previousYear = this.year - 1;
     });
 
-    this.evaluationService.evaluationModel$.subscribe(data => {
-      this.evalData = data;
-    }, error => console.error('Error binding evaluation data to view'));
+    this.evaluationService.evaluationModel$.subscribe(
+      data => {
+        this.evalData = data;
+      },
+      error => console.error('Error binding evaluation data to view')
+    );
   }
 
   private getEconomicGoal(teamMemberId: number, year: number) {
@@ -54,5 +63,4 @@ export class EvaluationsEconomicComponent implements OnInit {
       }
     );
   }
-
 }
