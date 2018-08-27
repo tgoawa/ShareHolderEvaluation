@@ -6,6 +6,7 @@ import { YearSelectionService } from '../../core/services/year-selection.service
 import { TeamMember } from '../../core/model/team-member';
 import { TeamMemberService } from '../../core/services/team-member.service';
 import { ReadOnlyService } from '../../core/services/read-only.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-goals-economic',
@@ -23,7 +24,8 @@ export class GoalsEconomicComponent implements OnInit {
     private goalService: GoalsService,
     private yearService: YearSelectionService,
     private teamMemberService: TeamMemberService,
-    private readOnlyService: ReadOnlyService
+    private readOnlyService: ReadOnlyService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -37,12 +39,15 @@ export class GoalsEconomicComponent implements OnInit {
     this.teamMemberService.teamMember$
       .subscribe(teamMemberObject => {
         this.teamMember = teamMemberObject;
+        if (this.teamMember === null || this.teamMember.TeamMemberId === null || this.teamMember.TeamMemberId === 0) {
+          this.router.navigate(['/login']);
+        } else {
         this.yearService.selectedGoalYear$.subscribe(data => {
           this.year = data;
           this.getEconomicGoal(this.teamMember.TeamMemberId, this.year);
           this.previousYear = this.year - 1;
         });
-      }, error => {
+      }}, error => {
         console.error('Could not retrieve team member object!');
       });
   }

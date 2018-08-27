@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GoalData } from '../../models/goal';
 import { GoalWeightModel } from '../../goals-main/model/weight';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { GoalsService } from '../services/goals.service';
 import { MatDialog, MatDialogRef } from '@angular/material';
 import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
@@ -39,7 +39,8 @@ export class GoalBaseComponent implements OnInit {
     private dialog: MatDialog,
     private yearService: YearSelectionService,
     private readOnlyService: ReadOnlyService,
-    private teamMemberService: TeamMemberService
+    private teamMemberService: TeamMemberService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -146,12 +147,15 @@ export class GoalBaseComponent implements OnInit {
   this.teamMemberService.teamMember$
     .subscribe(teamMemberObject => {
       this.teamMember = teamMemberObject;
+      if (this.teamMember === null || this.teamMember.TeamMemberId === null || this.teamMember.TeamMemberId === 0) {
+        this.router.navigate(['/login']);
+      } else {
       this.yearService.selectedGoalYear$.subscribe(data => {
         this.year = data;
         this.getDropdownLists(this.year);
         this.getGoals(this.teamMember.TeamMemberId, this.goalTypeId, this.year);
       });
-    }, error => {
+    }}, error => {
       console.error('Could not retrieve team member object');
     });
   }
