@@ -1,12 +1,12 @@
 <div class="mat-typography">
   <div style="margin-top: 10px">
-      <button class="no-print" mat-raised-button color="primary" (click)="print()">Print</button>
+    <button class="no-print" mat-raised-button color="primary" (click)="print()">Print</button>
   </div>
   <div class="no-print">
     <h3>Select which sections you want included in print</h3>
     <mat-checkbox [(ngModel)]="displayWIG">WIG Goals</mat-checkbox>
     <mat-checkbox [(ngModel)]="displayCompetency">Personal Competency</mat-checkbox>
-    <mat-checkbox [(ngModel)]="displayLeadership">Firm Leadership</mat-checkbox>
+    <mat-checkbox [(ngModel)]="displayLeadership" *ngIf="dashboardModel?.GoalTypes[2].Goals.length > 0">Firm Leadership</mat-checkbox>
     <mat-checkbox [(ngModel)]="displayEconomic">Personal Economic</mat-checkbox>
   </div>
   <div>
@@ -19,9 +19,11 @@
     <div class="print-top-margin" *ngIf="displayCompetency">
       <app-goals-print-type [goalTypeId]="7" [title]="'Personal Competency Goals'"></app-goals-print-type>
     </div>
-    <div class="print-top-margin" *ngIf="displayLeadership">
-      <app-goals-print-type [goalTypeId]="6" [title]="'Firm Leadership Goals'"></app-goals-print-type>
-    </div>
+    <ng-template *ngIf="dashboardModel?.GoalTypes[2].Goals.length > 0">
+      <div class="print-top-margin" *ngIf="displayLeadership">
+        <app-goals-print-type [goalTypeId]="6" [title]="'Firm Leadership Goals'"></app-goals-print-type>
+      </div>
+    </ng-template>
     <div class="print-top-margin" *ngIf="displayEconomic">
       <app-goals-print-economic></app-goals-print-economic>
     </div>
