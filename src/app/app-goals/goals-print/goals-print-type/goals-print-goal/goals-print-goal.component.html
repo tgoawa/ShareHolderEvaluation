@@ -47,10 +47,10 @@
   </div>
   <div>
     <b>Actions/Measures:</b>
-    <span *ngFor="let action of goal.Actions">{{action.Action}}</span>
+    <p *ngFor="let action of goal.Actions" style="margin-bottom: 6px">{{action.Action}}</p>
   </div>
   <div>
     <b>Additional Comments:</b>
-    <span *ngFor="let comment of goal.Notes">{{comment.Note}}</span>
+    <p *ngFor="let comment of goal.Notes" style="margin-bottom: 6px">{{comment.Note}}</p>
   </div>
 </div>
